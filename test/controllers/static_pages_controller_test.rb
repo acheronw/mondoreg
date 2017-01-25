@@ -11,4 +11,9 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get ticket policy" do
+    get static_pages_ticket_policy_url
+    assert_response :success
+  end
+
 end
