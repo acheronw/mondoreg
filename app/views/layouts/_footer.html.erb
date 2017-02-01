@@ -1,20 +1,25 @@
 <footer class="footer">
 
-  <%= link_to image_tag("mangafan_small.png", alt: "Mangafan Kiadó"),
-              'http://mangafan.hu/' %>
-  <%= link_to image_tag("mondo_small.png", alt: "Mondo Magazin"),
-              'http://mondomagazin.hu/' %>
-  <%= link_to image_tag("pcguru_small.png", alt: "PC Guru"),
-              'http://www.pcguru.hu/' %>
+  <div id="back_to_mondoconhu">
+    <%= link_to "Back To MondoCon",   'www.mondocon.hu' %>
+  </div>
+
+  <div id="partner_logos">
+    <%= link_to image_tag("mangafan_small.png", alt: "Mangafan Kiadó"),
+                'http://mangafan.hu/' %>
+    <%= link_to image_tag("mondo_small.png", alt: "Mondo Magazin"),
+                'http://mondomagazin.hu/' %>
+    <%= link_to image_tag("pcguru_small.png", alt: "PC Guru"),
+                'http://www.pcguru.hu/' %>
+  </div>
 
   <small>
-    <%= t(:footer_text)%>
+    <ul>
+      <li><%= t(:footer_text)%></li>
+      <li><%= link_to "Contact", '#' %></li>
+    </ul>
+
   </small>
 
 
-  <nav>
-    <ul>
-      <li><%= link_to "Contact", '#' %></li>
-    </ul>
-  </nav>
 </footer>
