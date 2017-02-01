@@ -26,4 +26,7 @@ en:
     ticket_policy: "Ticket Policy"
     help: "Help"
     home: "Home"
-  footer_text: "© 2017 Szekeres András Márk, All Rights Reserved"
+  footer:
+    copyright_text: "© 2017 Szekeres András Márk, All Rights Reserved"
+    contact: "Contact"
+    back_to_mondocon: "Event homepage"

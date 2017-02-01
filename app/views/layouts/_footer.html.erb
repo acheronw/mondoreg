@@ -1,22 +1,22 @@
 <footer class="footer">
 
   <div id="back_to_mondoconhu">
-    <%= link_to "Back To MondoCon",   'www.mondocon.hu' %>
+    <%= link_to t('footer.back_to_mondocon'), "http://www.mondocon.hu", :target => '_blank' %><br>
   </div>
 
   <div id="partner_logos">
     <%= link_to image_tag("mangafan_small.png", alt: "Mangafan Kiadó"),
-                'http://mangafan.hu/' %>
+                'http://mangafan.hu/', :target => '_blank' %>
     <%= link_to image_tag("mondo_small.png", alt: "Mondo Magazin"),
-                'http://mondomagazin.hu/' %>
+                'http://mondomagazin.hu/', :target => '_blank' %>
     <%= link_to image_tag("pcguru_small.png", alt: "PC Guru"),
-                'http://www.pcguru.hu/' %>
+                'http://www.pcguru.hu/', :target => '_blank' %>
   </div>
 
   <small>
     <ul>
-      <li><%= t(:footer_text)%></li>
-      <li><%= link_to "Contact", '#' %></li>
+      <li><%= t('footer.copyright_text')%></li>
+      <li><%= mail_to "info@mondocon.hu", t('footer.contact') %></li>
     </ul>
 
   </small>
