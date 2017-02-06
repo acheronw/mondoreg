@@ -26,6 +26,7 @@ en:
     ticket_policy: "Ticket Policy"
     help: "Help"
     home: "Home"
+    register: "Create new account"
   footer:
     copyright_text: "© 2017 Szekeres András Márk, All Rights Reserved"
     contact: "Contact"
