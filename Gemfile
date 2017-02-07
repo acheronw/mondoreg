@@ -23,6 +23,9 @@ gem 'coffee-rails', '~> 4.2'
 gem 'bootstrap-sass', '3.3.6'
 # This brings back 'assigns' and 'assert_template' to tests:
 gem 'rails-controller-testing'
+# Used for encrypting passwords in the handcrafted login manager code:
+gem 'bcrypt', '3.1.11'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
