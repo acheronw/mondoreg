@@ -31,3 +31,12 @@ en:
     copyright_text: "© 2017 Szekeres András Márk, All Rights Reserved"
     contact: "Contact"
     back_to_mondocon: "Event homepage"
+  user:
+    signup: "Create a new account"
+    name: "Full name:"
+    email: "Email address:"
+    password: "Password (at least 8 characters):"
+    password_conf: "Repeat password:"
+    submit_new_user: "Create my account"
+    signup_failed: "Unable to create account"
+    signup_success: "Account created, welcome!"

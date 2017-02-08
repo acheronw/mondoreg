@@ -1,0 +1,12 @@
+en:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: "%{value} is not a valid email address"
+            password:
+              too_short: "Password is too short, must be at least %{count} characters long"
+            password_confirmation:
+              confirmation: "The two passwords must be identical!"

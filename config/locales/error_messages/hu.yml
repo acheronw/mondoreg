@@ -1,0 +1,12 @@
+hu:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: "%{value} nem egy valid email cím"
+            password:
+              too_short: "A jelszó túl rövid, legalább  %{count} karakter hosszú kell, hogy legyen!"
+            password_confirmation:
+              confirmation: "A megismételt jelszó nem egyezik meg az eredetivel!"

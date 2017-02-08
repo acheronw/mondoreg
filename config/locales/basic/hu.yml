@@ -10,3 +10,12 @@ hu:
     copyright_text: "© 2017 Szekeres András Márk, Minden jog fenntartva"
     contact: "Kapcsolat"
     back_to_mondocon: "MondoCon főoldala"
+  user:
+    signup: "Új fiók létrehozása"
+    name: "Teljes neved:"
+    email: "Email cím:"
+    password: "Jelszó (legalább 8 karakter hosszú):"
+    password_conf: "Jelszó megismétlése:"
+    submit_new_user: "Fiók létrehozása"
+    signup_failed: "Hiba a fiók létrehozása során"
+    signup_success: "Sikeres regisztráció"
