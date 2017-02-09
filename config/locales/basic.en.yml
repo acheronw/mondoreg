@@ -23,7 +23,6 @@ en:
   mondocon_reg_site: "MondoCon registration site"
   under_construct: "Construction under progress"
   title:
-    ticket_policy: "Ticket Policy"
     help: "Help"
     home: "Home"
     signup: "Create new account"
@@ -34,6 +33,13 @@ en:
     copyright_text: "© 2017 Szekeres András Márk, All Rights Reserved"
     contact: "Contact"
     back_to_mondocon: "Event homepage"
+  static:
+    landing_page:
+      login_pre: "If you already have an account:"
+      login: "Log in"
+      sign_up_pre: "If you don't have an account yet:"
+      sign_up: "Sign up now!"
+
   edit_profile:
     edit_profile: "Edit Profile"
     leave_password_blank: "Leave blank if you don't want to change it"

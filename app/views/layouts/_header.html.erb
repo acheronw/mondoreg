@@ -1,13 +1,11 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "sample app", root_path, id: "logo" %>
+    <%= link_to t('title.home'), root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
 
-        <li><%= link_to "Home",   root_path %></li>
-        <li><%= link_to t('title.ticket_policy'),   ticket_policy_path %></li>
-        <li><%= link_to t('title.help'),   help_path %></li>
 
+        <li><%= link_to t('title.help'),   help_path %></li>
         <% if user_signed_in? %>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">

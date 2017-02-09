@@ -2,7 +2,6 @@ hu:
   mondocon_reg_site: "MondoCon regisztrációs felület"
   under_construct: 'Fejlesztés alatt.'
   title:
-    ticket_policy: "Jegyrendelés Menete"
     help: "Súgó"
     home: "Kezdőlap"
     signup: "Új fiók létrehozása"
@@ -13,6 +12,12 @@ hu:
     copyright_text: "© 2017 Szekeres András Márk, Minden jog fenntartva"
     contact: "Kapcsolat"
     back_to_mondocon: "MondoCon főoldala"
+  static:
+    landing_page:
+      login_pre: "Ha már van felhasználói fiókod:"
+      login: "Lépj be!"
+      sign_up_pre: "Ha még nem hoztál létre felhasználói fiókot:"
+      sign_up: "Regisztrálj!"
   edit_profile:
     edit_profile: "Felhasználói adatok módosítása"
     leave_password_blank: "Hagyd üresen, ha most nem akarod megváltoztatni"
