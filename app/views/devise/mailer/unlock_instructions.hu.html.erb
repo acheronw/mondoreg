@@ -1,0 +1,7 @@
+<p>Kedves <%= @resource.name %>!</p>
+
+<p>A fiókod zárolva lett, túl sok sikertelen belépési kísérlet miatt.</p>
+
+<p>Az alábbi linkre kattintva tudod feloldani a zárolást:</p>
+
+<p><%= link_to 'Zárolás feloldása', unlock_url(@resource, unlock_token: @token) %></p>

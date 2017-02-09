@@ -40,6 +40,7 @@ hu:
     failure:
       unauthenticated: 'A folytatáshoz bejelentkezés szükséges.'
       unconfirmed: 'A folytatáshoz az email cím megerősítése szükséges.'
+      already_authenticated: 'Már be vagy lépve!'
       locked: 'A fiók zárolva lett.'
       invalid: 'Hibás email cím vagy jelszó.'
       invalid_token: 'Hibás bejelentkező token.'
