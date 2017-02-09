@@ -1,0 +1,18 @@
+<% provide(:title, t('login.confirm_resend.title')) %>
+<h2><%= t('login.confirm_resend.header') %></h2>
+
+
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, class: 'form-control', value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+  </div>
+
+
+    <%= f.submit t('login.confirm_resend.button'), class: 'btn btn-primary' %>
+
+<% end %>
+
+<%= render "devise/shared/links" %>

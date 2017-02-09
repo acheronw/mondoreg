@@ -1,6 +1,31 @@
 # Additional translations at http://github.com/plataformatec/devise/wiki/I18n
 
 hu:
+  login:
+    login_button: "Belépés"
+    remember_me: "Emlékezz rám"
+    forgot_password: "Elfelejtetted a jelszavad?"
+    missing_confirmation: "Nem kaptad meg a visszaigazoló levelet?"
+    missing_unlock: "Nem kaptad meg a zárolás feloldásáról szóló levelet?"
+    password_new:
+      title: "Elfelejtett jelszó"
+      header: "Elfelejtetted a jelszavad?"
+      button: "Új jelszót kérek emailben"
+    confirm_resend:
+      title: "Aktiváló levél kérése"
+      header: "Új aktiváló levél kérése"
+      button: "Új aktiváló levelet kérek emailben"
+    unlock_resend:
+      title: "Zárolás feloldása"
+      header: "Zárolás feloldása"
+      button: "Új feloldó emailt kérek"
+    change_password:
+      title: "Jelszó megváltoztatása"
+      header: "Változtasd meg a jelszavadat!"
+      button: "Jelszó megváltoztatása"
+      new_password: "Új jelszó"
+      new_password_confirm: "Új jelszó megismétlése"
+
   errors:
     messages:
       expired: "lejárt, igényelj egy újat"
@@ -34,6 +59,10 @@ hu:
     registrations:
       signed_up: 'Sikeres regisztráció.'
       inactive_signed_up: 'Sikeres regisztráció, azonban még a bejelentkezés nem lehetséges, mert a felhasználói fiók %{reason}.'
+      signed_up_but_inactive: "Sikeres regisztráció, azonban még a bejelentkezés nem lehetséges, mert a felhasználói fiók nincs még aktiválva."
+      signed_up_but_locked: "Sikeres regisztráció, azonban még a bejelentkezés nem lehetséges, mert a felhasználói fiók zárolva van."
+      signed_up_but_unconfirmed: "Elküldtünk egy levelet a megadott címre. Az abban található link segítsévével lehet a felhasználói fiókot aktiválni."
+      update_needs_confirmation: "Sikeresen módosítottad az adataidat, de ellenőriznünk kell az új email címedet. Kapni fogsz egy emailt, az abban található link segítségével tudod véglegesíteni a változtatást."
       updated: 'Sikeres fiók módosítás.'
       destroyed: 'Felhasználói fiók törölve. Reméljük, még visszatér hozzánk.'
     unlocks:

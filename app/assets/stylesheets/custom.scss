@@ -100,8 +100,25 @@ footer {
 
 }
 
-
 #back_to_mondoconhu {
   float: left;
   margin-right: 30px;
+}
+
+
+/* Forms and flashes */
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+.alert-alert {
+  @extend .alert-warning;
+}
+
+.alert-notice {
+  @extend .alert-info;
 }

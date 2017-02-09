@@ -1,0 +1,16 @@
+<% provide(:title, t('login.password_new.title')) %>
+<h2><%= t('login.password_new.header') %></h2>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, class: 'form-control' %>
+  </div>
+
+  <%= f.submit t('login.password_new.button'), class: 'btn btn-primary' %>
+
+<% end %>
+
+<%= render "devise/shared/links" %>

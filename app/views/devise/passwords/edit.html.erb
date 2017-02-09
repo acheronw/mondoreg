@@ -1,0 +1,26 @@
+<% provide(:title, t('login.change_password.title')) %>
+<h2><%= t('login.change_password.header') %></h2>
+
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.hidden_field :reset_password_token %>
+
+  <div class="form-group">
+    <%= f.label :password, t('login.change_password.new_password') %><br />
+    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+    <% if @validatable %>
+        <span class="help-block"><%= @minimum_password_length %> characters minimum</span>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, t('login.change_password.new_password_confirm') %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+  </div>
+
+  <%= f.submit t('login.change_password.button'), class: 'btn btn-primary' %>
+
+<% end %>
+
+<%= render "devise/shared/links" %>

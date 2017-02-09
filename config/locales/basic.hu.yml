@@ -1,0 +1,48 @@
+hu:
+  mondocon_reg_site: "MondoCon regisztrációs felület"
+  under_construct: 'Fejlesztés alatt.'
+  title:
+    ticket_policy: "Jegyrendelés Menete"
+    help: "Súgó"
+    home: "Kezdőlap"
+    signup: "Új fiók létrehozása"
+    login: "Belépés"
+    user_profile: "Felhasználó adatai"
+    log_out: "Kilépés"
+  footer:
+    copyright_text: "© 2017 Szekeres András Márk, Minden jog fenntartva"
+    contact: "Kapcsolat"
+    back_to_mondocon: "MondoCon főoldala"
+  edit_profile:
+    edit_profile: "Felhasználói adatok módosítása"
+    leave_password_blank: "Hagyd üresen, ha most nem akarod megváltoztatni"
+    current_password: "Jelenegi jelszó"
+    current_password_explanation: "A változtatáshoz meg kell adni a jelenlegi jelszavadat"
+    email_change_pending: "A következő cím megerősítésére várunk:"
+    delete_account: "Felhasználói fiók törlése"
+    delete_account_explanation: "Ha a fiókot törlöd, akkor minden folyamatban lévő regisztrációd megszűnik, beleértve a már kifizetett jegyeket is."
+    delete_account_confirm: "Biztos törölni akarod a fiókodat?"
+    update_button: "Változások mentése"
+    back: "Vissza"
+  activerecord:
+    attributes:
+      user:
+        password: "Jelszó"
+        password_confirmation: "Megismételt jelszó"
+        name: "Név"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: "%{value} nem egy valid email cím."
+              taken: "cím már használatban van, adj meg egy másikat."
+              blank: "megadása kötelező."
+            password:
+              too_short: " túl rövid, legalább  %{count} karakter hosszú kell, hogy legyen."
+              blank: "megadása kötelező."
+            password_confirmation:
+              confirmation: " nem egyezik meg az eredetivel."
+            name:
+              blank: "megadása kötelező."
+
