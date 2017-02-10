@@ -6,7 +6,6 @@ module ApplicationHelper
     elsif I18n.locale == :en
       link_to(image_tag("hu_flag.png", alt: "Magyar"), { :locale=>'hu' })
     end
-
   end
 
 
