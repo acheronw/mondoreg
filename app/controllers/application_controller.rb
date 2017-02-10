@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  before_action :set_locale_from_param
+
+  def default_url_options
+    { locale: I18n.locale }
+  end
 
   protected
 
@@ -11,6 +16,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
 
+  end
+
+  def set_locale_from_param
+    # On most of the pages the locale is read from the user table.
+    # But before user login, we read it from the params
+    if params[:locale]
+      I18n.locale = params[:locale]
+    end
   end
 
 end
