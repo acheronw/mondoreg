@@ -50,4 +50,9 @@ hu:
               confirmation: " nem egyezik meg az eredetivel."
             name:
               blank: "megadása kötelező."
+  time:
+    formats:
+      default: "%Y/%m/%d"
+      short: "%m-%d"
+      long: "%Y/%m/%d"
 

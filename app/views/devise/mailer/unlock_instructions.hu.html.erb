@@ -1,4 +1,4 @@
-<p>Kedves <%= @resource.name %>!</p>
+<p>Kedves <%= @resource.respond_to?(:name) ? @resource.name : @resource.email %>!</p>
 
 <p>A fiókod zárolva lett, túl sok sikertelen belépési kísérlet miatt.</p>
 
