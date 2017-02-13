@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170213084728) do
+ActiveRecord::Schema.define(version: 20170213172119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,37 @@ ActiveRecord::Schema.define(version: 20170213084728) do
     t.index ["unlock_token"], name: "index_admin_users_on_unlock_token", unique: true, using: :btree
   end
 
+  create_table "conventions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "opening"
+    t.datetime "relevance_date"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "ticket_orders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "ticket_id"
+    t.integer  "quantity"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticket_id"], name: "index_ticket_orders_on_ticket_id", using: :btree
+    t.index ["user_id"], name: "index_ticket_orders_on_user_id", using: :btree
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "convention_id"
+    t.datetime "sale_start"
+    t.datetime "sale_end"
+    t.decimal  "price"
+    t.integer  "quantity"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["convention_id"], name: "index_tickets_on_convention_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -76,4 +107,7 @@ ActiveRecord::Schema.define(version: 20170213084728) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "ticket_orders", "tickets"
+  add_foreign_key "ticket_orders", "users"
+  add_foreign_key "tickets", "conventions"
 end
