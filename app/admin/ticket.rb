@@ -12,7 +12,7 @@ ActiveAdmin.register Ticket do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :name, :convention, :sale_start, :sale_end, :price, :quantity
+  permit_params :name, :convention_id, :sale_start, :sale_end, :price, :quantity
 
 
 end

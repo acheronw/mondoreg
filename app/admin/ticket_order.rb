@@ -12,6 +12,16 @@ ActiveAdmin.register TicketOrder do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :user, :ticket, :quantity, :status
+  permit_params :user_id, :ticket_id, :quantity, :status
+
+  index do
+    column :id
+    column :user
+    column :quantity
+    column :status
+    actions
+  end
+
+
 
 end
