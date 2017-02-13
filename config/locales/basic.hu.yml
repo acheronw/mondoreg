@@ -21,7 +21,7 @@ hu:
   edit_profile:
     edit_profile: "Felhasználói adatok módosítása"
     leave_password_blank: "Hagyd üresen, ha most nem akarod megváltoztatni"
-    current_password: "Jelenegi jelszó"
+    current_password: "Jelenlegi jelszó"
     current_password_explanation: "A változtatáshoz meg kell adni a jelenlegi jelszavadat"
     email_change_pending: "A következő cím megerősítésére várunk:"
     delete_account: "Felhasználói fiók törlése"
