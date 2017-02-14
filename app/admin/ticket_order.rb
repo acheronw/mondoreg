@@ -24,13 +24,13 @@ ActiveAdmin.register TicketOrder do
   member_action :confirm_ticket, method: :patch do
     resource.confirm
     flash[:notice] = "Ticket confirmed for order id: #{resource.id}!"
-    redirect_to :action => :index
+    redirect_to :back
   end
 
   member_action :unconfirm_ticket, method: :patch do
     resource.unconfirm
     flash[:notice] = "Confirmation withdrawn for order id: #{resource.id}!"
-    redirect_to :action => :index
+    redirect_to :back
   end
 
 
