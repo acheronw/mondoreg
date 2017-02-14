@@ -35,6 +35,8 @@ hu:
     quantity: "darab"
     total_price: "Teljes ár"
     status: "státusz"
+    pending_current: "Összes függőben lévő rendelés"
+    all_current: "Mostani con összes rendelése"
   activerecord:
     attributes:
       user:

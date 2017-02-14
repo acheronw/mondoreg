@@ -56,6 +56,8 @@ en:
     quantity: "quantity"
     total_price: "Total price"
     status: "status"
+    pending_current: "All 'pending' orders"
+    all_current: "All orders of the current convention"
   activerecord:
     attributes:
       user:

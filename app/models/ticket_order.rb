@@ -9,5 +9,24 @@ class TicketOrder < ApplicationRecord
 
   scope :pending, -> { where(status: 'pending') }
   scope :relevant, -> { where(status: ['pending', 'accepted']) }
+  # This is chaining is made explicit in order to use it with ActiveAdmin scope:
+  scope :requires_attention, -> { active.pending }
+
+  def confirm
+    self.status = "accepted"
+    self.save
+    # TODO send notification email with instructions on how to get your ticket at the convention
+  end
+
+  def unconfirm
+    self.status = "pending"
+    self.save
+    # TODO send notification email
+  end
+
+  def reject
+    self.status = "rejected"
+    self.save
+  end
 
 end
