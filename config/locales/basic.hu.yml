@@ -37,6 +37,16 @@ hu:
     status: "státusz"
     pending_current: "Összes függőben lévő rendelés"
     all_current: "Mostani con összes rendelése"
+    scope_all: "Összes foglalás megjelenítése"
+    confirm_button: "Befizetve"
+    unconfirm_button: "Visszaigazolás visszavonása"
+    ticket_confirmed: "A %{id} azonosítójú rendelés visszaigazolva!"
+    ticket_unconfirmed: "Visszavontuk a %{id} azonosítójú foglalás visszaigazolását!"
+  admin_dashboard:
+    recent_orders: "Friss Foglalások"
+    current_con: "Aktuális Con"
+    no_of_confirmed: "Már %{number} jegyet eladtunk"
+    no_of_pending: "és további %{number} jegyet lefoglaltak"
   activerecord:
     attributes:
       user:

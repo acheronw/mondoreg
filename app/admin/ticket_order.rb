@@ -23,19 +23,20 @@ ActiveAdmin.register TicketOrder do
 
   member_action :confirm_ticket, method: :patch do
     resource.confirm
-    flash[:notice] = "Ticket confirmed for order id: #{resource.id}!"
+    flash[:notice] = t('ticketing.ticket_confirmed', id: resource.id)
     redirect_to :back
   end
 
   member_action :unconfirm_ticket, method: :patch do
     resource.unconfirm
-    flash[:notice] = "Confirmation withdrawn for order id: #{resource.id}!"
+    flash[:notice] = t('ticketing.ticket_unconfirmed', id: resource.id)
     redirect_to :back
   end
 
-
   scope I18n.t('ticketing.pending_current'), :requires_attention
   scope I18n.t('ticketing.all_current'), :active
+  scope I18n.t('ticketing.scope_all'), :all
+
 
   index do
     selectable_column
@@ -52,9 +53,9 @@ ActiveAdmin.register TicketOrder do
     column t('ticketing.status'), :status
     column "Confirmation" do | ticket_order |
       if ticket_order.status == "pending"
-        link_to("Confirm", url_for(:action => :confirm_ticket, :id => ticket_order.id), :method => :patch)
+        link_to(t('ticketing.confirm_button'), url_for(:action => :confirm_ticket, :id => ticket_order.id), :method => :patch)
       elsif ticket_order.status == "accepted"
-        link_to("Withdraw confirmation", url_for(:action => :unconfirm_ticket, :id => ticket_order.id), :method => :patch)
+        link_to(t('ticketing.unconfirm_button'), url_for(:action => :unconfirm_ticket, :id => ticket_order.id), :method => :patch)
       end
 
     end

@@ -58,6 +58,16 @@ en:
     status: "status"
     pending_current: "All 'pending' orders"
     all_current: "All orders of the current convention"
+    scope_all: "Show all tickets"
+    confirm_button: "Confirm"
+    unconfirm_button: "Withdraw confirmation"
+    ticket_confirmed: "Ticket confirmed for order id: %{id}!"
+    ticket_unconfirmed: "Confirmation withdrawn for order id: %{id}!"
+  admin_dashboard:
+    recent_orders: "Recent Orders"
+    current_con: "Current Convention"
+    no_of_confirmed: "We have %{number} tickets already sold"
+    no_of_pending: "and further %{number} have been reserved"
   activerecord:
     attributes:
       user:
