@@ -29,6 +29,12 @@ hu:
     delete_account_confirm: "Biztos törölni akarod a fiókodat?"
     update_button: "Változások mentése"
     back: "Vissza"
+  ticketing:
+    name_of_buyer: "Vevő neve"
+    order_id: "Foglalás ID"
+    quantity: "darab"
+    total_price: "Teljes ár"
+    status: "státusz"
   activerecord:
     attributes:
       user:

@@ -1,5 +1,8 @@
 class Ticket < ApplicationRecord
-  belongs_to :convention
+  belongs_to :convention, inverse_of: :tickets
 
-  has_many :ticket_orders
+  scope :active, -> { joins(:convention).merge(Convention.active) }
+  scope :on_sale, -> { where("sale_start < ?", Date.today).where("sale_end > ?", Date.today) }
+
+  has_many :ticket_orders, inverse_of: :ticket
 end

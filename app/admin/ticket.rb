@@ -15,4 +15,18 @@ ActiveAdmin.register Ticket do
   permit_params :name, :convention_id, :sale_start, :sale_end, :price, :quantity
 
 
+  index do
+    selectable_column
+    column 'Convention' do | ticket |
+      ticket.convention
+    end
+    column :name
+    column :price
+    column :sale_start
+    column :sale_end
+    column :quantity
+    actions
+  end
+
+
 end

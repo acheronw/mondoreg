@@ -39,7 +39,6 @@ en:
       login: "Log in"
       sign_up_pre: "If you don't have an account yet:"
       sign_up: "Sign up now!"
-
   edit_profile:
     edit_profile: "Edit Profile"
     leave_password_blank: "Leave blank if you don't want to change it"
@@ -51,6 +50,12 @@ en:
     delete_account_confirm: "Are you sure to delete your account?"
     update_button: "Update"
     back: "Back"
+  ticketing:
+    name_of_buyer: "name of buyer"
+    order_id: "Order ID"
+    quantity: "quantity"
+    total_price: "Total price"
+    status: "status"
   activerecord:
     attributes:
       user:

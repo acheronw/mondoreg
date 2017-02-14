@@ -7,6 +7,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 100 }
 
-  has_many :ticket_orders
+  has_many :ticket_orders, inverse_of: :user
 
 end
