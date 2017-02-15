@@ -1,8 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-
-  config.secret_key_base = '24b0593e3d3b8889795969ca2dd90bbd16029885cbe29bac134943a2fd6d92e8513a6c940895754a1e3214a50764e22b9bd6844ab1f2eb0659b8a414d04fe332'
+  config.secret_key_base = ENV["SECRET_KEY_BASE"]
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
