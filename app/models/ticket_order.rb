@@ -28,4 +28,20 @@ class TicketOrder < ApplicationRecord
     self.save
   end
 
+  def total_price
+    self.quantity * self.ticket.price.to_i
+  end
+
+  def status_localized
+    return case status
+      when "pending"
+        I18n.t('ticketing.state_pending')
+      when "accepted"
+        I18n.t('ticketing.state_accepted')
+      when "rejected"
+        I18n.t('ticketing.state_rejected')
+    end
+  end
+
+
 end

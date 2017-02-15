@@ -1,0 +1,36 @@
+<tr>
+
+  <td>
+    <%= ticket_order.ticket.convention.name %>
+  </td>
+
+  <td>
+    <%= ticket_order.ticket.name %>
+  </td>
+
+  <td>
+    <%= ticket_order.quantity %>
+  </td>
+
+  <td>
+    <%= ticket_order.total_price %>
+  </td>
+
+  <td>
+    MC<%= ticket_order.id %>
+  </td>
+
+  <% if ticket_order.status == 'accepted' %>
+      <td class="success">
+        <%= ticket_order.status_localized %>
+      </td>
+  <% else %>
+      <td class="danger">
+        <%= ticket_order.status_localized %>
+      </td>
+  <% end %>
+
+
+
+
+</tr>

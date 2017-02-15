@@ -1,0 +1,6 @@
+class TicketOrdersController < ApplicationController
+
+
+
+
+end

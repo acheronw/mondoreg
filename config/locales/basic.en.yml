@@ -53,9 +53,12 @@ en:
   ticketing:
     name_of_buyer: "name of buyer"
     order_id: "Order ID"
-    quantity: "quantity"
+    quantity: "Quantity"
     total_price: "Total price"
-    status: "status"
+    status: "Status"
+    state_pending: "Waiting for payment"
+    state_accepted: "Confirmed"
+    state_rejected: "Rejected"
     pending_current: "All 'pending' orders"
     all_current: "All orders of the current convention"
     scope_all: "Show all tickets"
@@ -63,6 +66,14 @@ en:
     unconfirm_button: "Withdraw confirmation"
     ticket_confirmed: "Ticket confirmed for order id: %{id}!"
     ticket_unconfirmed: "Confirmation withdrawn for order id: %{id}!"
+    user_side:
+      your_orders: "Your ticket purchases"
+      note_to_pending: "To pay for your tickets please follow the instructions we sent you.
+      It will take a few days for our staff to process the payment, then the state of your order will change.
+      In case you did not receive the instructions in email, you can request a resend here:"
+      note_to_accepted: "You can get your ticket at the Preordered tickets booth by using your Order ID. So write it down and bring it with you."
+      convention: "Event"
+      type_of_ticket: "Type of ticket"
   admin_dashboard:
     recent_orders: "Recent Orders"
     current_con: "Current Convention"
