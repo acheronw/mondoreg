@@ -46,12 +46,15 @@ hu:
     ticket_confirmed: "A %{id} azonosítójú rendelés visszaigazolva!"
     ticket_unconfirmed: "Visszavontuk a %{id} azonosítójú foglalás visszaigazolását!"
     user_side:
-      your_orders: "Jegyvásárlásaid"
+      your_orders: "Folyamatban lévő jegyvásárlásaid"
       note_to_pending: "A levélben kapott instrukciók alapján fizesd be a jegy árát, majd kérünk várj néhány napot, míg munkatársunk visszaigazolja, hogy a befizetés beérkezett.
       Ekkor fog rendelésed státusza megváltozni. Amennyiben nem kaptad meg az instrukciókat, itt kérheted újbóli kiküldésüket:"
       note_to_accepted: "A rendezvényen az elővételes kasszánál tudod átvenni a jegyed a Foglalás Azonosítót bemondva, ezért kérjük, ezt jegyezd fel magadnak!"
+      note_for_purchase: "Itt tudsz jegyet igényelni. Kapni fogsz egy emailt arról, hogy hogyan kell befizetned a jegy árát. A jegy csak a befizetés visszaigazolása után lesz érvényes."
       convention: "Rendezvény"
       type_of_ticket: "Jegytípus"
+      buy_tickets: "Jegyvásárlás"
+      order_button: "Jegy igénylése"
   admin_dashboard:
     recent_orders: "Friss Foglalások"
     current_con: "Aktuális Con"

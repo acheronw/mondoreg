@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/activeadmin/activeadmin
-  revision: 7ff122d580835d70cfc424bc251e70ab0ec51b3d
+  revision: 8ddc07eefb9c4c39f96e1ad990fe7789555fd4ff
   specs:
     activeadmin (1.0.0.pre4)
       arbre (~> 1.0, >= 1.0.2)
@@ -60,8 +60,9 @@ GEM
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (7.1.4)
-    autoprefixer-rails (6.7.2)
+    autoprefixer-rails (6.7.3)
       execjs
+    awesome_print (1.7.0)
     bcrypt (3.1.11)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
@@ -236,6 +237,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  awesome_print
   bootstrap-sass (= 3.3.6)
   byebug
   coffee-rails (~> 4.2)

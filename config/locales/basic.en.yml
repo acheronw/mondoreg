@@ -72,8 +72,11 @@ en:
       It will take a few days for our staff to process the payment, then the state of your order will change.
       In case you did not receive the instructions in email, you can request a resend here:"
       note_to_accepted: "You can get your ticket at the Preordered tickets booth by using your Order ID. So write it down and bring it with you."
+      note_for_purchase: "You can order tickets here. You will get an email with the instructions about payment. Your ticket will become valid only after wer confirmed your payment."
       convention: "Event"
       type_of_ticket: "Type of ticket"
+      buy_tickets: "Buy tickets"
+      order_button: "Order ticket"
   admin_dashboard:
     recent_orders: "Recent Orders"
     current_con: "Current Convention"

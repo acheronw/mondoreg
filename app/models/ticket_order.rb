@@ -1,6 +1,8 @@
 class TicketOrder < ApplicationRecord
   validates :status, :inclusion => { :in => ['pending', 'accepted', 'rejected'],
                                      message: "%value is not a valid ticket status" }
+  validates :user_id, presence: true
+  validates :ticket_id, presence: true
 
   belongs_to :user, inverse_of: :ticket_orders
   belongs_to :ticket, inverse_of: :ticket_orders

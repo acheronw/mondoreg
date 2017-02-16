@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 100 }
 
-  has_many :ticket_orders, inverse_of: :user
+  has_many :ticket_orders, inverse_of: :user, dependent: :destroy
 
   def active_orders
     return TicketOrder.where(user: self).active.all.to_a
