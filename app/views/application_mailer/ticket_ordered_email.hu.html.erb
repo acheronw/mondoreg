@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h3>Helló <%= @ticket_order.user.name %>!</h3>
+<p>
+  Ezt a levelet azért kapod, mert jegyet rendeltél elővételben a <%= @ticket_order.ticket.convention.name %>
+  rendezvényre. Ha nem tudsz erről, kérünk, töröld ezt a levelet.</p>
+<p>
+  Tudnivalók: olvasd el figyelmesen az átutalás határidejét! Az ezután feladott utalásokat nem tudjuk figyelembe venni.<br>
+  Teendőid: jegyezd le (vagy nyomtasd ki) az alábbi adatokat, és sétálj el vele bármelyik közeli bankfiókba. Szólj, hogy szeretnél befizetéssel átutalni, a kasszánál megcsinálják helyetted a papírmunkát. VAGY utald el netbank szolgáltatással a saját számládról. Semmiképp se felejtsd el a közleményben feltűntetni az alábbi kódot!
+</p>
+<p>
+  Összeg: <%= @ticket_order.total_price %>
+  <br><br>
+  Feladó: <%= @ticket_order.user.name %>
+  <br><br>
+  Kedvezményezett:<br>
+  MangaFan Kiadói Kft.<br>
+  2310 Szigetszentmiklós, Széna u. 16<br>
+  ERSTE 11600006-00000000-15333629<br>
+  <br><br>
+  Közlemény:<br>
+  elővételi kód: MC<%= @ticket_order.id %><br>
+  Név: <%= @ticket_order.user.name %><br>
+</p>
+<p>
+  Üdvözlettel,<br>
+  A Szervezők
+</p>
+</body>
+</html>
+
+
+
+
+
+
+
+

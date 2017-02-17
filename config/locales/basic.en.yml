@@ -62,7 +62,7 @@ en:
     pending_current: "All 'pending' orders"
     all_current: "All orders of the current convention"
     scope_all: "Show all tickets"
-    confirm_button: "Confirm"
+    confirm_button: "Confirm this order!"
     unconfirm_button: "Withdraw confirmation"
     ticket_confirmed: "Ticket confirmed for order id: %{id}!"
     ticket_unconfirmed: "Confirmation withdrawn for order id: %{id}!"
@@ -77,6 +77,9 @@ en:
       type_of_ticket: "Type of ticket"
       buy_tickets: "Buy tickets"
       order_button: "Order ticket"
+    email:
+      ticket_order_subject: "MondoCon ticket pending"
+      accepted_subject: "MondoCon ticket confirmed"
   admin_dashboard:
     recent_orders: "Recent Orders"
     current_con: "Current Convention"

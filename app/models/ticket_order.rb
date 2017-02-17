@@ -15,8 +15,10 @@ class TicketOrder < ApplicationRecord
 
   def confirm
     self.status = "accepted"
-    self.save
-    # TODO send notification email with instructions on how to get your ticket at the convention
+    if self.save
+      ApplicationMailer.ticket_confirmed_email(self).deliver_now
+    end
+
   end
 
   def unconfirm

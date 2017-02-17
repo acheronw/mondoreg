@@ -13,6 +13,7 @@ class TicketOrdersController < ApplicationController
     else
       if @ticket_order.save
         flash[:success] = "Ticket Order placed!"
+        ApplicationMailer.ticket_ordered_email(@ticket_order).deliver_now
         redirect_to root_path
       else
         flash[:danger] = @ticket_order.errors.full_messages

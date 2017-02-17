@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h3>Hi <%= @ticket_order.user.name %>,</h3>
+<p>
+  You receive this mail because you ordered a ticket for the <%= @ticket_order.ticket.convention.name %>
+  convention. If you do not know about this, please ignore this email.</p>
+<p>
+  Please note: pay attention to the payment deadlines. We can't process transactions initiated after the deadline.<br>
+  Todo: please initiate a bank transaction with the details given bellow. Do not forget to include the comments!
+</p>
+<p>
+  Amount: <%= @ticket_order.total_price %>
+  <br><br>
+  Sender: <%= @ticket_order.user.name %>
+  <br><br>
+  Recipient:<br>
+  MangaFan Kiadói Kft.<br>
+  2310 Szigetszentmiklós, Széna u. 16<br>
+  ERSTE 11600006-00000000-15333629<br>
+  <br><br>
+  Comments:<br>
+  preorder code: MC<%= @ticket_order.id %><br>
+  name: <%= @ticket_order.user.name %><br>
+</p>
+<p>
+  Regards,<br>
+  The Organizers
+</p>
+</body>
+</html>
+
+
+
+
+
+
+
+

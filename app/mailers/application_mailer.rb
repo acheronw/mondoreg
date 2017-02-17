@@ -2,10 +2,13 @@ class ApplicationMailer < ActionMailer::Base
   default from: 'registrations@mondocon.hu'
   layout 'mailer'
 
-  def welcome_email(user)
-    @user = user
-    @url = 'http://example.com/login'
-    mail(to: @user.email, subject: 'Test email from rails')
+  def ticket_ordered_email(ticket_order)
+      @ticket_order = ticket_order
+      mail(to: @ticket_order.user.email, subject: t('ticketing.email.ticket_order_subject'))
   end
 
+  def ticket_confirmed_email(ticket_order)
+      @ticket_order = ticket_order
+      mail(to: @ticket_order.user.email, subject: t('ticketing.email.accepted_subject'))
+  end
 end

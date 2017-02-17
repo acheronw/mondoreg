@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h3>Kedves <%= @ticket_order.user.name %>!</h3>
+<p>
+  Megérkezett az általad befizetett pénz és így sikerült <%= @ticket_order.quantity %> db jegyet a <%= @ticket_order.ticket.convention.name %> rendezvényre.
+</p>
+<p>
+  Ne felejtsd el feljegyezni és magaddal hozni a rendelési kódodat:
+  MC<%= @ticket_order.id %>
+  Ennek segítségével tudunk azonosítani majd. Jegyedet az elővételes pultnál veheted át a kód és a rendelésnél használt neved bemondásával.
+</p>
+<p>
+  Üdvözlettel,<br>
+  A Szervezők
+</p>
+</body>
+</html>
+
+
+
+
+
+
+
+

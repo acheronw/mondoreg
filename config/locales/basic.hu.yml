@@ -41,7 +41,7 @@ hu:
     pending_current: "Összes függőben lévő rendelés"
     all_current: "Mostani con összes rendelése"
     scope_all: "Összes foglalás megjelenítése"
-    confirm_button: "Befizetve"
+    confirm_button: "Visszaigazolom!"
     unconfirm_button: "Visszaigazolás visszavonása"
     ticket_confirmed: "A %{id} azonosítójú rendelés visszaigazolva!"
     ticket_unconfirmed: "Visszavontuk a %{id} azonosítójú foglalás visszaigazolását!"
@@ -55,6 +55,9 @@ hu:
       type_of_ticket: "Jegytípus"
       buy_tickets: "Jegyvásárlás"
       order_button: "Jegy igénylése"
+    email:
+      ticket_order_subject: "MondoCon jegyrendelés függőben"
+      accepted_subject: "MondoCon jegy megerősítve"
   admin_dashboard:
     recent_orders: "Friss Foglalások"
     current_con: "Aktuális Con"
