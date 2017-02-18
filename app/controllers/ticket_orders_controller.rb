@@ -12,7 +12,7 @@ class TicketOrdersController < ApplicationController
       redirect_to root_path
     else
       if @ticket_order.save
-        flash[:success] = "Ticket Order placed!"
+        flash[:success] = t('ticketing.user_side.order_placed_message')
         ApplicationMailer.ticket_ordered_email(@ticket_order).deliver_now
         redirect_to root_path
       else
@@ -21,6 +21,7 @@ class TicketOrdersController < ApplicationController
       end
     end
   end
+
 
   private
     def ticket_order_params

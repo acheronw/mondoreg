@@ -23,7 +23,9 @@
           <% if current_user.has_any_pending? %>
               <li>
                 <%= t('ticketing.user_side.note_to_pending') %>
+                <%= link_to t('ticketing.user_side.reminder_button'), reminder_email_path, class: "btn btn-primary", method: :put  %>
               </li>
+
           <% end %>
           <% if current_user.has_any_accepted? %>
               <li>

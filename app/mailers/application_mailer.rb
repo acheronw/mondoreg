@@ -11,4 +11,6 @@ class ApplicationMailer < ActionMailer::Base
       @ticket_order = ticket_order
       mail(to: @ticket_order.user.email, subject: t('ticketing.email.accepted_subject'))
   end
+
+
 end

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   devise_for :users
   get 'users/new'
 
+
+  put 'reminder_email', to: 'users#reminder_email'
   resource :ticket_orders, only: [:create]
 
 
