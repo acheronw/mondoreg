@@ -66,7 +66,9 @@ ActiveAdmin.register TicketOrder do
 
 
   csv do
-    column :id
+    column t('ticketing.order_id') do | ticket_order |
+      "MC" + ticket_order.id.to_s
+    end
     column :user do | ticket_order |
       ticket_order.user.name
     end
