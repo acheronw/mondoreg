@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  convention: 
+  type: 
+  max_group_size: 1
+  applications_start: 2017-03-02 15:11:35
+  applications_end: 2017-03-02 15:11:35
+
+two:
+  name: MyString
+  convention: 
+  type: 
+  max_group_size: 1
+  applications_start: 2017-03-02 15:11:35
+  applications_end: 2017-03-02 15:11:35

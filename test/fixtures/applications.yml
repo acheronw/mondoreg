@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  competition: 
+  user: 
+  character_name: MyString
+  character_source: MyString
+  status: MyString
+  perf_requests: MyString
+  group_members: MyString
+
+two:
+  competition: 
+  user: 
+  character_name: MyString
+  character_source: MyString
+  status: MyString
+  perf_requests: MyString
+  group_members: MyString
