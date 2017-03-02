@@ -20,7 +20,11 @@ ActiveAdmin.register_page "Dashboard" do
             column :quantity
             column t('ticketing.total_price') do | ticket_order |
               div :class => "column-right" do
-                ticket_order.quantity * ticket_order.ticket.price.to_i
+                if ticket_order
+                  ticket_order.quantity * ticket_order.ticket.price.to_i
+                else
+                  0
+                end
               end
             end
           end
