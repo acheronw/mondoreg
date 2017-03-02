@@ -45,11 +45,11 @@ ActiveAdmin.register TicketOrder do
     # column t('ticketing.name_of_buyer'), :user
     column t('ticketing.name_of_buyer'), :user, :sortable => 'users.name'
     column t('ticketing.quantity'), :quantity
-    column t('ticketing.total_price'), :sortable => :price do | ticket_order |
-      div :class => "column-right" do
-        ticket_order.quantity * ticket_order.ticket.price.to_i
-      end
-    end
+    # column t('ticketing.total_price'), :sortable => :price do | ticket_order |
+    #   div :class => "column-right" do
+    #     ticket_order.quantity * ticket_order.ticket.price.to_i
+    #   end
+    # end
     column t('ticketing.status'), :status
     column "Confirmation" do | ticket_order |
       if ticket_order.status == "pending"
