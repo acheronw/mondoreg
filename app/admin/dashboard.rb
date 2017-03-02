@@ -18,15 +18,11 @@ ActiveAdmin.register_page "Dashboard" do
             column :id
             column t('ticketing.name_of_buyer'), :user
             column :quantity
-            # column t('ticketing.total_price') do | ticket_order |
-            #   div :class => "column-right" do
-            #     if ticket_order.ticket
-            #       ticket_order.quantity * ticket_order.ticket.price.to_i
-            #     else
-            #       "ERROR!"
-            #     end
-            #   end
-            # end
+            column t('ticketing.total_price') do | ticket_order |
+              div :class => "column-right" do
+                ticket_order.quantity * ticket_order.ticket.price.to_i
+              end
+            end
           end
           strong { link_to "All ticket orders", admin_ticket_orders_path('' ) }
         end
