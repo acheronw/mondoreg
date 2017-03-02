@@ -13,23 +13,23 @@ ActiveAdmin.register_page "Dashboard" do
 
     columns do
       column do
-        panel t('admin_dashboard.recent_orders') do
-          table_for TicketOrder.pending.active.order(updated_at: :desc).limit(10) do | ticket_order |
-            column :id
-            column t('ticketing.name_of_buyer'), :user
-            column :quantity
-            column t('ticketing.total_price') do | ticket_order |
-              div :class => "column-right" do
-                if ticket_order
-                  ticket_order.quantity * ticket_order.ticket.price.to_i
-                else
-                  0
-                end
-              end
-            end
-          end
-          strong { link_to "All ticket orders", admin_ticket_orders_path('' ) }
-        end
+        # panel t('admin_dashboard.recent_orders') do
+        #   table_for TicketOrder.pending.active.order(updated_at: :desc).limit(10) do | ticket_order |
+        #     column :id
+        #     column t('ticketing.name_of_buyer'), :user
+        #     column :quantity
+        #     column t('ticketing.total_price') do | ticket_order |
+        #       div :class => "column-right" do
+        #         if ticket_order
+        #           ticket_order.quantity * ticket_order.ticket.price.to_i
+        #         else
+        #           0
+        #         end
+        #       end
+        #     end
+        #   end
+        #   strong { link_to "All ticket orders", admin_ticket_orders_path('' ) }
+        # end
 
       end
       column do
