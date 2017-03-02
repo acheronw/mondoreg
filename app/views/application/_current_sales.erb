@@ -7,7 +7,7 @@
         <%= form_for(@ticket_order, :html => {:class => "form-horizontal center" } ) do | f | %>
             <div class="form-group">
               <%= f.label t('ticketing.quantity') %>
-              <%= f.number_field :quantity %>
+              <%= f.number_field :quantity, min: 1 %>
             </div>
             <div class="form-group">
               <%= f.label t('ticketing.user_side.type_of_ticket') %>
