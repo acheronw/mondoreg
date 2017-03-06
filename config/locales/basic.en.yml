@@ -83,6 +83,26 @@ en:
     email:
       ticket_order_subject: "MondoCon ticket pending"
       accepted_subject: "MondoCon ticket confirmed"
+  competition:
+    competition_name: "Competition"
+    competition_type: "Type of competition"
+    convention: "Convention"
+    name_of_competitor: "Name of competitor"
+    name_of_character: "Name of character"
+    source_of_character: "Fandom"
+    source_of_character: "State"
+    perf_requests: "Requests for performance"
+    group_members: "Group members"
+    status: "Státusz"
+    admin:
+      application_accepted: "Application accepted, id: %{id}!"
+      application_rejected: "Application rejected (resubmit), id: %{id}!"
+      confirm_button: "Accept this application"
+      unconfirm_button: "Reject this application (resubmit)"
+      confirm_question_on_reject: "Have you checked that the message is the one you want to send?"
+    email:
+      accepted_subject: "MondoCon competition application accepted"
+      rejected_subject: "Problem with MondoCon competition application"
   admin_dashboard:
     recent_orders: "Recent Orders"
     current_con: "Current Convention"

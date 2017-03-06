@@ -61,6 +61,25 @@ hu:
     email:
       ticket_order_subject: "MondoCon jegyrendelés függőben"
       accepted_subject: "MondoCon jegy megerősítve"
+  competition:
+    competition_name: "Verseny"
+    competition_type: "Verseny típusa"
+    convention: "Rendezvény"
+    name_of_competitor: "Versenyző neve"
+    name_of_character: "Karakter neve"
+    source_of_character: "Fandom"
+    perf_requests: "Kérések perf előadáshoz"
+    group_members: "Csapattagok"
+    status: "Státusz"
+    admin:
+      application_accepted: "Verseny jelentkezés elfogadva, id: %{id}!"
+      application_rejected: "Jelentkezés visszaküldve újra beadásra, id: %{id}!"
+      confirm_button: "Jelentkezés elfogadása"
+      unconfirm_button: "Jelentkezés visszaküldése"
+      confirm_question_on_reject: "Ellenőrizted, hogy a megfelelő üzenet van beállítva?"
+    email:
+      accepted_subject: "MondoCon versenyjelentkezés elfogadva"
+      rejected_subject: "Probléma a MondoCon versenyjelentkezéseddel"
   admin_dashboard:
     recent_orders: "Friss Foglalások"
     current_con: "Aktuális Con"
