@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ApplicationTest < ActiveSupport::TestCase
+class CompApplicationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

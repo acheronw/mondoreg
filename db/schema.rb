@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302141510) do
+ActiveRecord::Schema.define(version: 20170306090904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20170302141510) do
     t.index ["unlock_token"], name: "index_admin_users_on_unlock_token", unique: true, using: :btree
   end
 
-  create_table "applications", force: :cascade do |t|
+  create_table "comp_applications", force: :cascade do |t|
     t.integer  "competition_id"
     t.integer  "user_id"
     t.string   "character_name"
@@ -60,14 +60,14 @@ ActiveRecord::Schema.define(version: 20170302141510) do
     t.string   "group_members",    default: [],              array: true
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.index ["competition_id"], name: "index_applications_on_competition_id", using: :btree
-    t.index ["user_id"], name: "index_applications_on_user_id", using: :btree
+    t.index ["competition_id"], name: "index_comp_applications_on_competition_id", using: :btree
+    t.index ["user_id"], name: "index_comp_applications_on_user_id", using: :btree
   end
 
   create_table "competitions", force: :cascade do |t|
     t.string   "name"
     t.integer  "convention_id"
-    t.string   "type"
+    t.string   "subtype"
     t.integer  "max_group_size"
     t.datetime "applications_start"
     t.datetime "applications_end"
@@ -133,6 +133,9 @@ ActiveRecord::Schema.define(version: 20170302141510) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "comp_applications", "competitions"
+  add_foreign_key "comp_applications", "users"
+  add_foreign_key "competitions", "conventions"
   add_foreign_key "ticket_orders", "tickets"
   add_foreign_key "ticket_orders", "users"
   add_foreign_key "tickets", "conventions"

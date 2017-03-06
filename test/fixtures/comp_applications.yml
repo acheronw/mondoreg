@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  competition: 
-  user: 
+  competition: one
+  user: one
   character_name: MyString
   character_source: MyString
   status: MyString
@@ -10,8 +10,8 @@ one:
   group_members: MyString
 
 two:
-  competition: 
-  user: 
+  competition: two
+  user: two
   character_name: MyString
   character_source: MyString
   status: MyString

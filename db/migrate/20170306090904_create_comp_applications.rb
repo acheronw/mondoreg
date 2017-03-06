@@ -1,8 +1,8 @@
-class CreateApplications < ActiveRecord::Migration[5.0]
+class CreateCompApplications < ActiveRecord::Migration[5.0]
   def change
-    create_table :applications do |t|
-      t.references :competition
-      t.references :user
+    create_table :comp_applications do |t|
+      t.references :competition, foreign_key: true
+      t.references :user, foreign_key: true
       t.string :character_name
       t.string :character_source
       t.string :status

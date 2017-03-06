@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 100 }
 
   has_many :ticket_orders, inverse_of: :user, dependent: :destroy
-  has_many :applications, inverse_of: :user
+  has_many :comp_applications, inverse_of: :user
   # This is not dependent destroy, because if the user destroys his account, we don't want to lose his application information.
   # For example we use it to keep track of no-shows
 
