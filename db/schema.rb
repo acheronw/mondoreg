@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306090904) do
+ActiveRecord::Schema.define(version: 20170306120539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20170306090904) do
     t.string   "group_members",    default: [],              array: true
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.text     "admin_msg"
     t.index ["competition_id"], name: "index_comp_applications_on_competition_id", using: :btree
     t.index ["user_id"], name: "index_comp_applications_on_user_id", using: :btree
   end
