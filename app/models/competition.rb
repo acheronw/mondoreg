@@ -7,5 +7,7 @@ class Competition < ApplicationRecord
   validates :subtype, presence: true
   validates :subtype, :inclusion => { :in => ['craft', 'craft_group', 'perf', 'perf_group'],
                                      message: "%value is not a valid competition type" }
+  validates :admin_email, presence: true
+
 
 end
