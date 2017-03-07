@@ -94,12 +94,17 @@ en:
     perf_requests: "Requests for performance"
     group_members: "Group members"
     status: "Státusz"
+    state_pending: "Application sent"
+    state_accepted: "Accepted"
+    state_resubmit: "Requires resubmit"
     admin:
       application_accepted: "Application accepted, id: %{id}!"
       application_rejected: "Application rejected (resubmit), id: %{id}!"
       confirm_button: "Accept this application"
       unconfirm_button: "Reject this application (resubmit)"
       confirm_question_on_reject: "Have you checked that the message is the one you want to send?"
+    user_side:
+      your_applications: "Competitions you applied to"
     email:
       accepted_subject: "MondoCon competition application accepted"
       rejected_subject: "Problem with MondoCon competition application"

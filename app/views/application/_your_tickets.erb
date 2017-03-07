@@ -20,14 +20,14 @@
         </table>
 
         <ul>
-          <% if current_user.has_any_pending? %>
+          <% if current_user.has_any_pending_tickets? %>
               <li>
                 <%= t('ticketing.user_side.note_to_pending') %>
                 <%= link_to t('ticketing.user_side.reminder_button'), reminder_email_path, class: "btn btn-primary", method: :put  %>
               </li>
 
           <% end %>
-          <% if current_user.has_any_accepted? %>
+          <% if current_user.has_any_accepted_tickets? %>
               <li>
                 <%= t('ticketing.user_side.note_to_accepted') %>
               </li>

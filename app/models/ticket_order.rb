@@ -13,7 +13,7 @@ class TicketOrder < ApplicationRecord
   scope :active, -> { joins(:ticket).merge(Ticket.active) }
   scope :pending, -> { where(status: 'pending') }
   scope :relevant, -> { where(status: ['pending', 'accepted']) }
-  # This is chaining is made explicit in order to use it with ActiveAdmin scope:
+  # This chaining is made explicit in order to use it with ActiveAdmin scope:
   scope :requires_attention, -> { active.pending }
 
   def confirm

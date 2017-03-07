@@ -17,14 +17,17 @@ class User < ApplicationRecord
   end
 
   # Only pending tickets of the current event matter.
-  def has_any_pending?
+  def has_any_pending_tickets?
     TicketOrder.where(user: self).requires_attention.any?
   end
 
   # Only pending tickets of the current event matter.
-  def has_any_accepted?
+  def has_any_accepted_tickets?
     TicketOrder.where(user: self).where(status: 'accepted').any?
   end
 
+  def active_applications
+    return CompApplication.where(user: self).active.all.to_a
+  end
 
 end

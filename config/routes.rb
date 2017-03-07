@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   put 'reminder_email', to: 'users#reminder_email'
   resource :ticket_orders, only: [:create]
 
+  # FIXME
+  resource :comp_applications, only: [:create]
+
 
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'

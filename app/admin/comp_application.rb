@@ -39,16 +39,17 @@ ActiveAdmin.register CompApplication do
       comp_app.competition.convention.name
     end
     column t('competition.status'), :status
-    column "Confirmation" do | comp_app |
+    column t('competition.admin.confirm_button') do | comp_app |
       if comp_app.status == "pending"
         link_to(t('competition.admin.confirm_button'), url_for(:action => :accept_application, :id => comp_app.id), :method => :patch)
-      elsif comp_app.status == "accepted"
-        link_to(t('competition.admin.unconfirm_button'),
-                url_for(:action => :reject_application, :id => comp_app.id),
-                data: { confirm: (t('competition.admin.confirm_question_on_reject'))},
-                :method => :patch
-        )
       end
+    end
+    column t('competition.admin.unconfirm_button') do | comp_app |
+      link_to(t('competition.admin.unconfirm_button'),
+              url_for(:action => :reject_application, :id => comp_app.id),
+              data: { confirm: (t('competition.admin.confirm_question_on_reject'))},
+              :method => :patch
+      )
     end
     actions
   end

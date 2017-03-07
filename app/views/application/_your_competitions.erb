@@ -1,0 +1,22 @@
+<% if current_user.active_applications.any? %>
+  <div class="col-lg-6">
+    <div class="padded well">
+      <p class="center"><%= t('competition.user_side.your_applications')%></p>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th><%= t('ticketing.user_side.convention')%></th>
+          <th><%= t('competition.competition_name')%></th>
+          <th><%= t('ticketing.status')%></th>
+        </tr>
+        </thead>
+
+        <% comp_applications = current_user.active_applications %>
+        <%= render comp_applications %>
+
+      </table>
+    </div>
+  </div>
+
+<% end %>

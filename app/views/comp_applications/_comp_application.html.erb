@@ -1,0 +1,23 @@
+<tr>
+  <td>
+    <%= comp_application.competition.convention.name %>
+  </td>
+  <td>
+    <%= comp_application.competition.name %>
+  </td>
+  <td>
+    <% if comp_application.status == 'accepted' %>
+      <td class="success">
+        <%= comp_application.status_localized %>
+      </td>
+    <% elsif comp_application.status == 'pending' %>
+      <td class="warning">
+        <%= comp_application.status_localized %>
+      </td>
+    <% else %>
+      <td class="danger">
+        <%= comp_application.status_localized %>
+      </td>
+    <% end %>
+  </td>
+</tr>

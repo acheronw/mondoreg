@@ -10,6 +10,8 @@ class CompApplication < ApplicationRecord
   validates :status, :inclusion => { :in => ['pending', 'accepted', 'resubmit', 'deleted'],
                                      message: "%value is not a valid ticket status" }
 
+  scope :active, -> { joins(:competition).merge(Competition.active) }
+
   def confirm
     self.status = "accepted"
     if self.save
@@ -23,6 +25,17 @@ class CompApplication < ApplicationRecord
     if self.save
       ApplicationMailer.comp_application_rejected_email(self).deliver_now
     end
+  end
+
+  def status_localized
+    return case status
+             when "pending"
+               I18n.t('competition.state_pending')
+             when "accepted"
+               I18n.t('competition.state_accepted')
+             when "resubmit"
+               I18n.t('competition.state_resubmit')
+           end
   end
 
 end
