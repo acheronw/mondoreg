@@ -1,7 +1,9 @@
 <footer class="footer">
 
   <div id="back_to_mondoconhu">
-    <%= link_to t('footer.back_to_mondocon'), "http://www.mondocon.hu", :target => '_blank' %><br>
+    <%= link_to image_tag(t('footer.back_to_mondocon_image_link'), alt: t('footer.back_to_mondocon')),
+                "http://www.mondocon.hu", :target => '_blank'
+    %>
   </div>
 
   <div id="partner_logos">

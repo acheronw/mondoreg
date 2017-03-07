@@ -12,6 +12,7 @@ hu:
     copyright_text: "© 2017 Szekeres András Márk, Minden jog fenntartva"
     contact: "Kapcsolat"
     back_to_mondocon: "MondoCon főoldala"
+    back_to_mondocon_image_link: "back_to_mondocon.png"
   static:
     landing_page:
       login_pre: "Ha már van felhasználói fiókod:"
