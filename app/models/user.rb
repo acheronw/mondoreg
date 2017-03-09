@@ -30,4 +30,11 @@ class User < ApplicationRecord
     return CompApplication.where(user: self).active.all.to_a
   end
 
+  def competitions_to_apply
+    user_already_applied = self.comp_applications.pluck(:competition_id)
+    open_comps = Competition.on_sale.where.not(id: user_already_applied).all.to_a
+    open_comps.delete_if { | comp | comp.full? }
+    return open_comps
+  end
+
 end

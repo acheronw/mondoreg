@@ -105,6 +105,10 @@ en:
       confirm_question_on_reject: "Have you checked that the message is the one you want to send?"
     user_side:
       your_applications: "Competitions you applied to"
+      open_comps: "Want to join a competition?"
+      reserved_places: "Current / max applications"
+      unlimited: "Unlimited"
+      apply: "Enter this competition"
     email:
       accepted_subject: "MondoCon competition application accepted"
       rejected_subject: "Problem with MondoCon competition application"

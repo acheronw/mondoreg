@@ -82,6 +82,10 @@ hu:
       confirm_question_on_reject: "Ellenőrizted, hogy a megfelelő üzenet van beállítva?"
     user_side:
       your_applications: "Versenyjelentkezéseid"
+      open_comps: "Jelentkezni szeretnél egy versenyre?"
+      reserved_places: "Létszámkorlát"
+      unlimited: "Korlátlan"
+      apply: "Jelentkezem erre a versenyre"
     email:
       accepted_subject: "MondoCon versenyjelentkezés elfogadva"
       rejected_subject: "Probléma a MondoCon versenyjelentkezéseddel"

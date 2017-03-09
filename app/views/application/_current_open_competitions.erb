@@ -1,0 +1,32 @@
+<% if current_user.competitions_to_apply.any? %>
+    <div class="col-lg-6">
+      <div class="padded well">
+
+        <p class="center"><%= t('competition.user_side.open_comps')%></p>
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th><%= t('competition.convention') %></th>
+            <th><%= t('competition.competition_name') %></th>
+            <th><%= t('competition.user_side.reserved_places') %></th>
+          </tr>
+          </thead>
+          <% current_user.competitions_to_apply.each do | comp | %>
+            <tr>
+              <td><%= comp.convention.name %></td>
+              <td><%= comp.name  %></td>
+              <td><%= comp.max_applications ? (comp.comp_applications.length.to_s + " / " + comp.max_applications.to_s) : t('competition.user_side.unlimited') %>
+              </td>
+              <td>
+                <%= link_to t('competition.user_side.apply'), '#' %>
+              </td>
+            </tr>
+          <% end %>
+
+
+        </table>
+
+      </div>
+    </div>
+<% end %>
