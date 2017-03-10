@@ -1,0 +1,34 @@
+<% provide(:title, @comp_application.competition.name ) %>
+
+<div class ="page-header">
+  <h1><%= @comp_application.competition.convention.name%> - <%= @comp_application.competition.name  %></h1>
+</div>
+
+<div class="jumbotron">
+  <dl>
+    <dt><%= t('competition.name_of_character') %></dt>
+    <dl><%= @comp_application.character_name %></dl>
+
+    <dt><%= t('competition.source_of_character') %></dt>
+    <dl><%= @comp_application.character_source %></dl>
+
+    <% if @comp_application.competition.group_members? %>
+        <dt><%= t('competition.group_members')%></dt>
+        <dl>
+          <ul class="list-inline">
+            <% @comp_application.group_members.each do | group_member | %>
+              <li><%= group_member %></li>
+            <% end %>
+          </ul>
+
+
+        </dl>
+    <% end %>
+
+    <% if @comp_application.competition.perf_requests?  %>
+        <dt><%= t('competition.perf_requests')%></dt>
+        <dl><%= @comp_application.perf_requests %></dl>
+    <% end %>
+  </dl>
+
+</div>

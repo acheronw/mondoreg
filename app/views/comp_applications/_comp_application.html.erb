@@ -2,22 +2,33 @@
   <td>
     <%= comp_application.competition.convention.name %>
   </td>
+
   <td>
     <%= comp_application.competition.name %>
   </td>
+
+
+  <% if comp_application.status == 'accepted' %>
+    <td class="success">
+      <%= comp_application.status_localized %>
+    </td>
+  <% elsif comp_application.status == 'pending' %>
+    <td class="warning">
+      <%= comp_application.status_localized %>
+    </td>
+  <% else %>
+    <td class="danger">
+      <%= comp_application.status_localized %>
+    </td>
+  <% end %>
+
   <td>
-    <% if comp_application.status == 'accepted' %>
-      <td class="success">
-        <%= comp_application.status_localized %>
-      </td>
-    <% elsif comp_application.status == 'pending' %>
-      <td class="warning">
-        <%= comp_application.status_localized %>
-      </td>
+
+    <% if comp_application.status == 'resubmit' %>
+        <%= link_to t('competition.user_side.edit_application'), controller: "comp_applications", action: "edit", id: comp_application.id %>
     <% else %>
-      <td class="danger">
-        <%= comp_application.status_localized %>
-      </td>
+        <%= link_to t('competition.user_side.view_application'), controller: "comp_applications", action: "show", id: comp_application.id %>
     <% end %>
   </td>
+
 </tr>

@@ -1,0 +1,43 @@
+<div class="jumbotron row">
+  <div class="col-md-6 col-md-offset-1">
+    <%= form_for(@comp_application, :html => {:class => "form-horizontal left fullscreen_form" }) do | f| %>
+
+        <%= f.hidden_field :competition_id, :value => @comp_application.competition.id %>
+
+        <div class="form-group">
+          <%= f.label t('competition.name_of_character')  %>
+          <%= f.text_field :character_name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label t('competition.source_of_character')  %>
+          <%= f.text_field :character_source %>
+          <i><%= t('competition.user_side.fandom_explained') %></i>
+        </div>
+
+
+        <% if @comp_application.competition.group_members? %>
+            <% group_size = @comp_application.competition.max_group_size || 10
+               for i in 2 .. group_size
+                 # We iterate from 2, because the user itself is the first group member.
+            %>
+                <div class="form-group">
+                  <%= f.label t('competition.group_member_name')  %>
+                  <%= f.text_field :group_members, multiple: true %>
+                </div>
+            <% end %>
+        <% end %>
+
+        <% if @comp_application.competition.perf_requests?  %>
+            <div class="form-group">
+              <%= f.label t('competition.perf_requests')  %>
+              <%= f.text_area :perf_requests %>
+            </div>
+        <% end %>
+
+        <%= f.submit t('competition.user_side.send_app_button'), class: "btn btn-primary" %>
+
+    <% end %>
+  </div>
+
+</div>

@@ -115,15 +115,22 @@ footer {
   }
 }
 
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 10px;
+/* This is used in the full-screen competition application form: */
+
+.fullscreen_form{
+  input, textarea, select, .uneditable-input {
+    border: 1px solid #bbb;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  input {
+    height: auto !important;
+  }
+
+
 }
 
-input {
-  height: auto !important;
-}
 
 .alert-alert {
   @extend .alert-warning;

@@ -1,16 +1,23 @@
 class CompApplicationsController < ApplicationController
 
+
+  def show
+    @comp_application = CompApplication.find(params[:id])
+    if current_user != @comp_application.user
+      flash[:danger] = "Access denied! Exterminate user! Exterminate!"
+      redirect_to root_path
+    end
+  end
+
   def new
     @comp_application = CompApplication.new
     @comp_application.competition_id = params[:competition_id]
   end
 
   def create
-    puts "================================="
     @comp_application = CompApplication.new(comp_params)
     @comp_application.user = current_user
     @comp_application.status = "pending"
-    ap @comp_application
     # Validate that the competition is the correct one, open and not full.
     if @comp_application.competition.full?
       # Competition is invalid. Maybe someone sent in another application and now the competition is full.
@@ -28,13 +35,16 @@ class CompApplicationsController < ApplicationController
         render 'new'
       end
     end
-
-
-
-
   end
 
+  def edit
+    ap "=========================="
+    ap params
 
+    @comp_application = CompApplication.find(params[:id])
+    ap @comp_application
+    ap "<<<<<<<<<<<<<<<<<"
+  end
 
   private
 

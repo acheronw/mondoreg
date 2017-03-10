@@ -1,9 +1,10 @@
 <% provide(:title, @comp_application.competition.name ) %>
 
-
 <div class ="page-header">
-  <h1><%= t('competition.user_side.new_app_header')%></h1>
+  <h1><%= t('competition.user_side.edit_app_header')%></h1>
   <h2><%= @comp_application.competition.convention.name%> - <%= @comp_application.competition.name  %></h2>
 </div>
 
+
 <%= render 'form' %>
+
