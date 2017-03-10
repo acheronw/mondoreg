@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   put 'reminder_email', to: 'users#reminder_email'
   resources :ticket_orders, only: [:create]
 
-  resource :comp_applications
+  resources :comp_applications
 
 
   root 'static_pages#home'

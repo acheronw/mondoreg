@@ -38,13 +38,30 @@ class CompApplicationsController < ApplicationController
   end
 
   def edit
-    ap "=========================="
-    ap params
-
     @comp_application = CompApplication.find(params[:id])
-    ap @comp_application
-    ap "<<<<<<<<<<<<<<<<<"
   end
+
+  def update
+    @comp_application = CompApplication.find(params[:id])
+    if not @comp_application.competition.on_sale?
+      # The user tried to apply to an invalid competition
+      flash[:danger] = t('competition.user_side.competition_error')
+      redirect_to root_path
+    elsif @comp_application.status != 'resubmit'
+      # Only applications in the resubmit state can be edited.
+      flash[:danger] = t('competition.user_side.competition_error')
+      redirect_to root_path
+    else
+      @comp_application.status = 'pending'
+      if @comp_application.update_attributes(comp_params)
+        flash[:success] = t('competition.user_side.application_sent')
+        redirect_to root_path
+      else
+        render 'edit'
+      end
+    end
+  end
+
 
   private
 

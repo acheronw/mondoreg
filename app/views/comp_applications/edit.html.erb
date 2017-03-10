@@ -5,6 +5,9 @@
   <h2><%= @comp_application.competition.convention.name%> - <%= @comp_application.competition.name  %></h2>
 </div>
 
+<p><%= t('competition.user_side.admin_msg_intro') %></p>
+<div class="alert alert-danger">
+  <%= @comp_application.admin_msg %>
+</div>
 
 <%= render 'form' %>
-

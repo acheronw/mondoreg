@@ -19,7 +19,7 @@
               <td><%= comp.max_applications ? (comp.comp_applications.length.to_s + " / " + comp.max_applications.to_s) : t('competition.user_side.unlimited') %>
               </td>
               <td>
-                <%= link_to t('competition.user_side.apply'), new_comp_applications_path(competition_id: comp.id) %>
+                <%= link_to t('competition.user_side.apply'), new_comp_application_path(competition_id: comp.id) %>
               </td>
             </tr>
           <% end %>

@@ -96,6 +96,7 @@ hu:
       competition_already_full: "A jelentkezők száma már elérte a létszámkorlátot. Erre a versenyre már nem lehet jelentkezni."
       competition_error: "Téves jelentkezés, erre a versenyre most nem lehet jelentkezni."
       application_sent: "Jelentkezésedet rögzítettük. A versenyszervező át fogja nézni."
+      admin_msg_intro: "A jelentkezésedet a versenyszervező az alábbi üzenettel küldte vissza, kérlek e szerint módosítsd!"
     email:
       accepted_subject: "MondoCon versenyjelentkezés elfogadva"
       rejected_subject: "Probléma a MondoCon versenyjelentkezéseddel"
