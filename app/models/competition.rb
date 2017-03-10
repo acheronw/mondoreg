@@ -13,6 +13,9 @@ class Competition < ApplicationRecord
   scope :active, -> { joins(:convention).merge(Convention.active) }
   scope :on_sale, -> { where("applications_start < ?", Date.today).where("applications_end > ?", Date.today) }
 
+  def on_sale?
+    self.applications_start < Date.today && self.applications_end > Date.today
+  end
 
   def full?
     if self.max_applications
@@ -21,6 +24,15 @@ class Competition < ApplicationRecord
       # A competition with no limit of applications can never be full
       false
     end
+  end
+
+  # The following methods are used to check which optional fields are relevant.
+  def group_members?
+    ['craft_group', 'perf_group'].include? self.subtype
+  end
+
+  def additional_requests?
+    ['perf', 'perf_group'].include? self.subtype
   end
 
 end

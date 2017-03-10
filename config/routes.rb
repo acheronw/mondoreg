@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resource :ticket_orders, only: [:create]
 
   # FIXME
-  resource :comp_applications, only: [:create]
+  resource :comp_applications, only: [:new, :create]
 
 
   root 'static_pages#home'

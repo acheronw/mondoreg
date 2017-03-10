@@ -115,6 +115,16 @@ footer {
   }
 }
 
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+input {
+  height: auto !important;
+}
+
 .alert-alert {
   @extend .alert-warning;
 }
