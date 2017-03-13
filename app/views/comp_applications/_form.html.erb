@@ -47,7 +47,7 @@
             %>
                 <div class="form-group">
                   <%= f.label t('competition.group_member_name')  %>
-                  <%= f.text_field :group_members, multiple: true %>
+                  <%= f.text_field :group_members, value: @comp_application.group_members[i-2], multiple: true %>
                 </div>
             <% end %>
         <% end %>
