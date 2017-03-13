@@ -1,4 +1,6 @@
 hu:
+  "yes": "igen"
+  "no": "nem"
   mondocon_reg_site: "MondoCon regisztrációs felület"
   under_construct: 'Fejlesztés alatt.'
   title:
@@ -69,8 +71,9 @@ hu:
     name_of_competitor: "Versenyző neve"
     name_of_character: "Karakter neve"
     source_of_character: "Fandom"
-    primary_image: "Karakterkép  (színpadon ki lesz vetítve)"
-    stage_music: "Zene vagy videó a színpadi fellépésedhez"
+    primary_image: "Karakterkép"
+    stage_music: "Zene vagy videó"
+    veteran: "Veterán cosplayes-e vagy?"
     perf_requests: "Kérések perf előadáshoz"
     group_members: "Csapattagok"
     group_member_name: "Csapattag neve"
@@ -96,6 +99,9 @@ hu:
       new_app_header: "Versenyjelentkezés"
       edit_app_header: "Jelentkezés módosítása"
       fandom_explained: "A manga, anime, könyv, képregény, film vagy játék címe, ahonnan a karakter van. Amennyiben nincs ilyen forrás, vagy a karakter designját megváltoztattad, azt kell ide írnod, hogy 'original'."
+      primary_image_explained: "Ezt a képet vetítjük ki a színpadon és a karaktered referenciaképe is ez. A pontos követelkményeket olvasd el a szabályzatban"
+      stage_music_explained: "Egy mp3-at vagy egy videót tölts fel, amit a színpadi fellépésed alatt bejátszunk. A pontos követelményeket olvasd el a szabályzatban. Craft esetén csak zenét tölts fel!"
+      veteran_explained: "Kaptál-e legalább egyszer jelölést egy MondoConos cosplay versenyen?"
       competition_already_full: "A jelentkezők száma már elérte a létszámkorlátot. Erre a versenyre már nem lehet jelentkezni."
       competition_error: "Téves jelentkezés, erre a versenyre most nem lehet jelentkezni."
       application_sent: "Jelentkezésedet rögzítettük. A versenyszervező át fogja nézni."

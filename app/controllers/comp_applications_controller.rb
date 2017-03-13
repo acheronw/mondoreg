@@ -73,6 +73,7 @@ class CompApplicationsController < ApplicationController
                                              :competition_id,
                                              :primary_image,
                                              :stage_music,
+                                             :veteran,
     )
   end
 

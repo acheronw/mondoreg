@@ -26,6 +26,7 @@
               <%= image_tag (@comp_application.primary_image.url(:medium)) %>
           <% end %>
           <%= f.file_field :primary_image %>
+          <i><%= t('competition.user_side.primary_image_explained') %></i>
         </div>
 
         <div class="form-group">
@@ -34,6 +35,7 @@
               <%= link_to 'EEEEE', (@comp_application.stage_music.url(:medium)) %>
           <% end %>
           <%= f.file_field :stage_music %>
+          <i><%= t('competition.user_side.stage_music_explained') %></i>
         </div>
 
 
@@ -56,6 +58,13 @@
               <%= f.text_area :perf_requests %>
             </div>
         <% end %>
+
+
+        <div class="form-group">
+          <%= f.label t('competition.veteran') %>
+          <%= f.check_box :veteran %>
+          <i><%= t('competition.user_side.veteran_explained') %></i>
+        </div>
 
         <%= f.submit t('competition.user_side.send_app_button'), class: "btn btn-primary" %>
 

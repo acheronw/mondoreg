@@ -35,6 +35,12 @@
         <dt><%= t('competition.perf_requests')%></dt>
         <dl><%= @comp_application.perf_requests %></dl>
     <% end %>
+
+    <dt><%= t('competition.veteran')%></dt>
+    <dl><%= @comp_application.veteran ? t('yes') : t('no') %>
+
+    </dl>
+
   </dl>
 
 </div>
