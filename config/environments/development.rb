@@ -74,7 +74,6 @@ Rails.application.configure do
   # Amazon S3 storage for paperclip
   config.paperclip_defaults = {
       storage: :s3,
-      # s3_host_name: 'eu-central-1.amazonaws.com',
       url: ':s3_domain_url',
       path: '/:class/:attachment/:id_partition/:style/:filename',
       s3_credentials: {
