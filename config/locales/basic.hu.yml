@@ -69,6 +69,8 @@ hu:
     name_of_competitor: "Versenyző neve"
     name_of_character: "Karakter neve"
     source_of_character: "Fandom"
+    primary_image: "Karakterkép  (színpadon ki lesz vetítve)"
+    stage_music: "Zene vagy videó a színpadi fellépésedhez"
     perf_requests: "Kérések perf előadáshoz"
     group_members: "Csapattagok"
     group_member_name: "Csapattag neve"

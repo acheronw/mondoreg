@@ -12,6 +12,12 @@
     <dt><%= t('competition.source_of_character') %></dt>
     <dl><%= @comp_application.character_source %></dl>
 
+    <dt><%= t('competition.primary_image') %></dt>
+    <dl><%= image_tag (@comp_application.primary_image.url(:medium)) %></dl>
+
+    <dt><%= t('competition.stage_music') %></dt>
+    <dl><%= link_to @comp_application.stage_music_file_name, @comp_application.stage_music.url %></dl>
+
     <% if @comp_application.competition.group_members? %>
         <dt><%= t('competition.group_members')%></dt>
         <dl>

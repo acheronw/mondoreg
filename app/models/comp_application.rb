@@ -12,6 +12,15 @@ class CompApplication < ApplicationRecord
 
   scope :active, -> { joins(:competition).merge(Competition.active) }
 
+  # This associates the attribute primary_image with a file attachment (Paperclip)
+  has_attached_file :primary_image, styles: {
+      medium: '400x400>'
+  }
+  validates_attachment_content_type :primary_image, :content_type => /\Aimage\/.*\Z/, message: 'This is not a proper image'
+
+  has_attached_file :stage_music
+  validates_attachment_content_type :stage_music, :content_type => ['video/avi', 'video/mp4', 'video/x-ms-wmv', 'audio/mpeg'], message: 'This is not an audio or video file'
+
   def confirm
     self.status = "accepted"
     if self.save

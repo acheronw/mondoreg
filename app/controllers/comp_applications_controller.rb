@@ -66,7 +66,14 @@ class CompApplicationsController < ApplicationController
   private
 
   def comp_params
-    params.require(:comp_application).permit(:character_name, :character_source, :group_members, :perf_requests, :competition_id)
+    params.require(:comp_application).permit(:character_name,
+                                             :character_source,
+                                             :group_members,
+                                             :perf_requests,
+                                             :competition_id,
+                                             :primary_image,
+                                             :stage_music,
+    )
   end
 
 end

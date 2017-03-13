@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170307103956) do
+ActiveRecord::Schema.define(version: 20170313111723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,10 +57,18 @@ ActiveRecord::Schema.define(version: 20170307103956) do
     t.string   "character_source"
     t.string   "status"
     t.string   "perf_requests"
-    t.string   "group_members",    default: [],              array: true
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.string   "group_members",              default: [],              array: true
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.text     "admin_msg"
+    t.string   "primary_image_file_name"
+    t.string   "primary_image_content_type"
+    t.integer  "primary_image_file_size"
+    t.datetime "primary_image_updated_at"
+    t.string   "stage_music_file_name"
+    t.string   "stage_music_content_type"
+    t.integer  "stage_music_file_size"
+    t.datetime "stage_music_updated_at"
     t.index ["competition_id"], name: "index_comp_applications_on_competition_id", using: :btree
     t.index ["user_id", "competition_id"], name: "index_comp_applications_on_user_id_and_competition_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_comp_applications_on_user_id", using: :btree
