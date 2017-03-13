@@ -80,6 +80,8 @@ class CompApplicationsController < ApplicationController
                                              :competition_id,
                                              :primary_image,
                                              :stage_music,
+                                             :extra_image1,
+                                             :extra_image2,
                                              :veteran,
                                              :group_members => []
     )

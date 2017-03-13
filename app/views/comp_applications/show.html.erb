@@ -18,6 +18,19 @@
     <dt><%= t('competition.stage_music') %></dt>
     <dl><%= link_to @comp_application.stage_music_file_name, @comp_application.stage_music.url %></dl>
 
+    <% if @comp_application.competition.extra_images? %>
+        <dt><%= t('competition.extra_image')%></dt>
+        <dl>
+          <% if @comp_application.extra_image1.present? %>
+            <%= image_tag (@comp_application.extra_image1.url(:medium)) %>
+          <% end %>
+          <% if @comp_application.extra_image2.present? %>
+            <%= image_tag (@comp_application.extra_image2.url(:medium)) %>
+          <% end %>
+        </dl>
+    <% end %>
+
+
     <% if @comp_application.competition.group_members? %>
         <dt><%= t('competition.group_members')%></dt>
         <dl>

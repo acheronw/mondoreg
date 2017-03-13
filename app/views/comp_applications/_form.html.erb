@@ -38,6 +38,20 @@
           <i><%= t('competition.user_side.stage_music_explained') %></i>
         </div>
 
+        <% if @comp_application.competition.extra_images?  %>
+            <div class="form-group">
+              <%= f.label t('competition.extra_image')  %>
+              <% if @comp_application.extra_image1.present? %>
+                  <%= image_tag (@comp_application.extra_image1.url(:medium)) %>
+              <% end %>
+              <% if @comp_application.extra_image2.present? %>
+                  <%= image_tag (@comp_application.extra_image2.url(:medium)) %>
+              <% end %>
+              <%= f.file_field :extra_image1 %>
+              <%= f.file_field :extra_image2 %>
+              <i><%= t('competition.user_side.extra_images_explained') %></i>
+            </div>
+        <% end %>
 
 
         <% if @comp_application.competition.group_members? %>

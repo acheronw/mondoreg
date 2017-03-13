@@ -23,6 +23,17 @@ class CompApplication < ApplicationRecord
   validates_attachment_content_type :stage_music, :content_type => ['video/avi', 'video/mp4', 'video/x-ms-wmv', 'audio/mpeg'], message: 'This is not an audio or video file'
   validates :stage_music, presence: true
 
+  has_attached_file :extra_image1, styles: {
+      medium: '400x400>'
+  }
+  validates_attachment_content_type :extra_image1, :content_type => /\Aimage\/.*\Z/, message: 'This is not a proper image'
+
+  has_attached_file :extra_image2, styles: {
+      medium: '400x400>'
+  }
+  validates_attachment_content_type :extra_image2, :content_type => /\Aimage\/.*\Z/, message: 'This is not a proper image'
+
+
   def confirm
     self.status = "accepted"
     if self.save
