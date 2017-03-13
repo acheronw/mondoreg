@@ -104,6 +104,7 @@ hu:
       stage_music_explained: "Egy mp3-at vagy egy videót tölts fel, amit a színpadi fellépésed alatt bejátszunk. A pontos követelményeket olvasd el a szabályzatban. Craft esetén csak zenét tölts fel!"
       extra_images_explained: "Ezeket a képeket csak a zsűri fogja megnézni. Például más szögből ábrázolják a karaktered, vagy a karakter részleteit mutajták be."
       veteran_explained: "Kaptál-e legalább egyszer jelölést egy MondoConos cosplay versenyen?"
+      perf_requests_explained: "Ide írd le a fellépésedhez kapcsolódó megjegyzéseket és kéréseket, például: fények, felpakolási idő, stb."
       competition_already_full: "A jelentkezők száma már elérte a létszámkorlátot. Erre a versenyre már nem lehet jelentkezni."
       competition_error: "Téves jelentkezés, erre a versenyre most nem lehet jelentkezni."
       application_sent: "Jelentkezésedet rögzítettük. A versenyszervező át fogja nézni."

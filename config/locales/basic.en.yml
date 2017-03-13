@@ -127,6 +127,7 @@ en:
       stage_music_explained: "This is either an mp3 music or a video which will play while you are on stage. See the rules for the precise requirements. For craftmanship only upload music!"
       extra_images_explained: "These images will be seen only by the jury. Use these to show extra details of your character, for example how it looks from a different angle."
       veteran_explained: "Did you already got at least one nomination in one of the MondoCon cosplay competitions?"
+      perf_requests_explained: "Write any notes and requests you have for your performance (e.g.: lights, props you need on stage, etc.)"
       competition_already_full: "The number of competitors already reached the limit. You cannot apply to this competition."
       competition_error: "Your application was invalid, this competition is not open for applications."
       application_sent: "Your application has been recorded. The organizer will soon check it."
