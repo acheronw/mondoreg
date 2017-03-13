@@ -15,17 +15,9 @@ class CompApplicationsController < ApplicationController
   end
 
   def create
-    ap "========================"
-    ap params
-    ap "<<<<"
-    ap comp_params
-    ap "<<<<"
     @comp_application = CompApplication.new(comp_params)
     @comp_application.user = current_user
     @comp_application.status = "pending"
-
-    ap @comp_application
-    ap "========================"
     # Validate that the competition is the correct one, open and not full.
     if @comp_application.competition.full?
       # Competition is invalid. Maybe someone sent in another application and now the competition is full.
