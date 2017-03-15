@@ -161,3 +161,7 @@ en:
               confirmation: " must be identical with the original password."
             name:
               blank: "is required."
+        comp_application:
+          attributes:
+            stage_music:
+              spoofed_media_type: "This is not an acceptable audio or video file."
