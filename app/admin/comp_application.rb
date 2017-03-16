@@ -54,4 +54,55 @@ ActiveAdmin.register CompApplication do
     actions
   end
 
+
+  show do
+    attributes_table do
+      row :competition
+      row :convention do | comp_a |
+        comp_a.competition.convention.name
+      end
+      row :user
+      row :character_name
+      row :character_source
+
+      row :primary_image do | comp_a |
+        image_tag (comp_a.primary_image.url(:medium))
+      end
+      row :primary_image_fullsize do | comp_a |
+        link_to comp_a.primary_image_file_name, comp_a.primary_image.url
+      end
+
+      if comp_application.extra_image1.present?
+        row :extra_image1 do | comp_a |
+          image_tag (comp_a.extra_image1.url(:medium))
+        end
+        row :extra_image1_fullsize do | comp_a |
+          link_to comp_a.extra_image1_file_name, comp_a.extra_image1.url
+        end
+      end
+
+      if comp_application.extra_image2.present?
+        row :extra_image2 do | comp_a |
+          image_tag (comp_a.extra_image2.url(:medium))
+        end
+        row :extra_image2_fullsize do | comp_a |
+          link_to comp_a.extra_image2_file_name, comp_a.extra_image2.url
+        end
+      end
+
+      row :stage_music do | comp_a |
+        link_to comp_a.stage_music_file_name, comp_a.stage_music.url
+      end
+
+      row :group_members
+
+      row :perf_requests
+
+      row :veteran
+
+    end
+    active_admin_comments
+  end
+
+
 end
