@@ -100,6 +100,8 @@ ActiveAdmin.register CompApplication do
 
       row :veteran
 
+      row :admin_msg
+
     end
     active_admin_comments
   end
