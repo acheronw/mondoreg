@@ -142,6 +142,12 @@ hu:
           attributes:
             stage_music:
               spoofed_media_type: "Nem elfogadott audio vagy video file."
+  active_admin:
+    search_status:
+      headline: "Jelenlegi nézet"
+      current_scope: "Jelenlegi scope: "
+      current_filters: "Jelenlegi szűrőfeltételek: "
+      no_current_filters: "Nincs szűrőfeltétel"
   time:
     formats:
       default: "%Y/%m/%d"

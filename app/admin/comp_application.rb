@@ -26,7 +26,7 @@ ActiveAdmin.register CompApplication do
   end
 
 
-  filter :competition, collection: proc { Competition.active.all.map(&:name) }
+  filter :competition, collection: proc { Competition.active.all.map { | c | [c.name, c.id]  } }
   filter :status, as: :select, collection: ['pending', 'accepted', 'resubmit']
 
   index do
