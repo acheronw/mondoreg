@@ -26,6 +26,8 @@ ActiveAdmin.register CompApplication do
   end
 
 
+  filter :competition, collection: proc { Competition.active.all.map(&:name) }
+  filter :status, as: :select, collection: ['pending', 'accepted', 'resubmit']
 
   index do
     selectable_column
