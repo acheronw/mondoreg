@@ -38,7 +38,17 @@ ActiveAdmin.register CompApplication do
     column t('competition.convention') do | comp_app |
       comp_app.competition.convention.name
     end
-    column t('competition.status'), :status
+    column :admin_msg
+    column t('competition.status'), :status do | comp_app |
+      case comp_app.status
+        when 'pending'
+          status_tag (t('competition.state_pending')), :warning
+        when 'accepted'
+          status_tag (t('competition.state_accepted')), :ok
+        when 'resubmit'
+          status_tag (t('competition.state_resubmit'))
+      end
+    end
     column t('competition.admin.confirm_button') do | comp_app |
       if comp_app.status == "pending"
         link_to(t('competition.admin.confirm_button'), url_for(:action => :accept_application, :id => comp_app.id), :method => :patch)
