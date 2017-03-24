@@ -34,8 +34,10 @@ class CompApplication < ApplicationRecord
   validates_attachment_content_type :extra_image2, :content_type => /\Aimage\/.*\Z/, message: 'This is not a proper image'
 
 
+
   def confirm
     self.status = "accepted"
+    self.appearance_no ||= next_free_number
     if self.save
       ApplicationMailer.comp_application_confirmed_email(self).deliver_now
     end
@@ -58,6 +60,12 @@ class CompApplication < ApplicationRecord
              when "resubmit"
                I18n.t('competition.state_resubmit')
            end
+  end
+
+  def next_free_number
+    numbers = CompApplication.where(competition: self.competition).pluck(:appearance_no)
+    largest_number = numbers.compact.max || 0
+    return largest_number + 1
   end
 
 end

@@ -3,7 +3,7 @@ ActiveAdmin.register CompApplication do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 
-  permit_params :competition_id, :user_id, :character_name, :character_source, :status, :perf_requests, :admin_msg, group_members: []
+  permit_params :competition_id, :user_id, :character_name, :character_source, :status, :perf_requests, :admin_msg, :appearance_no, group_members: []
 
   # Ez teszi lehetővé, hogy az indexben a user sort a user táblából joinolt name mezővel tudjuk sort-olni:
   controller do
@@ -40,6 +40,7 @@ ActiveAdmin.register CompApplication do
     column t('competition.convention') do | comp_app |
       comp_app.competition.convention.name
     end
+    column t('competition.admin.appearance_no'), :appearance_no
     column :admin_msg
     column t('competition.status'), :status do | comp_app |
       case comp_app.status
@@ -73,6 +74,7 @@ ActiveAdmin.register CompApplication do
       row :convention do | comp_a |
         comp_a.competition.convention.name
       end
+      row :appearance_no
       row :user
       row :character_name
       row :character_source

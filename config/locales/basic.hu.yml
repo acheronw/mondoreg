@@ -88,6 +88,7 @@ hu:
       confirm_button: "Jelentkezés elfogadása"
       unconfirm_button: "Jelentkezés visszaküldése"
       confirm_question_on_reject: "Ellenőrizted, hogy a megfelelő üzenet van beállítva?"
+      appearance_no: "Fellépő sorszáma"
     user_side:
       your_applications: "Versenyjelentkezéseid"
       view_application: "Megtekint"
