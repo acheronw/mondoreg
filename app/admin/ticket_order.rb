@@ -38,7 +38,7 @@ ActiveAdmin.register TicketOrder do
   scope I18n.t('ticketing.scope_all'), :all
 
 
-  index do
+  index download_links: [:csv] do
     selectable_column
     column t('ticketing.order_id'), :id
     column t('ticketing.name_of_buyer'), :user, :sortable => 'users.name'
@@ -55,8 +55,14 @@ ActiveAdmin.register TicketOrder do
       elsif ticket_order.status == "accepted"
         link_to(t('ticketing.unconfirm_button'), url_for(:action => :unconfirm_ticket, :id => ticket_order.id), :method => :patch)
       end
+    end
+    column t('ticketing.user_side.reminder_button') do | ticket_order|
+      if ticket_order.status == "pending"
+        link_to t('ticketing.user_side.reminder_button'), reminder_email_path, method: :put
+      end
 
     end
+
     actions
   end
 

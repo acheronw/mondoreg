@@ -5,6 +5,7 @@ ActiveAdmin.register CompApplication do
 
   permit_params :competition_id, :user_id, :character_name, :character_source, :status, :perf_requests, :admin_msg, :appearance_no, group_members: []
 
+
   # Ez teszi lehetővé, hogy az indexben a user sort a user táblából joinolt name mezővel tudjuk sort-olni:
   controller do
     def scoped_collection
@@ -29,7 +30,7 @@ ActiveAdmin.register CompApplication do
   filter :competition, collection: proc { Competition.active.all.map { | c | [c.name, c.id]  } }
   filter :status, as: :select, collection: ['pending', 'accepted', 'resubmit']
 
-  index do
+  index download_links: [:csv] do
     selectable_column
     column t('competition.name_of_competitor'), :user, :sortable => 'users.name'
     column t('competition.name_of_character'), :character_name
