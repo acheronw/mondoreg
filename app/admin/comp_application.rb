@@ -121,5 +121,27 @@ ActiveAdmin.register CompApplication do
     active_admin_comments
   end
 
+  csv force_quotes: true, col_sep: ";"  do
+
+    column :convention do | comp_a |
+      comp_a.competition.convention.name
+    end
+    column :competition do | comp_a |
+      comp_a.competition.name
+    end
+    column :user do | comp_a |
+      comp_a.user.name
+    end
+    column :appearance_no
+    column :character_name
+    column :character_source
+    column :group_members
+
+    column :status
+    column :veteran
+
+    column :perf_requests
+
+  end
 
 end
