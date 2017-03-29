@@ -99,6 +99,7 @@ en:
     extra_image: "Additional images"
     veteran: "Are you a veteran cosplayer?"
     perf_requests: "Requests for stage appearance"
+    group_name: "Name of your group"
     group_members: "Group members"
     group_member_name: "Name of teammate"
     status: "Státusz"

@@ -32,6 +32,10 @@
 
 
     <% if @comp_application.competition.group_members? %>
+        <dt><%= t('competition.group_name') %></dt>
+        <dl><%= @comp_application.group_name %></dl>
+
+
         <dt><%= t('competition.group_members')%></dt>
         <dl>
           <ul class="list-inline">

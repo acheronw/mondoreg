@@ -55,6 +55,14 @@
 
 
         <% if @comp_application.competition.group_members? %>
+
+            <div class="form-group">
+              <%= f.label t('competition.group_name')  %>
+              <%= f.text_field :group_name %>
+            </div>
+
+
+
             <% group_size = @comp_application.competition.max_group_size || 10
                for i in 2 .. group_size
                  # We iterate from 2, because the user itself is the first group member.

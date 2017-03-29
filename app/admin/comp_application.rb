@@ -3,7 +3,7 @@ ActiveAdmin.register CompApplication do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 
-  permit_params :competition_id, :user_id, :character_name, :character_source, :status, :perf_requests, :admin_msg, :appearance_no, group_members: []
+  permit_params :competition_id, :user_id, :character_name, :character_source, :status, :perf_requests, :admin_msg, :appearance_no, :group_name, group_members: []
 
 
   # Ez teszi lehetővé, hogy az indexben a user sort a user táblából joinolt name mezővel tudjuk sort-olni:
@@ -79,6 +79,7 @@ ActiveAdmin.register CompApplication do
       row :user
       row :character_name
       row :character_source
+      row :group_name
 
       row :primary_image do | comp_a |
         image_tag (comp_a.primary_image.url(:medium))
@@ -135,6 +136,7 @@ ActiveAdmin.register CompApplication do
     column :appearance_no
     column :character_name
     column :character_source
+    column :group_name
     column :group_members
 
     column :status
