@@ -32,7 +32,7 @@ class Competition < ApplicationRecord
   end
 
   def perf_requests?
-    ['craft', 'craft_group' 'perf', 'perf_group'].include? self.subtype
+    ['craft', 'craft_group', 'perf', 'perf_group'].include? self.subtype
   end
 
   def extra_images?
