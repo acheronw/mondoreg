@@ -123,7 +123,7 @@ hu:
       user:
         password: "Jelszó"
         password_confirmation: "Megismételt jelszó"
-        name: "Név"
+        name: "Polgári Név"
     errors:
       models:
         user:

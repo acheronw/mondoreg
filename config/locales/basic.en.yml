@@ -146,7 +146,7 @@ en:
       user:
         password: "Password"
         password_confirmation: "Password confirmation"
-        name: "Name"
+        name: "Real Name"
     errors:
       models:
         user:
