@@ -30,15 +30,20 @@ ActiveAdmin.register_page "Dashboard" do
       end
       column do
         panel t('admin_dashboard.current_con') do
-          strong { Convention.active.first.name }
-          div do
-            no_sold = TicketOrder.active.where(status: 'accepted').sum(:quantity)
-            t('admin_dashboard.no_of_confirmed', number: no_sold)
+          if Convention.active.any?
+            strong { Convention.active.first.name }
+            div do
+              no_sold = TicketOrder.active.where(status: 'accepted').sum(:quantity)
+              t('admin_dashboard.no_of_confirmed', number: no_sold)
+            end
+            div do
+              no_pending = TicketOrder.requires_attention.sum(:quantity)
+              t('admin_dashboard.no_of_pending', number: no_pending)
+            end
+          else
+            # no active convention
           end
-          div do
-            no_pending = TicketOrder.requires_attention.sum(:quantity)
-            t('admin_dashboard.no_of_pending', number: no_pending)
-          end
+
 
         end
       end

@@ -3,6 +3,7 @@ hu:
   "no": "nem"
   mondocon_reg_site: "MondoCon regisztrációs felület"
   under_construct: 'Fejlesztés alatt.'
+  nothing_to_do: 'Jelenleg nincs nyitva se jegyvásárlás, se verseny-jelentkezés, amire tudnál jelentkezni. Nézz majd vissza később!'
   title:
     help: "Súgó"
     home: "Kezdőlap"

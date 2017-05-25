@@ -1,0 +1,9 @@
+<div class="container">
+  <% if current_user.competitions_to_apply.empty? && current_user.active_applications.empty? && Ticket.on_sale.empty? && current_user.active_orders.empty?
+  %>
+      <div class="padded well">
+        <p class="center"><%= t('nothing_to_do') %></p>
+      </div>
+  <% end %>
+
+</div>

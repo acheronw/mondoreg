@@ -24,6 +24,7 @@ en:
   "no": "no"
   mondocon_reg_site: "MondoCon registration site"
   under_construct: "Construction under progress"
+  nothing_to_do: 'There are no tickets on sale or competitions open for applications at the moment. Please come back later!'
   title:
     help: "Help"
     home: "Home"
