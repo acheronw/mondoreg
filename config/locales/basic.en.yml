@@ -95,7 +95,6 @@ en:
     nickname: "Nickname / Alias"
     name_of_character: "Name of character"
     source_of_character: "Fandom"
-    source_of_character: "State"
     primary_image: "Image of character (optional)"
     stage_music: "Music or video for your stage appearance"
     extra_image: "Additional images"
@@ -104,6 +103,7 @@ en:
     group_name: "Name of your group"
     group_members: "Group members"
     group_member_names: "List of teammates"
+    consent: "I declare that I am eligible for the competition according to its rules"
     status: "Státusz"
     state_pending: "Application sent"
     state_accepted: "Accepted"
@@ -133,6 +133,8 @@ en:
       veteran_explained: "Did you already got at least one nomination in one of the MondoCon cosplay competitions?"
       perf_requests_explained: "Write any notes and requests you have for your performance (e.g.: lights, props you need on stage, etc.)"
       group_list_explained: "Rajtad kívül az összes többi csapattagnak írd le a polgári nevét, becenevét és az általuk cosplayelt karakterek nevét is."
+      consent_explained: "Only those who are over 18 years old and have been Hungarian citizens for at least 3 years."
+      consent_must_be_given: "Consent must be given!"
       competition_already_full: "The number of competitors already reached the limit. You cannot apply to this competition."
       competition_error: "Your application was invalid, this competition is not open for applications."
       application_sent: "Your application has been recorded. The organizer will soon check it."
@@ -170,6 +172,10 @@ en:
           attributes:
             nickname:
               blank: "Nickname / Alias missing"
+            character_name:
+              blank: "Character name is missing"
+            character_source:
+              blank: "Fandom field is missing"
             primary_image:
               blank: "Please upload a picture!"
             stage_music:

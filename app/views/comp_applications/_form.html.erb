@@ -84,11 +84,22 @@
         <% end %>
 
 
-        <div class="form-group">
-          <%= f.label t('competition.veteran') %>
-          <%= f.check_box :veteran %>
-          <i><%= t('competition.user_side.veteran_explained') %></i>
-        </div>
+        <% if @comp_application.competition.ask_veteran?  %>
+            <div class="form-group">
+              <%= f.label t('competition.veteran') %>
+              <%= f.check_box :veteran %>
+              <i><%= t('competition.user_side.veteran_explained') %></i>
+            </div>
+        <% end %>
+
+        <% if @comp_application.competition.consent_required?  %>
+            <div class="form-group">
+              <%= f.label t('competition.consent') %>
+              <%= f.check_box :consent %>
+              <i><%= t('competition.user_side.consent_explained') %></i>
+            </div>
+        <% end %>
+
 
         <%= f.submit t('competition.user_side.send_app_button'), class: "btn btn-primary" %>
 

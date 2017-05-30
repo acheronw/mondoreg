@@ -48,8 +48,10 @@
         <dl><%= @comp_application.perf_requests %></dl>
     <% end %>
 
-    <dt><%= t('competition.veteran')%></dt>
-    <dl><%= @comp_application.veteran ? t('yes') : t('no') %>
+    <% if @comp_application.competition.ask_veteran?  %>
+        <dt><%= t('competition.veteran')%></dt>
+        <dl><%= @comp_application.veteran ? t('yes') : t('no') %>
+    <% end %>
 
     </dl>
 

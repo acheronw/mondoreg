@@ -18,9 +18,14 @@ class CompApplicationsController < ApplicationController
     @comp_application = CompApplication.new(comp_params)
     @comp_application.user = current_user
     @comp_application.status = "pending"
-    # Validate that the competition is the correct one, open and not full.
-    if @comp_application.competition.full?
-      # Competition is invalid. Maybe someone sent in another application and now the competition is full.
+
+    if @comp_application.competition.consent_required? && (@comp_application.consent == "0")
+      # Validate that the consent checkbox was ticked in if it was required
+      flash[:danger] = t('competition.user_side.consent_must_be_given')
+      render 'new'
+    elsif @comp_application.competition.full?
+      # Validate that the competition is the correct one, open and not full.
+      # Maybe someone sent in another application and now the competition is full.
       flash[:danger] = t('competition.user_side.competition_already_full')
       redirect_to root_path
     elsif not @comp_application.competition.on_sale?
@@ -78,6 +83,7 @@ class CompApplicationsController < ApplicationController
                                              :group_name,
                                              :group_members,
                                              :nickname,
+                                             :consent,
     )
   end
 

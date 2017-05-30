@@ -5,7 +5,7 @@ class Competition < ApplicationRecord
   validates :name, presence: true
   validates :convention_id, presence: true
   validates :subtype, presence: true
-  validates :subtype, :inclusion => { :in => ['craft', 'craft_group', 'perf', 'perf_group'],
+  validates :subtype, :inclusion => { :in => ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay'],
                                      message: "%value is not a valid competition type" }
   validates :admin_email, presence: true
 
@@ -32,11 +32,19 @@ class Competition < ApplicationRecord
   end
 
   def perf_requests?
+    ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay'].include? self.subtype
+  end
+
+  def ask_veteran?
     ['craft', 'craft_group', 'perf', 'perf_group'].include? self.subtype
   end
 
+  def consent_required?
+    ['eurocosplay'].include? self.subtype
+  end
+
   def require_music_upload?
-    ['craft', 'craft_group', 'perf', 'perf_group'].include? self.subtype
+    ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay'].include? self.subtype
   end
 
   def extra_images?

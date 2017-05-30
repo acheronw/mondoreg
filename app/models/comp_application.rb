@@ -2,6 +2,9 @@ class CompApplication < ApplicationRecord
   belongs_to :competition, inverse_of: :comp_applications
   belongs_to :user, inverse_of: :comp_applications
 
+  # This is a virtual attribute (does not go into the DB)
+  attr_accessor :consent
+
   validates :nickname, presence: true
   validates :competition_id, presence: true
   validates :user_id, presence: true

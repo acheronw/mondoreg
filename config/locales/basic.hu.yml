@@ -81,6 +81,7 @@ hu:
     group_name: "Csapatnév"
     group_members: "Csapattagok"
     group_member_names: "Csapattagok nevei"
+    consent: "Kijelentem, hog a nevezés jogi feltételeinek megfelelek"
     status: "Státusz"
     state_pending: "Beküldve"
     state_accepted: "Elfogadva"
@@ -110,6 +111,8 @@ hu:
       veteran_explained: "Kaptál-e legalább egyszer jelölést egy MondoConos cosplay versenyen?"
       perf_requests_explained: "Ide írd le a fellépésedhez kapcsolódó megjegyzéseket és kéréseket, például: fények, felpakolási idő, stb."
       group_list_explained: "Rajtad kívül az összes többi csapattagnak írd le a polgári nevét, becenevét és az általuk cosplayelt karakterek nevét is."
+      consent_explained: "Ezen a versenyen csak azok vehetnek részt, akik betöltötték a 18. életévüket és legalább 3 éve magyar állampolgárok."
+      consent_must_be_given: "El kell fogadnod a nevezési feltételeket."
       competition_already_full: "A jelentkezők száma már elérte a létszámkorlátot. Erre a versenyre már nem lehet jelentkezni."
       competition_error: "Téves jelentkezés, erre a versenyre most nem lehet jelentkezni."
       application_sent: "Jelentkezésedet rögzítettük. A versenyszervező át fogja nézni."
@@ -147,6 +150,10 @@ hu:
           attributes:
             nickname:
               blank: "Becenév / művésznév hiányzik"
+            character_name:
+              blank: "Karakternév hiányzik"
+            character_source:
+              blank: "Fandom mező hiányzik"
             primary_image:
               blank: "Tölts fel egy képet!"
             stage_music:
