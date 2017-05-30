@@ -70,6 +70,7 @@ hu:
     competition_type: "Verseny típusa"
     convention: "Rendezvény"
     name_of_competitor: "Versenyző neve"
+    nickname: "Becenév / művésznév"
     name_of_character: "Karakter neve"
     source_of_character: "Fandom"
     primary_image: "Karakterkép"
@@ -144,6 +145,8 @@ hu:
               blank: "megadása kötelező."
         comp_application:
           attributes:
+            nickname:
+              blank: "Becenév / művésznév hiányzik"
             primary_image:
               blank: "Tölts fel egy képet!"
             stage_music:

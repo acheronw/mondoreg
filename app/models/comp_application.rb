@@ -2,6 +2,7 @@ class CompApplication < ApplicationRecord
   belongs_to :competition, inverse_of: :comp_applications
   belongs_to :user, inverse_of: :comp_applications
 
+  validates :nickname, presence: true
   validates :competition_id, presence: true
   validates :user_id, presence: true
   validates :character_name, presence: true

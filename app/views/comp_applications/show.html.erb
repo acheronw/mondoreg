@@ -6,6 +6,9 @@
 
 <div class="jumbotron">
   <dl>
+    <dt><%= t('competition.nickname') %></dt>
+    <dl><%= @comp_application.nickname %></dl>
+
     <dt><%= t('competition.name_of_character') %></dt>
     <dl><%= @comp_application.character_name %></dl>
 
@@ -35,17 +38,9 @@
         <dt><%= t('competition.group_name') %></dt>
         <dl><%= @comp_application.group_name %></dl>
 
-
         <dt><%= t('competition.group_members')%></dt>
-        <dl>
-          <ul class="list-inline">
-            <% @comp_application.group_members.each do | group_member | %>
-              <li><%= group_member %></li>
-            <% end %>
-          </ul>
+        <dl><%= @comp_application.group_members %></dl>
 
-
-        </dl>
     <% end %>
 
     <% if @comp_application.competition.perf_requests?  %>

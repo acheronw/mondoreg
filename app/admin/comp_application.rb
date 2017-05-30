@@ -33,6 +33,7 @@ ActiveAdmin.register CompApplication do
   index download_links: [:csv] do
     selectable_column
     column t('competition.name_of_competitor'), :user, :sortable => 'users.name'
+    column t('competition.nickname'), :nickname
     column t('competition.name_of_character'), :character_name
     column t('competition.source_of_character'), :character_source
     # column t('competition.perf_requests'), :perf_requests
@@ -77,6 +78,7 @@ ActiveAdmin.register CompApplication do
       end
       row :appearance_no
       row :user
+      row :nickname
       row :character_name
       row :character_source
       row :group_name

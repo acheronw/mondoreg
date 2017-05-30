@@ -77,6 +77,7 @@ class CompApplicationsController < ApplicationController
                                              :veteran,
                                              :group_name,
                                              :group_members,
+                                             :nickname,
     )
   end
 

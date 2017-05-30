@@ -92,6 +92,7 @@ en:
     competition_type: "Type of competition"
     convention: "Convention"
     name_of_competitor: "Name of competitor"
+    nickname: "Nickname / Alias"
     name_of_character: "Name of character"
     source_of_character: "Fandom"
     source_of_character: "State"
@@ -167,6 +168,8 @@ en:
               blank: "is required."
         comp_application:
           attributes:
+            nickname:
+              blank: "Nickname / Alias missing"
             primary_image:
               blank: "Please upload a picture!"
             stage_music:

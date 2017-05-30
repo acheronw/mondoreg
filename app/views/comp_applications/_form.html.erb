@@ -10,6 +10,12 @@
         <%= render 'application/error_messages', object: f.object %>
 
         <div class="form-group">
+          <%= f.label t('competition.nickname')  %>
+          <%= f.text_field :nickname %>
+        </div>
+
+
+        <div class="form-group">
           <%= f.label t('competition.name_of_character')  %>
           <%= f.text_field :character_name %>
         </div>
