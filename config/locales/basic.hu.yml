@@ -79,7 +79,7 @@ hu:
     perf_requests: "Kérések a színpadi fellépéshez"
     group_name: "Csapatnév"
     group_members: "Csapattagok"
-    group_member_name: "Csapattag neve"
+    group_member_names: "Csapattagok nevei"
     status: "Státusz"
     state_pending: "Beküldve"
     state_accepted: "Elfogadva"
@@ -108,6 +108,7 @@ hu:
       extra_images_explained: "Ezeket a képeket csak a zsűri fogja megnézni. Például más szögből ábrázolják a karaktered, vagy a karakter részleteit mutajták be."
       veteran_explained: "Kaptál-e legalább egyszer jelölést egy MondoConos cosplay versenyen?"
       perf_requests_explained: "Ide írd le a fellépésedhez kapcsolódó megjegyzéseket és kéréseket, például: fények, felpakolási idő, stb."
+      group_list_explained: "Rajtad kívül az összes többi csapattagnak írd le a polgári nevét, becenevét és az általuk cosplayelt karakterek nevét is."
       competition_already_full: "A jelentkezők száma már elérte a létszámkorlátot. Erre a versenyre már nem lehet jelentkezni."
       competition_error: "Téves jelentkezés, erre a versenyre most nem lehet jelentkezni."
       application_sent: "Jelentkezésedet rögzítettük. A versenyszervező át fogja nézni."
@@ -143,8 +144,15 @@ hu:
               blank: "megadása kötelező."
         comp_application:
           attributes:
+            primary_image:
+              blank: "Tölts fel egy képet!"
             stage_music:
+              blank: "Tölts fel egy videót vagy zenét!"
               spoofed_media_type: "Nem elfogadott audio vagy video file."
+            group_members:
+              blank: "Meg kell adnod a csapattagjaid listáját!"
+            group_name:
+              blank: "Csapatnév hiányzik"
   active_admin:
     search_status:
       headline: "Jelenlegi nézet"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329154006) do
+ActiveRecord::Schema.define(version: 20170530085151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,9 +57,9 @@ ActiveRecord::Schema.define(version: 20170329154006) do
     t.string   "character_source"
     t.string   "status"
     t.string   "perf_requests"
-    t.string   "group_members",              default: [],              array: true
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.text     "group_members"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.text     "admin_msg"
     t.string   "primary_image_file_name"
     t.string   "primary_image_content_type"

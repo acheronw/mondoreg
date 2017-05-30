@@ -33,7 +33,8 @@ class CompApplication < ApplicationRecord
   }
   validates_attachment_content_type :extra_image2, :content_type => /\Aimage\/.*\Z/, message: 'This is not a proper image'
 
-
+  validates :group_members, presence: true, if: Proc.new{ |a| a.competition.group_members?  }
+  validates :group_name, presence: true, if: Proc.new{ |a| a.competition.group_members?  }
 
   def confirm
     self.status = "accepted"

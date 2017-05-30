@@ -61,16 +61,12 @@
               <%= f.text_field :group_name %>
             </div>
 
+            <div class="form-group">
+              <%= f.label t('competition.group_member_names')  %>
+              <%= f.text_area :group_members %>
+              <i><%= t('competition.user_side.group_list_explained') %></i>
+            </div>
 
-            <% group_size = @comp_application.competition.max_group_size || 10
-               for i in 2 .. group_size
-                 # We iterate from 2, because the user itself is the first group member.
-            %>
-                <div class="form-group">
-                  <%= f.label t('competition.group_member_name')  %>
-                  <%= f.text_field :group_members, value: @comp_application.group_members[i-2], multiple: true %>
-                </div>
-            <% end %>
         <% end %>
 
         <% if @comp_application.competition.perf_requests?  %>

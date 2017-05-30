@@ -76,7 +76,7 @@ class CompApplicationsController < ApplicationController
                                              :extra_image2,
                                              :veteran,
                                              :group_name,
-                                             :group_members => []
+                                             :group_members,
     )
   end
 

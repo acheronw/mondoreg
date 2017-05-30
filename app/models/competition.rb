@@ -35,6 +35,10 @@ class Competition < ApplicationRecord
     ['craft', 'craft_group', 'perf', 'perf_group'].include? self.subtype
   end
 
+  def require_music_upload?
+    ['craft', 'craft_group', 'perf', 'perf_group'].include? self.subtype
+  end
+
   def extra_images?
     false
     # ['craft', 'craft_group'].include? self.subtype
