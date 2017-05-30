@@ -5,7 +5,6 @@ class CompApplication < ApplicationRecord
   # This is a virtual attribute (does not go into the DB)
   attr_accessor :consent
 
-  validates :nickname, presence: true
   validates :competition_id, presence: true
   validates :user_id, presence: true
   validates :character_name, presence: true

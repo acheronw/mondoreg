@@ -48,8 +48,7 @@ class Competition < ApplicationRecord
   end
 
   def extra_images?
-    false
-    # ['craft', 'craft_group'].include? self.subtype
+    ['craft', 'craft_group', 'eurocosplay'].include? self.subtype
   end
 
 end
