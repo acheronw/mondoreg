@@ -13,39 +13,71 @@ ActiveAdmin.register_page "Dashboard" do
 
     columns do
       column do
-        panel t('admin_dashboard.recent_orders') do
-          table_for TicketOrder.pending.active.order(updated_at: :desc).limit(10) do | ticket_order |
-            column :id
-            column t('ticketing.name_of_buyer'), :user
-            column :quantity
-            column t('ticketing.total_price') do | ticket_order |
-              div :class => "column-right" do
-                ticket_order.quantity * ticket_order.ticket.price.to_i
+        if current_admin_user.access_ticketing?
+          panel t('admin_dashboard.recent_orders') do
+            table_for TicketOrder.pending.active.order(updated_at: :desc).limit(10) do | ticket_order |
+              column :id
+              column t('ticketing.name_of_buyer'), :user
+              column :quantity
+              column t('ticketing.total_price') do | ticket_order |
+                div :class => "column-right" do
+                  ticket_order.quantity * ticket_order.ticket.price.to_i
+                end
               end
             end
+            strong { link_to "All ticket orders", admin_ticket_orders_path('' ) }
           end
-          strong { link_to "All ticket orders", admin_ticket_orders_path('' ) }
         end
-
       end
       column do
-        panel t('admin_dashboard.current_con') do
-          if Convention.active.any?
-            strong { Convention.active.first.name }
+        panel 'Welcome admin!' do
+          if current_admin_user.is_super?
             div do
-              no_sold = TicketOrder.active.where(status: 'accepted').sum(:quantity)
-              t('admin_dashboard.no_of_confirmed', number: no_sold)
+              'You re super, admin!'
             end
+          end
+          if current_admin_user.access_ticketing?
             div do
-              no_pending = TicketOrder.requires_attention.sum(:quantity)
-              t('admin_dashboard.no_of_pending', number: no_pending)
+              "You have access to ticketing"
             end
           else
-            # no active convention
+            div do
+              "No access to ticketing"
+            end
           end
-
-
+          if current_admin_user.access_competitions?
+            div do
+              "You have access to manage competitions"
+            end
+          else
+            div do
+              "No access to manage competitions"
+            end
+          end
         end
+
+        if current_admin_user.access_ticketing?
+          panel t('admin_dashboard.current_con') do
+            if Convention.active.any?
+              strong { Convention.active.first.name }
+              div do
+                no_sold = TicketOrder.active.where(status: 'accepted').sum(:quantity)
+                t('admin_dashboard.no_of_confirmed', number: no_sold)
+              end
+              div do
+                no_pending = TicketOrder.requires_attention.sum(:quantity)
+                t('admin_dashboard.no_of_pending', number: no_pending)
+              end
+            else
+              # no active convention
+            end
+          end
+        end
+
+
+
+
+
       end
     end
 

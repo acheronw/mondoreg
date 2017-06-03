@@ -1,4 +1,5 @@
 ActiveAdmin.register Convention do
+  menu if: proc{ current_admin_user.is_super?}
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

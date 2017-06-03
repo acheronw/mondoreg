@@ -11,4 +11,16 @@ class AdminUser < ApplicationRecord
     new_record? ? false : super
   end
 
+  def is_super?
+    access_levels == 'super'
+  end
+
+  def access_ticketing?
+    ['super', 'ticketing', 'both'].include? access_levels
+  end
+
+  def access_competitions?
+    ['super', 'competitions', 'both'].include? access_levels
+  end
+
 end
