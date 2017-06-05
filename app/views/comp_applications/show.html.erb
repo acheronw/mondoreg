@@ -6,23 +6,43 @@
 
 <div class="jumbotron">
   <dl>
+
+    <%# Nickname of user Field  %>
     <dt><%= t('competition.nickname') %></dt>
     <dl><%= @comp_application.nickname %></dl>
 
-    <dt><%= t('competition.name_of_character') %></dt>
-    <dl><%= @comp_application.character_name %></dl>
 
-    <dt><%= t('competition.source_of_character') %></dt>
-    <dl><%= @comp_application.character_source %></dl>
+    <%# Name of Character, Source - Cosplay only fields %>
+    <% if @comp_application.competition.cosplay_fields? %>
 
-    <dt><%= t('competition.primary_image') %></dt>
+        <dt><%= t('competition.name_of_character') %></dt>
+        <dl><%= @comp_application.character_name %></dl>
+
+        <dt><%= t('competition.source_of_character') %></dt>
+        <dl><%= @comp_application.character_source %></dl>
+
+    <% end %>
+
+    <%# Primary Image Field
+    Label varies by competition type %>
+
+    <dt><%= @comp_application.competition.cosplay_fields? ? t('competition.primary_cosplay_image') : t('competition.primary_art_image')
+    %></dt>
     <dl><%= image_tag (@comp_application.primary_image.url(:medium)) %></dl>
 
-    <dt><%= t('competition.stage_music') %></dt>
-    <dl><%= link_to @comp_application.stage_music_file_name, @comp_application.stage_music.url %></dl>
 
+    <%# Music/video uploaded - Cosplay only fields %>
+    <% if @comp_application.competition.cosplay_fields? %>
+        <dt><%= t('competition.stage_music') %></dt>
+        <dl><%= link_to @comp_application.stage_music_file_name, @comp_application.stage_music.url %></dl>
+    <% end %>
+
+
+    <%# Extra images - if allowed
+    Label varies by competition type %>
     <% if @comp_application.competition.extra_images? %>
-        <dt><%= t('competition.extra_image')%></dt>
+        <dt><%= @comp_application.competition.cosplay_fields? ? t('competition.extra_cosplay_image') : t('competition.extra_art_image')
+        %></dt>
         <dl>
           <% if @comp_application.extra_image1.present? %>
             <%= image_tag (@comp_application.extra_image1.url(:medium)) %>
@@ -34,6 +54,7 @@
     <% end %>
 
 
+    <%# Group name, members - Group Cosplay only fields %>
     <% if @comp_application.competition.group_members? %>
         <dt><%= t('competition.group_name') %></dt>
         <dl><%= @comp_application.group_name %></dl>
@@ -43,11 +64,15 @@
 
     <% end %>
 
+
+    <%# Stage requests - if allowed %>
     <% if @comp_application.competition.perf_requests?  %>
         <dt><%= t('competition.perf_requests')%></dt>
         <dl><%= @comp_application.perf_requests %></dl>
     <% end %>
 
+
+    <%# Veteran checkbox - if allowed %>
     <% if @comp_application.competition.ask_veteran?  %>
         <dt><%= t('competition.veteran')%></dt>
         <dl><%= @comp_application.veteran ? t('yes') : t('no') %>

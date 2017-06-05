@@ -9,44 +9,62 @@
 
         <%= render 'application/error_messages', object: f.object %>
 
+        <%# Nickname of user Field  %>
         <div class="form-group">
           <%= f.label t('competition.nickname')  %>
           <%= f.text_field :nickname %>
         </div>
 
 
-        <div class="form-group">
-          <%= f.label t('competition.name_of_character')  %>
-          <%= f.text_field :character_name %>
-        </div>
+        <%# Name of Character, Source - Cosplay only fields %>
+        <% if @comp_application.competition.cosplay_fields? %>
+            <div class="form-group">
+              <%= f.label t('competition.name_of_character')  %>
+              <%= f.text_field :character_name %>
+            </div>
 
-        <div class="form-group">
-          <%= f.label t('competition.source_of_character')  %>
-          <%= f.text_field :character_source %>
-          <i><%= t('competition.user_side.fandom_explained') %></i>
-        </div>
+            <div class="form-group">
+              <%= f.label t('competition.source_of_character')  %>
+              <%= f.text_field :character_source %>
+              <i><%= t('competition.user_side.fandom_explained') %></i>
+            </div>
+        <% end %>
 
+
+        <%# Primary Image Field
+        Label varies by competition type %>
         <div class="form-group">
-          <%= f.label t('competition.primary_image') %>
+          <%= f.label (@comp_application.competition.cosplay_fields? ? t('competition.primary_cosplay_image') : t('competition.primary_art_image') )  %>
           <% if @comp_application.primary_image.present? %>
               <%= image_tag (@comp_application.primary_image.url(:medium)) %>
           <% end %>
           <%= f.file_field :primary_image %>
-          <i><%= t('competition.user_side.primary_image_explained') %></i>
-        </div>
-
-        <div class="form-group">
-          <%= f.label t('competition.stage_music') %>
-          <% if @comp_application.stage_music.present? %>
-              <%= link_to @comp_application.stage_music_file_name, (@comp_application.stage_music.url(:medium)) %>
+          <%# Explanation - Cosplay only %>
+          <% if @comp_application.competition.cosplay_fields? %>
+              <i><%= t('competition.user_side.primary_image_explained') %></i>
           <% end %>
-          <%= f.file_field :stage_music %>
-          <i><%= t('competition.user_side.stage_music_explained') %></i>
         </div>
 
+
+        <%# Music/video uploaded - Cosplay only fields %>
+        <% if @comp_application.competition.cosplay_fields? %>
+            <div class="form-group">
+              <%= f.label t('competition.stage_music') %>
+              <% if @comp_application.stage_music.present? %>
+                  <%= link_to @comp_application.stage_music_file_name, (@comp_application.stage_music.url(:medium)) %>
+              <% end %>
+              <%= f.file_field :stage_music %>
+              <i><%= t('competition.user_side.stage_music_explained') %></i>
+            </div>
+        <% end %>
+
+
+        <%# Extra images - if allowed
+        Label varies by competition type %>
         <% if @comp_application.competition.extra_images?  %>
             <div class="form-group">
-              <%= f.label t('competition.extra_image')  %>
+              <%= f.label (@comp_application.competition.cosplay_fields? ? t('competition.extra_cosplay_image') : t('competition.extra_art_image') )  %>
+
               <% if @comp_application.extra_image1.present? %>
                   <%= image_tag (@comp_application.extra_image1.url(:medium)) %>
               <% end %>
@@ -55,13 +73,17 @@
               <% end %>
               <%= f.file_field :extra_image1 %>
               <%= f.file_field :extra_image2 %>
-              <i><%= t('competition.user_side.extra_images_explained') %></i>
+
+              <%# Explanation - Cosplay only %>
+              <% if @comp_application.competition.cosplay_fields? %>
+                  <i><%= t('competition.user_side.extra_images_explained') %></i>
+              <% end %>
             </div>
         <% end %>
 
 
+        <%# Group name, members - Group Cosplay only fields %>
         <% if @comp_application.competition.group_members? %>
-
             <div class="form-group">
               <%= f.label t('competition.group_name')  %>
               <%= f.text_field :group_name %>
@@ -72,9 +94,10 @@
               <%= f.text_area :group_members %>
               <i><%= t('competition.user_side.group_list_explained') %></i>
             </div>
-
         <% end %>
 
+
+        <%# Stage requests - if allowed %>
         <% if @comp_application.competition.perf_requests?  %>
             <div class="form-group">
               <%= f.label t('competition.perf_requests')  %>
@@ -84,6 +107,7 @@
         <% end %>
 
 
+        <%# Veteran checkbox - if allowed %>
         <% if @comp_application.competition.ask_veteran?  %>
             <div class="form-group">
               <%= f.label t('competition.veteran') %>
@@ -92,6 +116,9 @@
             </div>
         <% end %>
 
+
+        <%# Consent checkbox - if allowed
+        This field is virtual, will not be stored in DB. %>
         <% if @comp_application.competition.consent_required?  %>
             <div class="form-group">
               <%= f.label t('competition.consent') %>
