@@ -11,7 +11,7 @@ class Competition < ApplicationRecord
 
 
   scope :active, -> { joins(:convention).merge(Convention.active) }
-  scope :on_sale, -> { where("applications_start < ?", Date.today).where("applications_end > ?", Date.today) }
+  scope :on_sale, -> { where("applications_start <= ?", Date.today).where("applications_end >= ?", Date.today) }
 
   def on_sale?
     self.applications_start < Date.today && self.applications_end > Date.today
