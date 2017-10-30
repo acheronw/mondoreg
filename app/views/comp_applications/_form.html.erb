@@ -76,8 +76,14 @@
 
               <%# Explanation - Cosplay only %>
               <% if @comp_application.competition.cosplay_fields? %>
-                  <i><%= t('competition.user_side.extra_images_explained') %></i>
+                  <i><%= t('competition.user_side.extra_images_cosplay_explained') %></i>
               <% end %>
+
+              <%# Explanation - Digital Art only %>
+              <% if @comp_application.competition.subtype == 'rajz_cg' %>
+                  <i><%= t('competition.user_side.extra_images_digital_art_explained') %></i>
+              <% end %>
+
             </div>
         <% end %>
 
