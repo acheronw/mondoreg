@@ -41,7 +41,8 @@ class Competition < ApplicationRecord
   end
 
   def ask_veteran?
-    ['craft', 'craft_group', 'perf', 'perf_group'].include? self.subtype
+    false
+    # ['craft', 'craft_group', 'perf', 'perf_group'].include? self.subtype
   end
 
   def consent_required?
