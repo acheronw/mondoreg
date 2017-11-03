@@ -150,6 +150,7 @@ en:
     current_con: "Current Convention"
     no_of_confirmed: "We have %{number} tickets already sold"
     no_of_pending: "and further %{number} have been reserved"
+    upload_bank_csv: "Upload csv of the transaction log of the bank account"
   activerecord:
     attributes:
       user:

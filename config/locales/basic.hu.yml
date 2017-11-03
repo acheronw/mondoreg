@@ -128,6 +128,7 @@ hu:
     current_con: "Aktuális Con"
     no_of_confirmed: "Már %{number} jegyet eladtunk"
     no_of_pending: "és további %{number} jegyet lefoglaltak"
+    upload_bank_csv: "Bankszámla kivonat (csv) feltöltése"
   activerecord:
     attributes:
       user:

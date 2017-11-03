@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171030181946) do
+ActiveRecord::Schema.define(version: 20171031093151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,20 @@ ActiveRecord::Schema.define(version: 20171030181946) do
     t.index ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
     t.index ["unlock_token"], name: "index_admin_users_on_unlock_token", unique: true, using: :btree
+  end
+
+  create_table "bank_transactions", force: :cascade do |t|
+    t.string   "csv_line"
+    t.float    "amount_of_transaction"
+    t.date     "date_of_transaction"
+    t.string   "comment_of_transaction"
+    t.string   "sender_of_transaction"
+    t.string   "order_id_code"
+    t.integer  "ticket_order_id"
+    t.string   "status"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["ticket_order_id"], name: "index_bank_transactions_on_ticket_order_id", using: :btree
   end
 
   create_table "comp_applications", force: :cascade do |t|
@@ -159,6 +173,7 @@ ActiveRecord::Schema.define(version: 20171030181946) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "bank_transactions", "ticket_orders"
   add_foreign_key "comp_applications", "competitions"
   add_foreign_key "comp_applications", "users"
   add_foreign_key "competitions", "conventions"
