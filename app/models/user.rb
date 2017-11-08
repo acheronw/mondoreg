@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -36,5 +37,11 @@ class User < ApplicationRecord
     open_comps.delete_if { | comp | comp.full? }
     return open_comps
   end
+
+  def is_comp_admin?
+    has_any_role?( {:name => :manager, :resource => :any},
+                   {:name => :assistant, :resource => :any })
+  end
+
 
 end

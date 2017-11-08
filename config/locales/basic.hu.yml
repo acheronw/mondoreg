@@ -5,6 +5,8 @@ hu:
   under_construct: 'Fejlesztés alatt.'
   nothing_to_do: 'Jelenleg nincs nyitva se jegyvásárlás, se verseny-jelentkezés, amire tudnál jelentkezni. Nézz majd vissza később!'
   title:
+    comp_admin: "Verseny adminisztráció"
+    ticket_admin: "Jegyvásárlás adminisztráció"
     help: "Súgó"
     home: "Kezdőlap"
     signup: "Új fiók létrehozása"
@@ -123,6 +125,9 @@ hu:
     email:
       accepted_subject: "MondoCon versenyjelentkezés elfogadva"
       rejected_subject: "Probléma a MondoCon versenyjelentkezéseddel"
+  comp_admin:
+    no_of_applications: "Nevezők száma"
+    list_of_competitors: "Nevezők listája"
   admin_dashboard:
     recent_orders: "Friss Foglalások"
     current_con: "Aktuális Con"

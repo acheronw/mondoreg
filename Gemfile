@@ -26,6 +26,9 @@ gem 'rails-controller-testing'
 # Devise for login and authenticating
 gem 'devise', '4.2'
 
+# Rolify for easy assignment and querries of roles
+gem 'rolify'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

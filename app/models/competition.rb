@@ -13,6 +13,9 @@ class Competition < ApplicationRecord
   scope :active, -> { joins(:convention).merge(Convention.active) }
   scope :on_sale, -> { where("applications_start <= ?", Date.today).where("applications_end >= ?", Date.today) }
 
+  # This is for Rolify:
+  resourcify
+
   def on_sale?
     self.applications_start < Date.today && self.applications_end > Date.today
   end
