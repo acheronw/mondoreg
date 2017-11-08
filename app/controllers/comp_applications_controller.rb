@@ -3,7 +3,9 @@ class CompApplicationsController < ApplicationController
 
   def show
     @comp_application = CompApplication.find(params[:id])
-    if current_user != @comp_application.user
+    if current_user != @comp_application.user &&
+        !current_user.has_role?(:assistant, @comp_application.competition) &&
+        !current_user.has_role?(:manager, @comp_application.competition)
       flash[:danger] = "Access denied! Exterminate user! Exterminate!"
       redirect_to root_path
     end
@@ -65,6 +67,24 @@ class CompApplicationsController < ApplicationController
         render 'edit'
       end
     end
+  end
+
+  def accept_application
+    @comp_application = CompApplication.find(params[:id])
+    if current_user.has_role? :manager, @comp_application.competition
+      @comp_application.confirm
+      flash[:notice] = t('competition.admin.application_accepted', id: @comp_application.id)
+    end
+    redirect_to :back
+  end
+
+  def reject_application
+    @comp_application = CompApplication.find(params[:id])
+    if current_user.has_role? :manager, @comp_application.competition
+      @comp_application.reject()
+      flash[:notice] = t('competition.admin.application_rejected', id: @comp_application.id)
+    end
+    redirect_to :back
   end
 
 

@@ -32,7 +32,7 @@
             <td><%= comp_app.character_name %></td>
             <td><%= comp_app.character_source %></td>
             <td><%= comp_app.appearance_no %></td>
-            <td><%=  %></td>
+            <td><%= comp_app.inner_memo %></td>
             <td><%= comp_app.admin_msg %></td>
         <% else %>
             <td><%= image_tag (comp_app.primary_image.url(:medium)) %></td>
@@ -51,6 +51,20 @@
               <%= comp_app.status_localized %>
             </td>
         <% end %>
+
+        <td>
+          <%= link_to t('competition.user_side.view_application'), comp_app %>
+        </td>
+        <td>
+          <% if current_user.has_role? :manager, @competition %>
+              <% if comp_app.status == "pending" %>
+                  <%=  link_to t('competition.admin.confirm_button') , accept_application_path(id: comp_app.id), method: :patch %>
+                  <br>
+              <% end %>
+              <%=  link_to t('competition.admin.unconfirm_button') , reject_application_path(id: comp_app.id), method: :patch %>
+
+          <% end %>
+        </td>
 
 
       </tr>
