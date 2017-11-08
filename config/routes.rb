@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :ticket_orders, only: [:create]
 
   resources :comp_applications
-
+  resources :competitions, only: [:show]
 
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'

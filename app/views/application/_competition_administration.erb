@@ -24,7 +24,8 @@
                 <%= comp.max_applications ? comp.max_applications.to_s : t('competition.user_side.unlimited') %>
               </td>
               <td>
-                <%= link_to t('comp_admin.list_of_competitors'), new_comp_application_path(competition_id: comp.id) %>
+                <%= link_to t('competition.user_side.view_application'), comp %>
+
               </td>
             </tr>
         <% end %>

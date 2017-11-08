@@ -30,7 +30,7 @@ class Competition < ApplicationRecord
   end
 
   # The following methods are used to check which optional fields are relevant.
-  def cosplay_fields?
+  def is_cosplay?
     ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay'].include? self.subtype
   end
 

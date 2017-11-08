@@ -148,6 +148,8 @@ en:
       accepted_subject: "MondoCon competition application accepted"
       rejected_subject: "Problem with MondoCon competition application"
   comp_admin:
+      admin_msg: "Change request issued to the competitor"
+      inner_memo: "Internal admin comment"
       no_of_applications: "No. of competitors"
       list_of_competitors: "List of competitors"
   admin_dashboard:
