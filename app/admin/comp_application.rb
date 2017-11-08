@@ -4,7 +4,7 @@ ActiveAdmin.register CompApplication do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 
-  permit_params :competition_id, :user_id, :character_name, :character_source, :status, :perf_requests, :admin_msg, :appearance_no, :group_name, :nickname, :group_name, :group_members, :veteran
+  permit_params :competition_id, :user_id, :character_name, :character_source, :status, :perf_requests, :admin_msg, :appearance_no, :group_name, :nickname, :group_name, :group_members, :veteran, :inner_memo
 
 
   # Ez teszi lehetővé, hogy az indexben a user sort a user táblából joinolt name mezővel tudjuk sort-olni:
@@ -23,7 +23,7 @@ ActiveAdmin.register CompApplication do
 
   member_action :reject_application, method: :patch do
     resource.reject
-    flash[:notice] = t('competition.admin.application_accepted', id: resource.id)
+    flash[:notice] = t('competition.admin.application_rejected', id: resource.id)
     redirect_to :back
   end
 

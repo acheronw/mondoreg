@@ -1,0 +1,77 @@
+<% provide(:title, @competition.name ) %>
+
+<div class ="page-header">
+  <h1><%= @competition.convention.name%> - <%= @competition.name  %></h1>
+</div>
+
+<div class="padded well">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t('competition.name_of_competitor') %></th>
+        <th><%= t('competition.nickname') %></th>
+        <% if @competition.is_cosplay? %>
+            <th><%= t('competition.name_of_character') %></th>
+            <th><%= t('competition.source_of_character') %></th>
+            <th><%= t('competition.admin.appearance_no') %></th>
+            <th><%= t('comp_admin.inner_memo') %></th>
+            <th><%= t('comp_admin.admin_msg') %></th>
+        <% else %>
+            <th><%= t('competition.primary_art_image') %></th>
+        <% end %>
+        <th><%= t('competition.status') %></th>
+      </tr>
+    </thead>
+
+    <% @competition.comp_applications.order(:status, :appearance_no, updated_at: :desc).each do | comp_app | %>
+      <tr>
+        <td><%= comp_app.user.name %></td>
+        <td><%= comp_app.nickname %></td>
+
+        <% if @competition.is_cosplay? %>
+            <td><%= comp_app.character_name %></td>
+            <td><%= comp_app.character_source %></td>
+            <td><%= comp_app.appearance_no %></td>
+            <td><%= comp_app.inner_memo %></td>
+            <td><%= comp_app.admin_msg %></td>
+        <% else %>
+            <td><%= image_tag (comp_app.primary_image.url(:medium)) %></td>
+        <% end %>
+
+        <% if comp_app.status == 'accepted' %>
+            <td class="success">
+              <%= comp_app.status_localized %>
+            </td>
+        <% elsif comp_app.status == 'pending' %>
+            <td class="warning">
+              <%= comp_app.status_localized %>
+            </td>
+        <% else %>
+            <td class="danger">
+              <%= comp_app.status_localized %>
+            </td>
+        <% end %>
+
+        <td>
+          <%= link_to t('competition.user_side.view_application'), comp_app %>
+        </td>
+        <td>
+          <% if current_user.has_role? :manager, @competition %>
+              <% if comp_app.status == "pending" %>
+                  <%=  link_to t('competition.admin.confirm_button') , accept_application_path(id: comp_app.id), method: :patch %>
+                  <br>
+              <% end %>
+              <%=  link_to t('competition.admin.unconfirm_button') , reject_application_path(id: comp_app.id), method: :patch %>
+
+          <% end %>
+        </td>
+
+
+      </tr>
+
+    <% end %>
+
+  </table>
+
+</div>
+

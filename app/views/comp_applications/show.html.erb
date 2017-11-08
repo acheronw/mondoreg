@@ -13,7 +13,7 @@
 
 
     <%# Name of Character, Source - Cosplay only fields %>
-    <% if @comp_application.competition.cosplay_fields? %>
+    <% if @comp_application.competition.is_cosplay? %>
 
         <dt><%= t('competition.name_of_character') %></dt>
         <dl><%= @comp_application.character_name %></dl>
@@ -26,13 +26,13 @@
     <%# Primary Image Field
     Label varies by competition type %>
 
-    <dt><%= @comp_application.competition.cosplay_fields? ? t('competition.primary_cosplay_image') : t('competition.primary_art_image')
+    <dt><%= @comp_application.competition.is_cosplay? ? t('competition.primary_cosplay_image') : t('competition.primary_art_image')
     %></dt>
     <dl><%= image_tag (@comp_application.primary_image.url(:medium)) %></dl>
 
 
     <%# Music/video uploaded - Cosplay only fields %>
-    <% if @comp_application.competition.cosplay_fields? %>
+    <% if @comp_application.competition.is_cosplay? %>
         <dt><%= t('competition.stage_music') %></dt>
         <dl><%= link_to @comp_application.stage_music_file_name, @comp_application.stage_music.url %></dl>
     <% end %>
@@ -41,7 +41,7 @@
     <%# Extra images - if allowed
     Label varies by competition type %>
     <% if @comp_application.competition.extra_images? %>
-        <dt><%= @comp_application.competition.cosplay_fields? ? t('competition.extra_cosplay_image') : t('competition.extra_art_image')
+        <dt><%= @comp_application.competition.is_cosplay? ? t('competition.extra_cosplay_image') : t('competition.extra_art_image')
         %></dt>
         <dl>
           <% if @comp_application.extra_image1.present? %>

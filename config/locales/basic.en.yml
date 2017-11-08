@@ -26,6 +26,8 @@ en:
   under_construct: "Construction under progress"
   nothing_to_do: 'There are no tickets on sale or competitions open for applications at the moment. Please come back later!'
   title:
+    comp_admin: "Competition Administration"
+    ticket_admin: "Ticketing Administration"
     help: "Help"
     home: "Home"
     signup: "Create new account"
@@ -145,11 +147,17 @@ en:
     email:
       accepted_subject: "MondoCon competition application accepted"
       rejected_subject: "Problem with MondoCon competition application"
+  comp_admin:
+      admin_msg: "Change request issued to the competitor"
+      inner_memo: "Internal admin comment"
+      no_of_applications: "No. of competitors"
+      list_of_competitors: "List of competitors"
   admin_dashboard:
     recent_orders: "Recent Orders"
     current_con: "Current Convention"
     no_of_confirmed: "We have %{number} tickets already sold"
     no_of_pending: "and further %{number} have been reserved"
+    upload_bank_csv: "Upload csv of the transaction log of the bank account"
   activerecord:
     attributes:
       user:

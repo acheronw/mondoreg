@@ -30,31 +30,31 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
       column do
-        panel 'Welcome admin!' do
-          if current_admin_user.is_super?
-            div do
-              'You re super, admin!'
-            end
-          end
-          if current_admin_user.access_ticketing?
-            div do
-              "You have access to ticketing"
-            end
-          else
-            div do
-              "No access to ticketing"
-            end
-          end
-          if current_admin_user.access_competitions?
-            div do
-              "You have access to manage competitions"
-            end
-          else
-            div do
-              "No access to manage competitions"
-            end
-          end
-        end
+        # panel 'Welcome admin!' do
+        #   if current_admin_user.is_super?
+        #     div do
+        #       'You re super, admin!'
+        #     end
+        #   end
+        #   if current_admin_user.access_ticketing?
+        #     div do
+        #       "You have access to ticketing"
+        #     end
+        #   else
+        #     div do
+        #       "No access to ticketing"
+        #     end
+        #   end
+        #   if current_admin_user.access_competitions?
+        #     div do
+        #       "You have access to manage competitions"
+        #     end
+        #   else
+        #     div do
+        #       "No access to manage competitions"
+        #     end
+        #   end
+        # end
 
         if current_admin_user.access_ticketing?
           panel t('admin_dashboard.current_con') do
@@ -72,6 +72,11 @@ ActiveAdmin.register_page "Dashboard" do
               # no active convention
             end
           end
+          panel t('admin_dashboard.upload_bank_csv') do
+
+          end
+
+
         end
 
 
@@ -83,25 +88,5 @@ ActiveAdmin.register_page "Dashboard" do
 
 
 
-
-    # Here is an example of a simple dashboard with columns and panels.
-    #
-    # columns do
-    #   column do
-    #     panel "Recent Posts" do
-    #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
-    #         end
-    #       end
-    #     end
-    #   end
-
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
-    # end
-  end # content
+  end
 end

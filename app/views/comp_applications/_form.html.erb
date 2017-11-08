@@ -17,7 +17,7 @@
 
 
         <%# Name of Character, Source - Cosplay only fields %>
-        <% if @comp_application.competition.cosplay_fields? %>
+        <% if @comp_application.competition.is_cosplay? %>
             <div class="form-group">
               <%= f.label t('competition.name_of_character')  %>
               <%= f.text_field :character_name %>
@@ -34,20 +34,20 @@
         <%# Primary Image Field
         Label varies by competition type %>
         <div class="form-group">
-          <%= f.label (@comp_application.competition.cosplay_fields? ? t('competition.primary_cosplay_image') : t('competition.primary_art_image') )  %>
+          <%= f.label (@comp_application.competition.is_cosplay? ? t('competition.primary_cosplay_image') : t('competition.primary_art_image') )  %>
           <% if @comp_application.primary_image.present? %>
               <%= image_tag (@comp_application.primary_image.url(:medium)) %>
           <% end %>
           <%= f.file_field :primary_image %>
           <%# Explanation - Cosplay only %>
-          <% if @comp_application.competition.cosplay_fields? %>
+          <% if @comp_application.competition.is_cosplay? %>
               <i><%= t('competition.user_side.primary_image_explained') %></i>
           <% end %>
         </div>
 
 
         <%# Music/video uploaded - Cosplay only fields %>
-        <% if @comp_application.competition.cosplay_fields? %>
+        <% if @comp_application.competition.is_cosplay? %>
             <div class="form-group">
               <%= f.label t('competition.stage_music') %>
               <% if @comp_application.stage_music.present? %>
@@ -63,7 +63,7 @@
         Label varies by competition type %>
         <% if @comp_application.competition.extra_images?  %>
             <div class="form-group">
-              <%= f.label (@comp_application.competition.cosplay_fields? ? t('competition.extra_cosplay_image') : t('competition.extra_art_image') )  %>
+              <%= f.label (@comp_application.competition.is_cosplay? ? t('competition.extra_cosplay_image') : t('competition.extra_art_image') )  %>
 
               <% if @comp_application.extra_image1.present? %>
                   <%= image_tag (@comp_application.extra_image1.url(:medium)) %>
@@ -75,7 +75,7 @@
               <%= f.file_field :extra_image2 %>
 
               <%# Explanation - Cosplay only %>
-              <% if @comp_application.competition.cosplay_fields? %>
+              <% if @comp_application.competition.is_cosplay? %>
                   <i><%= t('competition.user_side.extra_images_cosplay_explained') %></i>
               <% end %>
 

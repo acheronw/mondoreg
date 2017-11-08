@@ -1,0 +1,40 @@
+
+<% if current_user.is_comp_admin? %>
+  <div class="col-lg-6">
+    <div class="padded well">
+      <p class="center"><%= t('title.comp_admin')%></p>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th><%= t('competition.convention') %></th>
+          <th><%= t('competition.competition_name') %></th>
+          <th><%= t('comp_admin.no_of_applications') %></th>
+        </tr>
+        </thead>
+
+        <% Competition.active.select{
+            |c| (current_user.has_role? :manager, c ) || (current_user.has_role? :assistant, c )
+        }.each do | comp | %>
+            <tr>
+              <td><%= comp.convention.name %></td>
+              <td><%= comp.name  %></td>
+              <td>
+                <%= comp.comp_applications.length.to_s + " / " %>
+                <%= comp.max_applications ? comp.max_applications.to_s : t('competition.user_side.unlimited') %>
+              </td>
+              <td>
+                <%= link_to t('competition.user_side.view_application'), comp %>
+
+              </td>
+            </tr>
+        <% end %>
+
+      </table>
+
+
+    </div>
+  </div>
+
+
+<% end %>
