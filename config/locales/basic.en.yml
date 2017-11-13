@@ -99,6 +99,7 @@ en:
     source_of_character: "Fandom"
     primary_cosplay_image: "Image of character"
     primary_art_image: "Artwork"
+    full_size_image: "Link to full size image"
     stage_music: "Music or video for your stage appearance"
     extra_cosplay_image: "Additional images"
     extra_art_image: "WIP images"

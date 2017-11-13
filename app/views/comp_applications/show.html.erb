@@ -7,6 +7,9 @@
 <div class="jumbotron">
   <dl>
 
+    <dt><%= t('competition.name_of_competitor') %></dt>
+    <dl><%= @comp_application.user.name %></dl>
+
     <%# Nickname of user Field  %>
     <dt><%= t('competition.nickname') %></dt>
     <dl><%= @comp_application.nickname %></dl>
@@ -29,7 +32,7 @@
     <dt><%= @comp_application.competition.is_cosplay? ? t('competition.primary_cosplay_image') : t('competition.primary_art_image')
     %></dt>
     <dl><%= image_tag (@comp_application.primary_image.url(:medium)) %></dl>
-
+    <dl><%= link_to t('competition.full_size_image'), @comp_application.primary_image.url %></dl>
 
     <%# Music/video uploaded - Cosplay only fields %>
     <% if @comp_application.competition.is_cosplay? %>
