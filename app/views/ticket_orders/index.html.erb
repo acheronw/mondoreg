@@ -5,7 +5,9 @@
     <div class="col-lg-6">
       <div class="padded well">
 
+
         <p class="center"><%= t('ticketing.admin.ticket_orders_listing')%></p>
+        <%= will_paginate %>
         <table class="table">
           <thead>
           <tr>
@@ -14,7 +16,7 @@
             <th><%= t('ticketing.user_side.convention') %></th>
             <th><%= t('ticketing.user_side.type_of_ticket') %></th>
             <th><%= sortable('quantity', t('ticketing.quantity')) %></th>
-            <th><%= sortable('total_price', t('ticketing.total_price')) %></th>
+            <th><%= t('ticketing.total_price') %></th>
             <th><%= sortable('status', t('ticketing.status')) %></th>
           </tr>
           </thead>
@@ -35,6 +37,7 @@
             </tr>
           <% end %>
         </table>
+        <%= will_paginate %>
 
       </div>
     </div>

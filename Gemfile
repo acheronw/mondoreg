@@ -52,6 +52,9 @@ gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'paperclip'
 gem 'aws-sdk', '~> 2.3'
 
+# Pagination support used in ticket admin view:
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 
 group :development, :test do
