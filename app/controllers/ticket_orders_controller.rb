@@ -1,6 +1,10 @@
 class TicketOrdersController < ApplicationController
   before_action :bursar_user, only: [:index]
 
+  # This makes the helpers available in the view:
+  helper_method :sort_column, :sort_direction
+
+
   def create
     @ticket_order = current_user.ticket_orders.build(ticket_order_params)
     @ticket_order.status = "pending"
@@ -23,7 +27,7 @@ class TicketOrdersController < ApplicationController
   end
 
   def index
-    @ticket_orders = TicketOrder.all
+    @ticket_orders = TicketOrder.joins(:user).order(sort_column + " " + sort_direction).all
   end
 
 
@@ -34,6 +38,23 @@ class TicketOrdersController < ApplicationController
 
     def bursar_user
       redirect_to root_url unless user_signed_in? && current_user.has_role?(:bursar)
+    end
+
+    def sort_column
+      # Sanitizing the input because it goes into SQL,
+      # also handle situations where the sort_column is not set yet.
+      if ['id', 'name', 'quantity', 'total_price', 'status'].include?(params[:sort])
+        params[:sort]
+      else
+        "id"
+      end
+
+    end
+
+    def sort_direction
+      # Sanitizing the input because it goes into SQL,
+      # also handle situations where the sort_direction is not set yet.
+      ['asc', 'desc'].include?(params[:direction]) ? params[:direction] : "desc"
     end
 
 end

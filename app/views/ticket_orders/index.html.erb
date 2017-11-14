@@ -9,13 +9,13 @@
         <table class="table">
           <thead>
           <tr>
-            <th><%= t('ticketing.order_id')%></th>
-            <th><%= t('ticketing.name_of_buyer')  %></th>
-            <th><%= t('ticketing.user_side.convention')%></th>
-            <th><%= t('ticketing.user_side.type_of_ticket')%></th>
-            <th><%= t('ticketing.quantity')%></th>
-            <th><%= t('ticketing.total_price')%></th>
-            <th><%= t('ticketing.status')%></th>
+            <th><%= sortable('id', t('ticketing.order_id')) %></th>
+            <th><%= sortable('name', t('ticketing.name_of_buyer'))  %></th>
+            <th><%= t('ticketing.user_side.convention') %></th>
+            <th><%= t('ticketing.user_side.type_of_ticket') %></th>
+            <th><%= sortable('quantity', t('ticketing.quantity')) %></th>
+            <th><%= sortable('total_price', t('ticketing.total_price')) %></th>
+            <th><%= sortable('status', t('ticketing.status')) %></th>
           </tr>
           </thead>
 
