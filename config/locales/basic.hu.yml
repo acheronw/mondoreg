@@ -67,6 +67,8 @@ hu:
     email:
       ticket_order_subject: "MondoCon jegyrendelés függőben"
       accepted_subject: "MondoCon jegy megerősítve"
+    admin:
+      ticket_orders_listing: "Jegy-rendelések listája"
   competition:
     competition_name: "Verseny"
     competition_type: "Verseny típusa"

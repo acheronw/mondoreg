@@ -9,6 +9,7 @@ class StaticPagesController < ApplicationController
   def help
   end
 
-
+  def ticket_admin
+  end
 
 end

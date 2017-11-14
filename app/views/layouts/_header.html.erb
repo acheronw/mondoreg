@@ -2,16 +2,17 @@
   <div class="container">
 
     <%= link_to t('title.home'), root_path, id: "logo" %>
+
+
     <nav>
       <ul class="nav navbar-nav navbar-right">
 
+        <% if user_signed_in? && current_user.has_role?(:bursar) %>
+            <li><%= link_to t('title.ticket_admin'), ticket_orders_path %></li>
+        <% end %>
 
         <li><%= link_to t('title.help'),   help_path %></li>
         <% if user_signed_in? %>
-            <% if current_user.has_role? :bursar %>
-                <li><%= link_to t('title.ticket_admin'), root_path %></li>
-            <% end %>
-
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <%= current_user.name %>

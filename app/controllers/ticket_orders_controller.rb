@@ -1,5 +1,5 @@
 class TicketOrdersController < ApplicationController
-
+  before_action :bursar_user, only: [:index]
 
   def create
     @ticket_order = current_user.ticket_orders.build(ticket_order_params)
@@ -22,10 +22,18 @@ class TicketOrdersController < ApplicationController
     end
   end
 
+  def index
+    @ticket_orders = TicketOrder.all
+  end
+
 
   private
     def ticket_order_params
       params.require(:ticket_order).permit(:quantity, :ticket_id)
+    end
+
+    def bursar_user
+      redirect_to root_url unless user_signed_in? && current_user.has_role?(:bursar)
     end
 
 end

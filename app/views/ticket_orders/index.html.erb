@@ -1,0 +1,42 @@
+<% provide(:title, t('title.ticket_admin')) %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="padded well">
+
+        <p class="center"><%= t('ticketing.admin.ticket_orders_listing')%></p>
+        <table class="table">
+          <thead>
+          <tr>
+            <th><%= t('ticketing.order_id')%></th>
+            <th><%= t('ticketing.name_of_buyer')  %></th>
+            <th><%= t('ticketing.user_side.convention')%></th>
+            <th><%= t('ticketing.user_side.type_of_ticket')%></th>
+            <th><%= t('ticketing.quantity')%></th>
+            <th><%= t('ticketing.total_price')%></th>
+            <th><%= t('ticketing.status')%></th>
+          </tr>
+          </thead>
+
+          <% @ticket_orders.each do | ticket_order | %>
+            <tr>
+              <td>MC<%= ticket_order.id %></td>
+              <td><%= ticket_order.user.name %></td>
+              <td><%= ticket_order.ticket.convention.name %></td>
+              <td><%= ticket_order.ticket.name %></td>
+              <td><%= ticket_order.quantity %></td>
+              <td><%= ticket_order.total_price %></td>
+              <% if ticket_order.status == 'accepted' %>
+                  <td class="success"><%= ticket_order.status_localized %></td>
+              <% else %>
+                  <td class="danger"><%= ticket_order.status_localized %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

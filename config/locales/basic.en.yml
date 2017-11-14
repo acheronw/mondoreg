@@ -89,6 +89,8 @@ en:
     email:
       ticket_order_subject: "MondoCon ticket pending"
       accepted_subject: "MondoCon ticket confirmed"
+    admin:
+      ticket_orders_listing: "List of ticket orders"
   competition:
     competition_name: "Competition"
     competition_type: "Type of competition"
