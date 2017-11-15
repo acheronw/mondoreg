@@ -59,7 +59,7 @@ ActiveAdmin.register TicketOrder do
     end
     column t('ticketing.user_side.reminder_button') do | ticket_order|
       if ticket_order.status == "pending"
-        link_to t('ticketing.user_side.reminder_button'), reminder_email_path, method: :put
+        link_to t('ticketing.user_side.reminder_button'), reminder_email_path(id: ticket_order.id), method: :put
       end
 
     end

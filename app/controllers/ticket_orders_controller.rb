@@ -45,6 +45,14 @@ class TicketOrdersController < ApplicationController
     redirect_to :back
   end
 
+  def reminder_email
+    @ticket_order = TicketOrder.find(params[:id])
+    if admin_user_signed_in? || current_user.has_role?(:bursar) || current_user == @ticket_order.user
+      ApplicationMailer.ticket_ordered_email(@ticket_order).deliver_now
+      flash[:success] = t('ticketing.user_side.resent_instructions_message')
+    end
+    redirect_to :back
+  end
 
   private
     def ticket_order_params
