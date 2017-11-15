@@ -1,5 +1,5 @@
 class TicketOrdersController < ApplicationController
-  before_action :bursar_user, only: [:index]
+  before_action :bursar_user, only: [:index, :confirm_ticket, :unconfirm_ticket]
 
   # This makes the helpers available in the view:
   helper_method :sort_column, :sort_direction
@@ -9,12 +9,7 @@ class TicketOrdersController < ApplicationController
     @ticket_order = current_user.ticket_orders.build(ticket_order_params)
     @ticket_order.status = "pending"
     tickets_on_sale = Ticket.on_sale.pluck(:id)
-    unless tickets_on_sale.include? @ticket_order.ticket_id
-      # The user tried to hack the params and by a ticket that's not on sale.
-      # I was unable to put this filter into the strong params permit method.
-      flash[:danger] = "That ticket type is not on sale!"
-      redirect_to root_path
-    else
+    if tickets_on_sale.include? @ticket_order.ticket_id
       if @ticket_order.save
         flash[:success] = t('ticketing.user_side.order_placed_message')
         ApplicationMailer.ticket_ordered_email(@ticket_order).deliver_now
@@ -22,13 +17,32 @@ class TicketOrdersController < ApplicationController
       else
         flash[:danger] = @ticket_order.errors.full_messages
         redirect_to root_path
-      end
+        end
+    else
+      # The user tried to hack the params and by a ticket that's not on sale.
+      # I was unable to put this filter into the strong params permit method.
+      flash[:danger] = "That ticket type is not on sale!"
+      redirect_to root_path
     end
   end
 
   def index
     @ticket_orders = TicketOrder.joins(:user).order(sort_column + " " + sort_direction)
                          .paginate(page: params[:page]).all
+  end
+
+  def confirm_ticket
+    @ticket_order = TicketOrder.find(params[:id])
+    @ticket_order.confirm
+    flash[:notice] = t('ticketing.ticket_confirmed', id: @ticket_order.id)
+    redirect_to :back
+  end
+
+  def unconfirm_ticket
+    @ticket_order = TicketOrder.find(params[:id])
+    @ticket_order.unconfirm
+    flash[:notice] = t('ticketing.ticket_unconfirmed', id: @ticket_order.id)
+    redirect_to :back
   end
 
 

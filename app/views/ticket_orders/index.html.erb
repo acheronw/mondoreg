@@ -31,8 +31,19 @@
               <td><%= ticket_order.total_price %></td>
               <% if ticket_order.status == 'accepted' %>
                   <td class="success"><%= ticket_order.status_localized %></td>
+                  <td>
+                    <%=  link_to t('ticketing.unconfirm_button') , unconfirm_ticket_path(id: ticket_order.id), method: :patch %>
+                  </td>
+
+            <% elsif ticket_order.status == 'pending' %>
+                  <td class="danger"><%= ticket_order.status_localized %></td>
+                  <td>
+                    <%=  link_to t('ticketing.confirm_button') , confirm_ticket_path(id: ticket_order.id), method: :patch %>
+                  </td>
+
               <% else %>
                   <td class="danger"><%= ticket_order.status_localized %></td>
+
               <% end %>
             </tr>
           <% end %>
