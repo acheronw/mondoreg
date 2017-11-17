@@ -11,6 +11,16 @@ Rails.application.routes.draw do
   patch 'unconfirm_ticket', to: 'ticket_orders#unconfirm_ticket'
   put 'reminder_email', to: 'ticket_orders#reminder_email'
 
+  resources :bank_transactions, only: [:destroy] do
+    # collection routes work on the whole class, not on individual instances:
+    collection do
+      post 'import'
+    end
+  end
+  patch 'set_done/:id', to: 'bank_transactions#set_done', as: :set_done
+  patch 'set_problematic/:id', to: 'bank_transactions#set_problematic', as: :set_problematic
+
+
   resources :comp_applications
   patch 'accept_application', to: 'comp_applications#accept_application'
   patch 'reject_application', to: 'comp_applications#reject_application'

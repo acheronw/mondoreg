@@ -48,7 +48,11 @@ class TicketOrdersController < ApplicationController
   def reminder_email
     @ticket_order = TicketOrder.find(params[:id])
     if admin_user_signed_in? || current_user.has_role?(:bursar) || current_user == @ticket_order.user
-      ApplicationMailer.ticket_ordered_email(@ticket_order).deliver_now
+      if @ticket_order.status == 'pending'
+        ApplicationMailer.ticket_ordered_email(@ticket_order).deliver_now
+      elsif @ticket_order.status == 'accepted'
+        ApplicationMailer.ticket_confirmed_email(@ticket_order).deliver_now
+      end
       flash[:success] = t('ticketing.user_side.resent_instructions_message')
     end
     redirect_to :back

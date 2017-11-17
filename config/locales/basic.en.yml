@@ -91,6 +91,16 @@ en:
       accepted_subject: "MondoCon ticket confirmed"
     admin:
       ticket_orders_listing: "List of ticket orders"
+      payments_listing: "List of payments"
+      upload_file: "Upload csv file"
+      sender_of_transaction: "Paid by"
+      amount_of_transaction: "Amount"
+      comment_of_transaction: "Comment of the transaction"
+      date_of_transaction: "Date of transaction"
+      full_row: "Raw csv data"
+      set_to_done: "Settled"
+      delete_transaction: "Delete"
+      set_to_problematic: "Mark as problematic"
   competition:
     competition_name: "Competition"
     competition_type: "Type of competition"

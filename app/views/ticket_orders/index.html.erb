@@ -2,12 +2,10 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-9">
       <div class="padded well">
-
-
         <p class="center"><%= t('ticketing.admin.ticket_orders_listing')%></p>
-        <%= will_paginate %>
+        <%= will_paginate @ticket_orders %>
         <table class="table">
           <thead>
           <tr>
@@ -34,13 +32,17 @@
                   <td>
                     <%=  link_to t('ticketing.unconfirm_button') , unconfirm_ticket_path(id: ticket_order.id), method: :patch %>
                   </td>
-
+                  <td>
+                    <%=  link_to t('ticketing.user_side.reminder_button') , reminder_email_path(id: ticket_order.id), method: :put %>
+                  </td>
             <% elsif ticket_order.status == 'pending' %>
                   <td class="danger"><%= ticket_order.status_localized %></td>
                   <td>
                     <%=  link_to t('ticketing.confirm_button') , confirm_ticket_path(id: ticket_order.id), method: :patch %>
                   </td>
-
+                  <td>
+                    <%=  link_to t('ticketing.user_side.reminder_button') , reminder_email_path(id: ticket_order.id), method: :put %>
+                  </td>
               <% else %>
                   <td class="danger"><%= ticket_order.status_localized %></td>
 
@@ -48,9 +50,39 @@
             </tr>
           <% end %>
         </table>
-        <%= will_paginate %>
-
+        <%= will_paginate @ticket_orders %>
       </div>
     </div>
+    <div class="col-lg-3">
+      <div class="padded well">
+        <p class="center"><%= t('ticketing.admin.payments_listing')%></p>
+        <%= form_tag import_bank_transactions_path, multipart: true do  %>
+            <%= file_field_tag :file %>
+            <%= submit_tag t('ticketing.admin.upload_file') %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="padded_well">
+      <table class="table">
+        <thead>
+        <tr>
+          <th><%= t('ticketing.admin.sender_of_transaction')%></th>
+          <th><%= t('ticketing.admin.amount_of_transaction')%></th>
+          <th><%= t('ticketing.admin.comment_of_transaction')%></th>
+          <th><%= t('ticketing.admin.date_of_transaction')%></th>
+          <th><%= t('ticketing.admin.full_row')%></th>
+        </tr>
+        </thead>
+
+        <% bank_transactions = BankTransaction.requires_human %>
+        <%= render bank_transactions %>
+      </table>
+
+
+    </div>
+
   </div>
 </div>

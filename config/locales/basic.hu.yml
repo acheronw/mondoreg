@@ -69,6 +69,16 @@ hu:
       accepted_subject: "MondoCon jegy megerősítve"
     admin:
       ticket_orders_listing: "Jegy-rendelések listája"
+      payments_listing: "Befizetések listája"
+      upload_file: "CSV file feltöltése"
+      sender_of_transaction: "Befizető neve"
+      amount_of_transaction: "Összeg"
+      comment_of_transaction: "Átutalás megjegyzése"
+      date_of_transaction: "Könyvelés dátuma"
+      full_row: "Nyers csv adat"
+      set_to_done: "Rendezve"
+      delete_transaction: "Törlés"
+      set_to_problematic: "Problémásnak jelölés"
   competition:
     competition_name: "Verseny"
     competition_type: "Verseny típusa"

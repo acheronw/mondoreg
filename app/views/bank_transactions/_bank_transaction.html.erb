@@ -1,0 +1,34 @@
+<% colouring = case bank_transaction.status
+                  when 'pending' then 'warning'
+                  when 'problematic' then 'danger'
+               end
+%>
+<tr class='<%= colouring %>' >
+
+  <td>
+    <%= bank_transaction.sender_of_transaction %>
+  </td>
+  <td>
+    <%= bank_transaction.amount_of_transaction %>
+  </td>
+  <td>
+    <%= bank_transaction.comment_of_transaction %>
+  </td>
+  <td>
+    <%= bank_transaction.date_of_transaction %>
+  </td>
+  <td>
+    <%= bank_transaction.csv_line %>
+  </td>
+  <td>
+    <%= link_to t('ticketing.admin.set_to_done'), set_done_path(bank_transaction), method: :patch %>
+    <%= link_to t('ticketing.admin.delete_transaction'), bank_transaction, method: :delete, data: {confirm: "BIZTOS?"} %>
+    <% if bank_transaction.status == 'pending' %>
+        <%= link_to t('ticketing.admin.set_to_problematic'), set_problematic_path(bank_transaction), method: :patch %>
+    <% end %>
+
+  </td>
+</tr>
+
+
+
