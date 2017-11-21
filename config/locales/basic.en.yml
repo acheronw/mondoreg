@@ -101,6 +101,7 @@ en:
       set_to_done: "Settled"
       delete_transaction: "Delete"
       set_to_problematic: "Mark as problematic"
+      problem: "Problem with processing the transaction:"
   competition:
     competition_name: "Competition"
     competition_type: "Type of competition"

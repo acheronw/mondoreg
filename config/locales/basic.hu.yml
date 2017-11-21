@@ -79,6 +79,7 @@ hu:
       set_to_done: "Rendezve"
       delete_transaction: "Törlés"
       set_to_problematic: "Problémásnak jelölés"
+      problem: "A következő probléma merült fel a feldolgozás során:"
   competition:
     competition_name: "Verseny"
     competition_type: "Verseny típusa"

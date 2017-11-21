@@ -9,7 +9,7 @@ class BankTransactionsController < ApplicationController
   def set_done
     @bank_transaction = BankTransaction.find(params[:id])
     @bank_transaction.update(status: 'done')
-    redirect_to :back
+    redirect_to :back, notice: "TRANZAKCIÓ RENDEZVE"
   end
 
   def set_problematic

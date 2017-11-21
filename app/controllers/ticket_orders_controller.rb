@@ -28,7 +28,7 @@ class TicketOrdersController < ApplicationController
 
   def index
     @ticket_orders = TicketOrder.joins(:user).order(sort_column + " " + sort_direction)
-                         .paginate(page: params[:page]).all
+                         .paginate(page: params[:ticket_orders_page], per_page: 10).all
   end
 
   def confirm_ticket

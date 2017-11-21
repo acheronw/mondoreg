@@ -1,12 +1,13 @@
 <% colouring = case bank_transaction.status
                   when 'pending' then 'warning'
                   when 'problematic' then 'danger'
+                 else ''
                end
 %>
 <tr class='<%= colouring %>' >
 
   <td>
-    <%= bank_transaction.sender_of_transaction %>
+    <a title="<%= bank_transaction.csv_line %>"><%= bank_transaction.sender_of_transaction %></a>
   </td>
   <td>
     <%= bank_transaction.amount_of_transaction %>
@@ -18,7 +19,10 @@
     <%= bank_transaction.date_of_transaction %>
   </td>
   <td>
-    <%= bank_transaction.csv_line %>
+    <%= bank_transaction.order_id_code ? 'MC' : '?'  %><%= bank_transaction.order_id_code %>
+  </td>
+  <td>
+    <%= bank_transaction.problem %>
   </td>
   <td>
     <%= link_to t('ticketing.admin.set_to_done'), set_done_path(bank_transaction), method: :patch %>
