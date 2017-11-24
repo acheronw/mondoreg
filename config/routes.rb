@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   patch 'confirm_ticket', to: 'ticket_orders#confirm_ticket'
   patch 'unconfirm_ticket', to: 'ticket_orders#unconfirm_ticket'
   put 'reminder_email', to: 'ticket_orders#reminder_email'
+  get 'export_csv', to: 'ticket_orders#export_csv'
 
   resources :bank_transactions, only: [:destroy] do
     # collection routes work on the whole class, not on individual instances:

@@ -1,5 +1,5 @@
 class TicketOrdersController < ApplicationController
-  before_action :bursar_user, only: [:index, :confirm_ticket, :unconfirm_ticket]
+  before_action :bursar_user, only: [:index, :confirm_ticket, :unconfirm_ticket, :export_csv]
 
   # This makes the helpers available in the view:
   helper_method :sort_column, :sort_direction
@@ -29,6 +29,16 @@ class TicketOrdersController < ApplicationController
   def index
     @ticket_orders = TicketOrder.active.joins(:user).order(sort_column + " " + sort_direction)
                          .paginate(page: params[:ticket_orders_page], per_page: 10).all
+    respond_to do | format |
+      format.html
+      format.csv { send_data text: @ticket_orders.to_csv }
+    end
+  end
+
+  def export_csv
+    @ticket_orders = TicketOrder.active.joins(:user).all
+    response.headers['Content-Disposition'] = 'attachment; filename=mondocon_tickets.csv'
+    render text: @ticket_orders.to_csv
   end
 
   def confirm_ticket

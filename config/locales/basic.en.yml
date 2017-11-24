@@ -103,6 +103,7 @@ en:
       set_to_problematic: "Mark as problematic"
       problem: "Problem with processing the transaction:"
       statistics_title: "Sales statistics for the current convention"
+      download_csv: "Download ticketing data as CSV"
   competition:
     competition_name: "Competition"
     competition_type: "Type of competition"

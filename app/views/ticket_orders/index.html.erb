@@ -62,17 +62,20 @@
         <% end %>
         <br>
         <% if Convention.active.any? %>
+            <div>
+              <%=  link_to t('ticketing.admin.download_csv') , export_csv_path, method: :get %>
+            </div>
+            <br>
             <p class="center">
               <%= t('ticketing.admin.statistics_title') %>
               <%= Convention.active.first.name %>
             </p>
-
-            <p>
+            <div>
               <% no_sold = TicketOrder.active.where(status: 'accepted').sum(:quantity) %>
               <%= t('admin_dashboard.no_of_confirmed', number: no_sold) %>
               <% no_pending = TicketOrder.requires_attention.sum(:quantity) %>
               <%= t('admin_dashboard.no_of_pending', number: no_pending) %>
-            </p>
+            </div>
         <% end %>
       </div>
     </div>

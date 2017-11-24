@@ -81,6 +81,7 @@ hu:
       set_to_problematic: "Problémásnak jelölés"
       problem: "A következő probléma merült fel a feldolgozás során:"
       statistics_title: "Eladási statisztikák"
+      download_csv: "Jegyeladási adatok letöltése CSV-ként"
   competition:
     competition_name: "Verseny"
     competition_type: "Verseny típusa"

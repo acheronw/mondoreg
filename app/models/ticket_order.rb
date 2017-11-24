@@ -39,6 +39,22 @@ class TicketOrder < ApplicationRecord
     self.quantity * self.ticket.price.to_i
   end
 
+  def self.to_csv
+    attributes = ['id', 'name', 'quantity', 'total_price', 'status']
+    CSV.generate(headers: true) do | csv |
+      csv << attributes
+      all.each do | ticket_order |
+        csv << ["MC" + ticket_order.id.to_s,
+                ticket_order.user.name,
+                ticket_order.quantity,
+                ticket_order.total_price,
+                ticket_order.status
+        ]
+      end
+
+    end
+  end
+
   def status_localized
     return case status
       when "pending"
