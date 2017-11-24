@@ -60,6 +60,20 @@
             <%= file_field_tag :file %>
             <%= submit_tag t('ticketing.admin.upload_file') %>
         <% end %>
+        <br>
+        <% if Convention.active.any? %>
+            <p class="center">
+              <%= t('ticketing.admin.statistics_title') %>
+              <%= Convention.active.first.name %>
+            </p>
+
+            <p>
+              <% no_sold = TicketOrder.active.where(status: 'accepted').sum(:quantity) %>
+              <%= t('admin_dashboard.no_of_confirmed', number: no_sold) %>
+              <% no_pending = TicketOrder.requires_attention.sum(:quantity) %>
+              <%= t('admin_dashboard.no_of_pending', number: no_pending) %>
+            </p>
+        <% end %>
       </div>
     </div>
   </div>
@@ -83,7 +97,6 @@
         <%= render bank_transactions %>
 
       </table>
-
     </div>
 
   </div>
