@@ -23,7 +23,7 @@
       </tr>
     </thead>
 
-    <% @competition.comp_applications.order(:status, :appearance_no, updated_at: :desc).each do | comp_app | %>
+    <% @competition.comp_applications.order(:status, :appearance_no, created_at: :desc).each do | comp_app | %>
       <tr>
         <td><%= comp_app.user.name %></td>
         <td><%= comp_app.nickname %></td>
@@ -32,7 +32,7 @@
             <td><%= comp_app.character_name %></td>
             <td><%= comp_app.character_source %></td>
             <td><%= comp_app.appearance_no %></td>
-            <td><%= comp_app.inner_memo %></td>
+            <td><%= render partial: 'comp_applications/update_memo', locals: {comp_application: comp_app} %></td>
             <td><%= comp_app.admin_msg %></td>
         <% else %>
             <td><%= image_tag (comp_app.primary_image.url(:medium)) %></td>
@@ -64,11 +64,6 @@
               <%=  link_to t('competition.admin.unconfirm_button') , reject_application_path(id: comp_app.id), method: :patch %>
 
           <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= render partial: 'comp_applications/update_memo', locals: {comp_application: comp_app} %>
         </td>
       </tr>
 
