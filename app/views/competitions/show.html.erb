@@ -14,8 +14,8 @@
             <th><%= t('competition.name_of_character') %></th>
             <th><%= t('competition.source_of_character') %></th>
             <th><%= t('competition.admin.appearance_no') %></th>
-            <th><%= t('comp_admin.inner_memo') %></th>
-            <th><%= t('comp_admin.admin_msg') %></th>
+            <th><%= t('competion.admin.inner_memo') %></th>
+            <th><%= t('competition.admin.admin_msg') %></th>
         <% else %>
             <th><%= t('competition.primary_art_image') %></th>
         <% end %>
@@ -65,9 +65,13 @@
 
           <% end %>
         </td>
-
-
       </tr>
+      <tr>
+        <td>
+          <%= render partial: 'comp_applications/update_memo', locals: {comp_application: comp_app} %>
+        </td>
+      </tr>
+
 
     <% end %>
 

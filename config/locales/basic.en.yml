@@ -135,6 +135,11 @@ en:
       unconfirm_button: "Reject this application (resubmit)"
       confirm_question_on_reject: "Have you checked that the message is the one you want to send?"
       appearance_no: "Stage no."
+      admin_msg: "Change request issued to the competitor"
+      inner_memo: "Admin memo"
+      submit_memo: "Update admin memo"
+      no_of_applications: "No. of competitors"
+      list_of_competitors: "List of competitors"
     user_side:
       your_applications: "Competitions you applied to"
       view_application: "View"
@@ -163,11 +168,6 @@ en:
     email:
       accepted_subject: "MondoCon competition application accepted"
       rejected_subject: "Problem with MondoCon competition application"
-  comp_admin:
-      admin_msg: "Change request issued to the competitor"
-      inner_memo: "Internal admin comment"
-      no_of_applications: "No. of competitors"
-      list_of_competitors: "List of competitors"
   admin_dashboard:
     recent_orders: "Recent Orders"
     current_con: "Current Convention"

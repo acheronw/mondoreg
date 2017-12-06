@@ -71,40 +71,50 @@ class CompApplicationsController < ApplicationController
 
   def accept_application
     @comp_application = CompApplication.find(params[:id])
-    if current_user.has_role? :manager, @comp_application.competition
-      @comp_application.confirm
-      flash[:notice] = t('competition.admin.application_accepted', id: @comp_application.id)
-    end
+    manager_user
+    @comp_application.confirm
+    flash[:notice] = t('competition.admin.application_accepted', id: @comp_application.id)
     redirect_to :back
   end
 
   def reject_application
     @comp_application = CompApplication.find(params[:id])
-    if current_user.has_role? :manager, @comp_application.competition
-      @comp_application.reject()
-      flash[:notice] = t('competition.admin.application_rejected', id: @comp_application.id)
-    end
+    manager_user
+    @comp_application.reject()
+    flash[:notice] = t('competition.admin.application_rejected', id: @comp_application.id)
     redirect_to :back
   end
 
+  def update_memo
+    @comp_application = CompApplication.find(params[:id])
+    manager_user
+    @comp_application.inner_memo=params[:comp_application][:inner_memo]
+    @comp_application.save
+    flash[:notice] = @comp_application.inner_memo
+    redirect_back(fallback_location: root_path)
+  end
 
   private
 
-  def comp_params
-    params.require(:comp_application).permit(:character_name,
-                                             :character_source,
-                                             :perf_requests,
-                                             :competition_id,
-                                             :primary_image,
-                                             :stage_music,
-                                             :extra_image1,
-                                             :extra_image2,
-                                             :veteran,
-                                             :group_name,
-                                             :group_members,
-                                             :nickname,
-                                             :consent,
-    )
-  end
+    def comp_params
+      params.require(:comp_application).permit(:character_name,
+                                               :character_source,
+                                               :perf_requests,
+                                               :competition_id,
+                                               :primary_image,
+                                               :stage_music,
+                                               :extra_image1,
+                                               :extra_image2,
+                                               :veteran,
+                                               :group_name,
+                                               :group_members,
+                                               :nickname,
+                                               :consent,
+      )
+    end
+
+    def manager_user
+      redirect_to root_url unless user_signed_in? && current_user.has_role?(:manager, @comp_application.competition)
+    end
 
 end

@@ -1,0 +1,4 @@
+<%= form_for comp_application, url: update_memo_path(id: comp_application.id) do | f | %>
+    <%= f.text_area :inner_memo %>
+    <%= f.submit t('competition.admin.submit_memo'), class: "btn btn-primary" %>
+<% end %>

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :comp_applications
   patch 'accept_application', to: 'comp_applications#accept_application'
   patch 'reject_application', to: 'comp_applications#reject_application'
+  patch 'update_memo', to: 'comp_applications#update_memo'
 
   resources :competitions, only: [:show]
 

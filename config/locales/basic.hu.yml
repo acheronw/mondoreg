@@ -113,6 +113,11 @@ hu:
       unconfirm_button: "Jelentkezés visszaküldése"
       confirm_question_on_reject: "Ellenőrizted, hogy a megfelelő üzenet van beállítva?"
       appearance_no: "Fellépő sorszáma"
+      admin_msg: "Felszólító üzenet a nevezőnek"
+      inner_memo: "Szervezői megjegyzés"
+      submit_memo: "Megjegyzés frissítése"
+      no_of_applications: "Nevezők száma"
+      list_of_competitors: "Nevezők listája"
     user_side:
       your_applications: "Versenyjelentkezéseid"
       view_application: "Megtekint"
@@ -141,11 +146,6 @@ hu:
     email:
       accepted_subject: "MondoCon versenyjelentkezés elfogadva"
       rejected_subject: "Probléma a MondoCon versenyjelentkezéseddel"
-  comp_admin:
-    admin_msg: "Felszólító üzenet a nevezőnek"
-    inner_memo: "Szervezői megjegyzés"
-    no_of_applications: "Nevezők száma"
-    list_of_competitors: "Nevezők listája"
   admin_dashboard:
     recent_orders: "Friss Foglalások"
     current_con: "Aktuális Con"
