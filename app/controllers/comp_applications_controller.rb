@@ -71,27 +71,39 @@ class CompApplicationsController < ApplicationController
 
   def accept_application
     @comp_application = CompApplication.find(params[:id])
-    manager_user
-    @comp_application.confirm
-    flash[:notice] = t('competition.admin.application_accepted', id: @comp_application.id)
-    redirect_to :back
+    if is_manager_here?
+      @comp_application.confirm
+      flash[:notice] = t('competition.admin.application_accepted', id: @comp_application.id)
+      redirect_to :back
+    else
+      redirect_to root_path
+    end
+
   end
 
   def reject_application
     @comp_application = CompApplication.find(params[:id])
-    manager_user
-    @comp_application.reject()
-    flash[:notice] = t('competition.admin.application_rejected', id: @comp_application.id)
-    redirect_to :back
+    if is_manager_here?
+      @comp_application.reject()
+      flash[:notice] = t('competition.admin.application_rejected', id: @comp_application.id)
+      redirect_to :back
+    else
+      redirect_to root_path
+    end
+
   end
 
   def update_memo
     @comp_application = CompApplication.find(params[:id])
-    manager_user
-    @comp_application.inner_memo=params[:comp_application][:inner_memo]
-    @comp_application.save
-    flash[:notice] = @comp_application.inner_memo
-    redirect_back(fallback_location: root_path)
+    if is_manager_here? || is_assistant_here?
+      @comp_application.inner_memo=params[:comp_application][:inner_memo]
+      @comp_application.save
+      flash[:notice] = @comp_application.inner_memo
+      redirect_back(fallback_location: root_path)
+    else
+      redirect_to root_path
+    end
+
   end
 
   private
@@ -113,8 +125,13 @@ class CompApplicationsController < ApplicationController
       )
     end
 
-    def manager_user
-      redirect_to root_url unless user_signed_in? && current_user.has_role?(:manager, @comp_application.competition)
+    def is_assistant_here?
+      user_signed_in? && current_user.has_role?(:assistant, @comp_application.competition)
+    end
+
+
+    def is_manager_here?
+        user_signed_in? && current_user.has_role?(:manager, @comp_application.competition)
     end
 
 end
