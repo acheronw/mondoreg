@@ -28,7 +28,7 @@ class TicketOrdersController < ApplicationController
 
   def index
     @ticket_orders = TicketOrder.active.joins(:user).order(sort_column + " " + sort_direction)
-                         .paginate(page: params[:ticket_orders_page], per_page: 10).all
+                         .paginate(page: params[:ticket_orders_page], per_page: 100).all
     respond_to do | format |
       format.html
       format.csv { send_data text: @ticket_orders.to_csv }
