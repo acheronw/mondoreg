@@ -16,7 +16,7 @@ class BankTransaction < ApplicationRecord
         bt.csv_line = row.to_s
         bt.date_of_transaction = row["Könyvelés dátuma"]
         bt.amount_of_transaction = row["Összeg"].to_i
-        bt.comment_of_transaction = row["Közlemény"]
+        bt.comment_of_transaction = row["Közlemény"] || ""
         bt.sender_of_transaction= row["Partner neve"]
         mc_code_match = /mc[[:digit:]]+/.match(bt.comment_of_transaction.downcase)
         # If we have a match we get the string, and remove the opening 'mc' characters:
@@ -45,23 +45,33 @@ class BankTransaction < ApplicationRecord
   def match_transaction_to_order
     successful_match = false
     if self.order_id_code
-      ticket_order = TicketOrder.find(self.order_id_code)
-      if ticket_order.total_price != self.amount_of_transaction
-        # The money did not add up
-        self.problem= "Az összeg nem egyezik, a lefoglalt jegyek ára: #{ticket_order.total_price}"
-        self.status= 'problematic'
-      elsif ticket_order.status != 'pending'
-        # This order was already paid
-        self.problem= "Ez a rendelés már korábban ki lett fizetve"
-        self.status= 'problematic'
-      elsif ticket_order.ticket.sale_end.tomorrow < self.date_of_transaction
-        self.problem= "Határidő utáni befizetés"
-        self.status= 'problematic'
+      ticket_order = TicketOrder.find_by(id: self.order_id_code)
+      if ticket_order
+        if ticket_order.total_price != self.amount_of_transaction
+          # The money did not add up
+          self.problem= "Az összeg nem egyezik, a lefoglalt jegyek ára: #{ticket_order.total_price}"
+          self.status= 'problematic'
+        elsif ticket_order.status != 'pending'
+          # This order was already paid
+          self.problem= "Ez a rendelés már korábban ki lett fizetve"
+          self.status= 'problematic'
+        elsif ticket_order.ticket.sale_end.tomorrow < self.date_of_transaction
+          self.problem= "Határidő utáni befizetés"
+          self.status= 'problematic'
+        else
+          ticket_order.confirm
+          self.status='done'
+          successful_match = true
+        end
       else
-        ticket_order.confirm
-        self.status='done'
-        successful_match = true
+        # There was an order_id in the transaction comments but there is no such id in the database.
+        self.problem= "Az adatbázisban nincs ilyen azonosítóval rendelés: #{self.order_id_code}"
+        self.status= 'problematic'
       end
+    elsif self.sender_of_transaction.blank?
+      # We couldn't identify the order by the comment and the name is missing as well.
+      self.problem= "Üres a befizető neve és a megjegyzés alapján se tudtuk beazonosítani."
+      self.status= 'problematic'
     else
       # Transaction missing order ID.
       users_matching_sender = User.where('lower(name) = ?', self.sender_of_transaction.mb_chars.downcase.to_s).all
