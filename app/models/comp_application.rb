@@ -43,7 +43,11 @@ class CompApplication < ApplicationRecord
     self.status = "accepted"
     self.appearance_no ||= next_free_number
     if self.save
-      ApplicationMailer.comp_application_confirmed_email(self).deliver_now
+      if self.competition.is_cosplay?
+        ApplicationMailer.cosplay_comp_application_confirmed_email(self).deliver_now
+      else
+        ApplicationMailer.comp_application_confirmed_email(self).deliver_now
+      end
     end
   end
 
