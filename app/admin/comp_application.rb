@@ -48,11 +48,11 @@ ActiveAdmin.register CompApplication do
     column t('competition.status'), :status do | comp_app |
       case comp_app.status
         when 'pending'
-          status_tag(t('competition.state_pending'))
+          status_tag (t('competition.state_pending')), :warning
         when 'accepted'
-          status_tag(t('competition.state_accepted'))
+          status_tag (t('competition.state_accepted')), :ok
         when 'resubmit'
-          status_tag(t('competition.state_resubmit'))
+          status_tag (t('competition.state_resubmit'))
       end
     end
     column t('competition.admin.confirm_button') do | comp_app |
