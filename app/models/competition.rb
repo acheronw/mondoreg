@@ -17,7 +17,7 @@ class Competition < ApplicationRecord
   resourcify
 
   def on_sale?
-    self.applications_start < Date.today && self.applications_end > Date.today
+    self.applications_start <= Date.today && self.applications_end >= Date.today
   end
 
   def full?
