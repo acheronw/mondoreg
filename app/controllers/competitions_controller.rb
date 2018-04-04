@@ -12,7 +12,7 @@ class CompetitionsController < ApplicationController
   def export_csv
     @competition = Competition.find(params[:id])
     @comp_applications = @competition.comp_applications.where(status: 'accepted').order(:appearance_no).joins(:user).all
-    response.headers['Content-Disposition'] = "attachment; filename=#{Competition.name}_list.csv"
+    response.headers['Content-Disposition'] = "attachment; filename=#{@competition.name}_list.csv"
     render text: @comp_applications.to_csv
   end
 
