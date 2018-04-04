@@ -76,4 +76,19 @@ class CompApplication < ApplicationRecord
     return largest_number + 1
   end
 
+  def self.to_csv
+    attributes = ['number', 'name', 'nickname', 'character', 'fandom']
+    CSV.generate(headers: true) do | csv |
+      csv << attributes
+      all.each do | comp_application |
+        csv << [comp_application.appearance_no,
+                comp_application.user.name.to_s,
+                comp_application.nickname,
+                comp_application.character_name,
+                comp_application.character_source
+        ]
+      end
+    end
+  end
+
 end

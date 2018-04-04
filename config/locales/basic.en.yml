@@ -140,6 +140,7 @@ en:
       submit_memo: "Update admin memo"
       no_of_applications: "No. of competitors"
       list_of_competitors: "List of competitors"
+      download_csv: "Download list of accepted competitors"
     user_side:
       your_applications: "Competitions you applied to"
       view_application: "View"

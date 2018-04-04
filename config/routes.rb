@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   patch 'update_memo', to: 'comp_applications#update_memo'
 
   resources :competitions, only: [:show]
+  get 'export_competitors/:id', to: 'competitions#export_csv', as: :export_competitors
 
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'

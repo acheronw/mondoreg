@@ -118,6 +118,7 @@ hu:
       submit_memo: "Megjegyzés frissítése"
       no_of_applications: "Nevezők száma"
       list_of_competitors: "Nevezők listája"
+      download_csv: "Elfogadott nevezők listájának letöltése"
     user_side:
       your_applications: "Versenyjelentkezéseid"
       view_application: "Megtekint"
