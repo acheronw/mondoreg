@@ -4,6 +4,8 @@ hu:
   mondocon_reg_site: "MondoCon regisztrációs felület"
   under_construct: 'Fejlesztés alatt.'
   nothing_to_do: 'Jelenleg nincs nyitva se jegyvásárlás, se verseny-jelentkezés, amire tudnál jelentkezni. Nézz majd vissza később!'
+  privacy_consent_label: 'Az adatvédelmi szabályzatot elolvastam és elfogadtam.'
+  privacy_consent_explained: 'Az adatvédelmi szabályzatot itt nézheted meg.'
   title:
     comp_admin: "Verseny adminisztráció"
     ticket_admin: "Jegyvásárlás adminisztráció"
@@ -159,6 +161,7 @@ hu:
         password: "Jelszó"
         password_confirmation: "Megismételt jelszó"
         name: "Polgári Név"
+        privacy_accepted: "Adatvédelmi nyilatkozat"
     errors:
       models:
         user:
@@ -174,6 +177,8 @@ hu:
               confirmation: " nem egyezik meg az eredetivel."
             name:
               blank: "megadása kötelező."
+            privacy_accepted:
+              accepted: "Regisztráláshoz az adatvédelmi szabályzatot el kell fogadnod."
         comp_application:
           attributes:
             nickname:

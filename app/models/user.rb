@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :confirmable, :lockable
 
   validates :name, presence: true, length: { maximum: 100 }
+  validates :privacy_accepted, acceptance: true
 
   has_many :ticket_orders, inverse_of: :user, dependent: :destroy
   has_many :comp_applications, inverse_of: :user

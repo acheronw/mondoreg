@@ -25,6 +25,8 @@ en:
   mondocon_reg_site: "MondoCon registration site"
   under_construct: "Construction under progress"
   nothing_to_do: 'There are no tickets on sale or competitions open for applications at the moment. Please come back later!'
+  privacy_consent_label: 'I have read the privacy policy and I accept it.'
+  privacy_consent_explained: 'You can read the privacy policy here.'
   title:
     comp_admin: "Competition Administration"
     ticket_admin: "Ticketing Administration"
@@ -181,6 +183,7 @@ en:
         password: "Password"
         password_confirmation: "Password confirmation"
         name: "Real Name"
+        privacy_accepted: "Privacy Policy"
     errors:
       models:
         user:
@@ -196,6 +199,8 @@ en:
               confirmation: " must be identical with the original password."
             name:
               blank: "is required."
+            privacy_accepted:
+              accepted: "You must accept the privacy policy to register."
         comp_application:
           attributes:
             nickname:
