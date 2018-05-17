@@ -6,6 +6,9 @@ hu:
   nothing_to_do: 'Jelenleg nincs nyitva se jegyvásárlás, se verseny-jelentkezés, amire tudnál jelentkezni. Nézz majd vissza később!'
   privacy_consent_label: 'Az adatvédelmi szabályzatot elolvastam és elfogadtam.'
   privacy_consent_explained: 'Az adatvédelmi szabályzatot itt nézheted meg.'
+  privacy_consent_warning_html: "A rendszer használatához el kell fogadnod az adatvédelmi szabályzatot!<br>
+    Ehhez jobb felül kattints a <u>nevedre</u>, és a legördülő menüben válaszd ki a <u>Felhasználó adatai</u> menüpontot.<br>
+    Olvasd el az adatvédelmi szabályzatot, írd be a <u>jelenlegi jelszavad</u>, pipáld be az <u>elfogadás gombot</u>, majd <u>mentsd el</u> a változásokat."
   title:
     comp_admin: "Verseny adminisztráció"
     ticket_admin: "Jegyvásárlás adminisztráció"

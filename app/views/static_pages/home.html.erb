@@ -2,7 +2,13 @@
 
 <% if user_signed_in? %>
 
-    <%= render 'hub' %>
+    <% if current_user.privacy_accepted %>
+      <%= render 'hub' %>
+    <% else %>
+      <div class="padded well">
+        <%= t('privacy_consent_warning_html') %>
+      </div>
+    <% end %>
 
 <% else %>
 

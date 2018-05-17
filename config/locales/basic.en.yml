@@ -27,6 +27,9 @@ en:
   nothing_to_do: 'There are no tickets on sale or competitions open for applications at the moment. Please come back later!'
   privacy_consent_label: 'I have read the privacy policy and I accept it.'
   privacy_consent_explained: 'You can read the privacy policy here.'
+  privacy_consent_warning_html: "To use this app, you must accept our privacy policy!<br>
+    To do so, click on your <u>name</u> in the top right corner, and choose the <u>User profile</u> from the drop-down menu.<br>
+    Read the privacy policy, type in your <u>current password</u>, check in the <u>accept privacy policy</u> checkbox, and click the <update> button."
   title:
     comp_admin: "Competition Administration"
     ticket_admin: "Ticketing Administration"
