@@ -49,6 +49,7 @@ hu:
     state_pending: "Befizetésre vár"
     state_accepted: "Visszaigazolt"
     state_rejected: "Elutasított"
+    state_delivered: "Már átvette"
     pending_current: "Összes függőben lévő rendelés"
     all_current: "Mostani con összes rendelése"
     scope_all: "Összes foglalás megjelenítése"

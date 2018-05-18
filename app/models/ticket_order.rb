@@ -1,5 +1,5 @@
 class TicketOrder < ApplicationRecord
-  validates :status, :inclusion => { :in => ['pending', 'accepted', 'rejected'],
+  validates :status, :inclusion => { :in => ['pending', 'accepted', 'rejected','delivered'],
                                      message: "%value is not a valid ticket status" }
   validates :user_id, presence: true
   validates :ticket_id, presence: true
@@ -12,7 +12,7 @@ class TicketOrder < ApplicationRecord
 
   scope :active, -> { joins(:ticket).merge(Ticket.active) }
   scope :pending, -> { where(status: 'pending') }
-  scope :relevant, -> { where(status: ['pending', 'accepted']) }
+  scope :relevant, -> { where(status: ['pending', 'accepted','delivered']) }
   # This chaining is made explicit in order to use it with ActiveAdmin scope:
   scope :requires_attention, -> { active.pending }
 
@@ -63,6 +63,8 @@ class TicketOrder < ApplicationRecord
         I18n.t('ticketing.state_accepted')
       when "rejected"
         I18n.t('ticketing.state_rejected')
+      when "rejected"
+        I18n.t('ticketing.state_delivered')
     end
   end
 

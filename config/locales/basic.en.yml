@@ -70,6 +70,7 @@ en:
     state_pending: "Waiting for payment"
     state_accepted: "Confirmed"
     state_rejected: "Rejected"
+    state_delivered: "Already picked up"
     pending_current: "All 'pending' orders"
     all_current: "All orders of the current convention"
     scope_all: "Show all tickets"
