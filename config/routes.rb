@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'users/new'
 
 
-  resources :ticket_orders, only: [:create, :index]
+  resources :ticket_orders, only: [:create, :index, :show]
   patch 'confirm_ticket', to: 'ticket_orders#confirm_ticket'
   patch 'unconfirm_ticket', to: 'ticket_orders#unconfirm_ticket'
   put 'reminder_email', to: 'ticket_orders#reminder_email'

@@ -35,6 +35,16 @@ class TicketOrdersController < ApplicationController
     end
   end
 
+  def show
+    @ticket_order = TicketOrder.find(params[:id])
+    if current_user != @ticket_order.user &&
+        !current_user.has_role?(:ticketeer)
+      flash[:danger] = "Access denied! Exterminate user! Exterminate!"
+      redirect_to root_path
+    end
+  end
+
+
   def export_csv
     @ticket_orders = TicketOrder.active.joins(:user).all
     response.headers['Content-Disposition'] = 'attachment; filename=mondocon_tickets.csv'
