@@ -16,6 +16,11 @@ class TicketOrder < ApplicationRecord
   # This chaining is made explicit in order to use it with ActiveAdmin scope:
   scope :requires_attention, -> { active.pending }
 
+  def change_to_delivered
+    self.status = "delivered"
+    self.save
+  end
+
   def confirm
     self.status = "accepted"
     if self.save
@@ -51,7 +56,6 @@ class TicketOrder < ApplicationRecord
                 ticket_order.status
         ]
       end
-
     end
   end
 
@@ -63,10 +67,8 @@ class TicketOrder < ApplicationRecord
         I18n.t('ticketing.state_accepted')
       when "rejected"
         I18n.t('ticketing.state_rejected')
-      when "rejected"
+      when "delivered"
         I18n.t('ticketing.state_delivered')
     end
   end
-
-
 end

@@ -12,6 +12,7 @@ hu:
   title:
     comp_admin: "Verseny adminisztráció"
     ticket_admin: "Jegyvásárlás adminisztráció"
+    ticket_lookup: "Jegykiadás"
     help: "Súgó"
     home: "Kezdőlap"
     signup: "Új fiók létrehozása"
@@ -57,6 +58,12 @@ hu:
     unconfirm_button: "Visszaigazolás visszavonása"
     ticket_confirmed: "A %{id} azonosítójú rendelés visszaigazolva!"
     ticket_unconfirmed: "Visszavontuk a %{id} azonosítójú foglalás visszaigazolását!"
+    deliver_button: "%{quantity} db jegy kiadása"
+    ticket_delivered: "A %{id} azonosítójú rendelés jegyei kiadva!"
+    ticket_not_delivered: "A %{id} azonosítójú rendelés jegyei NEM adhatóak ki!"
+    search_field: "Írd be az elővételi kódot (csak a számokat):"
+    search_button: "Keresés"
+    id_not_found: "Nincs MC%{id} azonosítójú rendelés!"
     user_side:
       your_orders: "Folyamatban lévő jegyvásárlásaid"
       note_to_pending: "A levélben kapott instrukciók alapján fizesd be a jegy árát, majd kérünk várj néhány napot, míg munkatársunk visszaigazolja, hogy a befizetés beérkezett.
