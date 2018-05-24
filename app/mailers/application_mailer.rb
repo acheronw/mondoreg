@@ -1,6 +1,7 @@
 class ApplicationMailer < ActionMailer::Base
   default from: 'registrations@mondocon.hu'
   layout 'mailer'
+  helper :application
 
   def ticket_ordered_email(ticket_order)
       @ticket_order = ticket_order
