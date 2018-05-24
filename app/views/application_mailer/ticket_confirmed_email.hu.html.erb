@@ -19,11 +19,13 @@
 </p>
 <p>
   <%
-    ticket_url = url_for(@ticket_order)
+    ticket_url = ticket_order_url(@ticket_order)
   %>
-  <%= ticket_url %>
   <%= link_to 'Jegy linkje', @ticket_order  %>
-  <%= image_tag(generate_qr(ticket_url), class: "qr-code") %>
+  <div class="image">
+    <%= image_tag(generate_qr(ticket_url), class: "qr-code") %>
+  </div>
+
 </p>
 <p>
   Üdvözlettel,<br>
