@@ -151,7 +151,7 @@ hu:
       veteran_explained: "Kaptál-e legalább egyszer jelölést egy MondoConos cosplay versenyen?"
       perf_requests_explained: "Ide írd le a fellépésedhez kapcsolódó megjegyzéseket és kéréseket, például: fények, felpakolási idő, stb."
       group_list_explained: "Rajtad kívül az összes csapattag polgári nevét (esetleg a cosplayes művésznevüket), az általuk cosplayelt karakterek nevét és az email címét írd le."
-      consent_explained: "Ezen a versenyen csak azok vehetnek részt, akik betöltötték a 18. életévüket és legalább 3 éve magyar állampolgárok és nem vesznek részt az Eurocosplay szervezésében."
+      consent_explained: "Ezen a versenyen csak azok vehetnek részt, akik betöltötték a 18. életévüket és legalább 2 éve magyar állampolgárok vagy magyarországi lakcímmel rendelkeznek és nem vesznek részt a verseny szervezésében."
       consent_must_be_given: "El kell fogadnod a nevezési feltételeket."
       competition_already_full: "A jelentkezők száma már elérte a létszámkorlátot. Erre a versenyre már nem lehet jelentkezni."
       competition_error: "Téves jelentkezés, erre a versenyre most nem lehet jelentkezni."
