@@ -19,7 +19,7 @@ module ApplicationHelper
 
   def generate_qr(text)
     require 'barby'
-    require 'barby/qr_code'
+    require 'barby/barcode/qr_code'
     require 'barby/outputter/png_outputter'
 
     barcode = Barby::QrCode.new(text, level: :q, size: 5)
