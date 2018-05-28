@@ -53,7 +53,10 @@ class TicketOrdersController < ApplicationController
   end
 
   def show
+    puts ">>> ENTERED TICKET_CONTROLLER SHOW ACTION. Params are: #{params}"
+    puts ">>> Ticket_id param: #{params[:ticket_id]}"
     @ticket_order = TicketOrder.find(params[:id])
+    puts ">>> We have a ticket order object" if @ticket_order
     if current_user != @ticket_order.user &&
         !current_user.has_role?(:ticketeer)
       flash[:danger] = "Access denied! Exterminate user! Exterminate!"
