@@ -28,6 +28,7 @@ class TicketOrdersController < ApplicationController
   end
 
   def index
+    # todo cleanup puts
     puts ">>> ENTERED TICKET_CONTROLLER INDEX ACTION. Params are: #{params}"
     if params[:ticket_id]
       puts ">>> We have a ticket_id param: #{params[:ticket_id]}"
@@ -53,6 +54,7 @@ class TicketOrdersController < ApplicationController
   end
 
   def show
+    # todo cleanup puts
     puts ">>> ENTERED TICKET_CONTROLLER SHOW ACTION. Params are: #{params}"
     puts ">>> Ticket_id param: #{params[:ticket_id]}"
     @ticket_order = TicketOrder.find(params[:id])
