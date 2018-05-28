@@ -12,6 +12,7 @@ class CompApplicationsController < ApplicationController
   end
 
   def new
+    puts ">>> TESTING PRINTING INTO HEROKU LOGS"
     @comp_application = CompApplication.new
     @comp_application.competition_id = params[:competition_id]
   end
