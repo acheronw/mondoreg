@@ -28,21 +28,15 @@ class TicketOrdersController < ApplicationController
   end
 
   def index
-    # todo cleanup puts
-    puts ">>> ENTERED TICKET_CONTROLLER INDEX ACTION. Params are: #{params}"
     if params[:ticket_id]
-      puts ">>> We have a ticket_id param: #{params[:ticket_id]}"
       @ticket_order = TicketOrder.find_by(id: params[:ticket_id])
       if @ticket_order
-        puts ">>> We have a ticket order object"
         redirect_to ticket_order_path(@ticket_order.id)
       else
-        puts ">>> We haven!t found the ticket order"
         flash[:warning] = t('ticketing.id_not_found', id: params[:ticket_id])
         redirect_to :back
       end
     else
-      puts ">>> We don!t have a ticket_id in the params"
       @ticket_orders = TicketOrder.active.joins(:user).order(sort_column + " " + sort_direction)
                            .paginate(page: params[:ticket_orders_page], per_page: 100).all
       respond_to do | format |
@@ -54,11 +48,7 @@ class TicketOrdersController < ApplicationController
   end
 
   def show
-    # todo cleanup puts
-    puts ">>> ENTERED TICKET_CONTROLLER SHOW ACTION. Params are: #{params}"
-    puts ">>> Ticket_id param: #{params[:ticket_id]}"
     @ticket_order = TicketOrder.find(params[:id])
-    puts ">>> We have a ticket order object" if @ticket_order
     if current_user != @ticket_order.user &&
         !current_user.has_role?(:ticketeer)
       flash[:danger] = "Access denied! Exterminate user! Exterminate!"
