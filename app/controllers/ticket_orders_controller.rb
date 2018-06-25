@@ -1,6 +1,6 @@
 class TicketOrdersController < ApplicationController
   before_action :bursar_user, only: [:index, :confirm_ticket, :unconfirm_ticket, :export_csv]
-  before_action :ticketeer_user, only: [:deliver_ticket]
+  before_action :ticketeer_user, only: [:deliver_ticket, :lookup_ticket]
 
   # This makes the helpers available in the view:
   helper_method :sort_column, :sort_direction
@@ -28,23 +28,22 @@ class TicketOrdersController < ApplicationController
   end
 
   def index
-    if params[:ticket_id]
-      @ticket_order = TicketOrder.find_by(id: params[:ticket_id])
-      if @ticket_order
-        redirect_to ticket_order_path(@ticket_order.id)
-      else
-        flash[:warning] = t('ticketing.id_not_found', id: params[:ticket_id])
-        redirect_to :back
-      end
-    else
-      @ticket_orders = TicketOrder.active.joins(:user).order(sort_column + " " + sort_direction)
-                           .paginate(page: params[:ticket_orders_page], per_page: 100).all
-      respond_to do | format |
-        format.html
-        format.csv { send_data text: @ticket_orders.to_csv }
-      end
+    @ticket_orders = TicketOrder.active.joins(:user).order(sort_column + " " + sort_direction)
+                         .paginate(page: params[:ticket_orders_page], per_page: 100).all
+    respond_to do | format |
+      format.html
+      format.csv { send_data text: @ticket_orders.to_csv }
     end
+  end
 
+  def lookup_ticket
+    @ticket_order = TicketOrder.find_by(id: params[:ticket_id])
+    if @ticket_order
+      redirect_to ticket_order_path(@ticket_order.id)
+    else
+      flash[:warning] = t('ticketing.id_not_found', id: params[:ticket_id])
+      redirect_to :back
+    end
   end
 
   def show

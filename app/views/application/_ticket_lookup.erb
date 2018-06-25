@@ -3,7 +3,7 @@
   <div class="col-lg-6">
     <div class="padded well">
       <p class="center"><%= t('title.ticket_lookup')%></p>
-      <%= form_tag ticket_orders_path, method: :get do %>
+      <%= form_tag lookup_ticket_path, method: :get do %>
         <%= t('ticketing.search_field') %><br>
         <%= label_tag 'MC' %>
         <%= text_field_tag :ticket_id %>
