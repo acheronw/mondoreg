@@ -2,13 +2,30 @@ class ApplicationMailer < ActionMailer::Base
   default from: 'registrations@mondocon.hu'
   layout 'mailer'
 
+
+  # def generate_qr(text)
+  #   require 'barby'
+  #   require 'barby/barcode/qr_code'
+  #   require 'barby/outputter/png_outputter'
+  #   barcode = Barby::QrCode.new(text, level: :q, size: 5)
+  #   base64_output = Base64.encode64(barcode.to_png({ xdim: 5 }))
+  #   return "data:image/png;base64,#{base64_output}"
+  # end
+
   def ticket_ordered_email(ticket_order)
       @ticket_order = ticket_order
       mail(to: @ticket_order.user.email, subject: t('ticketing.email.ticket_order_subject'))
   end
 
   def ticket_confirmed_email(ticket_order)
+      require 'barby'
+      require 'barby/barcode/qr_code'
+      require 'barby/outputter/png_outputter'
+
       @ticket_order = ticket_order
+      ticket_url = ticket_order_url(@ticket_order)
+      barcode = Barby::QrCode.new(ticket_url, level: :q, size: 5)
+      attachments['qr_code.png'] = barcode.to_png({ xdim: 5})
       mail(to: @ticket_order.user.email, subject: t('ticketing.email.accepted_subject'))
   end
 

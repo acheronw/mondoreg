@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   get 'users/new'
 
 
-  resources :ticket_orders, only: [:create, :index]
+  resources :ticket_orders, only: [:create, :index, :show]
   patch 'confirm_ticket', to: 'ticket_orders#confirm_ticket'
   patch 'unconfirm_ticket', to: 'ticket_orders#unconfirm_ticket'
+  patch 'deliver_ticket', to: 'ticket_orders#deliver_ticket'
   put 'reminder_email', to: 'ticket_orders#reminder_email'
   get 'export_csv', to: 'ticket_orders#export_csv'
+  get 'lookup_ticket', to: 'ticket_orders#lookup_ticket'
 
   resources :bank_transactions, only: [:destroy] do
     # collection routes work on the whole class, not on individual instances:

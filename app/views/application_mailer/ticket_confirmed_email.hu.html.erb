@@ -14,6 +14,19 @@
   Ennek segítségével tudunk azonosítani majd. Jegyedet az elővételes pultnál veheted át a kód és a rendelésnél használt neved bemondásával.
 </p>
 <p>
+  Az alábbi QR kódot ha elhozod magaddal (akár kinyomtatva, akár a telefonodon), akkor a beléptetésnél gyorsabban kapod meg a jegyeket.
+  Ezt a rendszert most nyáron még csak kísérleti jelleggel vezetjük be, de reményeink szerint segít majd a sorbanállás lerövidítésében.
+</p>
+<p>
+  <%
+    ticket_url = ticket_order_url(@ticket_order)
+  %>
+
+  <!-- image_tag(generate_qr(ticket_url), class: "qr-code") %> -->
+
+
+</p>
+<p>
   Üdvözlettel,<br>
   A Szervezők
 </p>

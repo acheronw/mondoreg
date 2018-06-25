@@ -1,0 +1,30 @@
+<% provide(:title, @ticket_order.ticket.convention.name) %>
+
+<div class="padded well">
+  <p>
+    <%= t('ticketing.name_of_buyer') %>: <%= @ticket_order.user.name %><br>
+    <%= t('ticketing.order_id') %>: MC<%= @ticket_order.id %><br>
+    <%= @ticket_order.ticket.convention.name %> - <%= @ticket_order.ticket.name %><br>
+  </p>
+
+  <p>
+    <b><%= @ticket_order.quantity %> <%= t('ticketing.quantity') %></b><br>
+  </p>
+
+  <% if @ticket_order.status == 'accepted' %>
+      <div class="alert alert-success">
+        <%= @ticket_order.status_localized %>
+      </div>
+  <% else %>
+      <div class="alert alert-danger">
+        <%= @ticket_order.status_localized %>
+      </div>
+  <% end %>
+
+  <% if (current_user.has_role? :ticketeer) && (@ticket_order.status == 'accepted') %>
+    <%= link_to t('ticketing.deliver_button', quantity: @ticket_order.quantity), deliver_ticket_path(id: @ticket_order.id), class: "btn btn-primary", method: :patch %>
+  <% end %>
+
+  <%= render partial: 'ticket_lookup' %>
+
+</div>

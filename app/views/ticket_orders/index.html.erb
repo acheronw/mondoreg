@@ -35,7 +35,7 @@
                   <td>
                     <%=  link_to t('ticketing.user_side.reminder_button') , reminder_email_path(id: ticket_order.id), method: :put %>
                   </td>
-            <% elsif ticket_order.status == 'pending' %>
+              <% elsif ticket_order.status == 'pending' %>
                   <td class="danger"><%= ticket_order.status_localized %></td>
                   <td>
                     <%=  link_to t('ticketing.confirm_button') , confirm_ticket_path(id: ticket_order.id), method: :patch %>
@@ -43,6 +43,8 @@
                   <td>
                     <%=  link_to t('ticketing.user_side.reminder_button') , reminder_email_path(id: ticket_order.id), method: :put %>
                   </td>
+              <% elsif ticket_order.status == 'delivered' %>
+                  <td class="success"><%= ticket_order.status_localized %></td>
               <% else %>
                   <td class="danger"><%= ticket_order.status_localized %></td>
 

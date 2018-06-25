@@ -33,6 +33,7 @@ en:
   title:
     comp_admin: "Competition Administration"
     ticket_admin: "Ticketing Administration"
+    ticket_lookup: "Ticket Delivery"
     help: "Help"
     home: "Home"
     signup: "Create new account"
@@ -70,6 +71,7 @@ en:
     state_pending: "Waiting for payment"
     state_accepted: "Confirmed"
     state_rejected: "Rejected"
+    state_delivered: "Already picked up"
     pending_current: "All 'pending' orders"
     all_current: "All orders of the current convention"
     scope_all: "Show all tickets"
@@ -77,6 +79,12 @@ en:
     unconfirm_button: "Withdraw confirmation"
     ticket_confirmed: "Ticket confirmed for order id: %{id}!"
     ticket_unconfirmed: "Confirmation withdrawn for order id: %{id}!"
+    deliver_button: "Deliver %{quantity} ticket(s)"
+    ticket_delivered: "The tickets of order %{id} are delivered"
+    ticket_not_delivered: "The tickets of order %{id} CANNOT be delivered."
+    search_field: "Enter the order id (just the numbers):"
+    search_button: "Search"
+    id_not_found: "There is no order with the id MC%{id}!"
     user_side:
       your_orders: "Your ticket purchases"
       note_to_pending: "To pay for your tickets please follow the instructions we sent you.
