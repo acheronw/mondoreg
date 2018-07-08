@@ -23,7 +23,7 @@ class CompApplication < ApplicationRecord
   validates :primary_image, presence: true
 
   has_attached_file :stage_music
-  validates_attachment_content_type :stage_music, :content_type => ['video/avi', 'video/mp4', 'video/x-ms-wmv', 'audio/mpeg'], message: 'This is not an audio or video file'
+  validates_attachment_content_type :stage_music, :content_type => ['video/avi', 'video/mp4', 'video/x-ms-wmv','video/x-msvideo', 'audio/mpeg'], message: 'This is not an audio or video file'
   validates :stage_music, presence: true, if: Proc.new{ |a| a.competition.is_cosplay?  }
 
   has_attached_file :extra_image1, styles: {
