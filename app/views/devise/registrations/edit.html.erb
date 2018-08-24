@@ -28,29 +28,14 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
   </div>
 
-  <% unless @user.privacy_accepted %>
-    <div class="alert alert-danger" >
-  <% end %>
   <div class="form-group">
     <%= f.label :current_password, t('edit_profile.current_password') %>
     <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
     <span class="help-block"><%= t('edit_profile.current_password_explanation') %></span>
   </div>
 
-  <% unless @user.privacy_accepted %>
-    <div class="form-group">
-      <%= f.label t('privacy_consent_label') %>
-      <%= f.check_box :privacy_accepted %>
-      <br>
-      <%= link_to t('privacy_consent_explained'), help_path, :target => '_blank' %>
-    </div>
-  <% end %>
-
   <%= f.submit t('edit_profile.update_button'), class: 'btn btn-primary' %>
 
-  <% unless @user.privacy_accepted %>
-    </div>
-  <% end %>
 
 <% end %>
 
