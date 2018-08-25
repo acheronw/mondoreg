@@ -22,7 +22,7 @@
   <% end %>
 
   <% if (current_user.has_role? :ticketeer) && (@ticket_order.status == 'accepted') %>
-    <%= link_to t('ticketing.deliver_button', quantity: @ticket_order.quantity), deliver_ticket_path(id: @ticket_order.id), class: "btn btn-primary btn-lg btn-block", method: :patch %>
+    <%= link_to t('ticketing.deliver_button', quantity: @ticket_order.quantity), deliver_ticket_path(id: @ticket_order.id), class: "btn btn-primary btn-xlarge btn-block", method: :patch %>
   <% end %>
 
 
