@@ -129,6 +129,8 @@ en:
     primary_art_image: "Artwork"
     full_size_image: "Link to full size image"
     stage_music: "Music or video for your stage appearance"
+    select_music: "Select music"
+    selected_music: "Music selected"
     extra_cosplay_image: "Additional images"
     extra_art_image: "WIP images"
     veteran: "Are you a veteran cosplayer?"
@@ -222,6 +224,8 @@ en:
               blank: "Fandom field is missing"
             primary_image:
               blank: "Please upload a picture!"
+            selected_music:
+              blank: "Please select a music from the list"
             stage_music:
               blank: "Please upload a music or video file!"
               spoofed_media_type: "This is not an acceptable audio or video file"

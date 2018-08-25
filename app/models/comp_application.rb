@@ -9,6 +9,11 @@ class CompApplication < ApplicationRecord
   validates :user_id, presence: true
   validates :character_name, presence: true, if: Proc.new{ |a| a.competition.is_cosplay?  }
   validates :character_source, presence: true, if: Proc.new{ |a| a.competition.is_cosplay?  }
+
+  validates :selected_music, presence: true, if: Proc.new{ |a| a.competition.select_music_from_list? }
+  validates :selected_music, inclusion: {in: Competition::MUSIC_OPTIONS }
+
+
   validates :status, presence:true
   validates :status, :inclusion => { :in => ['pending', 'accepted', 'resubmit', 'deleted'],
                                      message: "%value is not a valid ticket status" }
@@ -24,7 +29,7 @@ class CompApplication < ApplicationRecord
 
   has_attached_file :stage_music
   validates_attachment_content_type :stage_music, :content_type => ['video/avi', 'video/mp4', 'video/x-ms-wmv','video/x-msvideo', 'audio/mpeg'], message: 'This is not an audio or video file'
-  validates :stage_music, presence: true, if: Proc.new{ |a| a.competition.is_cosplay?  }
+  validates :stage_music, presence: true, if: Proc.new{ |a| a.competition.require_music_upload?  }
 
   has_attached_file :extra_image1, styles: {
       medium: '400x400>'

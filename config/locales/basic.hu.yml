@@ -107,6 +107,8 @@ hu:
     primary_art_image: "Pályamű"
     full_size_image: "Teljes méretű kép"
     stage_music: "Zene vagy videó"
+    select_music: "Zeneszám kiválasztása"
+    selected_music: "Kiválasztott zeneszám"
     extra_cosplay_image: "További képek (opcionális)"
     extra_art_image: "Fázisképek"
     veteran: "Veterán cosplayes-e vagy?"
@@ -173,6 +175,9 @@ hu:
         password_confirmation: "Megismételt jelszó"
         name: "Polgári Név"
         privacy_accepted: "Adatvédelmi nyilatkozat"
+      comp_application:
+        selected_music: "Kiválasztott zeneszám"
+        stage_music: "Feltöltött zene vagy videó"
     errors:
       models:
         user:
@@ -200,6 +205,9 @@ hu:
               blank: "Fandom mező hiányzik"
             primary_image:
               blank: "Tölts fel egy képet!"
+            selected_music:
+              blank: "Válassz ki egy zenét a listából!"
+              inclusion: "Ez a zeneszám nincs rajta a listán!"
             stage_music:
               blank: "Tölts fel egy videót vagy zenét!"
               spoofed_media_type: "Nem elfogadott audio vagy video file."

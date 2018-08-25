@@ -46,8 +46,8 @@
         </div>
 
 
-        <%# Music/video uploaded - Cosplay only fields %>
-        <% if @comp_application.competition.is_cosplay? %>
+        <%# Music/video uploaded %>
+        <% if @comp_application.competition.require_music_upload? %>
             <div class="form-group">
               <%= f.label t('competition.stage_music') %>
               <% if @comp_application.stage_music.present? %>
@@ -58,6 +58,12 @@
             </div>
         <% end %>
 
+        <% if @comp_application.competition.select_music_from_list? %>
+            <div class="form-group">
+              <%= f.label t('competition.select_music') %>
+              <%= f.select :selected_music, Competition::MUSIC_OPTIONS %>
+            </div>
+        <% end %>
 
         <%# Extra images - if allowed
         Label varies by competition type %>

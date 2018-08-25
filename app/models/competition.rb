@@ -5,10 +5,19 @@ class Competition < ApplicationRecord
   validates :name, presence: true
   validates :convention_id, presence: true
   validates :subtype, presence: true
-  validates :subtype, :inclusion => { :in => ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay', 'rajz', 'rajz_cg'],
+  validates :subtype, :inclusion => { :in => ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay', 'blizzard_cp', 'rajz', 'rajz_cg'],
                                      message: "%value is not a valid competition type" }
   validates :admin_email, presence: true
 
+  # Limited choice of musics for the Blizzard cosplay competition
+  #
+  # The proper way would be: add a new array of strings column to the competition model.
+  # Set the values of that field for that specific competition.
+  # But it means an extra migrate and a column which might never be used again...
+  # Also populating the list requires either to code a specific UI for that (at least in activeadmin)
+  # Or to add that in the console.
+  # So the current solution might be monkey patching, but it was much simpler.
+  MUSIC_OPTIONS = ['rock and roll', 'brutalmetal', 'buta horda kek']
 
   scope :active, -> { joins(:convention).merge(Convention.active) }
   scope :on_sale, -> { where("applications_start <= ?", Date.today).where("applications_end >= ?", Date.today) }
@@ -31,16 +40,15 @@ class Competition < ApplicationRecord
 
   # The following methods are used to check which optional fields are relevant.
   def is_cosplay?
-    ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay'].include? self.subtype
+    ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay', 'blizzard_cp'].include? self.subtype
   end
-
 
   def group_members?
     ['craft_group', 'perf_group'].include? self.subtype
   end
 
   def perf_requests?
-    ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay'].include? self.subtype
+    ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay', 'blizzard_cp'].include? self.subtype
   end
 
   def ask_veteran?
@@ -56,8 +64,14 @@ class Competition < ApplicationRecord
     ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay'].include? self.subtype
   end
 
-  def extra_images?
-    ['craft', 'craft_group', 'eurocosplay', 'rajz_cg'].include? self.subtype
+  def select_music_from_list?
+    ['blizzard_cp'].include? self.subtype
   end
-
+  
+  def extra_images?
+    ['craft', 'craft_group', 'eurocosplay','blizzard_cp', 'rajz_cg'].include? self.subtype
+  end
+  
+  
+  
 end

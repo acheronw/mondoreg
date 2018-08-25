@@ -34,10 +34,15 @@
     <dl><%= image_tag (@comp_application.primary_image.url(:medium)) %></dl>
     <dl><%= link_to t('competition.full_size_image'), @comp_application.primary_image.url %></dl>
 
-    <%# Music/video uploaded - Cosplay only fields %>
-    <% if @comp_application.competition.is_cosplay? %>
+    <%# Music/video uploaded - If required %>
+    <% if @comp_application.competition.require_music_upload? %>
         <dt><%= t('competition.stage_music') %></dt>
         <dl><%= link_to @comp_application.stage_music_file_name, @comp_application.stage_music.url %></dl>
+    <% end %>
+
+    <% if @comp_application.competition.select_music_from_list? %>
+        <dt><%= t('competition.selected_music') %></dt>
+        <dl><%= @comp_application.selected_music %></dl>
     <% end %>
 
 
