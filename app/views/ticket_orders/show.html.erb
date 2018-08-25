@@ -8,7 +8,7 @@
   </p>
 
   <p>
-    <b><%= @ticket_order.quantity %> <%= t('ticketing.quantity') %></b><br>
+    <h1><%= @ticket_order.quantity %> <%= t('ticketing.quantity') %></h1><br>
   </p>
 
   <% if @ticket_order.status == 'accepted' %>
@@ -22,9 +22,11 @@
   <% end %>
 
   <% if (current_user.has_role? :ticketeer) && (@ticket_order.status == 'accepted') %>
-    <%= link_to t('ticketing.deliver_button', quantity: @ticket_order.quantity), deliver_ticket_path(id: @ticket_order.id), class: "btn btn-primary", method: :patch %>
+    <%= link_to t('ticketing.deliver_button', quantity: @ticket_order.quantity), deliver_ticket_path(id: @ticket_order.id), class: "btn btn-primary btn-lg btn-block", method: :patch %>
   <% end %>
 
-  <%= render partial: 'ticket_lookup' %>
+
 
 </div>
+
+<%= render partial: 'ticket_lookup' %>
