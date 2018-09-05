@@ -147,6 +147,7 @@ hu:
       edit_app_header: "Jelentkezés módosítása"
       fandom_explained: "A manga, anime, könyv, képregény, film vagy játék címe, ahonnan a karakter van. Amennyiben nincs ilyen forrás, vagy a karakter designját megváltoztattad, azt kell ide írnod, hogy 'original'."
       primary_image_explained: "Ezt a képet vetítjük ki a színpadon és a karaktered referenciaképe is ez. A pontos követelkményeket olvasd el a szabályzatban"
+      primary_art_explained: "A feltöltött fájlok nevét a következőképp add meg: kategória_vezetéknév_keresztnév"
       stage_music_explained: "Egy mp3-at vagy egy videót tölts fel, amit a színpadi fellépésed alatt bejátszunk. A pontos követelményeket olvasd el a szabályzatban. Craft esetén csak zenét tölts fel!"
       extra_images_cosplay_explained: "Ezeket a képeket csak a zsűri fogja megnézni. Például más szögből ábrázolják a karaktered, vagy a karakter részleteit mutajták be."
       extra_images_digital_art_explained: "Ebben a kategóriában a kép mellé a fázisfotókat is fel kell tölteni"

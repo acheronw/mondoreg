@@ -42,6 +42,8 @@
           <%# Explanation - Cosplay only %>
           <% if @comp_application.competition.is_cosplay? %>
               <i><%= t('competition.user_side.primary_image_explained') %></i>
+          <% else %>
+              <i><%= t('competition.user_side.primary_art_explained') %></i>
           <% end %>
         </div>
 
