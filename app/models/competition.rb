@@ -17,7 +17,37 @@ class Competition < ApplicationRecord
   # Also populating the list requires either to code a specific UI for that (at least in activeadmin)
   # Or to add that in the console.
   # So the current solution might be monkey patching, but it was much simpler.
-  MUSIC_OPTIONS = ['rock and roll', 'brutalmetal', 'buta horda kek']
+  MUSIC_OPTIONS = ["DIABLO I / II - Tristram Village",
+                   "DIABLO II - Leoric",
+                   "DIABLO II - Lord of Destruction Main Theme",
+                   "DIABLO III: REAPER OF SOULS - Crusader",
+                   "DIABLO III: REAPER OF SOULS - The Wrath of Angels",
+                   "HEARTHSTONE: HEROES OF WARCRAFT - One Last Chance",
+                   "HEARTHSTONE: HEROES OF WARCRAFT - The Arena Awaits",
+                   "HEROES OF THE STORM – The Battle Begins",
+                   "HEROES OF THE STORM / LOST VIKINGS 2 - Smugglers Cove",
+                   "OVERWATCH - Prepare to Attack",
+                   "OVERWATCH - Rally the Heroes",
+                   "STARCRAFT - Opening Theme",
+                   "STARCRAFT - Terran One",
+                   "STARCRAFT II: WINGS OF LIBERTY - Card to Play",
+                   "STARCRAFT II: LEGACY OF THE VOID - Khala's End",
+                   "STARCRAFT II: LEGACY OF THE VOID - The Stars Our Home",
+                   "WARCRAFT II - Opening Theme",
+                   "WARCRAFT III - Arthas's Betrayal",
+                   "WARCRAFT III - Blackrock and Roll",
+                   "WORLD OF WARCRAFT - A Call to Arms",
+                   "WORLD OF WARCRAFT - Legends of Azeroth",
+                   "WORLD OF WARCRAFT -  Nightsong",
+                   "WORLD OF WARCRAFT - Zul'Gurub Voodoo",
+                   "WORLD OF WARCRAFT: WRATH OF THE LICH KING - Invincible",
+                   "WORLD OF WARCRAFT: BATTLE FOR AZEROTH - Freehold",
+                   "WORLD OF WARCRAFT: LEGION - Anduin, part 2",
+                   'WORLD OF WARCRAFT: LEGION - Highmountain',
+                   "WORLD OF WARCRAFT: LEGION - Azeroth's Last Hope",
+                   "Sharm - Teldrassil Burns",
+
+  ]
 
   scope :active, -> { joins(:convention).merge(Convention.active) }
   scope :on_sale, -> { where("applications_start <= ?", Date.today).where("applications_end >= ?", Date.today) }
