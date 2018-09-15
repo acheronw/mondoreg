@@ -11,7 +11,7 @@ class CompApplication < ApplicationRecord
   validates :character_source, presence: true, if: Proc.new{ |a| a.competition.is_cosplay?  }
 
   validates :selected_music, presence: true, if: Proc.new{ |a| a.competition.select_music_from_list? }
-  validates :selected_music, inclusion: {in: Competition::MUSIC_OPTIONS }
+  validates :selected_music, inclusion: {in: Competition::MUSIC_OPTIONS }, if: Proc.new{ |a| a.competition.select_music_from_list? }
 
 
   validates :status, presence:true
