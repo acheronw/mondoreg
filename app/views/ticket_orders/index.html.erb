@@ -73,8 +73,10 @@
               <%= Convention.active.first.name %>
             </p>
             <div>
-              <% no_sold = TicketOrder.active.where(status: 'accepted').sum(:quantity) %>
+              <% no_sold = TicketOrder.active.where(status: ['accepted', 'delivered']).sum(:quantity) %>
               <%= t('admin_dashboard.no_of_confirmed', number: no_sold) %>
+              <% no_sold = TicketOrder.active.where(status: 'accepted').sum(:quantity) %>
+              <%= t('admin_dashboard.no_of_not_delivered', number: no_sold) %>
               <% no_pending = TicketOrder.requires_attention.sum(:quantity) %>
               <%= t('admin_dashboard.no_of_pending', number: no_pending) %>
             </div>
