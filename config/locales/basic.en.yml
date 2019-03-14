@@ -169,7 +169,7 @@ en:
       edit_app_header: "Modify your application"
       fandom_explained: "The title of the manga, anime, book, comic, movie or game where the character is from. Write 'original' here if none of these apply or if your character design is modified by you."
       primary_image_explained: "This image will be displayed on the stage and will be used as a reference for your character as well. See the rules for the precise requirements."
-      primary_art_explained: "Please set the filename of the image to be uploaded to be: category_lastname_firstname"
+      primary_art_explained: "Please set the filename of the image to be uploaded to be: category_lastname_firstname (don't use accented characters)"
       stage_music_explained: "This is either an mp3 music or a video which will play while you are on stage. See the rules for the precise requirements. For craftmanship only upload music!"
       extra_images_cosplay_explained: "These images will be seen only by the jury. Use these to show extra details of your character, for example how it looks from a different angle."
       extra_images_digital_art_explained: "In addition to the finalized art, you also have to upload the work in progress images of various stages"
