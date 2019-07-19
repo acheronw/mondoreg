@@ -16,8 +16,9 @@ class TicketOrder < ApplicationRecord
   # This chaining is made explicit in order to use it with ActiveAdmin scope:
   scope :requires_attention, -> { active.pending }
 
-  def change_to_delivered
+  def change_to_delivered(deliverer)
     self.status = "delivered"
+    self.deliverer = deliverer
     self.save
   end
 

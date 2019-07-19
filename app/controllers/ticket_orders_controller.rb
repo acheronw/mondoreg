@@ -65,7 +65,7 @@ class TicketOrdersController < ApplicationController
   def deliver_ticket
     @ticket_order = TicketOrder.find(params[:id])
     if @ticket_order.status == 'accepted'
-      @ticket_order.change_to_delivered
+      @ticket_order.change_to_delivered(current_user.id)
       flash[:notice] = t('ticketing.ticket_delivered', id: @ticket_order.id)
       redirect_to :back
     else
