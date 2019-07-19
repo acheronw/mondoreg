@@ -12,6 +12,7 @@ hu:
   title:
     comp_admin: "Verseny adminisztráció"
     ticket_admin: "Jegyvásárlás adminisztráció"
+    ticket_stats: "Jegyvásárlás statisztikák"
     ticket_lookup: "Jegykiadás"
     help: "Súgó"
     home: "Kezdőlap"
@@ -95,6 +96,12 @@ hu:
       problem: "A következő probléma merült fel a feldolgozás során:"
       statistics_title: "Eladási statisztikák"
       download_csv: "Jegyeladási adatok letöltése CSV-ként"
+    stats:
+      delivery_stats: "Jegykiosztás stáb szerint"
+      deliverer_email: "email:"
+      deliverer_name: "Jegyárus:"
+      delivered_orders: "Megrendelések száma:"
+      delivered_tickets: "Összesen kiadott jegyek száma:"
   competition:
     competition_name: "Verseny"
     competition_type: "Verseny típusa"

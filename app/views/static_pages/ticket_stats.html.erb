@@ -1,0 +1,71 @@
+<% if current_user.has_role? :bursar %>
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-6">
+        <div class="padded well">
+
+          <% if Convention.active.any? %>
+
+              <br>
+              <p class="center">
+                <%= t('ticketing.admin.statistics_title') %>
+                <%= Convention.active.first.name %>
+              </p>
+              <div>
+                <% no_sold = TicketOrder.active.where(status: ['accepted', 'delivered']).sum(:quantity) %>
+                <%= t('admin_dashboard.no_of_confirmed', number: no_sold) %>
+                <% no_sold = TicketOrder.active.where(status: 'accepted').sum(:quantity) %>
+                <%= t('admin_dashboard.no_of_not_delivered', number: no_sold) %>
+                <% no_pending = TicketOrder.requires_attention.sum(:quantity) %>
+                <%= t('admin_dashboard.no_of_pending', number: no_pending) %>
+              </div>
+
+              <% Ticket.active.each do | ticket_type | %>
+                  <p class = "center">
+                    <%= ticket_type.name %>
+                  </p>
+                  <p>
+                    <% no_sold = TicketOrder.where(ticket_id: ticket_type.id).where(status: ['accepted', 'delivered']).sum(:quantity) %>
+                    <%= t('admin_dashboard.no_of_confirmed', number: no_sold) %>
+                    <% no_sold = TicketOrder.where(ticket_id: ticket_type.id).where(status: 'accepted').sum(:quantity) %>
+                    <%= t('admin_dashboard.no_of_not_delivered', number: no_sold) %>
+                    <% no_pending = TicketOrder.where(ticket_id: ticket_type.id).requires_attention.sum(:quantity) %>
+                    <%= t('admin_dashboard.no_of_pending', number: no_pending) %>
+                  </p>
+              <% end %>
+              <div>
+                <%=  link_to t('ticketing.admin.download_csv') , export_csv_path, method: :get %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="padded well">
+          <p class="center">
+            <%= t('ticketing.stats.delivery_stats') %>
+          </p>
+          <% User.with_any_role('ticketeer').each do | deliverer | %>
+            <p>
+              <%= t('ticketing.stats.deliverer_name') %>
+              <%= deliverer.name %>
+              <%= t('ticketing.stats.deliverer_email') %>
+              <%= deliverer.email %>
+              <br>
+
+              <%= t('ticketing.stats.delivered_orders') %>
+              <%= TicketOrder.active.where(deliverer: deliverer.id).length %>
+              <%= t('ticketing.stats.delivered_tickets') %>
+              <%= TicketOrder.active.where(deliverer: deliverer.id).sum(:quantity) %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+<% end %>

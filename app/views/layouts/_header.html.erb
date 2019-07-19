@@ -11,6 +11,11 @@
             <li><%= link_to t('title.ticket_admin'), ticket_orders_path %></li>
         <% end %>
 
+        <% if user_signed_in? && current_user.has_role?(:bursar) %>
+            <li><%= link_to t('title.ticket_stats'), ticket_stats_path %></li>
+        <% end %>
+
+
         <li><%= link_to t('title.help'),   help_path %></li>
         <% if user_signed_in? %>
             <li class="dropdown">

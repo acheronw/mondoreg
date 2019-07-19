@@ -12,4 +12,7 @@ class StaticPagesController < ApplicationController
   def ticket_admin
   end
 
+  def ticket_stats
+  end
+
 end

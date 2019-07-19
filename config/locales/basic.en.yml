@@ -33,6 +33,7 @@ en:
   title:
     comp_admin: "Competition Administration"
     ticket_admin: "Ticketing Administration"
+    ticket_stats: "Ticketing Stats"
     ticket_lookup: "Ticket Delivery"
     help: "Help"
     home: "Home"
@@ -117,6 +118,12 @@ en:
       problem: "Problem with processing the transaction:"
       statistics_title: "Sales statistics for the current convention"
       download_csv: "Download ticketing data as CSV"
+    stats:
+      delivery_stats: "Ticket deliveries by ticketing staff"
+      deliverer_email: "email:"
+      deliverer_name: "Staff:"
+      delivered_orders: "Orders delivered:"
+      delivered_tickets: "Total number of tickets:"
   competition:
     competition_name: "Competition"
     competition_type: "Type of competition"
