@@ -24,7 +24,7 @@ gem 'bootstrap-sass', '3.3.6'
 # This brings back 'assigns' and 'assert_template' to tests:
 gem 'rails-controller-testing'
 # Devise for login and authenticating
-gem 'devise', '4.2'
+gem 'devise', '4.7.1'
 
 # Rolify for easy assignment and querries of roles
 gem 'rolify'
