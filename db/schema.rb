@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190719064832) do
+ActiveRecord::Schema.define(version: 20200212131254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,7 +138,7 @@ ActiveRecord::Schema.define(version: 20190719064832) do
     t.index ["name"], name: "index_roles_on_name", using: :btree
   end
 
-  create_table "ticket_orders", force: :cascade do |t|
+  create_table "ticket_orders", id: :integer, default: -> { "bounded_pseudo_encrypt((nextval('ticket_orders_id_seq'::regclass))::integer, 16777215, 30000)" }, force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "ticket_id"
     t.integer  "quantity"
