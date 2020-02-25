@@ -123,6 +123,7 @@ class CompApplicationsController < ApplicationController
                                                :group_members,
                                                :nickname,
                                                :consent,
+                                               :age,
       )
     end
 

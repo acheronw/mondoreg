@@ -83,8 +83,15 @@
     <%# Veteran checkbox - if allowed %>
     <% if @comp_application.competition.ask_veteran?  %>
         <dt><%= t('competition.veteran')%></dt>
-        <dl><%= @comp_application.veteran ? t('yes') : t('no') %>
+        <dl><%= @comp_application.veteran ? t('yes') : t('no') %></dl>
     <% end %>
+
+    <%# Age checkbox - if allowed %>
+    <% if @comp_application.competition.ask_age?  %>
+        <dt><%= t('competition.age')%></dt>
+        <dl><%= @comp_application.age ? t('yes') : t('no') %></dl>
+    <% end %>
+
 
     </dl>
 

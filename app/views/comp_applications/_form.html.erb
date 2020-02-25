@@ -130,6 +130,14 @@
             </div>
         <% end %>
 
+        <%# Age checkbox - if allowed %>
+        <% if @comp_application.competition.ask_age?  %>
+            <div class="form-group">
+              <%= f.label t('competition.age') %>
+              <%= f.check_box :age %>
+              <i><%= t('competition.user_side.age_explained') %></i>
+            </div>
+        <% end %>
 
         <%# Consent checkbox - if allowed
         This field is virtual, will not be stored in DB. %>

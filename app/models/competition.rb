@@ -85,6 +85,10 @@ class Competition < ApplicationRecord
     ['craft', 'craft_group'].include? self.subtype
   end
 
+  def ask_age?
+    ['rajz', 'rajz_cg'].include? self.subtype
+  end
+
   def consent_required?
     ['eurocosplay'].include? self.subtype
   end
