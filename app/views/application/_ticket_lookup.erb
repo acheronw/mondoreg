@@ -6,7 +6,7 @@
       <%= form_tag lookup_ticket_path, method: :get do %>
         <%= t('ticketing.search_field') %><br>
         <%= label_tag 'MC' %>
-        <%= text_field_tag :ticket_id %>
+        <%= number_field_tag :ticket_id %>
         <%= submit_tag t('ticketing.search_button'), class: "btn btn-primary" %>
       <% end %>
     </div>
