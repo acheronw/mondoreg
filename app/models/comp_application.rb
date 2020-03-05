@@ -48,11 +48,14 @@ class CompApplication < ApplicationRecord
     self.status = "accepted"
     self.appearance_no ||= next_free_number
     if self.save
-      if self.competition.is_cosplay?
-        ApplicationMailer.cosplay_comp_application_confirmed_email(self).deliver_now
-      else
-        ApplicationMailer.comp_application_confirmed_email(self).deliver_now
-      end
+      # If cosplay confirmations mails are different (at some point they had an attached info sheet picture)
+      # if self.competition.is_cosplay?
+      #   ApplicationMailer.cosplay_comp_application_confirmed_email(self).deliver_now
+      # else
+      #   ApplicationMailer.comp_application_confirmed_email(self).deliver_now
+      # end
+      # If all use the same structure:
+      ApplicationMailer.comp_application_confirmed_email(self).deliver_now
     end
   end
 
