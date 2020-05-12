@@ -100,7 +100,7 @@
         <% if @comp_application.competition.group_members? %>
             <div class="form-group">
               <%= f.label t('competition.group_name')  %>
-              <%= f.text_field :group_name %>
+              <%= f.text_field :group_name, :maxlength => 35 %>
             </div>
 
             <div class="form-group">
