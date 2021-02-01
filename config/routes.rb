@@ -38,6 +38,4 @@ Rails.application.routes.draw do
   get '/ticket_stats', to: 'static_pages#ticket_stats', as: :ticket_stats
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-
 end

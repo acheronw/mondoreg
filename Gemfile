@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.7.1"
+ruby "2.7.2"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -8,7 +8,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 5.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -47,7 +47,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # ActiveAdmin
-gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
+# gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 
 # Paperclip for file attachments:
 gem 'paperclip', '~> 5.2.0'
