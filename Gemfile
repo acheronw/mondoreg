@@ -46,8 +46,10 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# This is required for ActiveAdmin
+# gem 'kaminari'
 # ActiveAdmin
-# gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 
 # Paperclip for file attachments:
 gem 'paperclip', '~> 5.2.0'
