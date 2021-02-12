@@ -25,13 +25,13 @@ ActiveAdmin.register TicketOrder do
   member_action :confirm_ticket, method: :patch do
     resource.confirm
     flash[:notice] = t('ticketing.ticket_confirmed', id: resource.id)
-    redirect_to :back
+    redirect_back
   end
 
   member_action :unconfirm_ticket, method: :patch do
     resource.unconfirm
     flash[:notice] = t('ticketing.ticket_unconfirmed', id: resource.id)
-    redirect_to :back
+    redirect_back
   end
 
   scope I18n.t('ticketing.pending_current'), :requires_attention

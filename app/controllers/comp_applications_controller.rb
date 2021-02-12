@@ -74,7 +74,7 @@ class CompApplicationsController < ApplicationController
     if is_manager_here?
       @comp_application.confirm
       flash[:notice] = t('competition.admin.application_accepted', id: @comp_application.id)
-      redirect_to :back
+      redirect_back
     else
       redirect_to root_path
     end
@@ -86,7 +86,7 @@ class CompApplicationsController < ApplicationController
     if is_manager_here?
       @comp_application.reject()
       flash[:notice] = t('competition.admin.application_rejected', id: @comp_application.id)
-      redirect_to :back
+      redirect_back
     else
       redirect_to root_path
     end

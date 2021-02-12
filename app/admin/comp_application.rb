@@ -18,13 +18,13 @@ ActiveAdmin.register CompApplication do
   member_action :accept_application, method: :patch do
     resource.confirm
     flash[:notice] = t('competition.admin.application_accepted', id: resource.id)
-    redirect_to :back
+    redirect_back
   end
 
   member_action :reject_application, method: :patch do
     resource.reject
     flash[:notice] = t('competition.admin.application_rejected', id: resource.id)
-    redirect_to :back
+    redirect_back
   end
 
 
