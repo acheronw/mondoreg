@@ -3,13 +3,15 @@ class BankTransactionsController < ApplicationController
 
   def destroy
     BankTransaction.find(params[:id]).destroy
-    redirect_back, notice: "TRANZAKCIÓ TÖRÖLVE"
+    redirect_back
+      # , notice: "TRANZAKCIÓ TÖRÖLVE"
   end
 
   def set_done
     @bank_transaction = BankTransaction.find(params[:id])
     @bank_transaction.update(status: 'done')
-    redirect_back, notice: "TRANZAKCIÓ RENDEZVE"
+    redirect_back
+      # , notice: "TRANZAKCIÓ RENDEZVE"
   end
 
   def set_problematic
@@ -21,7 +23,8 @@ class BankTransactionsController < ApplicationController
 
   def import
     message = BankTransaction.import(params[:file])
-    redirect_back, notice: message
+    redirect_back
+      #, notice: message
   end
 
   private
