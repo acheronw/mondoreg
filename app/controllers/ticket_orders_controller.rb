@@ -42,7 +42,7 @@ class TicketOrdersController < ApplicationController
       redirect_to ticket_order_path(@ticket_order.id)
     else
       flash[:warning] = t('ticketing.id_not_found', id: params[:ticket_id])
-      redirect_back
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -67,10 +67,10 @@ class TicketOrdersController < ApplicationController
     if @ticket_order.status == 'accepted'
       @ticket_order.change_to_delivered(current_user.id)
       flash[:notice] = t('ticketing.ticket_delivered', id: @ticket_order.id)
-      redirect_back
+      redirect_back(fallback_location: root_path)
     else
       flash[:warning] = t('ticketing.ticket_not_delivered', id: @ticket_order.id)
-      redirect_back
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -78,14 +78,14 @@ class TicketOrdersController < ApplicationController
     @ticket_order = TicketOrder.find(params[:id])
     @ticket_order.confirm
     flash[:notice] = t('ticketing.ticket_confirmed', id: @ticket_order.id)
-    redirect_back
+    redirect_back(fallback_location: root_path)
   end
 
   def unconfirm_ticket
     @ticket_order = TicketOrder.find(params[:id])
     @ticket_order.unconfirm
     flash[:notice] = t('ticketing.ticket_unconfirmed', id: @ticket_order.id)
-    redirect_back
+    redirect_back(fallback_location: root_path)
   end
 
   def reminder_email
@@ -98,7 +98,7 @@ class TicketOrdersController < ApplicationController
       end
       flash[:success] = t('ticketing.user_side.resent_instructions_message')
     end
-    redirect_back
+    redirect_back(fallback_location: root_path)
   end
 
   private
