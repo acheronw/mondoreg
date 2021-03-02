@@ -237,10 +237,10 @@ hu:
     next_label: "Következő"
   views:
     pagination:
-      first: "Legelső oldal"
-      last: "Legutolsó oldal"
-      previous: "Előző oldal"
-      next: "Következő oldal"
+      first: "Legelső"
+      last: "Legutolsó"
+      previous: "Előző"
+      next: "Következő"
   time:
     formats:
       default: "%Y/%m/%d"
