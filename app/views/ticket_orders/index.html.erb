@@ -5,7 +5,9 @@
     <div class="col-lg-9">
       <div class="padded well">
         <p class="center"><%= t('ticketing.admin.ticket_orders_listing')%></p>
-        <%= will_paginate @ticket_orders, param_name: 'ticket_orders_page' %>
+        <%#= will_paginate @ticket_orders, param_name: 'ticket_orders_page' %>
+        <%= paginate @ticket_orders, param_name: 'ticket_orders_page' %>
+
         <table class="table">
           <thead>
           <tr>
@@ -52,7 +54,9 @@
             </tr>
           <% end %>
         </table>
-        <%= will_paginate @ticket_orders, param_name: 'ticket_orders_page' %>
+        <%#= will_paginate @ticket_orders, param_name: 'ticket_orders_page' %>
+        <%= paginate @ticket_orders, param_name: 'ticket_orders_page' %>
+
       </div>
     </div>
     <div class="col-lg-3">

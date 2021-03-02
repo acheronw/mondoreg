@@ -48,7 +48,6 @@ gem 'jbuilder', '~> 2.5'
 
 # This is required for ActiveAdmin
 # gem 'kaminari'
-# ActiveAdmin
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 
 # Paperclip for file attachments:
@@ -56,8 +55,8 @@ gem 'paperclip', '~> 5.2.0'
 gem 'aws-sdk', '~> 2.3'
 
 # Pagination support used in ticket admin view:
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+# gem 'will_paginate'
+# gem 'bootstrap-will_paginate'
 
 gem 'barby'
 gem 'rqrcode'
