@@ -60,7 +60,7 @@ class CompApplicationsController < ApplicationController
       redirect_to root_path
     else
       @comp_application.status = 'pending'
-      if @comp_application.update_attributes(comp_params)
+      if @comp_application.update(comp_params)
         flash[:success] = t('competition.user_side.application_sent')
         redirect_to root_path
       else
