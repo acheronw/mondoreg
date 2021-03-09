@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :ticket_orders, only: [:create, :index, :show]
   patch 'confirm_ticket', to: 'ticket_orders#confirm_ticket'
   patch 'unconfirm_ticket', to: 'ticket_orders#unconfirm_ticket'
+  patch 'refund_ticket', to: 'ticket_orders#refund_ticket'
   patch 'deliver_ticket', to: 'ticket_orders#deliver_ticket'
   put 'reminder_email', to: 'ticket_orders#reminder_email'
   get 'export_csv', to: 'ticket_orders#export_csv'

@@ -11,7 +11,7 @@
     <h1><%= @ticket_order.quantity %> <%= t('ticketing.quantity') %></h1><br>
   </p>
 
-  <% if @ticket_order.status == 'accepted' %>
+  <% if (@ticket_order.status == 'accepted') %>
       <div class="alert alert-success">
         <%= @ticket_order.status_localized %>
       </div>

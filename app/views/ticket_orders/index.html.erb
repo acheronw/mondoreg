@@ -33,6 +33,7 @@
                   <td class="success"><%= ticket_order.status_localized %></td>
                   <td>
                     <%=  link_to t('ticketing.unconfirm_button') , unconfirm_ticket_path(id: ticket_order.id), method: :patch %>
+                    <%=  link_to t('ticketing.refund_button') , refund_ticket_path(id: ticket_order.id), method: :patch %>
                   </td>
                   <td>
                     <%=  link_to t('ticketing.user_side.reminder_button') , reminder_email_path(id: ticket_order.id), method: :put %>
@@ -47,6 +48,11 @@
                   </td>
               <% elsif ticket_order.status == 'delivered' %>
                   <td class="success"><%= ticket_order.status_localized %></td>
+              <% elsif ticket_order.status == 'refunded' %>
+                <td class="success"><%= ticket_order.status_localized %></td>
+                <td>
+                  <%=  link_to t('ticketing.unconfirm_button') , unconfirm_ticket_path(id: ticket_order.id), method: :patch %>
+                </td>
               <% else %>
                   <td class="danger"><%= ticket_order.status_localized %></td>
 

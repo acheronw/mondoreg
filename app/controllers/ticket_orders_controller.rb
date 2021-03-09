@@ -1,5 +1,5 @@
 class TicketOrdersController < ApplicationController
-  before_action :bursar_user, only: [:index, :confirm_ticket, :unconfirm_ticket, :export_csv]
+  before_action :bursar_user, only: [:index, :confirm_ticket, :unconfirm_ticket, :refund_ticket, :export_csv]
   before_action :ticketeer_user, only: [:deliver_ticket, :lookup_ticket]
 
   # This makes the helpers available in the view:
@@ -89,6 +89,13 @@ class TicketOrdersController < ApplicationController
     @ticket_order = TicketOrder.find(params[:id])
     @ticket_order.unconfirm
     flash[:notice] = t('ticketing.ticket_unconfirmed', id: @ticket_order.id)
+    redirect_back(fallback_location: root_path)
+  end
+
+  def refund_ticket
+    @ticket_order = TicketOrder.find(params[:id])
+    @ticket_order.refund
+    flash[:notice] = t('ticketing.ticket_refunded', id: @ticket_order.id)
     redirect_back(fallback_location: root_path)
   end
 

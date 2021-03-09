@@ -1,5 +1,5 @@
 class TicketOrder < ApplicationRecord
-  validates :status, :inclusion => { :in => ['pending', 'accepted', 'rejected','delivered'],
+  validates :status, :inclusion => { :in => ['pending', 'accepted', 'rejected','delivered', 'refunded'],
                                      message: "%value is not a valid ticket status" }
   validates :user_id, presence: true
   validates :ticket_id, presence: true
@@ -20,6 +20,12 @@ class TicketOrder < ApplicationRecord
     self.status = "delivered"
     self.deliverer = deliverer
     self.save
+  end
+
+  def refund
+    self.status = "refunded"
+    self.save
+    # TODO send notification email
   end
 
   def confirm
@@ -70,6 +76,8 @@ class TicketOrder < ApplicationRecord
         I18n.t('ticketing.state_rejected')
       when "delivered"
         I18n.t('ticketing.state_delivered')
-    end
+      when "refunded"
+        I18n.t('ticketing.state_refunded')
+     end
   end
 end
