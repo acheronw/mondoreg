@@ -32,7 +32,7 @@ class TicketOrdersController < ApplicationController
     # @ticket_orders = TicketOrder.active.joins(:user).order(sort_column + " " + sort_direction)
     #                     .paginate(page: params[:ticket_orders_page], per_page: 100).all
     # Version using kaminari gem for pagionation:
-    @ticket_orders = TicketOrder.active.joins(:user).order(sort_column + " " + sort_direction).per_page_kaminari(params[:ticket_orders_page]).per(100)
+    @ticket_orders = TicketOrder.active.joins(:user).order(sort_column + " " + sort_direction).page(params[:ticket_orders_page]).per(100)
 
     respond_to do | format |
       format.html
