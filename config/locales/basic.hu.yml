@@ -45,6 +45,7 @@ hu:
   ticketing:
     name_of_buyer: "Vevő neve"
     order_id: "Foglalás Azonosító"
+    outdated: "A jegy egy korábbi rendezvényre szól"
     quantity: "Darab"
     total_price: "Teljes ár"
     status: "státusz"

@@ -66,6 +66,7 @@ en:
   ticketing:
     name_of_buyer: "name of buyer"
     order_id: "Order ID"
+    outdated: "This ticket belongs to a past convention"
     quantity: "Quantity"
     total_price: "Total price"
     status: "Status"

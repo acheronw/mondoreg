@@ -11,19 +11,25 @@
     <h1><%= @ticket_order.quantity %> <%= t('ticketing.quantity') %></h1><br>
   </p>
 
-  <% if (@ticket_order.status == 'accepted') %>
-      <div class="alert alert-success">
-        <%= @ticket_order.status_localized %>
-      </div>
+  <% if (@ticket_order.ticket.convention.relevance_date > Date.today) %>
+    <% if (@ticket_order.status == 'accepted') %>
+        <div class="alert alert-success">
+          <%= @ticket_order.status_localized %>
+        </div>
+      <% if (current_user.has_role? :ticketeer) && (@ticket_order.status == 'accepted') %>
+        <%= link_to t('ticketing.deliver_button', quantity: @ticket_order.quantity), deliver_ticket_path(id: @ticket_order.id), class: "btn btn-primary btn-xlarge btn-block", method: :patch %>
+      <% end %>
+    <% else %>
+        <div class="alert alert-danger">
+          <%= @ticket_order.status_localized %>
+        </div>
+    <% end %>
   <% else %>
-      <div class="alert alert-danger">
-        <%= @ticket_order.status_localized %>
-      </div>
-  <% end %>
+    <div class="alert alert-danger">
+      <%= t('ticketing.outdated') %>
+    </div>
+  <% end  %>
 
-  <% if (current_user.has_role? :ticketeer) && (@ticket_order.status == 'accepted') %>
-    <%= link_to t('ticketing.deliver_button', quantity: @ticket_order.quantity), deliver_ticket_path(id: @ticket_order.id), class: "btn btn-primary btn-xlarge btn-block", method: :patch %>
-  <% end %>
 
 
 
