@@ -36,7 +36,8 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  # config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Don't care if the mailer can't send.
   # TODO by default it was false:

@@ -31,13 +31,13 @@
 
     <dt><%= @comp_application.competition.is_cosplay? ? t('competition.primary_cosplay_image') : t('competition.primary_art_image')
     %></dt>
-    <dl><%= image_tag (@comp_application.primary_image.url(:medium)) %></dl>
+    <dl><%= image_tag (@comp_application.primary_image.variant(resize: "400x400")) %></dl>
     <dl><%= link_to t('competition.full_size_image'), @comp_application.primary_image.url %></dl>
 
     <%# Music/video uploaded - If required %>
     <% if @comp_application.competition.require_music_upload? %>
         <dt><%= t('competition.stage_music') %></dt>
-        <dl><%= link_to @comp_application.stage_music_file_name, @comp_application.stage_music.url %></dl>
+        <dl><%= link_to @comp_application.stage_music.filename, @comp_application.stage_music.url %></dl>
     <% end %>
 
     <% if @comp_application.competition.select_music_from_list? %>
@@ -53,10 +53,10 @@
         %></dt>
         <dl>
           <% if @comp_application.extra_image1.present? %>
-            <%= image_tag (@comp_application.extra_image1.url(:medium)) %>
+            <%= image_tag (@comp_application.extra_image1.variant(resize: "400x400")) %>
           <% end %>
           <% if @comp_application.extra_image2.present? %>
-            <%= image_tag (@comp_application.extra_image2.url(:medium)) %>
+            <%= image_tag (@comp_application.extra_image2.variant(resize: "400x400")) %>
           <% end %>
         </dl>
     <% end %>

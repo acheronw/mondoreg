@@ -20,26 +20,34 @@ class CompApplication < ApplicationRecord
 
   scope :active, -> { joins(:competition).merge(Competition.active) }
 
+
+  # Primary image with ActiveStorage attachment:
+  has_one_attached :primary_image
+
   # This associates the attribute primary_image with a file attachment (Paperclip)
-  has_attached_file :primary_image, styles: {
-      medium: '400x400>'
-  }
-  validates_attachment_content_type :primary_image, :content_type => /\Aimage\/.*\Z/, message: 'This is not a proper image'
-  validates :primary_image, presence: true
+  # has_attached_file :primary_image, styles: {
+  #     medium: '400x400>'
+  # }
+  # validates_attachment_content_type :primary_image, :content_type => /\Aimage\/.*\Z/, message: 'This is not a proper image'
+  # validates :primary_image, presence: true
 
-  has_attached_file :stage_music
-  validates_attachment_content_type :stage_music, :content_type => ['video/avi', 'video/mp4', 'video/x-ms-wmv','video/x-msvideo', 'audio/mpeg'], message: 'This is not an audio or video file'
-  validates :stage_music, presence: true, if: Proc.new{ |a| a.competition.require_music_upload?  }
+  has_one_attached :stage_music
+  # has_attached_file :stage_music
+  # validates_attachment_content_type :stage_music, :content_type => ['video/avi', 'video/mp4', 'video/x-ms-wmv','video/x-msvideo', 'audio/mpeg'], message: 'This is not an audio or video file'
+  # validates :stage_music, presence: true, if: Proc.new{ |a| a.competition.require_music_upload?  }
 
-  has_attached_file :extra_image1, styles: {
-      medium: '400x400>'
-  }
-  validates_attachment_content_type :extra_image1, :content_type => /\Aimage\/.*\Z/, message: 'This is not a proper image'
 
-  has_attached_file :extra_image2, styles: {
-      medium: '400x400>'
-  }
-  validates_attachment_content_type :extra_image2, :content_type => /\Aimage\/.*\Z/, message: 'This is not a proper image'
+  has_one_attached :extra_image1
+  has_one_attached :extra_image2
+  # has_attached_file :extra_image1, styles: {
+  #     medium: '400x400>'
+  # }
+  # validates_attachment_content_type :extra_image1, :content_type => /\Aimage\/.*\Z/, message: 'This is not a proper image'
+  #
+  # has_attached_file :extra_image2, styles: {
+  #     medium: '400x400>'
+  # }
+  # validates_attachment_content_type :extra_image2, :content_type => /\Aimage\/.*\Z/, message: 'This is not a proper image'
 
   validates :group_members, presence: true, if: Proc.new{ |a| a.competition.group_members?  }
   validates :group_name, presence: true, if: Proc.new{ |a| a.competition.group_members?  }

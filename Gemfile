@@ -51,7 +51,11 @@ gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 
 # Paperclip for file attachments:
 gem 'paperclip', '~> 5.2.0'
-gem 'aws-sdk', '~> 2.3'
+# gem 'aws-sdk', '~> 2.3'
+
+gem 'aws-sdk', '~> 3', require: false
+# gem 'aws-sdk-s3', require: false
+gem 'image_processing'
 
 # Pagination support used in ticket admin view:
 # gem 'will_paginate'

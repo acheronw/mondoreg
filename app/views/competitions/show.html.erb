@@ -35,7 +35,7 @@
             <td><%= render partial: 'comp_applications/update_memo', locals: {comp_application: comp_app} %></td>
             <td><%= comp_app.admin_msg %></td>
         <% else %>
-            <td><%= image_tag (comp_app.primary_image.url(:medium)) %></td>
+            <td><%= image_tag (comp_app.primary_image.variant(resize: '400x400')) %></td>
         <% end %>
 
         <% if comp_app.status == 'accepted' %>
