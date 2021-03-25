@@ -36,7 +36,7 @@
         <div class="form-group">
           <%= f.label (@comp_application.competition.is_cosplay? ? t('competition.primary_cosplay_image') : t('competition.primary_art_image') )  %>
           <% if @comp_application.primary_image.present? %>
-              <%= image_tag (@comp_application.primary_image.variant(resize: "400x400")) %>
+              <%= image_tag (@comp_application.primary_image) %>
           <% end %>
           <%= f.file_field :primary_image %>
           <%# Explanation - Cosplay only %>
@@ -74,10 +74,10 @@
               <%= f.label (@comp_application.competition.is_cosplay? ? t('competition.extra_cosplay_image') : t('competition.extra_art_image') )  %>
 
               <% if @comp_application.extra_image1.present? %>
-                  <%= image_tag (@comp_application.extra_image1.variant(resize: "400x400")) %>
+                  <%= image_tag (@comp_application.extra_image1) %>
               <% end %>
               <% if @comp_application.extra_image2.present? %>
-                  <%= image_tag (@comp_application.extra_image2.variant(resize: "400x400")) %>
+                  <%= image_tag (@comp_application.extra_image2) %>
               <% end %>
               <%= f.file_field :extra_image1 %>
               <%= f.file_field :extra_image2 %>
