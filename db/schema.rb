@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_105616) do
+ActiveRecord::Schema.define(version: 2021_03_31_091945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,23 +106,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_105616) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "admin_msg"
-    t.string "primary_image_file_name"
-    t.string "primary_image_content_type"
-    t.integer "primary_image_file_size"
-    t.datetime "primary_image_updated_at"
-    t.string "stage_music_file_name"
-    t.string "stage_music_content_type"
-    t.integer "stage_music_file_size"
-    t.datetime "stage_music_updated_at"
     t.boolean "veteran"
-    t.string "extra_image1_file_name"
-    t.string "extra_image1_content_type"
-    t.integer "extra_image1_file_size"
-    t.datetime "extra_image1_updated_at"
-    t.string "extra_image2_file_name"
-    t.string "extra_image2_content_type"
-    t.integer "extra_image2_file_size"
-    t.datetime "extra_image2_updated_at"
     t.integer "appearance_no"
     t.string "group_name"
     t.string "nickname"
