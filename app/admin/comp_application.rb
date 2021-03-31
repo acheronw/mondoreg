@@ -84,11 +84,13 @@ ActiveAdmin.register CompApplication do
       row :character_source
       row :group_name
 
-      row :primary_image do | comp_a |
-        image_tag (comp_a.primary_image.variant(resize: "400x400"))
-      end
-      row :primary_image_fullsize do | comp_a |
-        link_to comp_a.primary_image.filename, comp_a.primary_image.url
+      if comp_application.primary_image.present?
+        row :primary_image do | comp_a |
+          image_tag (comp_a.primary_image.variant(resize: "400x400"))
+        end
+        row :primary_image_fullsize do | comp_a |
+          link_to comp_a.primary_image.filename, comp_a.primary_image.url
+        end
       end
 
       if comp_application.extra_image1.present?
@@ -109,9 +111,12 @@ ActiveAdmin.register CompApplication do
         end
       end
 
-      row :stage_music do | comp_a |
-        link_to comp_a.stage_music.filename, comp_a.stage_music.url
+      if comp_application.stage_music.present?
+        row :stage_music do | comp_a |
+          link_to comp_a.stage_music.filename, comp_a.stage_music.url
+        end
       end
+
 
       row :group_members
 

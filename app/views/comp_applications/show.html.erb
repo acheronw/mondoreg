@@ -31,13 +31,23 @@
 
     <dt><%= @comp_application.competition.is_cosplay? ? t('competition.primary_cosplay_image') : t('competition.primary_art_image')
     %></dt>
-    <dl><%= image_tag (@comp_application.primary_image.variant(resize: "400x400")) %></dl>
-    <dl><%= link_to t('competition.full_size_image'), @comp_application.primary_image.url %></dl>
+      <% if @comp_application.primary_image.attached? %>
+        <dl><%= image_tag (@comp_application.primary_image.variant(resize: "400x400")) %></dl>
+        <dl><%= link_to t('competition.full_size_image'), @comp_application.primary_image.url %></dl>
+      <% else %>
+          <dl>MISSING IMAGE</dl>
+      <% end %>
+
 
     <%# Music/video uploaded - If required %>
     <% if @comp_application.competition.require_music_upload? %>
         <dt><%= t('competition.stage_music') %></dt>
-        <dl><%= link_to @comp_application.stage_music.filename, @comp_application.stage_music.url %></dl>
+        <dl>
+          <% if @comp_application.stage_music.attached? %>
+            <%= link_to @comp_application.stage_music.filename, @comp_application.stage_music.url %></dl>
+          <% else %>
+            MISSING MUSIC
+          <% end %>
     <% end %>
 
     <% if @comp_application.competition.select_music_from_list? %>
