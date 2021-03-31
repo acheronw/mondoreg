@@ -49,10 +49,6 @@ gem 'jbuilder', '~> 2.5'
 # This is required for ActiveAdmin
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 
-# Paperclip for file attachments:
-gem 'paperclip', '~> 5.2.0'
-# gem 'aws-sdk', '~> 2.3'
-
 # ActiveStorage solution for file attachment required the following:
 # gem 'aws-sdk-s3', require: false
 gem 'aws-sdk', '~> 3', require: false

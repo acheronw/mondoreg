@@ -85,32 +85,32 @@ ActiveAdmin.register CompApplication do
       row :group_name
 
       row :primary_image do | comp_a |
-        image_tag (comp_a.primary_image.url(:medium))
+        image_tag (comp_a.primary_image.variant(resize: "400x400"))
       end
       row :primary_image_fullsize do | comp_a |
-        link_to comp_a.primary_image_file_name, comp_a.primary_image.url
+        link_to comp_a.primary_image.filename, comp_a.primary_image.url
       end
 
       if comp_application.extra_image1.present?
         row :extra_image1 do | comp_a |
-          image_tag (comp_a.extra_image1.url(:medium))
+          image_tag (comp_a.extra_image1.variant(resize: "400x400"))
         end
         row :extra_image1_fullsize do | comp_a |
-          link_to comp_a.extra_image1_file_name, comp_a.extra_image1.url
+          link_to comp_a.extra_image1.filename, comp_a.extra_image1.url
         end
       end
 
       if comp_application.extra_image2.present?
         row :extra_image2 do | comp_a |
-          image_tag (comp_a.extra_image2.url(:medium))
+          image_tag (comp_a.extra_image2.variant(resize: "400x400"))
         end
         row :extra_image2_fullsize do | comp_a |
-          link_to comp_a.extra_image2_file_name, comp_a.extra_image2.url
+          link_to comp_a.extra_image2.filename, comp_a.extra_image2.url
         end
       end
 
       row :stage_music do | comp_a |
-        link_to comp_a.stage_music_file_name, comp_a.stage_music.url
+        link_to comp_a.stage_music.filename, comp_a.stage_music.url
       end
 
       row :group_members

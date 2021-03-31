@@ -95,18 +95,7 @@ Rails.application.configure do
   # TODO before rails update, this config was commented out:
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # Amazon S3 storage for paperclip
-  config.paperclip_defaults = {
-      storage: :s3,
-      url: ':s3_domain_url',
-      path: '/:class/:attachment/:id_partition/:style/:filename',
-      s3_credentials: {
-          bucket: ENV.fetch('S3_BUCKET_NAME'),
-          access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
-          secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
-          s3_region: ENV.fetch('AWS_REGION'),
-      }
-  }
+
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 end
