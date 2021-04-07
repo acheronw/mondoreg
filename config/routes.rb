@@ -33,10 +33,16 @@ Rails.application.routes.draw do
   resources :competitions, only: [:show]
   get 'export_competitors/:id', to: 'competitions#export_csv', as: :export_competitors
 
+  resources :product_categories, only: [:show]
+  resources :products, only: [:show]
+
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
   get '/hub', to: 'static_pages#hub', as: :hub
   get '/ticket_stats', to: 'static_pages#ticket_stats', as: :ticket_stats
+
+
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

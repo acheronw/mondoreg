@@ -5,8 +5,8 @@ ActiveAdmin.register ProductCategory do
   # index do
   #   column :name
   #   selectable_column
-  #   column 'Parent' do | product_category |
-  #     product_category.parent
+  #   column 'Parent' do | product_categories |
+  #     product_categories.parent
   #   end
   #   column :description
   #   actions

@@ -1,0 +1,29 @@
+<% provide(:title, @product_category.name ) %>
+
+<div class ="page-header">
+  <h1><%= @product_category.name  %></h1>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <% @product_category.products.order(publication_date: :desc).each do | product | %>
+
+    <div class="col-lg-6">
+      <div class="padded well">
+        <h3><%= product.name %></h3>
+        <p>Státusz: <%= product.status %></p>
+        <p>
+          <% if product.page_count %>
+            <%= product.page_count %> oldal,
+          <% end %>
+          <%= product.price %> Ft</p>
+        <p><%= product.description %></p>
+        <%= link_to "RÉSZLETEK", product %>
+      </div>
+    </div>
+
+      <% end %>
+  </div>
+</div>
+
