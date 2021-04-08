@@ -6,8 +6,6 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.string :status
       t.string :author
       t.string :isbn
-      t.date :publication_date
-      t.integer :page_count
       t.integer :price
       t.text :description
 

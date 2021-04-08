@@ -156,8 +156,6 @@ ActiveRecord::Schema.define(version: 2021_04_07_104910) do
     t.string "status"
     t.string "author"
     t.string "isbn"
-    t.date "publication_date"
-    t.integer "page_count"
     t.integer "price"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
