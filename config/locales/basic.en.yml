@@ -248,3 +248,6 @@ en:
               blank: "List of group members is missing"
             group_name:
               blank: "Group name is missing"
+  webshop:
+    for_sale: "In stock"
+    hidden: "Unavailable"

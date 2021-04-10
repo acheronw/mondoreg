@@ -236,9 +236,12 @@ hu:
       current_scope: "Jelenlegi scope: "
       current_filters: "Jelenlegi szűrőfeltételek: "
       no_current_filters: "Nincs szűrőfeltétel"
-  will_paginate:
-    previous_label: "Előző"
-    next_label: "Következő"
+  webshop:
+    for_sale: "Készleten"
+    hidden: "Nem kapható"
+  # will_paginate:
+  #  previous_label: "Előző"
+  #  next_label: "Következő"
   views:
     pagination:
       first: "Legelső"

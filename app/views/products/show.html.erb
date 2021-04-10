@@ -2,13 +2,29 @@
 
 <div class ="page-header">
   <h1><%= @product.name  %></h1>
+  <h4>
+    <% @product.taxonomic_path.each do | parent_category| %>
+      <%= link_to parent_category.name, parent_category %>
+      >
+    <% end %>
+  </h4>
 </div>
 
 <div class="container">
-  <div class="padded well">
-    <p>Státusz: <%= @product.status %></p>
-    <p>
-      <%= @product.price %> Ft</p>
-    <p><%= @product.description %></p>
-  </div>
+  <div class="row padded well">
+    <div class="col-md-6">
+      <% if @product.product_image.attached? %>
+        <dl><%= image_tag (@product.product_image) %></dl>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <p>Státusz: <%= @product.status_localized %></p>
+      <p>
+        <%= @product.price %> Ft</p>
+      <p><%= @product.description %></p>
+      <%= link_to "KOSÁRBA", root_url,  class: "btn btn-primary" %>
+    </div>
+    </div>
+
+
 </div>

@@ -2,25 +2,61 @@
 
 <div class ="page-header">
   <h1><%= @product_category.name  %></h1>
+  <% if @product_category.product_image.attached? %>
+    <div class="center">
+      <%= image_tag (@product_category.product_image) %>
+    </div>
+  <% end %>
+  <h4>
+    <% @product_category.taxonomic_path.each do | parent_category| %>
+      <%= link_to parent_category.name, parent_category %>
+      >
+    <% end %>
+  </h4>
 </div>
 
 <div class="container">
   <div class="row">
 
-    <% @product_category.products.order(name: :desc).each do | product | %>
-
-    <div class="col-lg-6">
+    <% if @product_category.products.empty? && @product_category.children.empty? %>
       <div class="padded well">
-        <h3><%= product.name %></h3>
-        <p>Státusz: <%= product.status %></p>
-        <p>
-          <%= product.price %> Ft</p>
-        <p><%= product.description %></p>
-        <%= link_to "RÉSZLETEK", product %>
+        NINCSENEK TERMÉKEK EBBEN A KATEGÓRIÁBAN.
       </div>
-    </div>
+    <% else  %>
+
+      <% @product_category.children.order(name: :asc).each do | child_category | %>
+        <div class="col-lg-6">
+          <div class="padded well">
+            <%= link_to (image_tag child_category.product_image), child_category %>
+            <%= link_to child_category.name, child_category %>
+          </div>
+        </div>
+      <% end %>
+
+      <% @product_category.products.order(name: :desc).each do | product | %>
+        <div class="col-lg-6">
+          <div class="row padded well">
+            <div class="col-md-6">
+              <% if product.product_image.attached? %>
+                <dl><%= image_tag (product.product_image.variant(resize: "300x300")) %></dl>
+              <% end %>
+              <%= link_to "RÉSZLETEK", product, class: "btn btn-primary" %>
+              <%= link_to "KOSÁRBA", root_url,  class: "btn btn-primary" %>
+            </div>
+            <div class="col-md-6">
+              <h3><%= product.name %></h3>
+              <p>Státusz: <%= product.status_localized %></p>
+              <p>
+                <%= product.price %> Ft</p>
+              <p><%= product.description.truncate_words(30)  %></p>
+            </div>
+          </div>
+        </div>
 
       <% end %>
+    <% end  %>
+
+
   </div>
 </div>
 
