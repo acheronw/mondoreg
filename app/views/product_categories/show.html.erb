@@ -16,6 +16,7 @@
 </div>
 
 <div class="container">
+  <%= paginate @products, param_name: :products_page %>
   <div class="row">
 
     <% if @product_category.products.empty? && @product_category.children.empty? %>
@@ -33,7 +34,7 @@
         </div>
       <% end %>
 
-      <% @product_category.products.order(name: :desc).each do | product | %>
+      <% @products.each do | product | %>
         <div class="col-lg-6">
           <div class="row padded well">
             <div class="col-md-6">
@@ -54,9 +55,11 @@
         </div>
 
       <% end %>
+
     <% end  %>
 
 
   </div>
+  <%= paginate @products, param_name: :products_page %>
 </div>
 
