@@ -9,6 +9,9 @@ class Product < ApplicationRecord
   has_one_attached :product_image
   validates :product_image, content_type: /\Aimage\/.*\Z/
 
+  has_many :line_items
+  has_many :orders, :through => :line_items
+
   def taxonomic_path
     result = self.product_category.taxonomic_path
     result.push(self)

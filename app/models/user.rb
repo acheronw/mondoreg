@@ -14,6 +14,9 @@ class User < ApplicationRecord
   # This is not dependent destroy, because if the user destroys his account, we don't want to lose his application information.
   # For example we use it to keep track of no-shows
 
+  has_one :delivery_address, :as => :addressable
+  has_many :orders, dependent: :destroy
+
   def active_orders
     return TicketOrder.where(user: self).active.all.to_a
   end
