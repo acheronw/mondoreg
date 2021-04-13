@@ -7,8 +7,16 @@
 </div>
 <h4>&nbsp;</h4>
 <div class="padded well">
-  <%= t('webshop.order.user_name') %>
-  <%= @order.user.name %>
+
+  <h4>
+    <%= t('webshop.order.user_name') %>
+    <%= @order.user.name %>
+  </h4>
+  <h4>
+    <%= t('webshop.order.status') %>
+    <%= t("webshop.order.state.#{@order.status}") %>
+  </h4>
+
   <table class="table">
     <thead>
     <tr>

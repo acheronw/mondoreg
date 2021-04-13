@@ -240,10 +240,13 @@ hu:
     for_sale: "Készleten"
     hidden: "Nem kapható"
     order:
+      state:
+        in_cart: "Kosár összeállítása"
       title: "%{id}. sorszámú rendelés"
       user_name: "Megrendelő neve:"
       quantity: "%{quantity} db"
       total_price: "Teljes ár: %{total_price} Ft"
+      status: "Megrendelés státusza:"
     address:
       title: "Postacím"
       name: "Címzett neve"

@@ -252,10 +252,13 @@ en:
     for_sale: "In stock"
     hidden: "Unavailable"
     order:
+      state:
+        in_cart: "In cart"
       title: "Order number %{id}"
       user_name: "Name of buyer:"
       quantity: "Qnty: %{quantity}"
       total_price: "Total price: %{total_price} HUF"
+      status: "Status"
     address:
       title: "Delivery Address"
       name: "Name"
