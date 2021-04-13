@@ -1,0 +1,57 @@
+<% provide(:title, t('webshop.order.title', id: @order.id)) %>
+
+<div class ="page-header">
+  <div class="header">
+    <%= t('webshop.order.title', id: @order.id) %>
+  </div>
+</div>
+<h4>&nbsp;</h4>
+<div class="padded well">
+  <%= t('webshop.order.user_name') %>
+  <%= @order.user.name %>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Termék</th>
+      <th>Darabszám</th>
+      <th>Termék ára</th>
+      <th>Tétel ára</th>
+    </tr>
+    </thead>
+    <% @order.line_items.each do | line_item | %>
+      <tr>
+        <td>
+          <%=  line_item.product.name %>
+        </td>
+        <td>
+          <%= t('webshop.order.quantity', quantity: line_item.quantity) %>
+        </td>
+        <td>
+          <%=  line_item.product.price %>
+        </td>
+        <td>
+          <%=  (line_item.product.price * line_item.quantity) %>
+        </td>
+      </tr>
+
+    <% end %>
+  </table>
+
+  <%= t('webshop.order.total_price', total_price: @order.total_price) %>
+  <h4>&nbsp;</h4>
+  <h4>
+    <%= t('webshop.address.title') %>
+  </h4>
+  <% delivery_address = @order.delivery_address %>
+  <%= render delivery_address %>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+</div>

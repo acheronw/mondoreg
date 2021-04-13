@@ -35,11 +35,13 @@ Rails.application.routes.draw do
 
   resources :product_categories, only: [:show]
   resources :products, only: [:show]
+  resources :orders, only: [:show]
 
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
   get '/hub', to: 'static_pages#hub', as: :hub
   get '/ticket_stats', to: 'static_pages#ticket_stats', as: :ticket_stats
+
 
 
 

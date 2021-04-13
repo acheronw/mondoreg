@@ -239,6 +239,18 @@ hu:
   webshop:
     for_sale: "Készleten"
     hidden: "Nem kapható"
+    order:
+      title: "%{id}. sorszámú rendelés"
+      user_name: "Megrendelő neve:"
+      quantity: "%{quantity} db"
+      total_price: "Teljes ár: %{total_price} Ft"
+    address:
+      title: "Postacím"
+      name: "Címzett neve"
+      city: "Város"
+      zip: "Irányítószám"
+      street_address: "Utca, házszám"
+      phone: "Telefonszám"
   # will_paginate:
   #  previous_label: "Előző"
   #  next_label: "Következő"

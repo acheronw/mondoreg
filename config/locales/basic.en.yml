@@ -251,3 +251,15 @@ en:
   webshop:
     for_sale: "In stock"
     hidden: "Unavailable"
+    order:
+      title: "Order number %{id}"
+      user_name: "Name of buyer:"
+      quantity: "Qnty: %{quantity}"
+      total_price: "Total price: %{total_price} HUF"
+    address:
+      title: "Delivery Address"
+      name: "Name"
+      city: "City"
+      zip: "ZIP code"
+      street_address: "Street address"
+      phone: "Phone number"

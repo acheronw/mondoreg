@@ -33,6 +33,8 @@
                 <li><%= link_to t('title.log_out'), destroy_user_session_path, method: :delete %></li>
               </ul>
             </li>
+            <li>
+              <%= link_to "KOSAR", current_user.orders.last %>
             </li>
         <% else %>
             <li><%= link_to t('title.login'), new_user_session_path %></li>
