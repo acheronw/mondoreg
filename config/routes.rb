@@ -35,7 +35,9 @@ Rails.application.routes.draw do
 
   resources :product_categories, only: [:show]
   resources :products, only: [:show]
-  resources :orders, only: [:show]
+  resources :orders, only: [:show, :index]
+  patch 'add_to_basket', to: 'products#add_to_basket'
+  patch 'take_from_basket', to: 'products#take_from_basket'
 
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'

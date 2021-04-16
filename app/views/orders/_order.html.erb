@@ -1,0 +1,62 @@
+
+<div class ="page-header">
+  <div class="header">
+    <%= t('webshop.order.title', id: order.id) %>
+  </div>
+</div>
+<h4>&nbsp;</h4>
+<div class="padded well">
+
+  <h4>
+    <%= t('webshop.order.user_name') %>
+    <%= order.user.name %>
+  </h4>
+  <h4>
+    <%= t('webshop.order.status') %>
+    <%= t("webshop.order.state.#{order.status}") %>
+  </h4>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Termék</th>
+      <th>Darabszám</th>
+      <th>Termék ára</th>
+      <th>Tétel ára</th>
+    </tr>
+    </thead>
+    <% order.line_items.each do | line_item | %>
+      <tr>
+        <td>
+          <%=  link_to line_item.product.name, line_item.product %>
+        </td>
+        <td>
+          <%= t('webshop.order.quantity', quantity: line_item.quantity) %>
+          <% if order.status == 'in_cart' && current_user == order.user %>
+            <%= link_to "+1", add_to_basket_path(id: line_item.product.id), method: :patch, class: "btn btn-primary" %>
+            <%= link_to "-1", take_from_basket_path(id: line_item.product.id), method: :patch, class: "btn btn-primary" %>
+
+        <% end %>
+        </td>
+        <td>
+          <%=  line_item.product.price %>
+        </td>
+        <td>
+          <%=  (line_item.product.price * line_item.quantity) %>
+        </td>
+      </tr>
+
+    <% end %>
+  </table>
+
+  <%= t('webshop.order.total_price', total_price: order.total_price) %>
+  <h4>&nbsp;</h4>
+  <h4>
+    <%= t('webshop.address.title') %>
+  </h4>
+  <% delivery_address = order.delivery_address %>
+  <%= render delivery_address %>
+
+</div>
+
+</div>

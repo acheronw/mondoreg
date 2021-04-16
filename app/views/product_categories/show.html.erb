@@ -42,7 +42,7 @@
                 <dl><%= image_tag (product.product_image.variant(resize: "300x300")) %></dl>
               <% end %>
               <%= link_to "RÉSZLETEK", product, class: "btn btn-primary" %>
-              <%= link_to "KOSÁRBA", root_url,  class: "btn btn-primary" %>
+              <%= link_to "KOSÁRBA", add_to_basket_path(id: product.id), method: :patch,  class: "btn btn-primary" %>
             </div>
             <div class="col-md-6">
               <h3><%= product.name %></h3>

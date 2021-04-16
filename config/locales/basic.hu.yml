@@ -239,6 +239,7 @@ hu:
   webshop:
     for_sale: "Készleten"
     hidden: "Nem kapható"
+    order_history: "Megrendeléseid"
     order:
       state:
         in_cart: "Kosár összeállítása"

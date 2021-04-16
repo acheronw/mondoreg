@@ -251,6 +251,7 @@ en:
   webshop:
     for_sale: "In stock"
     hidden: "Unavailable"
+    order_history: "Your orders"
     order:
       state:
         in_cart: "In cart"

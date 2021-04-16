@@ -22,9 +22,9 @@
       <p>
         <%= @product.price %> Ft</p>
       <p><%= @product.description %></p>
-      <%= link_to "KOSÁRBA", root_url,  class: "btn btn-primary" %>
-    </div>
-    </div>
+      <%= link_to "KOSÁRBA", add_to_basket_path(id: @product.id), method: :patch, class: "btn btn-primary" %>
 
+    </div>
+  </div>
 
 </div>

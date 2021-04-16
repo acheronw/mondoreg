@@ -7,4 +7,34 @@ class Order < ApplicationRecord
 
   validates :status, :inclusion => { :in => ['in_cart', 'submitted', 'processed', 'shipping', 'delivered', 'returned'],
                                      message: "%value is not a valid order status" }
+
+  def add_product(product)
+    product_already_in_basket = self.line_items.find_by(product: product)
+    if product_already_in_basket.blank?
+      LineItem.create(order: self, product: product, quantity: 1)
+    else
+      product_already_in_basket.quantity += 1
+      product_already_in_basket.save
+    end
+    self.line_items.reload
+    recalculate_total_price
+  end
+
+  def decrement_product(product)
+    product_already_in_basket = self.line_items.find_by(product_id: product.id)
+    if product_already_in_basket.quantity == 1
+      product_already_in_basket.destroy
+    else
+      product_already_in_basket.quantity -= 1
+      product_already_in_basket.save
+    end
+    self.line_items.reload
+    recalculate_total_price
+  end
+
+  def recalculate_total_price
+    new_total_price = self.line_items.inject(0){| sum, li | sum + (li.quantity * li.product.price) }
+    self.update(total_price: new_total_price)
+  end
+
 end
