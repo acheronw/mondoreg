@@ -260,6 +260,7 @@ en:
       quantity: "Qnty: %{quantity}"
       total_price: "Total price: %{total_price} HUF"
       status: "Status"
+      submit_button: "Submit Order"
     address:
       title: "Delivery Address"
       name: "Name"

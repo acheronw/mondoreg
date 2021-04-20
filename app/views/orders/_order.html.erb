@@ -51,12 +51,22 @@
 
   <%= t('webshop.order.total_price', total_price: order.total_price) %>
   <h4>&nbsp;</h4>
-  <h4>
-    <%= t('webshop.address.title') %>
-  </h4>
-  <% delivery_address = order.delivery_address %>
-  <%= render delivery_address %>
 
-</div>
+
+  <% delivery_address = order.delivery_address %>
+  <% if delivery_address.blank? %>
+    <%= 'TODO IDE KELL CREATE ADDRESS BUTTON' %>
+  <% else %>
+    <h4>
+      <%= t('webshop.address.title') %>
+    </h4>
+    <%= render delivery_address unless delivery_address.blank? %>
+  <% end %>
+
+  <% if order.status == 'in_cart' %>
+    <div class="center">
+      <%= link_to t('webshop.order.submit_button'), submit_order_path(id: order.id), method: :patch, class: "btn btn-primary" %>
+    </div>
+  <% end %>
 
 </div>

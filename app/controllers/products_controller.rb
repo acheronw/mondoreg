@@ -10,7 +10,8 @@ class ProductsController < ApplicationController
     if current_order.status == 'in_cart'
       current_order.add_product(@product)
     else
-      # TODO - Create new order
+      current_order = Order.create(user: current_user, status: 'in_cart')
+      current_order.add_product(@product)
     end
     redirect_to current_order
   end
@@ -21,9 +22,11 @@ class ProductsController < ApplicationController
     if current_order.status == 'in_cart'
       current_order.decrement_product(@product)
     end
-    # TODO ha megszűnt ezzel a rendelés, máshová kell redirect!
-    redirect_to current_order
-
+    if current_order.destroyed?
+      redirect_to root_path
+    else
+      redirect_to current_order
+    end
   end
 
 

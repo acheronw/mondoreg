@@ -248,6 +248,7 @@ hu:
       quantity: "%{quantity} db"
       total_price: "Teljes ár: %{total_price} Ft"
       status: "Megrendelés státusza:"
+      submit_button: "Megrendelés elküldése"
     address:
       title: "Postacím"
       name: "Címzett neve"

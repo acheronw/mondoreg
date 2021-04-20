@@ -8,6 +8,7 @@ class Order < ApplicationRecord
   validates :status, :inclusion => { :in => ['in_cart', 'submitted', 'processed', 'shipping', 'delivered', 'returned'],
                                      message: "%value is not a valid order status" }
 
+
   def add_product(product)
     product_already_in_basket = self.line_items.find_by(product: product)
     if product_already_in_basket.blank?
@@ -29,12 +30,22 @@ class Order < ApplicationRecord
       product_already_in_basket.save
     end
     self.line_items.reload
-    recalculate_total_price
+    if self.line_items.blank?
+      self.destroy
+    else
+      recalculate_total_price
+    end
   end
 
   def recalculate_total_price
     new_total_price = self.line_items.inject(0){| sum, li | sum + (li.quantity * li.product.price) }
     self.update(total_price: new_total_price)
+  end
+
+  def submit_order
+    recalculate_total_price
+    # TODO ellenőrizni kellene hogy nincs a rendelésben olyan tétel, ami már out of stock!
+    self.update(status: 'submitted')
   end
 
 end
