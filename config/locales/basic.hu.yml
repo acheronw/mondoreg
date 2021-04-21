@@ -241,6 +241,9 @@ hu:
     hidden: "Nem kapható"
     order_history: "Megrendeléseid"
     order:
+      add_address_button: 'Cím megadása'
+      ask_for_address: 'A rendeléshez meg kell adni egy postacímet!'
+      edit_address_button: 'Cím módosítása'
       state:
         in_cart: "Kosár összeállítása"
       title: "%{id}. sorszámú rendelés"
@@ -256,6 +259,7 @@ hu:
       zip: "Irányítószám"
       street_address: "Utca, házszám"
       phone: "Telefonszám"
+      save_address: "Cím rögzítése"
   # will_paginate:
   #  previous_label: "Előző"
   #  next_label: "Következő"

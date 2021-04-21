@@ -54,19 +54,25 @@
 
 
   <% delivery_address = order.delivery_address %>
-  <% if delivery_address.blank? %>
-    <%= 'TODO IDE KELL CREATE ADDRESS BUTTON' %>
-  <% else %>
-    <h4>
-      <%= t('webshop.address.title') %>
-    </h4>
-    <%= render delivery_address unless delivery_address.blank? %>
-  <% end %>
+  <h4>
+    <%= t('webshop.address.title') %>
+  </h4>
+  <%= render delivery_address unless delivery_address.blank? %>
 
   <% if order.status == 'in_cart' %>
-    <div class="center">
-      <%= link_to t('webshop.order.submit_button'), submit_order_path(id: order.id), method: :patch, class: "btn btn-primary" %>
-    </div>
+    <% if order.delivery_address.present? %>
+      <%= link_to t('webshop.order.edit_address_button'), edit_delivery_address_path(order.delivery_address), class: "btn btn-primary" %>
+      <div class="center">
+        <%= link_to t('webshop.order.submit_button'), submit_order_path(id: order.id), method: :patch, class: "btn btn-primary" %>
+      </div>
+    <% else %>
+      <%= t('webshop.order.ask_for_address') %>
+      <div class="center">
+        <%= link_to t('webshop.order.add_address_button'), new_delivery_address_path(addressable_id: order.id, addressable_type: 'Order'), class: "btn btn-primary" %>
+      </div>
+
+
+    <% end %>
   <% end %>
 
 </div>

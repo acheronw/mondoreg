@@ -253,6 +253,9 @@ en:
     hidden: "Unavailable"
     order_history: "Your orders"
     order:
+      add_address_button: 'Add address'
+      ask_for_address: 'A postal address is required!'
+      edit_address_button: 'Edit address'
       state:
         in_cart: "In cart"
       title: "Order number %{id}"
@@ -268,3 +271,4 @@ en:
       zip: "ZIP code"
       street_address: "Street address"
       phone: "Phone number"
+      save_address: "Save address"

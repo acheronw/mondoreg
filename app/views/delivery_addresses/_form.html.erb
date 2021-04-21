@@ -1,0 +1,39 @@
+<div class="jumbotron row">
+  <div class="col-md-6 col-md-offset-1">
+    <%= form_for(@delivery_address,
+                 :html => {:class => "form-horizontal left fullscreen_form" }) do | f| %>
+
+      <%= f.hidden_field :addressable_id, :value => @delivery_address.addressable_id %>
+      <%= f.hidden_field :addressable_type, :value => @delivery_address.addressable_type %>
+
+      <div class="form-group">
+        <%= f.label t('webshop.address.name')  %>
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label t('webshop.address.city')  %>
+        <%= f.text_field :city %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label t('webshop.address.zip')  %>
+        <%= f.text_field :zip %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label t('webshop.address.street_address')  %>
+        <%= f.text_field :street_address %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label t('webshop.address.phone')  %>
+        <%= f.text_field :phone %>
+      </div>
+
+      <%= f.submit t('webshop.address.save_address'), class: "btn btn-primary" %>
+
+
+  <% end %>
+  </div>
+</div>

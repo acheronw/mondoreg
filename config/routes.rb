@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :index]
   patch 'submit_order', to: 'orders#submit_order'
 
+  resources :delivery_addresses
+
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
   get '/hub', to: 'static_pages#hub', as: :hub
