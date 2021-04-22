@@ -248,14 +248,24 @@ en:
               blank: "List of group members is missing"
             group_name:
               blank: "Group name is missing"
+        delivery_address:
+          attributes:
+            name:
+              blank: "Name is required"
+            city:
+              blank: "City is required"
+            zip:
+              blank: "ZIP code is required"
+            street_address:
+              blank: "Street address is required"
+            phone:
+              blank: "Phone number is required"
   webshop:
     for_sale: "In stock"
     hidden: "Unavailable"
     order_history: "Your orders"
     order:
-      add_address_button: 'Add address'
       ask_for_address: 'A postal address is required!'
-      edit_address_button: 'Edit address'
       state:
         in_cart: "In cart"
       title: "Order number %{id}"
@@ -271,4 +281,6 @@ en:
       zip: "ZIP code"
       street_address: "Street address"
       phone: "Phone number"
+      add_address_button: 'Add address'
+      edit_address_button: 'Edit address'
       save_address: "Save address"

@@ -1,13 +1,14 @@
 class Order < ApplicationRecord
   belongs_to :user
-  has_one :delivery_address, as: :addressable
+  has_one :delivery_address, dependent: :destroy, as: :addressable
 
-  has_many :line_items
+  has_many :line_items, dependent: :destroy
   has_many :products, :through => :line_items
 
   validates :status, :inclusion => { :in => ['in_cart', 'submitted', 'processed', 'shipping', 'delivered', 'returned'],
                                      message: "%value is not a valid order status" }
 
+  after_create :copy_users_delivery_address
 
   def add_product(product)
     product_already_in_basket = self.line_items.find_by(product: product)
@@ -46,6 +47,16 @@ class Order < ApplicationRecord
     recalculate_total_price
     # TODO ellenőrizni kellene hogy nincs a rendelésben olyan tétel, ami már out of stock!
     self.update(status: 'submitted')
+  end
+
+  private
+  def copy_users_delivery_address
+    address = self.user.delivery_address
+    if address.present?
+      order_delivery_address = address.dup
+      order_delivery_address.addressable = self
+      order_delivery_address.save
+    end
   end
 
 end

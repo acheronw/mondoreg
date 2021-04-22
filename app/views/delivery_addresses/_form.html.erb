@@ -6,6 +6,9 @@
       <%= f.hidden_field :addressable_id, :value => @delivery_address.addressable_id %>
       <%= f.hidden_field :addressable_type, :value => @delivery_address.addressable_type %>
 
+      <%= render 'application/error_messages', object: f.object %>
+
+
       <div class="form-group">
         <%= f.label t('webshop.address.name')  %>
         <%= f.text_field :name %>

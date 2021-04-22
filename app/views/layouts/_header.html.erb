@@ -30,6 +30,13 @@
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li class="dropdown-item"><%= link_to t('title.user_profile'), edit_user_registration_path %></li>
+                <li class="dropdown-item">
+                  <% if current_user.delivery_address.present? %>
+                    <%= link_to t('webshop.address.edit_address_button'), edit_delivery_address_path(current_user.delivery_address) %>
+                <% else %>
+                    <%= link_to t('webshop.address.add_address_button'), new_delivery_address_path(addressable_id: current_user.id, addressable_type: 'User') %>
+                  <% end %>
+                </li>
                 <li class="dropdown-item"><%= link_to t('webshop.order_history'), orders_path %></li>
                 <li class="dropdown-divider">&nbsp;</li>
                 <li class="dropdown-item"><%= link_to t('title.log_out'), destroy_user_session_path, method: :delete %></li>

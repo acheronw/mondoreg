@@ -11,8 +11,18 @@ class DeliveryAddressesController < ApplicationController
     @delivery_address = DeliveryAddress.new(address_params)
     if @delivery_address.addressable_type == 'User'
       if current_user.id = @delivery_address.addressable_id
-        @delivery_address.save
-        redirect_to root_path
+        if @delivery_address.save
+          # If the user has an open order without an address  defined, put this address there as well
+          open_order = current_user.orders.last
+          if open_order.present? && open_order.status == 'in_cart' && open_order.delivery_address.blank?
+            @order_delivery_address = DeliveryAddress.new(address_params)
+            @order_delivery_address.addressable = open_order
+            @order_delivery_address.save
+          end
+          redirect_to root_path
+        else
+          render 'new'
+        end
       else
         # Someone tried to hack the params
         redirect_to root_path
@@ -20,8 +30,11 @@ class DeliveryAddressesController < ApplicationController
     elsif @delivery_address.addressable_type == 'Order'
       order = Order.find(@delivery_address.addressable_id)
       if order.status == 'in_cart'
-        @delivery_address.save
-        redirect_to order
+        if @delivery_address.save
+          redirect_to order
+        else
+          render 'new'
+        end
       else
         # Only unsubmitted orders can be edited.
         redirect_to root_path
@@ -41,14 +54,28 @@ class DeliveryAddressesController < ApplicationController
     if @delivery_address.addressable_type == 'User'
       if @delivery_address.addressable == current_user
         # Only the user itself can change his default address
-        @delivery_address.update(update_address_params)
-        redirect_to root_path
+        if @delivery_address.update(update_address_params)
+          # If the user has an open order without an address  defined, put this address there as well
+          open_order = current_user.orders.last
+          if open_order.present? && open_order.status == 'in_cart' && open_order.delivery_address.blank?
+            @order_delivery_address = DeliveryAddress.new(address_params)
+            @order_delivery_address.addressable = open_order
+            @order_delivery_address.save
+          end
+          redirect_to root_path
+        else
+          render 'edit'
+        end
       end
     elsif @delivery_address.addressable_type == 'Order'
       if @delivery_address.addressable.user == current_user && @delivery_address.addressable.status == 'in_cart'
         # Only the owner of the order can change address
-        @delivery_address.update(update_address_params)
-        redirect_to @delivery_address.addressable
+        if @delivery_address.update(update_address_params)
+          redirect_to @delivery_address.addressable
+        else
+          render 'edit'
+        end
+
       end
     else
       # This is impossible

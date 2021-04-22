@@ -230,6 +230,19 @@ hu:
               blank: "Meg kell adnod a csapattagjaid listáját!"
             group_name:
               blank: "Csapatnév hiányzik"
+        delivery_address:
+          attributes:
+            name:
+              blank: "Név megadása kötelező"
+            city:
+              blank: "Város megadása kötelező"
+            zip:
+              blank: "Irányítószám megadása kötelező"
+            street_address:
+              blank: "A pontos cím megadása kötelező"
+            phone:
+              blank: "Telefonszám megadása kötelező"
+
   active_admin:
     search_status:
       headline: "Jelenlegi nézet"
@@ -241,9 +254,7 @@ hu:
     hidden: "Nem kapható"
     order_history: "Megrendeléseid"
     order:
-      add_address_button: 'Cím megadása'
       ask_for_address: 'A rendeléshez meg kell adni egy postacímet!'
-      edit_address_button: 'Cím módosítása'
       state:
         in_cart: "Kosár összeállítása"
       title: "%{id}. sorszámú rendelés"
@@ -259,6 +270,8 @@ hu:
       zip: "Irányítószám"
       street_address: "Utca, házszám"
       phone: "Telefonszám"
+      add_address_button: 'Cím megadása'
+      edit_address_button: 'Cím módosítása'
       save_address: "Cím rögzítése"
   # will_paginate:
   #  previous_label: "Előző"
