@@ -263,6 +263,7 @@ hu:
       total_price: "Teljes ár: %{total_price} Ft"
       status: "Megrendelés státusza:"
       submit_button: "Megrendelés elküldése"
+      dont_have_any: "Nincsenek korábbi megrendeléseid"
     address:
       title: "Postacím"
       name: "Címzett neve"

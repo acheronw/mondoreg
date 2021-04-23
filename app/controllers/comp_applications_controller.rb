@@ -46,10 +46,22 @@ class CompApplicationsController < ApplicationController
 
   def edit
     @comp_application = CompApplication.find(params[:id])
+    if current_user != @comp_application.user &&
+        !current_user.has_role?(:assistant, @comp_application.competition) &&
+        !current_user.has_role?(:manager, @comp_application.competition)
+      flash[:danger] = "Access denied! Exterminate user! Exterminate!"
+      redirect_to root_path
+    end
   end
 
   def update
     @comp_application = CompApplication.find(params[:id])
+    if current_user != @comp_application.user &&
+        !current_user.has_role?(:assistant, @comp_application.competition) &&
+        !current_user.has_role?(:manager, @comp_application.competition)
+      flash[:danger] = "Access denied! Exterminate user! Exterminate!"
+      redirect_to root_path
+    end
     if not @comp_application.competition.on_sale?
       # The user tried to apply to an invalid competition
       flash[:danger] = t('competition.user_side.competition_error')

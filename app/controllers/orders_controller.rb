@@ -1,7 +1,10 @@
 class OrdersController < ApplicationController
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.where(id: params[:id]).first
+    if @order.blank? || @order.user != current_user
+      redirect_to root_path
+    end
   end
 
   def index

@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   def add_to_basket
     @product = Product.find(params[:id])
     current_order = current_user.orders.last
-    if current_order.status == 'in_cart'
+    if current_order.present? && current_order.status == 'in_cart'
       current_order.add_product(@product)
     else
       current_order = Order.create(user: current_user, status: 'in_cart')

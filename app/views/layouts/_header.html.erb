@@ -42,7 +42,7 @@
                 <li class="dropdown-item"><%= link_to t('title.log_out'), destroy_user_session_path, method: :delete %></li>
               </ul>
             </li>
-            <% if current_user.orders.last.status == 'in_cart' %>
+            <% if current_user.orders.last.present? && current_user.orders.last.status == 'in_cart' %>
               <li>
                 <%= link_to "KOSAR", current_user.orders.last %>
               </li>

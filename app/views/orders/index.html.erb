@@ -1,3 +1,8 @@
 <% provide(:title, t('webshop.order_history')) %>
 
-<%= render @orders %>
+<% if @orders.blank? %>
+  <h4><%= t('webshop.order.dont_have_any') %></h4>
+
+<% else %>
+  <%= render @orders %>
+<% end %>

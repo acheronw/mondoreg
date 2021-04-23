@@ -274,6 +274,7 @@ en:
       total_price: "Total price: %{total_price} HUF"
       status: "Status"
       submit_button: "Submit Order"
+      dont_have_any: "You don't have any orders yet."
     address:
       title: "Delivery Address"
       name: "Name"
