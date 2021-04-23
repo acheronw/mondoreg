@@ -49,6 +49,25 @@ class Order < ApplicationRecord
     self.update(status: 'submitted')
   end
 
+  def check_and_update_cart_for_availablity
+    made_any_change = false
+    self.line_items.each do | line_item |
+      if line_item.product.status != 'for sale'
+        line_item.destroy
+        made_any_change = true
+      end
+    end
+    if made_any_change
+      self.line_items.reload
+      if self.line_items.blank?
+        self.destroy
+      else
+        recalculate_total_price
+      end
+    end
+    return made_any_change
+  end
+
   private
   def copy_users_delivery_address
     address = self.user.delivery_address

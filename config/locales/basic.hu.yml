@@ -264,6 +264,7 @@ hu:
       status: "Megrendelés státusza:"
       submit_button: "Megrendelés elküldése"
       dont_have_any: "Nincsenek korábbi megrendeléseid"
+      items_became_unavailable: "Egyes termékek már nem kaphatóak, ezeket eltávolítottuk a kosaradból."
     address:
       title: "Postacím"
       name: "Címzett neve"

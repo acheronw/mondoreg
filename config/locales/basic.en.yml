@@ -275,6 +275,7 @@ en:
       status: "Status"
       submit_button: "Submit Order"
       dont_have_any: "You don't have any orders yet."
+      items_became_unavailable: "Some products are no longer available. We have removed these from your basket"
     address:
       title: "Delivery Address"
       name: "Name"

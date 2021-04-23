@@ -15,11 +15,18 @@ class OrdersController < ApplicationController
   def submit_order
     @order = Order.find(params[:id])
     if current_user == @order.user
-      @order.submit_order
+      if @order.check_and_update_cart_for_availablity
+        flash[:danger] = t('webshop.order.items_became_unavailable')
+        redirect_to @order
+      else
+        @order.submit_order
+        redirect_to root_path
+      end
     else
       flash[:danger] = "Only the user himself can submit his orders"
+      redirect_to root_path
     end
-    redirect_to root_path
+
   end
 
 end
