@@ -253,6 +253,9 @@ hu:
     for_sale: "Készleten"
     hidden: "Nem kapható"
     order_history: "Megrendeléseid"
+    further_details: "RÉSZLETEK"
+    add_to_basket: "KOSÁRBA"
+    login_to_shop: "Belépés vásárláshoz"
     order:
       ask_for_address: 'A rendeléshez meg kell adni egy postacímet!'
       state:

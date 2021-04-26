@@ -19,11 +19,13 @@
     </div>
     <div class="col-md-6">
       <p>Státusz: <%= @product.status_localized %></p>
-      <p>
-        <%= @product.price %> Ft</p>
+      <p><%= @product.price %> Ft</p>
       <p><%= @product.description %></p>
-      <%= link_to "KOSÁRBA", add_to_basket_path(id: @product.id), method: :patch, class: "btn btn-primary" %>
-
+      <% if current_user %>
+        <%= link_to t('webshop.add_to_basket'), add_to_basket_path(id: @product.id), method: :patch, class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to t('webshop.login_to_shop'), new_user_session_path, class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 

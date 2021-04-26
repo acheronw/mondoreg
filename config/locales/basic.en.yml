@@ -264,6 +264,9 @@ en:
     for_sale: "In stock"
     hidden: "Unavailable"
     order_history: "Your orders"
+    further_details: "DETAILS"
+    add_to_basket: "ADD TO BASKET"
+    login_to_shop: "Login to shop"
     order:
       ask_for_address: 'A postal address is required!'
       state:
