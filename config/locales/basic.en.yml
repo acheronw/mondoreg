@@ -273,10 +273,12 @@ en:
         in_cart: "In cart"
       title: "Order number %{id}"
       user_name: "Name of buyer:"
+      submitted_date: "Order submitted"
       quantity: "Qnty: %{quantity}"
       total_price: "Total price: %{total_price} HUF"
       status: "Status"
       submit_button: "Submit Order"
+      successfully_submitted: "You have submitted your order."
       dont_have_any: "You don't have any orders yet."
       items_became_unavailable: "Some products are no longer available. We have removed these from your basket"
     address:
@@ -289,3 +291,5 @@ en:
       add_address_button: 'Add address'
       edit_address_button: 'Edit address'
       save_address: "Save address"
+    admin:
+      title: "Webshop administration"

@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
         redirect_to @order
       else
         @order.submit_order
+        flash[:success] = t('webshop.order.successfully_submitted')
         redirect_to root_path
       end
     else

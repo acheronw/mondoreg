@@ -1,20 +1,22 @@
 
-<div class ="page-header">
-  <div class="header">
-    <%= t('webshop.order.title', id: order.id) %>
-  </div>
-</div>
-<h4>&nbsp;</h4>
 <div class="padded well">
 
-  <h4>
+  <h4 class="text-primary">
+    <%= t('webshop.order.title', id: order.id) %>
+  </h4>
+
+  <p>
     <%= t('webshop.order.user_name') %>
     <%= order.user.name %>
-  </h4>
-  <h4>
+    <br>
+    <%= t('webshop.order.submitted_date') %>
+    <%= order.date_submitted %>
+    <br>
     <%= t('webshop.order.status') %>
     <%= t("webshop.order.state.#{order.status}") %>
-  </h4>
+  </p>
+</div>
+<div class="padded">
 
   <table class="table">
     <thead>
@@ -49,8 +51,9 @@
     <% end %>
   </table>
 
-  <%= t('webshop.order.total_price', total_price: order.total_price) %>
-  <h4>&nbsp;</h4>
+  <p align="right" class="text-primary">
+    <%= t('webshop.order.total_price', total_price: order.total_price) %>
+  </p>
 
 
   <% delivery_address = order.delivery_address %>

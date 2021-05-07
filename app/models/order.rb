@@ -45,7 +45,7 @@ class Order < ApplicationRecord
 
   def submit_order
     recalculate_total_price
-    # TODO ellenőrizni kellene hogy nincs a rendelésben olyan tétel, ami már out of stock!
+    self.date_submitted = Time.current
     self.update(status: 'submitted')
   end
 

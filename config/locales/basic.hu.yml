@@ -262,10 +262,12 @@ hu:
         in_cart: "Kosár összeállítása"
       title: "%{id}. sorszámú rendelés"
       user_name: "Megrendelő neve:"
+      submitted_date: "Megrendelés ideje:"
       quantity: "%{quantity} db"
       total_price: "Teljes ár: %{total_price} Ft"
       status: "Megrendelés státusza:"
       submit_button: "Megrendelés elküldése"
+      successfully_submitted: "Sikeresen beküldted a megrendelésed."
       dont_have_any: "Nincsenek korábbi megrendeléseid"
       items_became_unavailable: "Egyes termékek már nem kaphatóak, ezeket eltávolítottuk a kosaradból."
     address:
@@ -278,6 +280,8 @@ hu:
       add_address_button: 'Cím megadása'
       edit_address_button: 'Cím módosítása'
       save_address: "Cím rögzítése"
+    admin:
+      title: "Webshop adminisztráció"
   # will_paginate:
   #  previous_label: "Előző"
   #  next_label: "Következő"
