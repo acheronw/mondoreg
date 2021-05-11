@@ -12,6 +12,10 @@
           <%= link_to "WEBSHOP", root_product_category  %>
         </li>
 
+        <% if user_signed_in? && current_user.has_role?(:webshop_manager) %>
+          <li><%= link_to t('webshop.admin.title'), orders_path(:mode => 'pending') %></li>
+        <% end %>
+
         <% if user_signed_in? && current_user.has_role?(:bursar) %>
             <li><%= link_to t('title.ticket_admin'), ticket_orders_path %></li>
         <% end %>
@@ -37,7 +41,7 @@
                     <%= link_to t('webshop.address.add_address_button'), new_delivery_address_path(addressable_id: current_user.id, addressable_type: 'User') %>
                   <% end %>
                 </li>
-                <li class="dropdown-item"><%= link_to t('webshop.order_history'), orders_path %></li>
+                <li class="dropdown-item"><%= link_to t('webshop.order_history'), orders_path(:mode => 'users') %></li>
                 <li class="dropdown-divider">&nbsp;</li>
                 <li class="dropdown-item"><%= link_to t('title.log_out'), destroy_user_session_path, method: :delete %></li>
               </ul>

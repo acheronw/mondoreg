@@ -9,8 +9,17 @@ class OrdersController < ApplicationController
 
   def index
     # This is filtered to show only the current users orders
-    @orders = current_user.orders.order(id: :desc)
-  end
+
+    if params[:mode] == 'users'
+      @mode = 'users'
+      @orders = current_user.orders.order(id: :desc)
+    elsif params[:mode] == 'pending'
+      check_manager_user
+      @mode = 'pending'
+      @orders = Order.pending.order(date_submitted: :desc)
+    end
+
+end
 
   def submit_order
     @order = Order.find(params[:id])
@@ -27,7 +36,11 @@ class OrdersController < ApplicationController
       flash[:danger] = "Only the user himself can submit his orders"
       redirect_to root_path
     end
+  end
 
+  private
+  def check_manager_user
+    redirect_to root_url unless user_signed_in? && current_user.has_role?(:webshop_manager)
   end
 
 end

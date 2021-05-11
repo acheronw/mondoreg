@@ -280,6 +280,7 @@ en:
       submit_button: "Submit Order"
       successfully_submitted: "You have submitted your order."
       dont_have_any: "You don't have any orders yet."
+      no_pending_orders: "There are no newly submitted orders."
       items_became_unavailable: "Some products are no longer available. We have removed these from your basket"
     address:
       title: "Delivery Address"

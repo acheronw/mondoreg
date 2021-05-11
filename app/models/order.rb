@@ -5,6 +5,8 @@ class Order < ApplicationRecord
   has_many :line_items, dependent: :destroy
   has_many :products, :through => :line_items
 
+  scope :pending, -> { where(status: 'submitted') }
+
   validates :status, :inclusion => { :in => ['in_cart', 'submitted', 'processed', 'shipping', 'delivered', 'returned'],
                                      message: "%value is not a valid order status" }
 

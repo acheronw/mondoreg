@@ -1,7 +1,8 @@
 <% provide(:title, t('webshop.order_history')) %>
 
 <% if @orders.blank? %>
-  <h4><%= t('webshop.order.dont_have_any') %></h4>
+  <h4 align="center"><%= t('webshop.order.dont_have_any') if @mode == 'users' %></h4>
+  <h4 align="center"><%= t('webshop.order.no_pending_orders') if @mode == 'pending' %></h4>
 
 <% else %>
   <%= render @orders %>

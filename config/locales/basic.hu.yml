@@ -269,6 +269,7 @@ hu:
       submit_button: "Megrendelés elküldése"
       successfully_submitted: "Sikeresen beküldted a megrendelésed."
       dont_have_any: "Nincsenek korábbi megrendeléseid"
+      no_pending_orders: "Nincsenek újonnan beküldött megrendelések."
       items_became_unavailable: "Egyes termékek már nem kaphatóak, ezeket eltávolítottuk a kosaradból."
     address:
       title: "Postacím"
