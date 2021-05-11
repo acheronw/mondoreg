@@ -5,7 +5,7 @@ class Competition < ApplicationRecord
   validates :name, presence: true
   validates :convention_id, presence: true
   validates :subtype, presence: true
-  validates :subtype, :inclusion => { :in => ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay', 'blizzard_cp', 'rajz', 'rajz_cg'],
+  validates :subtype, :inclusion => { :in => ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay', 'blizzard_cp', 'rajz', 'rajz_cg', 'karaoke'],
                                      message: "%value is not a valid competition type" }
   validates :admin_email, presence: true
 
@@ -71,6 +71,14 @@ class Competition < ApplicationRecord
   # The following methods are used to check which optional fields are relevant.
   def is_cosplay?
     ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay', 'blizzard_cp'].include? self.subtype
+  end
+
+  def is_karaoke?
+    ['karaoke'].include? self.subtype
+  end
+
+  def has_image?
+    not self.is_karaoke?
   end
 
   def group_members?

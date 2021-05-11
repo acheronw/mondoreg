@@ -124,6 +124,8 @@ class CompApplicationsController < ApplicationController
                                                :nickname,
                                                :consent,
                                                :age,
+                                               :karaoke1,
+                                               :karaoke2,
       )
     end
 

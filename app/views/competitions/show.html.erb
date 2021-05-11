@@ -16,6 +16,8 @@
             <th><%= t('competition.admin.appearance_no') %></th>
             <th><%= t('competion.admin.inner_memo') %></th>
             <th><%= t('competition.admin.admin_msg') %></th>
+        <% elsif @competition.is_karaoke? %>
+            <th>DALOK</th>
         <% else %>
             <th><%= t('competition.primary_art_image') %></th>
         <% end %>
@@ -34,6 +36,12 @@
             <td><%= comp_app.appearance_no %></td>
             <td><%= render partial: 'comp_applications/update_memo', locals: {comp_application: comp_app} %></td>
             <td><%= comp_app.admin_msg %></td>
+        <% elsif @competition.is_karaoke? %>
+            <td>
+              <%= comp_app.karaoke1 %>
+              <br>
+              <%= comp_app.karaoke2 %>
+            </td>
         <% else %>
             <td><%= image_tag (comp_app.primary_image.variant(resize: '400x400')) %></td>
         <% end %>

@@ -22,7 +22,8 @@ class CompApplication < ApplicationRecord
 
 
   has_one_attached :primary_image
-  validates :primary_image, attached: true, content_type: /\Aimage\/.*\Z/
+  validates :primary_image, attached: true, if: Proc.new{ |a| a.competition.has_image?  }
+  validates :primary_image, content_type: /\Aimage\/.*\Z/
 
   has_one_attached :stage_music
   validates :stage_music, attached: true, if: Proc.new{ |a| a.competition.require_music_upload?  }

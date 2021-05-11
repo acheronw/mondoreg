@@ -29,15 +29,16 @@
     <%# Primary Image Field
     Label varies by competition type %>
 
-    <dt><%= @comp_application.competition.is_cosplay? ? t('competition.primary_cosplay_image') : t('competition.primary_art_image')
-    %></dt>
-      <% if @comp_application.primary_image.attached? %>
-        <dl><%= image_tag (@comp_application.primary_image.variant(resize: "400x400")) %></dl>
-        <dl><%= link_to t('competition.full_size_image'), @comp_application.primary_image.url %></dl>
-      <% else %>
-          <dl>MISSING IMAGE</dl>
-      <% end %>
-
+    <% if @comp_application.competition.has_image? %>
+      <dt><%= @comp_application.competition.is_cosplay? ? t('competition.primary_cosplay_image') : t('competition.primary_art_image')
+      %></dt>
+        <% if @comp_application.primary_image.attached? %>
+          <dl><%= image_tag (@comp_application.primary_image.variant(resize: "400x400")) %></dl>
+          <dl><%= link_to t('competition.full_size_image'), @comp_application.primary_image.url %></dl>
+        <% else %>
+            <dl>MISSING IMAGE</dl>
+        <% end %>
+    <% end %>
 
     <%# Music/video uploaded - If required %>
     <% if @comp_application.competition.require_music_upload? %>
@@ -89,8 +90,16 @@
         <dl><%= @comp_application.perf_requests %></dl>
     <% end %>
 
+    <%# Fields for karaoke %>
+    <% if @comp_application.competition.is_karaoke? %>
+      <dt><%= t('competition.karaoke_music')%></dt>
+      <dl><%= @comp_application.karaoke1 %></dl>
+      <dt><%= t('competition.karaoke_music')%></dt>
+      <dl><%= @comp_application.karaoke2 %></dl>
+    <% end %>
 
-    <%# Veteran checkbox - if allowed %>
+
+  <%# Veteran checkbox - if allowed %>
     <% if @comp_application.competition.ask_veteran?  %>
         <dt><%= t('competition.veteran')%></dt>
         <dl><%= @comp_application.veteran ? t('yes') : t('no') %></dl>
