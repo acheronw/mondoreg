@@ -55,6 +55,11 @@ gem 'aws-sdk', '~> 3', require: false
 gem 'image_processing'
 gem 'active_storage_validations'
 
+
+# For generationg PDFs (used in webshop management):
+gem 'prawn'
+gem 'prawn-table'
+
 # Pagination support used in ticket admin view:
 # gem 'will_paginate'
 # gem 'bootstrap-will_paginate'

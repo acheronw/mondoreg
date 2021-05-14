@@ -2,9 +2,21 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.where(id: params[:id]).first
-    if @order.blank? || @order.user != current_user
+    if @order.blank? || (@order.user != current_user && !current_user.has_role?(:webshop_manager))
       redirect_to root_path
+    else
+      respond_to do |format|
+        format.html
+        format.pdf do
+          pdf = OrderPdf.new(@order)
+          send_data pdf.render, filename: "futarlevel_#{@order.id}.pdf",
+                    type: "application/pdf"
+                    # disposition: "inline"
+        end
+      end
     end
+
+
   end
 
   def index

@@ -1,16 +1,24 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
+<!-- header class="navbar navbar-fixed-top navbar-inverse" -->
+<div class="navbar navbar-static-top navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to t('title.home'), root_path, id: "logo" %>
+    </div>
+    <ul class="nav navbar-nav">
+      <li>
+        <button class="btn navbar-btn btn-secondary">
+          <% root_product_category = ProductCategory.first %>
+          <%= link_to "WEBSHOP", root_product_category  %>
+        </button>
+      </li>
 
+    </ul>
 
-    <%= link_to t('title.home'), root_path, id: "logo" %>
 
 
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <% root_product_category = ProductCategory.first %>
-          <%= link_to "WEBSHOP", root_product_category  %>
-        </li>
+
 
         <% if user_signed_in? && current_user.has_role?(:webshop_manager) %>
           <li><%= link_to t('webshop.admin.title'), orders_path(:mode => 'pending') %></li>
@@ -48,7 +56,10 @@
             </li>
             <% if current_user.orders.last.present? && current_user.orders.last.status == 'in_cart' %>
               <li>
-                <%= link_to "KOSAR", current_user.orders.last %>
+                <button class="btn navbar-btn btn-secondary">
+                  <%= link_to "KOSÁR", current_user.orders.last %>
+                </button>
+
               </li>
             <% end %>
         <% else %>
@@ -59,4 +70,4 @@
       </ul>
     </nav>
   </div>
-</header>
+</div>

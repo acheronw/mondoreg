@@ -79,3 +79,13 @@
   <% end %>
 
 </div>
+
+<% if @mode == 'pending' %>
+  <div class="padded well">
+    <h4>Adminisztráció</h4>
+    <%= link_to 'futárlevél (PDF)', order_path(order, format: "pdf") %>
+
+  </div>
+<% end %>
+
+<hr/>
