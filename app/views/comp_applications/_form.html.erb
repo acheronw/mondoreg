@@ -126,13 +126,13 @@
         <%# Fields for karaoke %>
         <% if @comp_application.competition.is_karaoke? %>
           <div class="form-group">
-            <%= f.label t('competition.karaoke_music')  %>
+            <%= f.label t('competition.karaoke_music1')  %>
             <%= f.text_area :karaoke1 %>
             <i><%= t('competition.user_side.karaoke_music_explained') %></i>
           </div>
 
           <div class="form-group">
-            <%= f.label t('competition.karaoke_music')  %>
+            <%= f.label t('competition.karaoke_music2')  %>
             <%= f.text_area :karaoke2 %>
             <i><%= t('competition.user_side.karaoke_music_explained') %></i>
           </div>
