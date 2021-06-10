@@ -112,6 +112,7 @@ hu:
     convention: "Rendezvény"
     name_of_competitor: "Versenyző neve"
     nickname: "Becenév / művésznév"
+    email_address: "Versenyző email címe"
     name_of_character: "Karakter neve"
     source_of_character: "Fandom"
     primary_cosplay_image: "Karakterkép"

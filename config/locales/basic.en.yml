@@ -134,6 +134,7 @@ en:
     convention: "Convention"
     name_of_competitor: "Name of competitor"
     nickname: "Nickname / Alias"
+    email_address: "Email address of competitor"
     name_of_character: "Name of character"
     source_of_character: "Fandom"
     primary_cosplay_image: "Image of character"

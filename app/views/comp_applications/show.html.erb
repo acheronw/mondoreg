@@ -14,6 +14,9 @@
     <dt><%= t('competition.nickname') %></dt>
     <dl><%= @comp_application.nickname %></dl>
 
+    <dt><%= t('competition.email_address') %></dt>
+    <dl><%= @comp_application.user.email %></dl>
+
 
     <%# Name of Character, Source - Cosplay only fields %>
     <% if @comp_application.competition.is_cosplay? %>
