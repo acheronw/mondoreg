@@ -32,11 +32,14 @@ class TicketOrdersController < ApplicationController
     # @ticket_orders = TicketOrder.active.joins(:user).order(sort_column + " " + sort_direction)
     #                     .paginate(page: params[:ticket_orders_page], per_page: 100).all
     # Version using kaminari gem for pagionation:
-    @ticket_orders = TicketOrder.active.joins(:user).order(sort_column + " " + sort_direction).page(params[:ticket_orders_page]).per(100)
+    @ticket_orders = TicketOrder.active.joins(:user).order(sort_column + " " + sort_direction)
+    @ticket_orders = @ticket_orders.page(params[:ticket_orders_page]).per(100)
+    # If using csv format but don't want pagination, replace previous line with this:
+    # @ticket_orders = @ticket_orders.page(params[:ticket_orders_page]).per(100) unless request.format == 'csv
 
     respond_to do | format |
       format.html
-      format.csv { send_data text: @ticket_orders.to_csv }
+      # format.csv { send_data text: @ticket_orders.to_csv }
     end
   end
 
@@ -61,9 +64,9 @@ class TicketOrdersController < ApplicationController
 
 
   def export_csv
+    ap "In export to csv"
     @ticket_orders = TicketOrder.active.joins(:user).all
-    response.headers['Content-Disposition'] = 'attachment; filename=mondocon_tickets.csv'
-    render text: @ticket_orders.to_csv
+    send_data @ticket_orders.to_csv, :filename => 'mondocon-tickets.csv'
   end
 
   def deliver_ticket
