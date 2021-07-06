@@ -64,7 +64,6 @@ class TicketOrdersController < ApplicationController
 
 
   def export_csv
-    ap "In export to csv"
     @ticket_orders = TicketOrder.active.joins(:user).all
     send_data @ticket_orders.to_csv, :filename => 'mondocon-tickets.csv'
   end
