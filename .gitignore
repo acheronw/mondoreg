@@ -21,3 +21,5 @@
 
 # Ignore public/assets
 public/assets/**
+
+/desktop.ini
