@@ -143,63 +143,6 @@ ActiveRecord::Schema.define(version: 2021_05_11_151445) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "delivery_addresses", force: :cascade do |t|
-    t.string "name"
-    t.string "city"
-    t.string "zip"
-    t.string "street_address"
-    t.string "phone"
-    t.string "addressable_type"
-    t.bigint "addressable_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["addressable_type", "addressable_id"], name: "index_delivery_addresses_on_addressable"
-  end
-
-  create_table "line_items", force: :cascade do |t|
-    t.bigint "order_id", null: false
-    t.bigint "product_id", null: false
-    t.integer "quantity"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_line_items_on_order_id"
-    t.index ["product_id"], name: "index_line_items_on_product_id"
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "status"
-    t.string "comment"
-    t.integer "total_price"
-    t.date "date_submitted"
-    t.date "date_shipped"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "product_categories", force: :cascade do |t|
-    t.string "name"
-    t.string "status"
-    t.integer "parent_id"
-    t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.bigint "product_category_id", null: false
-    t.string "status"
-    t.string "author"
-    t.string "isbn"
-    t.integer "price"
-    t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_category_id"], name: "index_products_on_product_category_id"
-  end
-
   create_table "roles", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -276,10 +219,6 @@ ActiveRecord::Schema.define(version: 2021_05_11_151445) do
   add_foreign_key "comp_applications", "competitions"
   add_foreign_key "comp_applications", "users"
   add_foreign_key "competitions", "conventions"
-  add_foreign_key "line_items", "orders"
-  add_foreign_key "line_items", "products"
-  add_foreign_key "orders", "users"
-  add_foreign_key "products", "product_categories"
   add_foreign_key "ticket_orders", "tickets"
   add_foreign_key "ticket_orders", "users"
   add_foreign_key "tickets", "conventions"
