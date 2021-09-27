@@ -3,7 +3,6 @@ class CompetitionsController < ApplicationController
 
   def show
     @competition = Competition.find(params[:id])
-#	unless ((current_user.has_role? :manager, @competition) || (current_user.has_role? :assistant, @competition))
     unless @competition.can_user_manage?current_user
       flash[:danger] = "Access denied! Exterminate user! Exterminate!"
       redirect_to root_path

@@ -64,11 +64,11 @@
           <%= link_to t('competition.user_side.view_application'), comp_app %>
         </td>
         <td>
-		  <% if comp_app.status == "pending" %>
-			  <%=  link_to t('competition.admin.confirm_button') , accept_application_path(id: comp_app.id), method: :patch %>
-			  <br>
-		  <% end %>
-		  <%=  link_to t('competition.admin.unconfirm_button') , reject_application_path(id: comp_app.id), method: :patch %>
+		      <% if comp_app.status == "pending" %>
+			      <%=  link_to t('competition.admin.confirm_button') , accept_application_path(id: comp_app.id), method: :patch %>
+			      <br>
+  		    <% end %>
+	    	  <%=  link_to t('competition.admin.unconfirm_button') , reject_application_path(id: comp_app.id), method: :patch %>
         </td>
       </tr>
 

@@ -78,7 +78,7 @@ class Competition < ApplicationRecord
   end
 
   def is_drawing?
-	['rajz', 'rajz_cg'].include? self.subtype
+	  ['rajz', 'rajz_cg'].include? self.subtype
   end
 
   def has_image?
@@ -118,10 +118,10 @@ class Competition < ApplicationRecord
   end
   
   def can_user_manage?(user)
-	 (user.has_role? :manager, self) || 
-	 ((self.is_cosplay?) && (user.has_role? :cosplay_admin)) || 
-	 ((self.is_karaoke?) && (user.has_role? :karaoke_admin)) || 
-	 ((self.is_drawing?) && (user.has_role? :drawing_admin))
+	  (user.has_role? :manager, self) ||
+	  ((self.is_cosplay?) && (user.has_role? :cosplay_admin)) ||
+	  ((self.is_karaoke?) && (user.has_role? :karaoke_admin)) ||
+	  ((self.is_drawing?) && (user.has_role? :drawing_admin))
   end
   
 end

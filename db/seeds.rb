@@ -33,7 +33,10 @@ when "development"
 		p "user hozzáadva!"
 	else
 		p user.errors
-	end	
+  end
+  user.add_role :cosplay_admin
+  
+
 	if convention = Convention.create(name: 'Első Con', opening: '2021/09/20', relevance_date: '2025/12/25')
 		p "con hozzáadva"
 	else

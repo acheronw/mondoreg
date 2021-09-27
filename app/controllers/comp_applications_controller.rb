@@ -3,16 +3,11 @@ class CompApplicationsController < ApplicationController
 
   def show
     @comp_application = CompApplication.find(params[:id])
-#    if current_user != @comp_application.user &&
-#       !current_user.has_role?(:assistant, @comp_application.competition) &&
-#       !current_user.has_role?(:manager, @comp_application.competition)
-#      flash[:danger] = "Access denied! Exterminate user! Exterminate!"
-#      redirect_to root_path
-#    end
-	unless ((current_user == @comp_application.user) || (@comp_application.competition.can_user_manage? (current_user)))
+    unless ((current_user == @comp_application.user) ||
+        (@comp_application.competition.can_user_manage? (current_user)))
       flash[:danger] = "Access denied! Exterminate user! Exterminate!"
       redirect_to root_path
-	end
+	  end
   end
 
   def new
@@ -132,14 +127,5 @@ class CompApplicationsController < ApplicationController
                                                :karaoke2,
       )
     end
-
-#    def is_assistant_here?
-#      user_signed_in? && current_user.has_role?(:assistant, @comp_application.competition)
-#    end
-
-
-#    def is_manager_here?
-#        user_signed_in? && current_user.has_role?(:manager, @comp_application.competition)
-#    end
 
 end
