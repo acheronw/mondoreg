@@ -15,7 +15,7 @@
 
         <% Competition.active.select{
  #           |c| (current_user.has_role? :manager, c ) || (current_user.has_role? :assistant, c )
-			|c| (c.can_user_manage? current_user)
+			|c| (@competition.can_user_manage? current_user)
 		}.each do | comp | %>
             <tr>
               <td><%= comp.convention.name %></td>

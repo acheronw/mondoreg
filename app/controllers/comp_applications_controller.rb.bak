@@ -75,7 +75,7 @@ class CompApplicationsController < ApplicationController
 
   def accept_application
     @comp_application = CompApplication.find(params[:id])
-    if @comp_application.competition.can_user_manage? (current_user)
+    if is_manager_here?
       @comp_application.confirm
       flash[:notice] = t('competition.admin.application_accepted', id: @comp_application.id)
       redirect_back(fallback_location: root_path)
@@ -87,7 +87,7 @@ class CompApplicationsController < ApplicationController
 
   def reject_application
     @comp_application = CompApplication.find(params[:id])
-    if @comp_application.competition.can_user_manage? (current_user)
+    if is_manager_here?
       @comp_application.reject()
       flash[:notice] = t('competition.admin.application_rejected', id: @comp_application.id)
       redirect_back(fallback_location: root_path)
@@ -99,7 +99,7 @@ class CompApplicationsController < ApplicationController
 
   def update_memo
     @comp_application = CompApplication.find(params[:id])
-    if @comp_application.competition.can_user_manage? (current_user)
+    if is_manager_here? || is_assistant_here?
       @comp_application.inner_memo=params[:comp_application][:inner_memo]
       @comp_application.save
       flash[:notice] = @comp_application.inner_memo
@@ -133,13 +133,13 @@ class CompApplicationsController < ApplicationController
       )
     end
 
-#    def is_assistant_here?
-#      user_signed_in? && current_user.has_role?(:assistant, @comp_application.competition)
-#    end
+    def is_assistant_here?
+      user_signed_in? && current_user.has_role?(:assistant, @comp_application.competition)
+    end
 
 
-#    def is_manager_here?
-#        user_signed_in? && current_user.has_role?(:manager, @comp_application.competition)
-#    end
+    def is_manager_here?
+        user_signed_in? && current_user.has_role?(:manager, @comp_application.competition)
+    end
 
 end

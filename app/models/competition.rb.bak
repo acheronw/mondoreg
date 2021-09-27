@@ -119,9 +119,9 @@ class Competition < ApplicationRecord
   
   def can_user_manage?(user)
 	 (user.has_role? :manager, self) || 
-	 ((self.is_cosplay?) && (user.has_role? :cosplay_admin)) || 
-	 ((self.is_karaoke?) && (user.has_role? :karaoke_admin)) || 
-	 ((self.is_drawing?) && (user.has_role? :drawing_admin))
+	 (self.is_cosplay?) && (user.has_role? :cosplay_admin) || 
+	 (self.is_karaoke?) && (user.has_role? :karaoke_admin) || 
+	 (self.is_drawing?) && (user.has_role? :drawing_admin)
   end
   
 end
