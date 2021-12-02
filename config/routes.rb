@@ -36,7 +36,13 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
   get '/hub', to: 'static_pages#hub', as: :hub
+  # TODO does this actually work? The static_pages controller has no hub method.
   get '/ticket_stats', to: 'static_pages#ticket_stats', as: :ticket_stats
+
+  namespace :payment do
+    get "checkout/:id", to: "pages#checkout", as: "checkout"
+    post "notify", to: "pages#notify", as: "notify"
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

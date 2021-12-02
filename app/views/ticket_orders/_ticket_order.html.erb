@@ -23,10 +23,12 @@
   <% if ticket_order.status == 'accepted' %>
       <td class="success">
         <%= ticket_order.status_localized %>
+        <%=  link_to t('ticketing.user_side.reminder_button') , reminder_email_path(id: ticket_order.id), method: :put %>
       </td>
   <% else %>
       <td class="danger">
         <%= ticket_order.status_localized %>
+        <%=  link_to t('ticketing.user_side.pay_button') , payment_checkout_path("MC" + ticket_order.id.to_s), method: :get %>
       </td>
   <% end %>
 

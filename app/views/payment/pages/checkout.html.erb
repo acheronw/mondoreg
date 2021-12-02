@@ -1,0 +1,48 @@
+<p>HULLO WORLD - YOU GONNA PAY NOW!</p>
+
+<% if @order_type == 'ticket' %>
+  <% amount = @ticket_order.total_price %>
+<% end %>
+
+
+
+
+<div id="embeddedCheckout"></div>
+<script src="https://developers.mypos.com/repository/mypos-embedded-sdk.js" type="text/javascript"></script>
+<script>
+    var paymentParams = {
+        sid: '000000000000010',
+        ipcLanguage: 'en', //Checkout page language (ISO 2 format).
+        walletNumber: '61938166610',
+        amount: parseFloat("<%= amount %>"),
+        currency: 'HUF',
+        orderID: "<%= @order_id %>",
+        urlNotify: '<%= payment_notify_url.split("?")[0] %>',
+        keyIndex: 1,
+        cartItems: [
+            {
+                article: '<%= @ticket_order.ticket.convention.name + " " + @ticket_order.ticket.name %>',
+                quantity: '<%= @ticket_order.quantity %>',
+                price: '<%= amount %>',
+                currency: 'HUF',
+            },
+        ]
+    };
+    var callbackParams = {
+        isSandbox: true,
+        onSuccess: function (data) {
+            console.log('success callback');
+            console.log(data);
+        },
+        onError: function () {
+            console.log('error');
+        }
+    };
+
+    MyPOSEmbedded.createPayment(
+        'embeddedCheckout',
+        paymentParams,
+        callbackParams
+    );
+
+</script>

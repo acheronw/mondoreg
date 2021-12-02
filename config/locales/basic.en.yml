@@ -101,7 +101,8 @@ en:
       type_of_ticket: "Type of ticket"
       buy_tickets: "Buy tickets"
       order_button: "Order ticket"
-      reminder_button: "Resend instructions"
+      reminder_button: "Resend email"
+      pay_button: "Buy ticket"
       order_placed_message: "Your order has been placed. Check your inbox for instructions. You can track the status of your order here."
       resent_instructions_message: "We resent you the instructions, please check your inbox."
     email:
