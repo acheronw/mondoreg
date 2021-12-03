@@ -1,10 +1,12 @@
 <p>HULLO WORLD - YOU GONNA PAY NOW!</p>
 
 <% if @order_type == 'ticket' %>
+  <% article = @ticket_order.ticket.convention.name + " " +  @ticket_order.ticket.name %>
+  <% quantity = @ticket_order.quantity %>
+  <% price_per_ticket = @ticket_order.ticket.price %>
   <% amount = @ticket_order.total_price %>
+
 <% end %>
-
-
 
 
 <div id="embeddedCheckout"></div>
@@ -21,9 +23,9 @@
         keyIndex: 1,
         cartItems: [
             {
-                article: '<%= @ticket_order.ticket.convention.name + " " + @ticket_order.ticket.name %>',
-                quantity: '<%= @ticket_order.quantity %>',
-                price: '<%= amount %>',
+                article: '<%= article %>',
+                quantity: '<%= quantity %>',
+                price: '<%= price_per_ticket %>',
                 currency: 'HUF',
             },
         ]

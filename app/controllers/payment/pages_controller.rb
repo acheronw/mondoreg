@@ -1,4 +1,6 @@
-class Payment::PagesController < Payment::BaseController
+class Payment::PagesController < ApplicationController
+  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:notify]
 
   # TODO - I don't understand what this verify_authenticity_token is:
   skip_before_action :verify_authenticity_token, only: [:notify]
