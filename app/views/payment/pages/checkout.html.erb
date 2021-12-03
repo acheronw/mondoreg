@@ -1,14 +1,10 @@
 <p>HULLO WORLD - YOU GONNA PAY NOW!</p>
 
-<%= "Payment notify url: \n" %>
-<%=  payment_notify_url.split("?")[0] %>
-
 <% if @order_type == 'ticket' %>
   <% article = @ticket_order.ticket.convention.name + " " +  @ticket_order.ticket.name %>
   <% quantity = @ticket_order.quantity %>
   <% price_per_ticket = @ticket_order.ticket.price %>
   <% amount = @ticket_order.total_price %>
-
 <% end %>
 
 
