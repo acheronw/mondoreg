@@ -1,5 +1,3 @@
-<p>HULLO WORLD - YOU GONNA PAY NOW!</p>
-
 <%= payment_notify_url.split("?")[0] %>
 
 <% if @order_type == 'ticket' %>
@@ -20,7 +18,7 @@
         amount: parseFloat("<%= amount %>"),
         currency: 'HUF',
         orderID: "<%= @order_id %>",
-        urlNotify: 'https://mondoreg.herokuapp.com/payment/notify',
+        urlNotify: '<%= payment_notify_url.split("?")[0] %>\n',
         keyIndex: 1,
         cartItems: [
             {
