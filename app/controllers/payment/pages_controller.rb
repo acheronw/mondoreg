@@ -17,6 +17,14 @@ class Payment::PagesController < ApplicationController
 
 
   def notify
+    pp params
+    order_id = params[:OrderID]
+    if order_id.start_with?('MC')
+      ticket_id = order_id[2 .. -1]
+      ticket_order = TicketOrder.find(ticket_id)
+      ticket_order.confirm
+      render plain: "OK"
+    end
   end
 
 end
