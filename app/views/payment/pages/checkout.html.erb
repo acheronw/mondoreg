@@ -1,5 +1,4 @@
 
-
 <% if @order_type == 'ticket' %>
   <% article = @ticket_order.ticket.convention.name + " " +  @ticket_order.ticket.name %>
   <% quantity = @ticket_order.quantity %>
@@ -12,14 +11,14 @@
 <script src="https://developers.mypos.com/repository/mypos-embedded-sdk.js" type="text/javascript"></script>
 <script>
     var paymentParams = {
-        sid: '<%=  Rails.configuration.mypos_sid %>',
+        sid: '<%=  Rails.configuration.x.mypos.sid %>',
         ipcLanguage: 'en', //Checkout page language (ISO 2 format).
-        walletNumber: '<%=  Rails.configuration.mypos_wallet_number %>',
+        walletNumber: '<%=  Rails.configuration.x.mypos.wallet_number %>',
         amount: parseFloat("<%= amount %>"),
         currency: 'HUF',
         orderID: "<%= @order_id %>",
         urlNotify: '<%= payment_notify_url.split("?")[0] %>\n',
-        keyIndex: parseInt('<%= Rails.configuration.mypos_key_index %>'),
+        keyIndex: parseInt('<%= Rails.configuration.x.mypos.key_index %>'),
         cartItems: [
             {
                 article: '<%= article %>',
