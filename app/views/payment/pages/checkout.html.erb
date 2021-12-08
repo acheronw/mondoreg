@@ -1,4 +1,4 @@
-<%= payment_notify_url.split("?")[0] %>
+
 
 <% if @order_type == 'ticket' %>
   <% article = @ticket_order.ticket.convention.name + " " +  @ticket_order.ticket.name %>
@@ -12,14 +12,14 @@
 <script src="https://developers.mypos.com/repository/mypos-embedded-sdk.js" type="text/javascript"></script>
 <script>
     var paymentParams = {
-        sid: '000000000000010',
+        sid: '<%=  Rails.configuration.mypos_sid %>',
         ipcLanguage: 'en', //Checkout page language (ISO 2 format).
-        walletNumber: '61938166610',
+        walletNumber: '<%=  Rails.configuration.mypos_wallet_number %>',
         amount: parseFloat("<%= amount %>"),
         currency: 'HUF',
         orderID: "<%= @order_id %>",
         urlNotify: '<%= payment_notify_url.split("?")[0] %>\n',
-        keyIndex: 1,
+        keyIndex: parseInt('<%= Rails.configuration.mypos_key_index %>'),
         cartItems: [
             {
                 article: '<%= article %>',
@@ -30,7 +30,7 @@
         ]
     };
     var callbackParams = {
-        isSandbox: true,
+        isSandbox: false,
         onSuccess: function (data) {
             console.log('success callback');
             console.log(data);

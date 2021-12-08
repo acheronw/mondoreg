@@ -22,5 +22,12 @@ module Mondoreg
 
     config.i18n.default_locale = :hu
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+
+    # MyPOS card payment integration:
+    config.mypos_sid = 351930
+    config.mypos_wallet_number = 40162416966
+    config.mypos_key_index = 2
+
+
   end
 end
