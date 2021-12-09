@@ -1,4 +1,5 @@
 
+
 <% if @order_type == 'ticket' %>
   <% article = @ticket_order.ticket.convention.name + " " +  @ticket_order.ticket.name %>
   <% quantity = @ticket_order.quantity %>
@@ -19,6 +20,8 @@
         orderID: "<%= @order_id %>",
         urlNotify: '<%= payment_notify_url.split("?")[0] %>',
         keyIndex: parseInt('<%= Rails.configuration.x.mypos.key_index %>'),
+        paymentMethod: 1,
+        paymentParametersRequired: 3,
         cartItems: [
             {
                 article: '<%= article %>',

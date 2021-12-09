@@ -28,6 +28,7 @@ module Mondoreg
     config.x.mypos.wallet_number = 40162416966
     config.x.mypos.key_index = 2
     config.x.mypos.certificate = ENV["MYPOS_CERTIFICATE"]
+    config.x.mypos.private_key = ENV["MYPOS_PRIVATE_KEY"]
 
   end
 end
