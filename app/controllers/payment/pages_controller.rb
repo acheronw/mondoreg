@@ -2,7 +2,8 @@ class Payment::PagesController < ApplicationController
   before_action :authenticate_user!
   skip_before_action :authenticate_user!, only: [:notify]
 
-  # TODO - I don't understand what this verify_authenticity_token is:
+  # We don't want rails's own CSRF protection, because the post request will come from mypos domain.
+  # We will implement our own protection in the controller by validating their signature.
   skip_before_action :verify_authenticity_token, only: [:notify]
 
   def checkout
