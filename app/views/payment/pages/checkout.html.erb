@@ -7,47 +7,69 @@
   <% amount = @ticket_order.total_price %>
 <% end %>
 
+<div>
+  <h4>Debug information:</h4>
+  <p>API url:</p>
+  <%= @url %>
+  <br>
+  <p>parameters for the call:</p>
+  <%= @payment_params %>
+  <br>
+  <p>The call: </p>
+  <%#  @url.query = URI.encode_www_form(@payment_params) %>
+  <%  @redirect_url = @url.to_s %>
+  <%= @redirect_url %>
+</div>
+
+<form action='https://mypos.eu/vmp/checkout-test' method="post">
+  <% @payment_params.each do | param_key, param_value | %>
+    <input type="hidden" name="<%= param_key %>" value="<%= param_value %>" >
+  <% end %>
+  <input class="btn btn-primary" type="submit" value="FIZETESGOMB"/>
+
+</form>
 
 
 <div id="embeddedCheckout"></div>
-<script src="https://developers.mypos.com/repository/mypos-embedded-sdk.js" type="text/javascript"></script>
 
-<script>
-    var paymentParams = {
-        sid: '<%=  Rails.configuration.x.mypos.sid %>',
-        ipcLanguage: 'en', //Checkout page language (ISO 2 format).
-        walletNumber: '<%=  Rails.configuration.x.mypos.wallet_number %>',
-        amount: parseFloat("<%= amount %>"),
-        currency: 'HUF',
-        orderID: "<%= @order_id %>",
-        urlNotify: '<%= payment_notify_url.split("?")[0] %>',
-        keyIndex: parseInt('<%= Rails.configuration.x.mypos.key_index %>'),
-        paymentMethod: 1,
-        paymentParametersRequired: 3,
-        cartItems: [
-            {
-                article: '<%= article %>',
-                quantity: '<%= quantity %>',
-                price: '<%= price_per_ticket %>',
-                currency: 'HUF',
-            },
-        ]
-    };
-    var callbackParams = {
-        isSandbox: false,
-        onSuccess: function (data) {
-            console.log('success callback');
-            console.log(data);
-        },
-        onError: function () {
-            console.log('error');
-        }
-    };
+<!--<script src="https://developers.mypos.com/repository/mypos-embedded-sdk.js" type="text/javascript"></script>-->
 
-    MyPOSEmbedded.createPayment(
-        'embeddedCheckout',
-        paymentParams,
-        callbackParams
-    );
+<!--<script>-->
+<!--    var paymentParams = {-->
+<!--        sid: '<%=  Rails.configuration.x.mypos.sid %>',-->
+<!--        ipcLanguage: 'en', //Checkout page language (ISO 2 format).-->
+<!--        walletNumber: '<%=  Rails.configuration.x.mypos.wallet_number %>',-->
+<!--        amount: parseFloat("<%= amount %>"),-->
+<!--        currency: 'HUF',-->
+<!--        orderID: "<%= @order_id %>",-->
+<!--        urlNotify: '<%= payment_notify_url.split("?")[0] %>',-->
+<!--        keyIndex: parseInt('<%= Rails.configuration.x.mypos.key_index %>'),-->
+<!--        paymentMethod: 1,-->
+<!--        paymentParametersRequired: 3,-->
+<!--        cartItems: [-->
+<!--            {-->
+<!--                article: '<%= article %>',-->
+<!--                quantity: '<%= quantity %>',-->
+<!--                price: '<%= price_per_ticket %>',-->
+<!--                currency: 'HUF',-->
+<!--            },-->
+<!--        ]-->
+<!--    };-->
+<!--    var callbackParams = {-->
+<!--        isSandbox: false,-->
+<!--        onSuccess: function (data) {-->
+<!--            console.log('success callback');-->
+<!--            console.log(data);-->
+<!--        },-->
+<!--        onError: function () {-->
+<!--            console.log('error');-->
+<!--        }-->
+<!--    };-->
 
-</script>
+<!--    MyPOSEmbedded.createPayment(-->
+<!--        'embeddedCheckout',-->
+<!--        paymentParams,-->
+<!--        callbackParams-->
+<!--    );-->
+
+<!--</script>-->
