@@ -21,7 +21,6 @@ class Payment::PagesController < ApplicationController
       @amount = ticket_order.total_price
     end
 
-    # TODO needs to add Signature to params
     @payment_params = {
         IpcMethod: 'IPCPurchase',
         IpcVersion: 1.4,
@@ -37,16 +36,16 @@ class Payment::PagesController < ApplicationController
         # KeyIndex: Rails.configuration.x.mypos.key_index,
 
         # URL_Notify: payment_notify_url.split("?")[0],
-        urlNotify: 'https://mondoreg.herokuapp.com/notify',
+        URL_Notify: 'https://mondoreg.herokuapp.com/notify',
         URL_OK: 'https://mondoreg.herokuapp.com/notify',
         URL_Cancel: 'https://mondoreg.herokuapp.com/notify',
         Amount: @amount,
         Currency: 'HUF',
         OrderID: @order_id,
 
-        PaymentMethod: 1,
-        CardTokenRequest: 0,
-        PaymentParametersRequired: 3,
+        # PaymentMethod: 1,
+        # CardTokenRequest: 0,
+        # PaymentParametersRequired: 3,
         CartItems: 1,
         Article_1: @article,
         Quantity_1: @quantity,
@@ -56,7 +55,7 @@ class Payment::PagesController < ApplicationController
     }
     @payment_params[:Signature] = generate_signature(@payment_params)
 
-    @url = URI('https://mypos.eu/vmp/checkout-test')
+    @url = URI('https://mypos.com/vmp/checkout-test')
   end
 
 
