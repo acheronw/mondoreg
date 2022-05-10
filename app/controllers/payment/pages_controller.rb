@@ -25,18 +25,13 @@ class Payment::PagesController < ApplicationController
         IpcMethod: 'IPCPurchase',
         IpcVersion: 1.4,
         IpcLanguage: 'EN',
-        # test environment parameters:
-        # SID: '000000000000010',
-        # WalletNumber: 61938166610,
-        # KeyIndex: 1,
 
-        # live environment parameters:
-        sid: Rails.configuration.x.mypos.sid,
-        walletNumber: Rails.configuration.x.mypos.wallet_number,
-        KeyIndex: Rails.configuration.x.mypos.key_index,
+        SID: Rails.configuration.x.mypos.testing ? '000000000000010' : Rails.configuration.x.mypos.sid,
+        walletNumber: Rails.configuration.x.mypos.testing ? 61938166610 : Rails.configuration.x.mypos.wallet_number,
+        KeyIndex: Rails.configuration.x.mypos.testing ? 1 : Rails.configuration.x.mypos.key_index,
 
+        # URL_Notify: 'https://mondoreg.herokuapp.com/payment/notify',
         URL_Notify: payment_notify_url.split("?")[0],
-        # URL_Notify: 'https://mondoreg.herokuapp.com/notify',
         URL_OK: payment_success_url.split("?")[0],
         URL_Cancel: payment_failure_url.split("?")[0],
         Amount: @amount,
@@ -58,22 +53,7 @@ class Payment::PagesController < ApplicationController
 
 
   def notify
-    pp params
-
-    certificate = Rails.configuration.x.mypos.certificate
-    pub_key_id = OpenSSL::X509::Certificate.new(certificate).public_key
-    signature = params["Signature"]
-
-    # To check signature first remove signature from POST data array also remove controller and action
-    params.delete "Signature"
-    params.delete "controller"
-    params.delete "action"
-    data = params
-    # Concatenate all values
-    conc_data = Base64.strict_encode64( data.values.join("-") )
-    # Then we validate
-    is_valid = pub_key_id.verify(OpenSSL::Digest::SHA256.new, Base64.decode64(signature), conc_data)
-    if is_valid
+    if test_signature(params)
       order_id = params[:OrderID]
       if order_id.start_with?('MC')
         ticket_id = order_id[2 .. -1]
@@ -112,10 +92,7 @@ class Payment::PagesController < ApplicationController
   end
 
   def test_signature(params)
-    # Test environment certificate:
-    # certificate = Rails.configuration.x.mypos.test_certificate
-
-    certificate = Rails.configuration.x.mypos.certificate
+    certificate = Rails.configuration.x.mypos.testing ? Rails.configuration.x.mypos.test_certificate : Rails.configuration.x.mypos.certificate
 
     pub_key_id = OpenSSL::X509::Certificate.new(certificate).public_key
     signature = params["Signature"]
@@ -132,11 +109,7 @@ class Payment::PagesController < ApplicationController
   end
 
   def generate_signature(params)
-    # Test environment private key:
-    # private_key = OpenSSL::PKey::RSA.new(Rails.configuration.x.mypos.test_private_key)
-
-    # Real private key:
-    private_key = OpenSSL::PKey::RSA.new(Rails.configuration.x.mypos.private_key)
+    private_key = Rails.configuration.x.mypos.testing ? OpenSSL::PKey::RSA.new(Rails.configuration.x.mypos.test_private_key) : OpenSSL::PKey::RSA.new(Rails.configuration.x.mypos.private_key)
 
     concatenated_params = Base64.strict_encode64(params.values.join('-'))
     signature = private_key.sign(OpenSSL::Digest::SHA256.new, concatenated_params)
