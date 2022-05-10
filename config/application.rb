@@ -24,7 +24,7 @@ module Mondoreg
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
 
     # MyPOS card payment integration:
-    config.x.mypos.testing = true
+    config.x.mypos.testing = false
     config.x.mypos.sid = 351930
     config.x.mypos.wallet_number = 40162416966
     config.x.mypos.key_index = 1
