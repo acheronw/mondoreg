@@ -26,14 +26,14 @@ class Payment::PagesController < ApplicationController
         IpcVersion: 1.4,
         IpcLanguage: 'EN',
         # test environment parameters:
-        SID: '000000000000010',
-        WalletNumber: 61938166610,
-        KeyIndex: 1,
+        # SID: '000000000000010',
+        # WalletNumber: 61938166610,
+        # KeyIndex: 1,
 
         # live environment parameters:
-        # sid: Rails.configuration.x.mypos.sid,
-        # walletNumber: Rails.configuration.x.mypos.wallet_number,
-        # KeyIndex: Rails.configuration.x.mypos.key_index,
+        sid: Rails.configuration.x.mypos.sid,
+        walletNumber: Rails.configuration.x.mypos.wallet_number,
+        KeyIndex: Rails.configuration.x.mypos.key_index,
 
         URL_Notify: payment_notify_url.split("?")[0],
         # URL_Notify: 'https://mondoreg.herokuapp.com/notify',
@@ -54,8 +54,6 @@ class Payment::PagesController < ApplicationController
         Currency_1: 'HUF',
     }
     @payment_params[:Signature] = generate_signature(@payment_params)
-
-    @url = 'https://mypos.com/vmp/checkout-test'
   end
 
 
@@ -115,9 +113,9 @@ class Payment::PagesController < ApplicationController
 
   def test_signature(params)
     # Test environment certificate:
-    certificate = Rails.configuration.x.mypos.test_certificate
+    # certificate = Rails.configuration.x.mypos.test_certificate
 
-    # certificate = Rails.configuration.x.mypos.certificate
+    certificate = Rails.configuration.x.mypos.certificate
 
     pub_key_id = OpenSSL::X509::Certificate.new(certificate).public_key
     signature = params["Signature"]
@@ -135,10 +133,10 @@ class Payment::PagesController < ApplicationController
 
   def generate_signature(params)
     # Test environment private key:
-    private_key = OpenSSL::PKey::RSA.new(Rails.configuration.x.mypos.test_private_key)
+    # private_key = OpenSSL::PKey::RSA.new(Rails.configuration.x.mypos.test_private_key)
 
     # Real private key:
-    # private_key = OpenSSL::PKey::RSA.new(Rails.configuration.x.mypos.private_key)
+    private_key = OpenSSL::PKey::RSA.new(Rails.configuration.x.mypos.private_key)
 
     concatenated_params = Base64.strict_encode64(params.values.join('-'))
     signature = private_key.sign(OpenSSL::Digest::SHA256.new, concatenated_params)

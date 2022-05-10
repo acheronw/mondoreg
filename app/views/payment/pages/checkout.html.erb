@@ -14,7 +14,7 @@
   <br>
 </div>
 
-<form action='https://mypos.com/vmp/checkout-test' method="post">
+<form action='https://mypos.com/vmp/checkout' method="post">
   <% @payment_params.each do | param_key, param_value | %>
     <input type="hidden" name="<%= param_key %>" value="<%= param_value %>" >
   <% end %>
