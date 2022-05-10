@@ -42,6 +42,8 @@ Rails.application.routes.draw do
   namespace :payment do
     get "checkout/:id", to: "pages#checkout", as: "checkout"
     post "notify", to: "pages#notify", as: "notify"
+    post "success", to: "pages#success", as: "success"
+    post "failure", to: "pages#failure", as: "failure"
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

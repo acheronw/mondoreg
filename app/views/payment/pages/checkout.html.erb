@@ -9,19 +9,12 @@
 
 <div>
   <h4>Debug information:</h4>
-  <p>API url:</p>
-  <%= @url %>
-  <br>
   <p>parameters for the call:</p>
   <%= @payment_params %>
   <br>
-  <p>The call: </p>
-  <%#  @url.query = URI.encode_www_form(@payment_params) %>
-  <%  @redirect_url = @url.to_s %>
-  <%= @redirect_url %>
 </div>
 
-<form action='https://mypos.eu/vmp/checkout-test' method="post">
+<form action='https://mypos.com/vmp/checkout-test' method="post">
   <% @payment_params.each do | param_key, param_value | %>
     <input type="hidden" name="<%= param_key %>" value="<%= param_value %>" >
   <% end %>
