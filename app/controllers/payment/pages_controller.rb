@@ -70,7 +70,7 @@ class Payment::PagesController < ApplicationController
   def success
     if test_signature(params)
       order_id = params[:OrderID]
-      flash[:notice] = t('ticketing.user_side.successful_payment', id: order_id)
+      flash[:notice] = t('ticketing.user_side.successful_payment', order_id: order_id)
       redirect_to root_path
     else
       # Return an empty document with error 401:
@@ -81,7 +81,7 @@ class Payment::PagesController < ApplicationController
   def failure
     if test_signature(params)
       order_id = params[:OrderID]
-      flash[:danger] = t('ticketing.user_side.unsuccessful_payment', id: order_id)
+      flash[:danger] = t('ticketing.user_side.unsuccessful_payment', order_id: order_id)
       redirect_to root_path
       # TODO átirányítás újra a payment felületre, ahol újra választhat fizetési módot.
     else
