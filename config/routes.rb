@@ -44,6 +44,8 @@ Rails.application.routes.draw do
     post "notify", to: "pages#notify", as: "notify"
     post "success", to: "pages#success", as: "success"
     post "failure", to: "pages#failure", as: "failure"
+    # If the user does not wait to be redirected home, but clicks the link, he arrives back without any parameters with a GET:
+    get "failure", to: "/static_pages#home"
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -70,9 +70,8 @@ class Payment::PagesController < ApplicationController
   def success
     if test_signature(params)
       order_id = params[:OrderID]
-      flash[:notice] = "A #{order_id} rendelés befizetése sikeres"
+      flash[:notice] = t('ticketing.user_size.successful_payment', id: order_id)
       redirect_to root_path
-      # TODO átirányítás egy oldalra, ahol elmondjuk, hogy tud bejutni a jeggyel.
     else
       # Return an empty document with error 401:
       head :unauthorized
@@ -82,7 +81,7 @@ class Payment::PagesController < ApplicationController
   def failure
     if test_signature(params)
       order_id = params[:OrderID]
-      flash[:danger] = "A #{order_id} rendelés befizetése sikertelen"
+      flash[:danger] = t('ticketing.user_size.unsuccessful_payment', id: order_id)
       redirect_to root_path
       # TODO átirányítás újra a payment felületre, ahol újra választhat fizetési módot.
     else
