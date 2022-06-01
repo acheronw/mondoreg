@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_11_151445) do
+ActiveRecord::Schema.define(version: 2022_06_01_110655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 2021_05_11_151445) do
     t.boolean "age"
     t.string "karaoke1"
     t.string "karaoke2"
+    t.integer "age_in_years"
     t.index ["competition_id"], name: "index_comp_applications_on_competition_id"
     t.index ["user_id", "competition_id"], name: "index_comp_applications_on_user_id_and_competition_id", unique: true
     t.index ["user_id"], name: "index_comp_applications_on_user_id"

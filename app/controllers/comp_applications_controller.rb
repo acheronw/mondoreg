@@ -123,6 +123,7 @@ class CompApplicationsController < ApplicationController
                                                :nickname,
                                                :consent,
                                                :age,
+                                               :age_in_years,
                                                :karaoke1,
                                                :karaoke2,
       )

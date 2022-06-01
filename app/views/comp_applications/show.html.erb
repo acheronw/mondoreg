@@ -109,13 +109,20 @@
     <% end %>
 
     <%# Age checkbox - if allowed %>
+    <%# boolean version %>
+    <%# if @comp_application.competition.ask_age?  %>
+<!--        <dt><%#= t('competition.age')%></dt>-->
+<!--        <dl><%#= @comp_application.age ? t('yes') : t('no') %></dl>-->
+    <%# end %>
+
+    <%# Age checkbox - if allowed %>
     <% if @comp_application.competition.ask_age?  %>
-        <dt><%= t('competition.age')%></dt>
-        <dl><%= @comp_application.age ? t('yes') : t('no') %></dl>
+      <dt><%= t('competition.age')%></dt>
+      <dl><%= @comp_application.age_in_years %></dl>
     <% end %>
 
 
-    </dl>
+  </dl>
 
   </dl>
 
