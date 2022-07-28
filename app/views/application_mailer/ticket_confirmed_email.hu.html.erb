@@ -6,16 +6,11 @@
 <body>
 <h3>Kedves <%= @ticket_order.user.name %>!</h3>
 <p>
-  Megérkezett az általad befizetett pénz és így sikerült <%= @ticket_order.quantity %> db jegyet a <%= @ticket_order.ticket.convention.name %> rendezvényre.
+  Befizetésed megérkezett hozzánk, lefoglaltunk Neked <%= @ticket_order.quantity %> belépőt a <%= @ticket_order.ticket.convention.name %> rendezvényre.
 </p>
 <p>
-  Ne felejtsd el feljegyezni és magaddal hozni a rendelési kódodat:
-  <b>MC<%= @ticket_order.id %></b>
-  Ennek segítségével tudunk azonosítani majd. Jegyedet az elővételes pultnál veheted át a kód és a rendelésnél használt neved bemondásával.
-</p>
-<p>
-  Az alábbi QR kódot ha elhozod magaddal (akár kinyomtatva, akár a telefonodon), akkor a beléptetésnél gyorsabban kapod meg a jegyeket.
-  Ezt a rendszert most nyáron még csak kísérleti jelleggel vezetjük be, de reményeink szerint segít majd a sorbanállás lerövidítésében.
+  A csatolmányban találsz egy QR-kódot, ezt hozd magaddal (lehetőleg kinyomtatva, de akár a telefonodon). A kapunál ennek felmutatásával veheted át a belépő(ke)t.
+  A rendelési kódod: MC<%= @ticket_order.id %>
 </p>
 <p>
   <%
@@ -28,7 +23,7 @@
 </p>
 <p>
   Üdvözlettel,<br>
-  A Szervezők
+  A MondoCon csapata
 </p>
 </body>
 </html>
