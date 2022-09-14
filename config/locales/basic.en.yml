@@ -67,6 +67,7 @@ en:
     name_of_buyer: "name of buyer"
     order_id: "Order ID"
     outdated: "This ticket belongs to a past convention"
+    sale_over: "The payment deadline has passed."
     quantity: "Quantity"
     total_price: "Total price"
     status: "Status"
@@ -95,7 +96,7 @@ en:
       note_to_pending: "To pay for your tickets please follow the instructions we sent you.
       It will take a few days for our staff to process the payment, then the state of your order will change.
       In case you did not receive the instructions in email, you can request a resend here:"
-      note_to_accepted: "You can get your ticket at the Preordered tickets booth by using your Order ID. So write it down and bring it with you."
+      note_to_accepted: "You can get your ticket at the Preordered tickets booth by using your QR code or your Order ID. Please, bring those with you."
       note_for_purchase: "You can order tickets here. You will get an email with the instructions about payment. Your ticket will become valid only after wer confirmed your payment."
       convention: "Event"
       type_of_ticket: "Type of ticket"

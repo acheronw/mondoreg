@@ -20,14 +20,6 @@
         </table>
 
         <ul>
-          <% if current_user.has_any_pending_tickets? %>
-              <li>
-                <%= t('ticketing.user_side.note_to_pending') %>
-                <% latest_pending_id = current_user.ticket_orders.requires_attention.last.id %>
-                <%= link_to t('ticketing.user_side.reminder_button'), reminder_email_path(id: latest_pending_id), class: "btn btn-primary", method: :put %>
-              </li>
-
-          <% end %>
           <% if current_user.has_any_accepted_tickets? %>
               <li>
                 <%= t('ticketing.user_side.note_to_accepted') %>

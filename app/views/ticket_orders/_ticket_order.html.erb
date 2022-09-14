@@ -28,7 +28,13 @@
   <% else %>
       <td class="danger">
         <%= ticket_order.status_localized %>
-        <%=  link_to t('ticketing.user_side.pay_button') , payment_checkout_path("MC" + ticket_order.id.to_s), method: :get %>
+        -
+        <% if (ticket_order.ticket.sale_end >= Date.today) %>
+          <%=  link_to t('ticketing.user_side.pay_button') , payment_checkout_path("MC" + ticket_order.id.to_s), method: :get %>
+        <% else %>
+
+          <%= t('ticketing.sale_over') %>
+        <% end %>
       </td>
   <% end %>
 

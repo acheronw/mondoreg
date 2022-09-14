@@ -19,6 +19,11 @@ class Payment::PagesController < ApplicationController
       @quantity = ticket_order.quantity
       @price_per_ticket = ticket_order.ticket.price
       @amount = ticket_order.total_price
+
+      if (ticket_order.ticket.sale_end < Date.today)
+        flash[:danger] = t('ticketing.sale_over')
+        redirect_to root_path
+      end
     end
 
     @payment_params = {
