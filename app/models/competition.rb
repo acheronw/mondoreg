@@ -5,7 +5,7 @@ class Competition < ApplicationRecord
   validates :name, presence: true
   validates :convention_id, presence: true
   validates :subtype, presence: true
-  validates :subtype, :inclusion => { :in => ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay', 'blizzard_cp', 'rajz', 'rajz_cg', 'karaoke'],
+  validates :subtype, :inclusion => { :in => ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay', 'blizzard_cp', 'rajz', 'rajz_cg', 'karaoke', 'karaoke_1song'],
                                      message: "%value is not a valid competition type" }
   validates :admin_email, presence: true
 
@@ -74,7 +74,7 @@ class Competition < ApplicationRecord
   end
 
   def is_karaoke?
-    ['karaoke'].include? self.subtype
+    ['karaoke', 'karaoke_1song'].include? self.subtype
   end
 
   def is_drawing?

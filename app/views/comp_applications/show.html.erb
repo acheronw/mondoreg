@@ -97,6 +97,9 @@
     <% if @comp_application.competition.is_karaoke? %>
       <dt><%= t('competition.karaoke_music1')%></dt>
       <dl><%= @comp_application.karaoke1 %></dl>
+    <% end %>
+    <%# The 'karaoke_1song' type does not have a second song field %>
+    <% if @comp_application.competition.subtype == 'karaoke' %>
       <dt><%= t('competition.karaoke_music2')%></dt>
       <dl><%= @comp_application.karaoke2 %></dl>
     <% end %>

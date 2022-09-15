@@ -130,7 +130,10 @@
             <%= f.text_area :karaoke1 %>
             <i><%= t('competition.user_side.karaoke_music_explained') %></i>
           </div>
+        <% end %>
 
+        <%# The 'karaoke_1song' type does not have a second song field %>
+        <% if @comp_application.competition.subtype == 'karaoke' %>
           <div class="form-group">
             <%= f.label t('competition.karaoke_music2')  %>
             <%= f.text_area :karaoke2 %>
