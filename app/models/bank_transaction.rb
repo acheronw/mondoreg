@@ -59,7 +59,7 @@ class BankTransaction < ApplicationRecord
           self.problem= "Határidő utáni befizetés"
           self.status= 'problematic'
         else
-          ticket_order.confirm
+          ticket_order.confirm('bank_transaction')
           self.status='done'
           successful_match = true
         end

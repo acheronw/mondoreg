@@ -82,9 +82,10 @@ class TicketOrdersController < ApplicationController
     end
   end
 
+  # I think this method is never called:
   def confirm_ticket
     @ticket_order = TicketOrder.find(params[:id])
-    @ticket_order.confirm
+    @ticket_order.confirm(params[:payment_type])
     flash[:notice] = t('ticketing.ticket_confirmed', id: @ticket_order.id)
     redirect_back(fallback_location: root_path)
   end
@@ -118,7 +119,7 @@ class TicketOrdersController < ApplicationController
 
   private
     def ticket_order_params
-      params.require(:ticket_order).permit(:quantity, :ticket_id)
+      params.require(:ticket_order).permit(:quantity, :ticket_id, :payment_type)
     end
 
     def bursar_user

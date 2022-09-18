@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_01_110655) do
+ActiveRecord::Schema.define(version: 2022_09_18_104804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -163,6 +163,8 @@ ActiveRecord::Schema.define(version: 2022_06_01_110655) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "deliverer"
+    t.string "payment_type"
+    t.datetime "payment_date"
     t.index ["ticket_id"], name: "index_ticket_orders_on_ticket_id"
     t.index ["user_id"], name: "index_ticket_orders_on_user_id"
   end

@@ -28,8 +28,10 @@ class TicketOrder < ApplicationRecord
     # TODO send notification email
   end
 
-  def confirm
+  def confirm(payment_type)
     self.status = "accepted"
+    self.payment_type = payment_type
+    self.payment_date = Time.current
     if self.save
       ApplicationMailer.ticket_confirmed_email(self).deliver_now
     end

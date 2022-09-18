@@ -63,7 +63,7 @@ class Payment::PagesController < ApplicationController
       if order_id.start_with?('MC')
         ticket_id = order_id[2 .. -1]
         ticket_order = TicketOrder.find(ticket_id)
-        ticket_order.confirm
+        ticket_order.confirm('mypos')
         render plain: "OK"
       end
     else

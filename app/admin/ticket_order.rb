@@ -23,7 +23,7 @@ ActiveAdmin.register TicketOrder do
   end
 
   member_action :confirm_ticket, method: :patch do
-    resource.confirm
+    resource.confirm('admin')
     flash[:notice] = t('ticketing.ticket_confirmed', id: resource.id)
     redirect_back(fallback_location: root_path)
   end
