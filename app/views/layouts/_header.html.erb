@@ -1,4 +1,4 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-inverse">
   <div class="container">
 
     <%= link_to t('title.home'), root_path, id: "logo" %>
@@ -6,7 +6,6 @@
 
     <nav>
       <ul class="nav navbar-nav navbar-right">
-
         <% if user_signed_in? && current_user.has_role?(:bursar) %>
             <li><%= link_to t('title.ticket_admin'), ticket_orders_path %></li>
         <% end %>
@@ -14,7 +13,6 @@
         <% if user_signed_in? && current_user.has_role?(:bursar) %>
             <li><%= link_to t('title.ticket_stats'), ticket_stats_path %></li>
         <% end %>
-
 
         <li><%= link_to t('title.help'),   help_path %></li>
         <% if user_signed_in? %>
