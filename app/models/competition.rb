@@ -123,5 +123,23 @@ class Competition < ApplicationRecord
 	  ((self.is_karaoke?) && (user.has_role? :karaoke_admin)) ||
 	  ((self.is_drawing?) && (user.has_role? :drawing_admin))
   end
-  
+
+  def available_schedule_options
+    if not self.schedule_options.present?
+      return false
+    end
+    available = []
+    self.schedule_options.split(';').each do | option |
+      slots_occupied = self.comp_applications.where(schedule_picked: option, status: ['pending','accepted']).count
+      if slots_occupied < self.ppl_per_schedule
+        available << option
+      end
+    end
+    return available
+  end
+
+  def has_combo?
+    self.combo_comp.present?
+  end
+
 end

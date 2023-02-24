@@ -77,7 +77,6 @@ class CompApplicationsController < ApplicationController
     else
       redirect_to root_path
     end
-
   end
 
   def reject_application
@@ -126,6 +125,8 @@ class CompApplicationsController < ApplicationController
                                                :age_in_years,
                                                :karaoke1,
                                                :karaoke2,
+                                               :combo_comp,
+                                               :schedule_picked,
       )
     end
 

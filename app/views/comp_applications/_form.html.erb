@@ -170,19 +170,42 @@
         </div>
       <% end %>
 
+      <%# Combined competition options - if have any %>
+      <% if @comp_application.competition.has_combo? %>
+        <div class="form-group">
+          <%= f.label t('competition.combo_comp.label') %>
+          <%= f.radio_button :combo_comp, "both", checked: "checked" %>
+          <%= t('competition.combo_comp.both') %>
+          <%= f.radio_button :combo_comp, "basic" %>
+          <%= t('competition.combo_comp.basic') %>
+          <%= f.radio_button :combo_comp, "extra" %>
+          <%= t('competition.combo_comp.extra', comp: @comp_application.competition.combo_comp) %>
+        </div>
+      <% end %>
 
-      <%# Consent checkbox - if allowed
-        This field is virtual, will not be stored in DB. %>
-        <% if @comp_application.competition.consent_required?  %>
-            <div class="form-group">
-              <%= f.label t('competition.consent') %>
-              <%= f.check_box :consent %>
-              <i><%= t('competition.user_side.consent_explained') %></i>
-            </div>
-        <% end %>
+      <%# Prejudging schedule picker - if applicable %>
+      <% if schedule_options = @comp_application.competition.available_schedule_options %>
+        <div class="form-group">
+          <%= f.label t('competition.schedule') %>
+          <% schedule_options.each do | option | %>
+            <%= f.radio_button :schedule_picked, option %>
+            <%= option %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <%# Consent checkbox - if allowed. This field is virtual, will not be stored in DB. %>
+      <% if @comp_application.competition.consent_required?  %>
+          <div class="form-group">
+            <%= f.label t('competition.consent') %>
+            <%= f.check_box :consent %>
+            <i><%= t('competition.user_side.consent_explained') %></i>
+          </div>
+      <% end %>
 
 
-        <%= f.submit t('competition.user_side.send_app_button'), class: "btn btn-primary" %>
+
+      <%= f.submit t('competition.user_side.send_app_button'), class: "btn btn-primary" %>
 
     <% end %>
   </div>

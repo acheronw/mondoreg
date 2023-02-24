@@ -139,6 +139,7 @@ hu:
     group_name: "Csapatnév"
     group_members: "Csapattagok"
     group_member_names: "Csapattagok nevei"
+    schedule: "Válassz idősávot az előzsűrizéshez"
     consent: "Kijelentem, hog a nevezés jogi feltételeinek megfelelek"
     status: "Státusz"
     state_pending: "Beküldve"
@@ -151,6 +152,7 @@ hu:
       unconfirm_button: "Jelentkezés visszaküldése"
       confirm_question_on_reject: "Ellenőrizted, hogy a megfelelő üzenet van beállítva?"
       appearance_no: "Fellépő sorszáma"
+      schedule: "Előzsűri idősáv"
       admin_msg: "Felszólító üzenet a nevezőnek"
       inner_memo: "Szervezői megjegyzés"
       submit_memo: "Megjegyzés frissítése"
@@ -188,6 +190,11 @@ hu:
     email:
       accepted_subject: "MondoCon versenyjelentkezés elfogadva"
       rejected_subject: "Probléma a MondoCon versenyjelentkezéseddel"
+    combo_comp:
+      label: "Ez egy kombinált verseny, melyik részversenyen akarsz részt venni?"
+      both: "Mindkét versenyen részt veszek"
+      basic: "Csak az alap craftsmanship versenyen veszek részt"
+      extra: "Csak a %{comp} versenyen veszek részt"
   admin_dashboard:
     recent_orders: "Friss Foglalások"
     current_con: "Aktuális Con"

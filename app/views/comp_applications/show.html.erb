@@ -124,6 +124,21 @@
       <dl><%= @comp_application.age_in_years %></dl>
     <% end %>
 
+    <% if @comp_application.competition.has_combo? %>
+      <dt><%= t('competition.combo_comp.label') %></dt>
+      <dl>
+        <% case @comp_application.combo_comp
+        when "both" %><%= t('competition.combo_comp.both') %>
+        <% when "basic" %><%= t('competition.combo_comp.basic') %>
+        <% when "extra" %><%= t('competition.combo_comp.extra', comp: @comp_application.competition.combo_comp) %>
+        <% end %>
+      </dl>
+    <% end %>
+
+    <% if schedule_options = @comp_application.competition.available_schedule_options %>
+      <dt><%= t('competition.schedule') %></dt>
+      <dl><%= @comp_application.schedule_picked %></dl>
+    <% end %>
 
   </dl>
 

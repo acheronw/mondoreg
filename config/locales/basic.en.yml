@@ -161,6 +161,7 @@ en:
     group_name: "Name of your group"
     group_members: "Group members"
     group_member_names: "List of teammates"
+    schedule: "Choose a time to appear for prejudging"
     consent: "I declare that I am eligible for the competition according to its rules"
     status: "Státusz"
     state_pending: "Application sent"
@@ -173,6 +174,7 @@ en:
       unconfirm_button: "Reject this application (resubmit)"
       confirm_question_on_reject: "Have you checked that the message is the one you want to send?"
       appearance_no: "Stage no."
+      schedule: "Schedule for prejudging"
       admin_msg: "Change request issued to the competitor"
       inner_memo: "Admin memo"
       submit_memo: "Update admin memo"
@@ -210,6 +212,11 @@ en:
     email:
       accepted_subject: "MondoCon competition application accepted"
       rejected_subject: "Problem with MondoCon competition application"
+    combo_comp:
+      label: "Choose which subparts you want to participate in"
+      both: "Participate in both"
+      basic: "Only in the basic craftsmanship competition"
+      extra: "Only in the %{comp} competition"
   admin_dashboard:
     recent_orders: "Recent Orders"
     current_con: "Current Convention"

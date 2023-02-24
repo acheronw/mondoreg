@@ -11,11 +11,12 @@
         <th><%= t('competition.name_of_competitor') %></th>
         <th><%= t('competition.nickname') %></th>
         <% if @competition.is_cosplay? %>
-            <th><%= t('competition.name_of_character') %></th>
-            <th><%= t('competition.source_of_character') %></th>
-            <th><%= t('competition.admin.appearance_no') %></th>
-            <th><%= t('competion.admin.inner_memo') %></th>
-            <th><%= t('competition.admin.admin_msg') %></th>
+          <th><%= t('competition.name_of_character') %></th>
+          <th><%= t('competition.source_of_character') %></th>
+          <th><%= t('competition.admin.appearance_no') %></th>
+          <th><%= t('competition.admin.schedule') %></th>
+          <th><%= t('competion.admin.inner_memo') %></th>
+          <th><%= t('competition.admin.admin_msg') %></th>
         <% elsif @competition.is_karaoke? %>
             <th>DALOK</th>
         <% else %>
@@ -31,33 +32,34 @@
         <td><%= comp_app.nickname %></td>
 
         <% if @competition.is_cosplay? %>
-            <td><%= comp_app.character_name %></td>
-            <td><%= comp_app.character_source %></td>
-            <td><%= comp_app.appearance_no %></td>
-            <td><%= render partial: 'comp_applications/update_memo', locals: {comp_application: comp_app} %></td>
-            <td><%= comp_app.admin_msg %></td>
+          <td><%= comp_app.character_name %></td>
+          <td><%= comp_app.character_source %></td>
+          <td><%= comp_app.appearance_no %></td>
+          <td><%= comp_app.schedule_picked %></td>
+          <td><%= render partial: 'comp_applications/update_memo', locals: {comp_application: comp_app} %></td>
+          <td><%= comp_app.admin_msg %></td>
         <% elsif @competition.is_karaoke? %>
-            <td>
-              <%= comp_app.karaoke1 %>
-              <br>
-              <%= comp_app.karaoke2 %>
-            </td>
+          <td>
+            <%= comp_app.karaoke1 %>
+            <br>
+            <%= comp_app.karaoke2 %>
+          </td>
         <% else %>
             <td><%= image_tag (comp_app.primary_image.variant(resize: '400x400')) %></td>
         <% end %>
 
         <% if comp_app.status == 'accepted' %>
-            <td class="success">
-              <%= comp_app.status_localized %>
-            </td>
+          <td class="success">
+            <%= comp_app.status_localized %>
+          </td>
         <% elsif comp_app.status == 'pending' %>
-            <td class="warning">
-              <%= comp_app.status_localized %>
-            </td>
+          <td class="warning">
+            <%= comp_app.status_localized %>
+          </td>
         <% else %>
-            <td class="danger">
-              <%= comp_app.status_localized %>
-            </td>
+          <td class="danger">
+            <%= comp_app.status_localized %>
+          </td>
         <% end %>
 
         <td>

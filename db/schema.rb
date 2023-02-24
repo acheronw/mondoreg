@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_18_104804) do
+ActiveRecord::Schema.define(version: 2023_02_23_141240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,8 @@ ActiveRecord::Schema.define(version: 2022_09_18_104804) do
     t.string "karaoke1"
     t.string "karaoke2"
     t.integer "age_in_years"
+    t.string "combo_comp"
+    t.string "schedule_picked"
     t.index ["competition_id"], name: "index_comp_applications_on_competition_id"
     t.index ["user_id", "competition_id"], name: "index_comp_applications_on_user_id_and_competition_id", unique: true
     t.index ["user_id"], name: "index_comp_applications_on_user_id"
@@ -133,6 +135,9 @@ ActiveRecord::Schema.define(version: 2022_09_18_104804) do
     t.string "admin_email"
     t.integer "max_applications"
     t.string "welcome_info"
+    t.string "combo_comp"
+    t.string "schedule_options"
+    t.integer "ppl_per_schedule"
     t.index ["convention_id"], name: "index_competitions_on_convention_id"
   end
 
