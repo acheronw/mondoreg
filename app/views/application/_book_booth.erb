@@ -1,0 +1,12 @@
+<% if current_user.has_role? :vendor %>
+  <div class="col-lg-6">
+    <div class="padded well">
+      <p class="center">
+        <%= t('title.booth') %>
+      </p>
+      <%= link_to t('booth.book'), new_booth_path %>
+
+
+    </div>
+  </div>
+<% end %>

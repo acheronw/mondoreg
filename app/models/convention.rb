@@ -4,5 +4,6 @@ class Convention < ApplicationRecord
 
   has_many :tickets, inverse_of: :convention
   has_many :competitions, inverse_of: :convention
+  has_many :booths, inverse_of: :convention
 
 end

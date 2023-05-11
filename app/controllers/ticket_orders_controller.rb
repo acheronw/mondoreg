@@ -20,7 +20,7 @@ class TicketOrdersController < ApplicationController
       else
         flash[:danger] = @ticket_order.errors.full_messages
         redirect_to root_path
-        end
+      end
     else
       # The user tried to hack the params and by a ticket that's not on sale.
       # I was unable to put this filter into the strong params permit method.

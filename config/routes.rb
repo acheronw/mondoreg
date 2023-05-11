@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   resources :competitions, only: [:show]
   get 'export_competitors/:id', to: 'competitions#export_csv', as: :export_competitors
 
+  resources :booths
+  
+
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
   get '/hub', to: 'static_pages#hub', as: :hub

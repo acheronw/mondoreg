@@ -1,0 +1,34 @@
+<% provide(:title, t('title.booth')) %>
+
+<div class="container">
+
+  <%= form_for(@booth) do | f| %>
+
+    <div class="form-group padded well">
+      <%= f.label t('booth.name_input')  %>
+      <%= f.text_field :booth_name %>
+    </div>
+
+    <div class="row">
+      <% booth_limit = Convention.active.last.booth_limit || 32 %>
+      <% booths = Booth.active.joins(:user).order(booth_number: :asc) %>
+      <% (1 .. booth_limit).each do | current_no | %>
+        <div class="padded well col-sm-2">
+          <% current_booth = booths.find{ | booth | booth.booth_number == current_no } %>
+          <% if current_booth %>
+            <%= current_no %> - <%= current_booth.booth_name %>
+          <% else %>
+            <%= check_box_tag 'booth_nos[]', current_no %>
+            <%= label_tag current_no, "#{current_no} - #{t('booth.available')}"  %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="row">
+      <%= f.submit t('booth.submit_booking'), class: "btn btn-primary" %>
+    </div>
+
+
+  <% end %>
+</div>

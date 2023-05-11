@@ -31,16 +31,17 @@ en:
     To do so, click on your <u>name</u> in the top right corner, and choose the <u>User profile</u> from the drop-down menu.<br>
     Read the privacy policy, type in your <u>current password</u>, check in the <u>accept privacy policy</u> checkbox, and click the <update> button."
   title:
+    booth: "Booth Booking"
     comp_admin: "Competition Administration"
+    help: "Help"
+    home: "Home"
+    login: "Log In"
+    log_out: "Log Out"
+    signup: "Create new account"
     ticket_admin: "Ticketing Administration"
     ticket_stats: "Ticketing Stats"
     ticket_lookup: "Ticket Delivery"
-    help: "Help"
-    home: "Home"
-    signup: "Create new account"
-    login: "Log In"
     user_profile: "User Profile"
-    log_out: "Log Out"
   footer:
     copyright_text: "© 2017 Szekeres András Márk, All Rights Reserved"
     contact: "Contact"
@@ -63,6 +64,11 @@ en:
     delete_account_confirm: "Are you sure to delete your account?"
     update_button: "Update"
     back: "Back"
+  booth:
+    available: "Available"
+    book: "BOOK"
+    name_input: "Name of your booth:"
+    submit_booking: "Submit booking"
   ticketing:
     name_of_buyer: "name of buyer"
     order_id: "Order ID"
@@ -267,3 +273,10 @@ en:
               blank: "List of group members is missing"
             group_name:
               blank: "Group name is missing"
+        booth:
+          attributes:
+            booth_name:
+              blank: "Booth name is missing"
+            booth_number:
+              blank: "Booth number is missing"
+              taken: "This booth number has already been reserved"
