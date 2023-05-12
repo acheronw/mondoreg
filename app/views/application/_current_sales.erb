@@ -1,8 +1,8 @@
 <% if Ticket.on_sale.any? %>
     <div class="col-lg-6">
-      <div class="padded well">
+      <div class="padded">
 
-        <p class="center"><%= t('ticketing.user_side.buy_tickets')%></p>
+        <h1 class="center"><%= t('ticketing.user_side.buy_tickets')%></h1>
 
         <%= form_for(@ticket_order, :html => {:class => "form-horizontal center" } ) do | f | %>
             <div class="form-group">
