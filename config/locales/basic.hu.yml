@@ -46,6 +46,9 @@ hu:
   booth:
     available: "Szabad"
     book: "Foglalok"
+    booked_failure: "Nem sikerült lefoglalni a %{bad_nos} számú pult(ok)at"
+    booked_successfully: "Sikeresen lefoglaltad a %{good_nos} számú pult(ok)at"
+    booked_mixed_results: "Nem sikerült lefoglalni a %{bad_nos} számú pult(ok)at, csak  a %{good_nos} számú pult(ok)at"
     name_input: "A pultod neve:"
     submit_booking: "Foglalás beküldése"
   ticketing:

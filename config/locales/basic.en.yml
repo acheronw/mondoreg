@@ -67,6 +67,7 @@ en:
   booth:
     available: "Available"
     book: "BOOK"
+    booked_successfully: "You have successfully booked booth no %{no} "
     name_input: "Name of your booth:"
     submit_booking: "Submit booking"
   ticketing:
