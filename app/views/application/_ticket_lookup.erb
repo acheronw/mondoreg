@@ -1,8 +1,8 @@
 
 <% if current_user.has_role? :ticketeer %>
   <div class="col-lg-6">
-    <div class="padded well">
-      <p class="center"><%= t('title.ticket_lookup')%></p>
+    <div class="padded">
+      <h1 class="center"><%= t('title.ticket_lookup')%></h1>
       <%= form_tag lookup_ticket_path, method: :get do %>
         <%= t('ticketing.search_field') %><br>
         <%= label_tag 'MC' %>

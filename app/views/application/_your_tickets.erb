@@ -1,8 +1,8 @@
 <% if current_user.active_orders.any? %>
     <div class="col-lg-6">
-      <div class="padded well">
+      <div class="padded">
 
-        <p class="center"><%= t('ticketing.user_side.your_orders')%></p>
+        <h1 class="center"><%= t('ticketing.user_side.your_orders')%></h1>
 
         <table class="table">
           <thead>
