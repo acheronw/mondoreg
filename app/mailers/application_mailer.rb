@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'registrations@mondocon.hu'
+  default from: 'info@mondocon.hu'
   layout 'mailer'
 
 
