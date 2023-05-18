@@ -71,7 +71,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
-  config.action_mailer.default_url_options = { host: 'mondoreg.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'tickets.mondocon.hu' }
 
   # Use the Sendgrid heroku addon for emails:
   config.action_mailer.delivery_method = :smtp
