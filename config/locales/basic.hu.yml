@@ -20,6 +20,7 @@ hu:
     login: "Belépés"
     user_profile: "Felhasználó adatai"
     log_out: "Kilépés"
+    subscription: "Mondo előfizetés"
   footer:
     copyright_text: "© 2017 Szekeres András Márk, Minden jog fenntartva"
     contact: "Kapcsolat"

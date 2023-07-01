@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_23_141240) do
+ActiveRecord::Schema.define(version: 2023_06_29_084409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -149,6 +149,34 @@ ActiveRecord::Schema.define(version: 2023_02_23_141240) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "mondo_sub_attribs", force: :cascade do |t|
+    t.integer "pack_6"
+    t.integer "pack_12"
+    t.datetime "pack_last_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "mondo_subs_mails", force: :cascade do |t|
+    t.string "sub_name"
+    t.integer "sub_zip"
+    t.string "sub_city"
+    t.string "sub_address"
+    t.datetime "sub_mail_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "mondo_subscriptions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.string "status"
+    t.integer "duration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_mondo_subscriptions_on_user_id"
+  end
+
   create_table "roles", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -209,6 +237,13 @@ ActiveRecord::Schema.define(version: 2023_02_23_141240) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "privacy_accepted", default: false
+    t.string "subscription_email"
+    t.string "subscription_name"
+    t.integer "subscription_zip"
+    t.string "subscription_city"
+    t.string "subsrtiption_address"
+    t.integer "subscription_uptime"
+    t.string "subscription_comment"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -227,6 +262,7 @@ ActiveRecord::Schema.define(version: 2023_02_23_141240) do
   add_foreign_key "comp_applications", "competitions"
   add_foreign_key "comp_applications", "users"
   add_foreign_key "competitions", "conventions"
+  add_foreign_key "mondo_subscriptions", "users"
   add_foreign_key "ticket_orders", "tickets"
   add_foreign_key "ticket_orders", "users"
   add_foreign_key "tickets", "conventions"

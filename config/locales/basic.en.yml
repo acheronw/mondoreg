@@ -41,6 +41,7 @@ en:
     login: "Log In"
     user_profile: "User Profile"
     log_out: "Log Out"
+    subscription: "Mondo subscription"
   footer:
     copyright_text: "© 2017 Szekeres András Márk, All Rights Reserved"
     contact: "Contact"
