@@ -35,7 +35,6 @@ class Payment::PagesController < ApplicationController
         walletNumber: Rails.configuration.x.mypos.testing ? 61938166610 : Rails.configuration.x.mypos.wallet_number,
         KeyIndex: Rails.configuration.x.mypos.testing ? 1 : Rails.configuration.x.mypos.key_index,
 
-        # URL_Notify: 'https://mondoreg.herokuapp.com/payment/notify',
         URL_Notify: payment_notify_url.split("?")[0],
         URL_OK: payment_success_url.split("?")[0],
         URL_Cancel: payment_failure_url.split("?")[0],

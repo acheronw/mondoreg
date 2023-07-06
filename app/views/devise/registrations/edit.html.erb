@@ -4,12 +4,12 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="form-group">
+  <div class="form-group" >
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" >
     <%= f.label :email %>
     <%= f.email_field :email, class: 'form-control' %>
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -17,18 +17,18 @@
     <% end %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" >
     <%= f.label :password %>
     <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
     <span class="help-block"><%= t('edit_profile.leave_password_blank') %></span>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" >
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" >
     <%= f.label :current_password, t('edit_profile.current_password') %>
     <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
     <span class="help-block"><%= t('edit_profile.current_password_explanation') %></span>

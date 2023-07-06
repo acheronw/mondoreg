@@ -9,6 +9,7 @@ $brand-primary: #026EA0;
 
 body {
   padding-top: 60px;
+  background-color: #f5fafd;
 }
 
 section {
@@ -39,17 +40,19 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
-  color: white;
+  color: #006ea0;
+  background-color: transparent;
+  /* color: white; */
   /* background-image: linear-gradient(to bottom, #006EA0, #0090C0); */
-  background-color: rgb(0, 110, 160);
+  /* background-color: rgb(0, 110, 160); */
 }
 
 h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
+  font-size: 1.6em;
+  letter-spacing: 0px;
   margin-bottom: 30px;
   text-align: center;
-  font-weight: normal;
+  font-weight: bold;
   /* color: $gray-light; */
 }
 
@@ -92,8 +95,15 @@ footer {
       color: $gray-darker;
     }
   }
+
+  p {
+    font-size: 1.1em;
+    line-height: 2.4em;
+  }
+  
   small {
     float: right;
+    margin-right: 30px;
   }
   ul {
     float: right;
@@ -110,7 +120,10 @@ footer {
   float: left;
   margin-right: 30px;
 }
-
+#partner_logos {
+  float: right;
+  margin-right: 30px;
+}
 
 /* Forms and flashes */
 
@@ -165,6 +178,25 @@ footer {
   background: rgb(0, 110, 160);
 }
 
+.navbar-inverse 
+.navbar-nav li a {
+  color: #cecece;
+  }
+
+.dropdown
+.dropdown-menu li a {
+  color: #3f3f3f;
+  }
+.dropdown-menu li a:hover {
+  color: #3f3f3f;
+  background: #95c4ea;
+  }
+.dropdown-menu li hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  }
+
+
 .link-primary{
   color: rgb(0, 0, 0);
 }
@@ -178,3 +210,18 @@ footer {
 .well {
   background: rgb(255, 255, 255);
 }
+
+.btn-primary {
+  background-image: none;
+  }
+
+.btn-green {
+  background-image: none;
+  background-color: #38ae00;
+  color: #ffffff;
+  }
+.btn-green:hover, .btn-green:focus {
+  background-color: #006600;
+  background-position: 0 -15px;
+  color: #ffffff;
+  }

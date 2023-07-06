@@ -12,7 +12,6 @@ class TicketOrdersController < ApplicationController
     tickets_on_sale = Ticket.on_sale.pluck(:id)
     if tickets_on_sale.include? @ticket_order.ticket_id
       if @ticket_order.save
-        # TODO redirect to payment checkout
         redirect_to payment_checkout_path("MC" + @ticket_order.id.to_s)
         # flash[:success] = t('ticketing.user_side.order_placed_message')
         # ApplicationMailer.ticket_ordered_email(@ticket_order).deliver_now
