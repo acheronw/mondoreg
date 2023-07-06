@@ -5,33 +5,34 @@ class BoothsController < ApplicationController
   end
 
   def create
-    successful_saves = []
-    failed_saves = []
+    booths_to_save = []
+    failed_booths = []
     params[:booth_nos].each do | booth_no |
       # if Convention.active.last.booths.find_by(booth_number == booth_no)
       #   flash[:warning] = "Ez a booth már foglalt"
       # end
-      @booth = Booth.new(booth_number: booth_no)
-      @booth.booth_name = params[:booth][:booth_name]
-      @booth.convention = Convention.active.last
-      @booth.user = current_user
-      @booth.status = 'submitted'
-      if @booth.save
-        successful_saves << booth_no
+      booth = Booth.new(booth_number: booth_no)
+      booth.booth_name = params[:booth][:booth_name]
+      booth.convention = Convention.active.last
+      booth.user = current_user
+      booth.status = 'submitted'
+      if booth.valid?
+        booths_to_save << booth
       else
-        failed_saves << booth_no
+        failed_booths << booth
       end
     end
-    if successful_saves.any?
-      if failed_saves.any?
-        flash[:danger]  = t('booth.booked_mixed_results', good_nos: successful_saves, bad_nos: failed_saves)
-      else
-        flash[:success] = t('booth.booked_successfully', good_nos: successful_saves)
-      end
+    if failed_booths.any?
+      flash[:danger]  = t('booth.booked_failure', bad_nos: failed_booths.map(&:booth_number))
     else
-      if failed_saves.any?
-        flash[:danger]  = t('booth.booked_failure', bad_nos: failed_saves)
-        flash[:danger] = @booth.errors.full_messages
+      booths_to_save.each do | booth |
+        if booth.save
+          flash[:success] = t('booth.booked_successfully', good_nos: booths_to_save.map(&:booth_number))
+        else
+          flash[:danger]  = t('booth.booked_failure', bad_nos: failed_saves)
+          flash[:danger] = @booth.errors.full_messages
+          break
+        end
       end
     end
     redirect_back(fallback_location: root_path)
