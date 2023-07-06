@@ -1,5 +1,7 @@
 class BoothsController < ApplicationController
 
+  before_action :vendor_user, only: [:create]
+
   def new
     @booth = Booth.new
   end
@@ -8,9 +10,6 @@ class BoothsController < ApplicationController
     booths_to_save = []
     failed_booths = []
     params[:booth_nos].each do | booth_no |
-      # if Convention.active.last.booths.find_by(booth_number == booth_no)
-      #   flash[:warning] = "Ez a booth már foglalt"
-      # end
       booth = Booth.new(booth_number: booth_no)
       booth.booth_name = params[:booth][:booth_name]
       booth.convention = Convention.active.last
@@ -43,11 +42,17 @@ class BoothsController < ApplicationController
   # def index
   #   @booths = Booth.active.joins(:user).order(booth_number: :asc)
   # end
+  private
 
-  def comp_params
-    params.require(:booth).permit(:booth_name,
-                                  :booth_no
-    )
+    def comp_params
+      params.require(:booth).permit(:booth_name,
+                                    :booth_no
+      )
+    end
+
+  def vendor_user
+    redirect_to root_url unless user_signed_in? && current_user.has_role?(:vendor)
   end
+
 
 end
