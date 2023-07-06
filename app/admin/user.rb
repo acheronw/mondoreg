@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
 
-  menu if: proc{ current_admin_user.access_ticketing?}
+  menu if: proc{ current_admin_user.is_super?}
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
