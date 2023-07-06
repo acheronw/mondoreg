@@ -67,9 +67,11 @@ en:
   booth:
     available: "Available"
     book: "BOOK"
-    booked_successfully: "You have successfully booked booth no %{no} "
+    booked_failure: "We failed to reserve %{bad_nos} for you"
+    booked_successfully: "You have successfully booked booth no %{no}"
     name_input: "Name of your booth:"
     submit_booking: "Submit booking"
+    not_the_time: "Artist Alley booth reservation is currently closed"
   ticketing:
     name_of_buyer: "name of buyer"
     order_id: "Order ID"

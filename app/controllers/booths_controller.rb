@@ -24,13 +24,14 @@ class BoothsController < ApplicationController
     end
     if failed_booths.any?
       flash[:danger]  = t('booth.booked_failure', bad_nos: failed_booths.map(&:booth_number))
+      flash[:danger] = failed_booths.first.errors.full_messages
     else
       booths_to_save.each do | booth |
         if booth.save
           flash[:success] = t('booth.booked_successfully', good_nos: booths_to_save.map(&:booth_number))
         else
           flash[:danger]  = t('booth.booked_failure', bad_nos: failed_saves)
-          flash[:danger] = @booth.errors.full_messages
+          flash[:danger] = booth.errors.full_messages
           break
         end
       end
