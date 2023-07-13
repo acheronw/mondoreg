@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_many :ticket_orders, inverse_of: :user, dependent: :destroy
   has_many :comp_applications, inverse_of: :user
+  has_many :booths, inverse_of: :user
   # This is not dependent destroy, because if the user destroys his account, we don't want to lose his application information.
   # For example we use it to keep track of no-shows
   has_many :mondo_subscriptions, inverse_of: :user, dependent: :destroy

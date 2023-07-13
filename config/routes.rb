@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   patch 'edit_subscription', to: 'users#edit_subscription'
 
   resources :mondo_subscriptions, only: [:create]
+
+  resources :booths
   
 
   root 'static_pages#home'

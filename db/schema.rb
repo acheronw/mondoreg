@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_29_084409) do
+ActiveRecord::Schema.define(version: 2023_07_06_090016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,18 @@ ActiveRecord::Schema.define(version: 2023_06_29_084409) do
     t.index ["ticket_order_id"], name: "index_bank_transactions_on_ticket_order_id"
   end
 
+  create_table "booths", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "convention_id", null: false
+    t.integer "booth_number"
+    t.string "booth_name"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["convention_id"], name: "index_booths_on_convention_id"
+    t.index ["user_id"], name: "index_booths_on_user_id"
+  end
+
   create_table "comp_applications", id: :serial, force: :cascade do |t|
     t.integer "competition_id"
     t.integer "user_id"
@@ -147,6 +159,8 @@ ActiveRecord::Schema.define(version: 2023_06_29_084409) do
     t.datetime "relevance_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "booth_limit"
+    t.datetime "aa_opening_time"
   end
 
   create_table "mondo_sub_attribs", force: :cascade do |t|
@@ -258,6 +272,8 @@ ActiveRecord::Schema.define(version: 2023_06_29_084409) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bank_transactions", "ticket_orders"
+  add_foreign_key "booths", "conventions"
+  add_foreign_key "booths", "users"
   add_foreign_key "comp_applications", "competitions"
   add_foreign_key "comp_applications", "users"
   add_foreign_key "competitions", "conventions"
