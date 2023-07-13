@@ -45,4 +45,9 @@ when "development"
 	Competition.create(name: 'Első verseny', applications_start: '2021/09/20', applications_end: '2025/12/25', convention: convention, subtype: 'craft', admin_email: 'admin@example.com' )
 	p "competition hozzáadva"
 	Ticket.create(convention: convention, price: 5000, sale_start: '2021/09/15', sale_end: '2025/12/20')
+  
+  MondoSubAttrib.create(key: '6 month sub', value: '6000')
+  MondoSubAttrib.create(key: '12 month sub', value: '12000')
+
 end
+

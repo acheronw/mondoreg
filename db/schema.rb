@@ -150,9 +150,8 @@ ActiveRecord::Schema.define(version: 2023_06_29_084409) do
   end
 
   create_table "mondo_sub_attribs", force: :cascade do |t|
-    t.integer "pack_6"
-    t.integer "pack_12"
-    t.datetime "pack_last_date"
+    t.string "key"
+    t.string "value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -241,7 +240,7 @@ ActiveRecord::Schema.define(version: 2023_06_29_084409) do
     t.string "subscription_name"
     t.integer "subscription_zip"
     t.string "subscription_city"
-    t.string "subsrtiption_address"
+    t.string "subscription_address"
     t.integer "subscription_uptime"
     t.string "subscription_comment"
     t.index ["email"], name: "index_users_on_email", unique: true

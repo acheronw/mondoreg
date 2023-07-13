@@ -19,11 +19,18 @@ class Payment::PagesController < ApplicationController
       @quantity = ticket_order.quantity
       @price_per_ticket = ticket_order.ticket.price
       @amount = ticket_order.total_price
-
+    
       if (ticket_order.ticket.sale_end < Date.today)
         flash[:danger] = t('ticketing.sale_over')
         redirect_to root_path
       end
+    elsif @order_id.start_with?('MAG')
+      # We strip the MAG prefix to get the ticket_order.id:
+      subscription_id = @order_id[3 .. -1]
+      mondo_subscription = MondoSubscription.find(subscription_id)
+      @article = mondo_subscription.duration.to_s + " month sub"
+      @quantity = 1
+      @amount = @price_per_ticket = MondoSubAttrib.find_by(key: @article).value
     end
 
     @payment_params = {
@@ -64,7 +71,14 @@ class Payment::PagesController < ApplicationController
         ticket_order = TicketOrder.find(ticket_id)
         ticket_order.confirm('mypos')
         render plain: "OK"
+      elsif 
+        order_id.start_with?('MAG')
+        subscription_id = @order_id[3 .. -1]
+        mondo_subscription = MondoSubscription.find(subscription_id)
+        mondo_subscription.confirm
+        render plain: "OK"
       end
+      
     else
       # Return an empty document with error 401:
       head :unauthorized

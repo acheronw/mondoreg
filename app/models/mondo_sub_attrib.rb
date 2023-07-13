@@ -1,0 +1,4 @@
+class MondoSubAttrib < ApplicationRecord
+  
+
+end

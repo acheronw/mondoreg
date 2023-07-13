@@ -33,6 +33,12 @@ Rails.application.routes.draw do
   resources :competitions, only: [:show]
   get 'export_competitors/:id', to: 'competitions#export_csv', as: :export_competitors
 
+  resources :users
+  patch 'edit_subscription', to: 'users#edit_subscription'
+
+  resources :mondo_subscriptions, only: [:create]
+  
+
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
   get '/hub', to: 'static_pages#hub', as: :hub

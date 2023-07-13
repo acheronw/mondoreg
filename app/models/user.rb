@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :comp_applications, inverse_of: :user
   # This is not dependent destroy, because if the user destroys his account, we don't want to lose his application information.
   # For example we use it to keep track of no-shows
+  has_many :mondo_subscriptions, inverse_of: :user, dependent: :destroy
 
   def active_orders
     return TicketOrder.where(user: self).active.all.to_a
@@ -46,5 +47,12 @@ class User < ApplicationRecord
 				          {:name => :drawing_admin, :resource => :any })
   end
 
+  def has_subscription_data?
+    self.subscription_name.present? && 
+      self.subscription_email.present? && 
+      self.subscription_zip.present? && 
+      self.subscription_city.present? &&
+      self.subscription_address.present? 
+  end
 
 end
