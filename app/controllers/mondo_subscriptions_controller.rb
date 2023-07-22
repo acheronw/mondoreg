@@ -1,4 +1,5 @@
 class MondoSubscriptionsController < ApplicationController
+  before_action :bursar_user, only: [:index, :export_csv]
 
   def create
     @mondo_subscription = current_user.mondo_subscriptions.build(mondo_subscription_params)
@@ -12,9 +13,10 @@ class MondoSubscriptionsController < ApplicationController
       end
 
   end
-
+  
   private
     def mondo_subscription_params
       params.require(:mondo_subscription).permit(:duration)
     end
+    
 end

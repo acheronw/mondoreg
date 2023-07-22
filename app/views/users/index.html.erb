@@ -1,0 +1,57 @@
+<% provide(:title, t('subscription.admin_menu')) %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="padded well">
+        <p>
+          ** <%= @ut = request.original_url %> **<br>
+          <%= if params[:listtype] == 'all' then link_to 'Aktív lista' , @ut + "&listtype="+'' else
+            link_to 'Teljes lista' , @ut + "&listtype="+'all' end %>
+          <%#= if params[:listtype] == 'all' then link_to 'Aktív lista' , users_path(:listtype => '') else             link_to 'Teljes lista' , users_path(:listtype => 'all') end %>
+       </p>
+        <p class="center"><strong><%= t('subscription.subscription_list')%></strong></p>
+        <%#= will_paginate @users, param_name: 'users_page' %>
+        <%= paginate @users, param_name: 'users_page', theme: 'bootstrap' %>
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th><%= sortable('id', 'id') %></th>
+            <th><%= sortable('name', t('subscription_owner_email'))  %></th>
+            <th><%= t('subscription.subscription_name') %></th>
+            <th><%= t('subscription.subscription_email') %></th>
+            <th><%= t('subscription.subscription_zip') %></th>
+            <th><%= t('subscription.subscription_city') %></th>
+            <th><%= t('subscription.subscription_address') %></th>
+            <th><%= sortable('subscription_uptime', t('subscription.subscription_duration')) %></th>
+            <th><%= t('subscription.subscription_comment') %></th>
+          </tr>
+          </thead>
+          <% @users.each do | user | %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.email %></td>
+              <td><%= user.subscription_name %></td>
+              <td><%= user.subscription_email %></td>
+              <td><%= user.subscription_zip %></td>
+              <td><%= user.subscription_city %></td>
+              <td><%= user.subscription_address %></td>
+              <td><%= user.subscription_uptime %></td>
+              <td><%= user.subscription_comment %></td>
+              <td><%#= render partial: 'update_sub_memo', locals: {user: user} %></td>   
+            </tr>
+          <% end %>
+        </table>
+        <%#= will_paginate @users, param_name: 'users_page' %>
+        <%= paginate @users, param_name: 'users_page', theme: 'bootstrap' %>
+
+      </div>
+      <div>
+        <%=  link_to t('subscription.download_csv') , export_csv_path, method: :get %>
+      </div>
+
+    </div>
+  </div>
+
+</div>

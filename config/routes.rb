@@ -35,7 +35,9 @@ Rails.application.routes.draw do
 
   resources :users
   patch 'edit_subscription', to: 'users#edit_subscription'
+  get 'export_csv', to: 'users#export_csv'
 
+  
   resources :mondo_subscriptions, only: [:create]
 
   resources :booths

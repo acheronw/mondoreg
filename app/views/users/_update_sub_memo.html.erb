@@ -1,0 +1,4 @@
+<%= form_for user, url: update_memo_path(id: user.id) do | f | %>
+    <%= f.text_area :inner_memo %>
+    <%= f.submit t('user.subscription_comment'), class: "btn btn-primary" %>
+<% end %>

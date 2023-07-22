@@ -24,6 +24,7 @@ hu:
   subscription:
     subscription: "Mondo előfizetés"
     subscription_data_change: "Előfizetői adatok módosítása"
+    subscription_list: "Érvényes előfizetők listája"
     subscription_header: "Mondo magazin előfizetői adatok"
     subscription_add_header: "Előfizetés vásárlása/hosszabbítása"
     subscription_owner_email: "Felhasználói email: "
@@ -36,6 +37,7 @@ hu:
     subscription_6: "6 szám (egyéves előfizetés) - "
     subscription_12: "12 szám (kétéves előfizetés) - "
     sub_add: "Előfizetés hozzáadása"
+    admin_menu: "Mondo adminisztráció"
   footer:
     copyright_text: "© 2017 Szekeres András Márk, Minden jog fenntartva"
     contact: "Kapcsolat"

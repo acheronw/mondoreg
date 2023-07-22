@@ -16,6 +16,9 @@ class User < ApplicationRecord
   # For example we use it to keep track of no-shows
   has_many :mondo_subscriptions, inverse_of: :user, dependent: :destroy
 
+  scope :active_sub, -> { where ('subscription_uptime > 0') }
+  scope :interested_mag, -> { where ('subscription_uptime IS NOT NULL ') }
+
   def active_orders
     return TicketOrder.where(user: self).active.all.to_a
   end

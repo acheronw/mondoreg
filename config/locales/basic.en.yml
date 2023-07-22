@@ -45,6 +45,7 @@ en:
   subscription:
     subscription: "Mondo subscription"
     subscription_data_change: "Change subscriber profile"
+    subscription_list: "Current subscribers list"
     subscription_header: "Mondo magazine subscription"
     subscription_add_header: "Add/extend subscription"
     subscription_owner_email: "User/Owner email: "
@@ -57,6 +58,7 @@ en:
     subscription_6: "6 issues (One year subscription) - "
     subscription_12: "12 issues (Two years subscription) - "
     sub_add: "Add subscription"
+    admin_menu: "Mondo administration"
   footer:
     copyright_text: "© 2017 Szekeres András Márk, All Rights Reserved"
     contact: "Contact"
