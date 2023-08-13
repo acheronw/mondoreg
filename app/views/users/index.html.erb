@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-9">
       <div class="padded well">
 
         <p class="center"><strong><%= t('subscription.subscription_list')%></strong></p>
@@ -42,11 +42,18 @@
         <%= paginate @users, param_name: 'users_page', theme: 'bootstrap' %>
 
       </div>
-      <div>
-        <%=  link_to t('subscription.download_csv') , export_csv_path, method: :get %>
-      </div>
+
 
     </div>
+
+    <div class="col-lg-3">
+      <div class="padded well">
+        <p class="center">Magazin kiküldés</p>
+        <p>FONTOS! Előbb töltsük le az aktuális előfizetőket tartalmazó csv-t és csak UTÁNA vonjuk le az előzifizetőktől az aktuális lapszámot</p>
+        <%=  link_to t('subscription.download_csv') , export_subscriber_csv_path, method: :get %>
+      </div>
+    </div>
+
   </div>
 
 </div>

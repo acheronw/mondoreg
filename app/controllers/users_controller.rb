@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :bursar_user, only: [:index, :export_csv]
+  before_action :bursar_user, only: [:index, :export_subscriber_csv]
 
   # This makes the helpers available in the view:
   helper_method :sort_column, :sort_direction
@@ -40,8 +40,8 @@ class UsersController < ApplicationController
     
   end
 
-  def export_csv
-    @users = user.all
+  def export_subscriber_csv
+    @users = User.active_sub.all
     send_data @users.to_csv, :filename => 'mondo_subscribers.csv'
   end
 

@@ -130,7 +130,7 @@ en:
       order_button: "Order ticket"
       send_email_button: "Send me an email with payment details"
       reminder_button: "Resend email"
-      pay_button: "Buy ticket"
+      pay_button: "Pay"
       order_placed_message: "Your order has been placed. Check your inbox for instructions. You can track the status of your order here."
       resent_instructions_message: "We resent you the instructions, please check your inbox."
       bank_card_payment: "Pay with bank card"

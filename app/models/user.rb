@@ -59,4 +59,23 @@ class User < ApplicationRecord
       self.subscription_address.present? 
   end
 
+  def self.to_csv
+    attributes = ['user_id', 'előfizetett_lapszám', 'előfizető_neve',
+                  'előfizetői_email', 'irányítószám',
+                  'város', 'cím']
+    CSV.generate(headers: true) do | csv |
+      csv << attributes
+      all.each do | user |
+        csv << [user.id.to_s,
+                user.subscription_uptime,
+                user.subscription_name,
+                user.subscription_email,
+                user.subscription_zip,
+                user.subscription_city,
+                user.subscription_address,
+        ]
+      end
+    end
+  end
+
 end
