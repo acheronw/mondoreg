@@ -4,12 +4,7 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="padded well">
-        <p>
-          ** <%= @ut = request.original_url %> **<br>
-          <%= if params[:listtype] == 'all' then link_to 'Aktív lista' , @ut + "&listtype="+'' else
-            link_to 'Teljes lista' , @ut + "&listtype="+'all' end %>
-          <%#= if params[:listtype] == 'all' then link_to 'Aktív lista' , users_path(:listtype => '') else             link_to 'Teljes lista' , users_path(:listtype => 'all') end %>
-       </p>
+
         <p class="center"><strong><%= t('subscription.subscription_list')%></strong></p>
         <%#= will_paginate @users, param_name: 'users_page' %>
         <%= paginate @users, param_name: 'users_page', theme: 'bootstrap' %>

@@ -5,6 +5,42 @@
 </div>
 
 <div class="row">
+
+  <div class="col-md-4 col-md-offset-1">
+    <% if @user.has_subscription_data? %>
+
+      <% @mondo_subscription = MondoSubscription.new() %>
+      <%= form_for(@mondo_subscription,
+                   :html => {:class => "form-horizontal left fullscreen_form" }) do | f2| %>
+
+        <div class="form-group">
+          <h2><%= t('subscription.subscription_add_header')%></h2>
+        </div>
+
+        <% if @user.subscription_uptime %>
+          <div class="form-group">
+            <p><%= t('subscription.subscription_duration') %> <%= @user.subscription_uptime %></p>
+          </div>
+        <% else %>
+          <div class="form-group">
+            <p>Még nem fizettél elő!</p>
+          </div>
+        <% end %>
+        <div class="form-group">
+          <p>
+            <%= f2.label t('subscription.sub_add')  %><br>
+            <%= f2.radio_button :duration, '6', :required => true, style: 'width: 20px;' %> <%= t('subscription.subscription_6') %> <%= MondoSubAttrib.find_by(key: '6 month sub').value %> Ft<br>
+            <%= f2.radio_button :duration, '12', :required => true, style: 'width: 20px;' %> <%= t('subscription.subscription_12') %> <%= MondoSubAttrib.find_by(key: '12 month sub').value %> Ft
+          </p>
+        </div>
+
+        <%= f2.submit t('subscription.sub_add'), class: "btn btn-green" %>
+
+      <% end %>
+
+    <% end %>
+  </div>
+
   <div class="col-md-6 col-md-offset-1">
     <%= form_for(@user, url: :edit_subscription,
                  :html => {:class => "form-horizontal left fullscreen_form" }) do | f| %>
@@ -33,41 +69,6 @@
        </div>
 
         <%= f.submit t('subscription.subscription_data_change'), class: "btn btn-green" %>
-
-    <% end %>
-  </div>
-
-  <div class="col-md-4 col-md-offset-1">
-    <% if @user.has_subscription_data? %>
-
-      <% @mondo_subscription = MondoSubscription.new() %>
-      <%= form_for(@mondo_subscription,
-                   :html => {:class => "form-horizontal left fullscreen_form" }) do | f2| %>
-
-        <div class="form-group">
-            <h2><%= t('subscription.subscription_add_header')%></h2>
-        </div>
-
-        <% if @user.subscription_uptime %>
-          <div class="form-group">
-            <p><%= t('subscription.subscription_duration') %> <%= @user.subscription_uptime %></p>
-          </div>
-        <% else %>
-          <div class="form-group">
-            <p>Még nem fizettél elő!</p>
-          </div>         
-        <% end %>
-          <div class="form-group">
-            <p>
-            <%= f2.label t('subscription.sub_add')  %><br>
-            <%= f2.radio_button :duration, '6', :required => true, style: 'width: 20px;' %> <%= t('subscription.subscription_6') %> <%= MondoSubAttrib.find_by(key: '6 month sub').value %> Ft<br>
-            <%= f2.radio_button :duration, '12', :required => true, style: 'width: 20px;' %> <%= t('subscription.subscription_12') %> <%= MondoSubAttrib.find_by(key: '12 month sub').value %> Ft
-            </p> 
-          </div>         
-
-          <%= f2.submit t('subscription.sub_add'), class: "btn btn-green" %>
-
-      <% end %>
 
     <% end %>
   </div>
