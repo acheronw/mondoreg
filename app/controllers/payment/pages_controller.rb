@@ -73,7 +73,7 @@ class Payment::PagesController < ApplicationController
         render plain: "OK"
       elsif 
         order_id.start_with?('MAG')
-        subscription_id = @order_id[3 .. -1]
+        subscription_id = order_id[3 .. -1]
         mondo_subscription = MondoSubscription.find(subscription_id)
         mondo_subscription.confirm
         render plain: "OK"
