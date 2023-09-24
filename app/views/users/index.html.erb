@@ -54,6 +54,16 @@
       </div>
     </div>
 
+    <div class="col-lg-3">
+      <div class="padded well">
+        <p class="center"><%= t('ticketing.admin.upload_file')%></p>
+        <%= form_tag import_mondo_subscriptions_path, multipart: true do  %>
+          <%= file_field_tag :file %>
+          <%= submit_tag t('ticketing.admin.upload_file') %>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 
 </div>
