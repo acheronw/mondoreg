@@ -9,7 +9,13 @@ class StaticPagesController < ApplicationController
   def help
   end
 
-  def ticket_admin
+  def mondo_magazine
+    if user_signed_in?
+      redirect_to edit_user_path(current_user)
+    else
+      store_location_for(:user, request.fullpath)
+      authenticate_user!
+    end
   end
 
   def ticket_stats
