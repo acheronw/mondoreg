@@ -30,6 +30,10 @@ class MondoSubscription < ApplicationRecord
         user.subscription_zip  = row["posta_irsz"]
         user.subscription_city = row["posta_varos"]
         user.subscription_address = row["posta_cim"]
+        befizeto_id = row[0]
+        user.subscription_comment = "befizető azonosító: #{befizeto_id}"
+        ap user
+        ap row
         user.save!
         user.increment!(:subscription_uptime, by=row["duration"].to_i)
       else
