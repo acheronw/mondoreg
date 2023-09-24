@@ -1,5 +1,5 @@
 class MondoSubscriptionsController < ApplicationController
-  before_action :bursar_user, only: [:index, :export_csv]
+  before_action :bursar_user
 
   def create
     @mondo_subscription = current_user.mondo_subscriptions.build(mondo_subscription_params)
@@ -13,10 +13,23 @@ class MondoSubscriptionsController < ApplicationController
       end
 
   end
-  
+
+  def import
+    message = MondoSubscription.import(params[:file])
+    flash[:notice] = message
+    redirect_back(fallback_location: root_path)
+  end
+
+
   private
     def mondo_subscription_params
       params.require(:mondo_subscription).permit(:duration)
     end
-    
+
+
+    def bursar_user
+      redirect_to root_url unless user_signed_in? && current_user.has_role?(:bursar)
+    end
+
+
 end

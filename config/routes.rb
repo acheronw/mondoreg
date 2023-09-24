@@ -38,15 +38,18 @@ Rails.application.routes.draw do
   get 'export_subscriber_csv', to: 'users#export_subscriber_csv'
 
   
-  resources :mondo_subscriptions, only: [:create]
+  resources :mondo_subscriptions, only: [:create] do
+    collection do
+      post 'import'
+    end
+  end
 
   resources :booths
   
 
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
-  get '/hub', to: 'static_pages#hub', as: :hub
-  # TODO does this actually work? The static_pages controller has no hub method.
+  get '/mondo', to: 'static_pages#mondo_magazine'
   get '/ticket_stats', to: 'static_pages#ticket_stats', as: :ticket_stats
 
   namespace :payment do
