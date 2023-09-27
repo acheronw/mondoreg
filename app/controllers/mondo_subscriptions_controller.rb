@@ -1,5 +1,5 @@
 class MondoSubscriptionsController < ApplicationController
-  before_action :bursar_user
+  before_action :bursar_user, only: [:import]
 
   def create
     @mondo_subscription = current_user.mondo_subscriptions.build(mondo_subscription_params)
