@@ -87,7 +87,7 @@ hu:
     all_current: "Mostani con összes rendelése"
     scope_all: "Összes foglalás megjelenítése"
     confirm_button: "Visszaigazolom!"
-    unconfirm_button: "Befizetésre vár"
+    unconfirm_button: "Befizetett státusz visszavonása"
     refund_button: "Jegyár visszautalva"
     ticket_confirmed: "A %{id} azonosítójú rendelés visszaigazolva!"
     ticket_unconfirmed: "Visszavontuk a %{id} azonosítójú foglalás visszaigazolását!"
