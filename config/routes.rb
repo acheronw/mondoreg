@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-  devise_for :users
-  get 'users/new'
-
   # Redirect all traffic from mondoreg.herokuapps.com to tickets.mondocon.hu
   constraints(host: "mondoreg.herokuapp.com") do
     get "(*path)" => redirect { | params, request|
       "https://tickets.mondocon.hu/#{params[:path]}"
     }
   end
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  devise_for :users
+  get 'users/new'
 
   resources :ticket_orders, only: [:create, :index, :show]
   patch 'confirm_ticket', to: 'ticket_orders#confirm_ticket'
