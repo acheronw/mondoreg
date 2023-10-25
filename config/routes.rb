@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   devise_for :users
   get 'users/new'
 
+  # Redirect all traffic from mondoreg.herokuapps.com to tickets.mondocon.hu
+  constraints(host: "mondoreg.herkuapp.com") do
+    get "(*path)" => redirect { | params, request|
+      "https://tickets.mondocon.hu/#{params[:path]}"
+    }
+  end
 
   resources :ticket_orders, only: [:create, :index, :show]
   patch 'confirm_ticket', to: 'ticket_orders#confirm_ticket'
