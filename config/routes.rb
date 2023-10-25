@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'users/new'
 
   # Redirect all traffic from mondoreg.herokuapps.com to tickets.mondocon.hu
-  constraints(host: "mondoreg.herkuapp.com") do
+  constraints(host: "mondoreg.herokuapp.com") do
     get "(*path)" => redirect { | params, request|
       "https://tickets.mondocon.hu/#{params[:path]}"
     }
