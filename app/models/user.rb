@@ -19,30 +19,38 @@ class User < ApplicationRecord
   scope :active_sub, -> { where ('subscription_uptime > 0') }
   scope :interested_mag, -> { where ('subscription_uptime IS NOT NULL ') }
 
+
   def active_orders
     return TicketOrder.where(user: self).active.all.to_a
   end
+
 
   # Only pending tickets of the current event matter.
   def has_any_pending_tickets?
     TicketOrder.where(user: self).requires_attention.any?
   end
 
+
   # Only pending tickets of the current event matter.
   def has_any_accepted_tickets?
     TicketOrder.where(user: self).where(status: 'accepted').any?
   end
 
+
   def active_applications
     return CompApplication.where(user: self).active.all.to_a
   end
 
-  def competitions_to_apply
+
+  def competitions_to_apply(show_full = false)
     user_already_applied = self.comp_applications.pluck(:competition_id)
     open_comps = Competition.on_sale.where.not(id: user_already_applied).all.to_a
-    open_comps.delete_if { | comp | comp.full? }
+    unless show_full
+      open_comps.delete_if { | comp | comp.full? }
+    end
     return open_comps
   end
+
 
   def is_comp_admin?
     has_any_role?({:name => :manager, :resource => :any},
@@ -51,6 +59,7 @@ class User < ApplicationRecord
 				          {:name => :drawing_admin, :resource => :any })
   end
 
+
   def has_subscription_data?
     self.subscription_name.present? && 
       self.subscription_email.present? && 
@@ -58,6 +67,7 @@ class User < ApplicationRecord
       self.subscription_city.present? &&
       self.subscription_address.present? 
   end
+
 
   def self.to_csv
     attributes = ['user_id', 'előfizetett_lapszám', 'előfizető_neve',

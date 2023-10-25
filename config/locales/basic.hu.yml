@@ -194,6 +194,7 @@ hu:
       open_comps: "Jelentkezni szeretnél egy versenyre?"
       reserved_places: "Létszámkorlát"
       unlimited: "Korlátlan"
+      fully_booked: "A verseny betelt"
       apply: "Jelentkezem erre a versenyre"
       send_app_button: "Jelentkezés beküldése"
       new_app_header: "Versenyjelentkezés"

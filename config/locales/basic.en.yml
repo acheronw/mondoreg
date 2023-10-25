@@ -216,6 +216,7 @@ en:
       open_comps: "Want to join a competition?"
       reserved_places: "Current / max applications"
       unlimited: "Unlimited"
+      fully_booked: "Competition full"
       apply: "Enter this competition"
       send_app_button: "Send in application"
       new_app_header: "Application for competition"
