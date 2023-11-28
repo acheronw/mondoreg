@@ -28,6 +28,7 @@ class CompApplication < ApplicationRecord
   has_one_attached :stage_music
   validates :stage_music, attached: true, if: Proc.new{ |a| a.competition.require_music_upload?  }
   validates :stage_music, content_type: ['video/avi', 'video/mp4', 'video/x-ms-wmv','video/x-msvideo', 'audio/mpeg']
+  validates :stage_music, content_type: ['video/avi', 'video/mp4', 'video/x-ms-wmv','video/x-msvideo', 'audio/mpeg'], if: Proc.new{ |a| a.competition.is_amv? }
 
   has_one_attached :extra_image1
   has_one_attached :extra_image2

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_06_090016) do
+ActiveRecord::Schema.define(version: 2023_11_28_153231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,10 @@ ActiveRecord::Schema.define(version: 2023_07_06_090016) do
     t.integer "age_in_years"
     t.string "combo_comp"
     t.string "schedule_picked"
+    t.string "title"
+    t.string "description"
+    t.boolean "includes_effects"
+    t.string "music_description"
     t.index ["competition_id"], name: "index_comp_applications_on_competition_id"
     t.index ["user_id", "competition_id"], name: "index_comp_applications_on_user_id_and_competition_id", unique: true
     t.index ["user_id"], name: "index_comp_applications_on_user_id"

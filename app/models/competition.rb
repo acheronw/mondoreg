@@ -5,7 +5,18 @@ class Competition < ApplicationRecord
   validates :name, presence: true
   validates :convention_id, presence: true
   validates :subtype, presence: true
-  validates :subtype, :inclusion => { :in => ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay', 'blizzard_cp', 'rajz', 'rajz_cg', 'karaoke', 'karaoke_1song'],
+  validates :subtype, :inclusion => { :in => ['amv',
+                                              'blizzard_cp',
+                                              'craft',
+                                              'craft_group',
+                                              'eurocosplay',
+                                              'karaoke',
+                                              'karaoke_1song',
+                                              'perf',
+                                              'perf_group',
+                                              'rajz',
+                                              'rajz_cg',
+                                              ],
                                      message: "%value is not a valid competition type" }
   validates :admin_email, presence: true
 
@@ -68,7 +79,37 @@ class Competition < ApplicationRecord
     end
   end
 
-  # The following methods are used to check which optional fields are relevant.
+  # The following methods are used to check which optional fields are relevant:
+  def ask_age?
+    ['amv', 'rajz', 'rajz_cg'].include? self.subtype
+  end
+
+  def ask_veteran?
+    ['amv', 'craft', 'craft_group'].include? self.subtype
+  end
+
+  def consent_required?
+    ['amv', 'eurocosplay'].include? self.subtype
+  end
+
+  def extra_images?
+    ['craft', 'craft_group', 'eurocosplay','blizzard_cp', 'rajz_cg'].include? self.subtype
+  end
+
+  def group_members?
+    ['craft_group', 'perf_group'].include? self.subtype
+  end
+
+  def has_combo?
+    self.combo_comp.present?
+  end
+
+  def has_image?
+    ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay', 'blizzard_cp',
+     'rajz', 'rajz_cg'].include? self.subtype
+    # not self.is_karaoke?
+  end
+
   def is_cosplay?
     ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay', 'blizzard_cp'].include? self.subtype
   end
@@ -81,28 +122,12 @@ class Competition < ApplicationRecord
 	  ['rajz', 'rajz_cg'].include? self.subtype
   end
 
-  def has_image?
-    not self.is_karaoke?
-  end
-
-  def group_members?
-    ['craft_group', 'perf_group'].include? self.subtype
+  def is_amv?
+    ['amv'].include? self.subtype
   end
 
   def perf_requests?
     ['craft', 'craft_group', 'perf', 'perf_group', 'eurocosplay', 'blizzard_cp'].include? self.subtype
-  end
-
-  def ask_veteran?
-    ['craft', 'craft_group'].include? self.subtype
-  end
-
-  def ask_age?
-    ['rajz', 'rajz_cg'].include? self.subtype
-  end
-
-  def consent_required?
-    ['eurocosplay'].include? self.subtype
   end
 
   def require_music_upload?
@@ -112,14 +137,12 @@ class Competition < ApplicationRecord
   def select_music_from_list?
     ['blizzard_cp'].include? self.subtype
   end
-  
-  def extra_images?
-    ['craft', 'craft_group', 'eurocosplay','blizzard_cp', 'rajz_cg'].include? self.subtype
-  end
+
   
   def can_user_manage?(user)
 	  (user.has_role? :manager, self) ||
 	  ((self.is_cosplay?) && (user.has_role? :cosplay_admin)) ||
+    ((self.is_amv?) && (user.has_role? :amv_admin)) ||
 	  ((self.is_karaoke?) && (user.has_role? :karaoke_admin)) ||
 	  ((self.is_drawing?) && (user.has_role? :drawing_admin))
   end
@@ -138,8 +161,5 @@ class Competition < ApplicationRecord
     return available
   end
 
-  def has_combo?
-    self.combo_comp.present?
-  end
 
 end

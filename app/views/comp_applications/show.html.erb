@@ -43,15 +43,50 @@
         <% end %>
     <% end %>
 
+
+    <%# AMV specific fields %>
+    <% if @comp_application.competition.is_amv? %>
+      <dt><%= t('competition.amv_video') %></dt>
+      <dl>
+        <% if @comp_application.stage_music.attached? %>
+          <%= link_to @comp_application.stage_music.filename, @comp_application.stage_music.url %>
+        <% else %>
+          MISSING AMV
+        <% end %>
+      </dl>
+
+      <dt><%= t('competition.title')  %></dt>
+      <dl><%= @comp_application.title %></dl>
+
+      <dt><%= t('competition.description')  %></dt>
+      <dl><%= @comp_application.description %></dl>
+
+      <dt><%= t('competition.amv_effects')  %></dt>
+      <dl><%= @comp_application.includes_effects ? t('yes') : t('no') %></dl>
+
+
+      <dt><%= t('competition.amv_source')  %></dt>
+      <dl><%= @comp_application.character_source %></dl>
+
+      <dt><%= t('competition.amv_music_description')  %></dt>
+      <dl><%= @comp_application.music_description %></dl>
+
+      <dt><%= t('competition.amv_group')  %></dt>
+      <dl><%= @comp_application.group_name %></dl>
+
+  <% end %>
+
+
     <%# Music/video uploaded - If required %>
     <% if @comp_application.competition.require_music_upload? %>
         <dt><%= t('competition.stage_music') %></dt>
         <dl>
           <% if @comp_application.stage_music.attached? %>
-            <%= link_to @comp_application.stage_music.filename, @comp_application.stage_music.url %></dl>
+            <%= link_to @comp_application.stage_music.filename, @comp_application.stage_music.url %>
           <% else %>
             MISSING MUSIC
           <% end %>
+        </dl>
     <% end %>
 
     <% if @comp_application.competition.select_music_from_list? %>

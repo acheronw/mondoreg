@@ -4,152 +4,206 @@
                  :multipart => true,
                  :html => {:class => "form-horizontal left fullscreen_form" }) do | f| %>
 
-        <%= f.hidden_field :competition_id, :value => @comp_application.competition.id %>
+      <%= f.hidden_field :competition_id, :value => @comp_application.competition.id %>
 
 
-        <%= render 'application/error_messages', object: f.object %>
+      <%= render 'application/error_messages', object: f.object %>
 
-        <%# Nickname of user Field  %>
+      <%# Nickname of user Field  %>
+      <div class="form-group">
+        <%= f.label t('competition.nickname')  %>
+        <%= f.text_field :nickname %>
+      </div>
+
+
+      <%# Name of Character, Source - Cosplay only fields %>
+      <% if @comp_application.competition.is_cosplay? %>
+          <div class="form-group">
+            <%= f.label t('competition.name_of_character')  %>
+            <%= f.text_field :character_name %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label t('competition.source_of_character')  %>
+            <%= f.text_field :character_source %>
+            <i><%= t('competition.user_side.fandom_explained') %></i>
+          </div>
+      <% end %>
+
+      <%# Primary Image Field
+      Label varies by competition type %>
+      <% if @comp_application.competition.has_image? %>
         <div class="form-group">
-          <%= f.label t('competition.nickname')  %>
-          <%= f.text_field :nickname %>
+          <%= f.label (@comp_application.competition.is_cosplay? ? t('competition.primary_cosplay_image') : t('competition.primary_art_image') )  %>
+          <% if @comp_application.primary_image.present? %>
+            <%= image_tag (@comp_application.primary_image) %>
+          <% end %>
+          <%= f.file_field :primary_image %>
+          <%# Explanation - Cosplay only %>
+          <% if @comp_application.competition.is_cosplay? %>
+            <i><%= t('competition.user_side.primary_image_explained') %></i>
+          <% else %>
+            <i><%= t('competition.user_side.primary_art_explained') %></i>
+          <% end %>
+        </div>
+      <% end %>
+
+
+      <%# AMV specific fields %>
+      <% if @comp_application.competition.is_amv? %>
+        <div class="form-group">
+          <%= f.label t('competition.amv_video') %>
+          <% if @comp_application.stage_music.present? %>
+            <%= link_to @comp_application.stage_music.filename, (@comp_application.stage_music) %>
+          <% end %>
+          <%= f.file_field :stage_music %>
+          <i><%= t('competition.amv_video_explained') %></i>
+        </div>
+
+        <div class="form-group">
+          <%= f.label t('competition.title')  %>
+          <%= f.text_field :title %>
+          <i><%= t('competition.amv_title_explained') %></i>
+        </div>
+
+        <div class="form-group">
+          <%= f.label t('competition.description')  %>
+          <%= f.text_field :description %>
+          <i><%= t('competition.amv_description_explained') %></i>
+        </div>
+
+        <div class="form-group">
+          <%= f.label t('competition.amv_effects')  %>
+          <%= f.check_box :includes_effects %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label t('competition.amv_source')  %>
+          <%= f.text_field :character_source %>
+          <i><%= t('competition.amv_source_explained') %></i>
+        </div>
+
+        <div class="form-group">
+          <%= f.label t('competition.amv_music_description')  %>
+          <%= f.text_field :music_description %>
+          <i><%= t('competition.amv_music_explained') %></i>
+        </div>
+
+        <div class="form-group">
+          <%= f.label t('competition.amv_group') %>
+          <%= f.radio_button :group_name, "individual", checked: "checked" %>
+          Individual (1)
+          <%= f.radio_button :group_name, "collab" %>
+          Collab (2)
+          <%= f.radio_button :group_name, "MEP" %>
+          MEP (3+)
         </div>
 
 
-        <%# Name of Character, Source - Cosplay only fields %>
-        <% if @comp_application.competition.is_cosplay? %>
-            <div class="form-group">
-              <%= f.label t('competition.name_of_character')  %>
-              <%= f.text_field :character_name %>
-            </div>
+      <% end %>
 
-            <div class="form-group">
-              <%= f.label t('competition.source_of_character')  %>
-              <%= f.text_field :character_source %>
-              <i><%= t('competition.user_side.fandom_explained') %></i>
-            </div>
-        <% end %>
 
-        <%# Primary Image Field
-        Label varies by competition type %>
-        <% if @comp_application.competition.has_image? %>
+      <%# Music/video uploaded %>
+      <% if @comp_application.competition.require_music_upload? %>
           <div class="form-group">
-            <%= f.label (@comp_application.competition.is_cosplay? ? t('competition.primary_cosplay_image') : t('competition.primary_art_image') )  %>
-            <% if @comp_application.primary_image.present? %>
-              <%= image_tag (@comp_application.primary_image) %>
+            <%= f.label t('competition.stage_music') %>
+            <% if @comp_application.stage_music.present? %>
+                <%= link_to @comp_application.stage_music.filename, (@comp_application.stage_music) %>
             <% end %>
-            <%= f.file_field :primary_image %>
+            <%= f.file_field :stage_music %>
+            <i><%= t('competition.user_side.stage_music_explained') %></i>
+          </div>
+      <% end %>
+
+      <% if @comp_application.competition.select_music_from_list? %>
+          <div class="form-group">
+            <%= f.label t('competition.select_music') %>
+            <%= f.select :selected_music, Competition::MUSIC_OPTIONS %>
+          </div>
+      <% end %>
+
+      <%# Extra images - if allowed
+      Label varies by competition type %>
+      <% if @comp_application.competition.extra_images?  %>
+          <div class="form-group">
+            <%= f.label (@comp_application.competition.is_cosplay? ? t('competition.extra_cosplay_image') : t('competition.extra_art_image') )  %>
+
+            <% if @comp_application.extra_image1.present? %>
+                <%= image_tag (@comp_application.extra_image1) %>
+            <% end %>
+            <% if @comp_application.extra_image2.present? %>
+                <%= image_tag (@comp_application.extra_image2) %>
+            <% end %>
+            <%= f.file_field :extra_image1 %>
+            <%= f.file_field :extra_image2 %>
+
             <%# Explanation - Cosplay only %>
             <% if @comp_application.competition.is_cosplay? %>
-              <i><%= t('competition.user_side.primary_image_explained') %></i>
-            <% else %>
-              <i><%= t('competition.user_side.primary_art_explained') %></i>
+                <i><%= t('competition.user_side.extra_images_cosplay_explained') %></i>
+            <% end %>
+
+            <%# Explanation - Digital Art only %>
+            <% if @comp_application.competition.subtype == 'rajz_cg' %>
+                <i><%= t('competition.user_side.extra_images_digital_art_explained') %></i>
+            <% end %>
+
+          </div>
+      <% end %>
+
+
+      <%# Group name, members - Group Cosplay only fields %>
+      <% if @comp_application.competition.group_members? %>
+          <div class="form-group">
+            <%= f.label t('competition.group_name')  %>
+            <%= f.text_field :group_name, :maxlength => 35 %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label t('competition.group_member_names')  %>
+            <%= f.text_area :group_members %>
+            <i><%= t('competition.user_side.group_list_explained') %></i>
+          </div>
+      <% end %>
+
+
+      <%# Stage requests - if allowed %>
+      <% if @comp_application.competition.perf_requests?  %>
+          <div class="form-group">
+            <%= f.label t('competition.perf_requests')  %>
+            <%= f.text_area :perf_requests %>
+            <i><%= t('competition.user_side.perf_requests_explained') %></i>
+          </div>
+      <% end %>
+
+      <%# Fields for karaoke %>
+      <% if @comp_application.competition.is_karaoke? %>
+        <div class="form-group">
+          <%= f.label t('competition.karaoke_music1')  %>
+          <%= f.text_area :karaoke1 %>
+          <i><%= t('competition.user_side.karaoke_music_explained') %></i>
+        </div>
+      <% end %>
+
+      <%# The 'karaoke_1song' type does not have a second song field %>
+      <% if @comp_application.competition.subtype == 'karaoke' %>
+        <div class="form-group">
+          <%= f.label t('competition.karaoke_music2')  %>
+          <%= f.text_area :karaoke2 %>
+          <i><%= t('competition.user_side.karaoke_music_explained') %></i>
+        </div>
+      <% end %>
+
+
+      <%# Veteran checkbox - if allowed %>
+      <% if @comp_application.competition.ask_veteran?  %>
+          <div class="form-group">
+            <%= f.label @comp_application.competition.is_cosplay? ?  t('competition.cosplay_veteran') : t('competition.veteran') %>
+            <%= f.check_box :veteran %>
+            <% if@comp_application.competition.is_cosplay? %>
+              <i><%= t('competition.user_side.veteran_explained') %></i>
             <% end %>
           </div>
-        <% end %>
-
-
-
-
-        <%# Music/video uploaded %>
-        <% if @comp_application.competition.require_music_upload? %>
-            <div class="form-group">
-              <%= f.label t('competition.stage_music') %>
-              <% if @comp_application.stage_music.present? %>
-                  <%= link_to @comp_application.stage_music.filename, (@comp_application.stage_music) %>
-              <% end %>
-              <%= f.file_field :stage_music %>
-              <i><%= t('competition.user_side.stage_music_explained') %></i>
-            </div>
-        <% end %>
-
-        <% if @comp_application.competition.select_music_from_list? %>
-            <div class="form-group">
-              <%= f.label t('competition.select_music') %>
-              <%= f.select :selected_music, Competition::MUSIC_OPTIONS %>
-            </div>
-        <% end %>
-
-        <%# Extra images - if allowed
-        Label varies by competition type %>
-        <% if @comp_application.competition.extra_images?  %>
-            <div class="form-group">
-              <%= f.label (@comp_application.competition.is_cosplay? ? t('competition.extra_cosplay_image') : t('competition.extra_art_image') )  %>
-
-              <% if @comp_application.extra_image1.present? %>
-                  <%= image_tag (@comp_application.extra_image1) %>
-              <% end %>
-              <% if @comp_application.extra_image2.present? %>
-                  <%= image_tag (@comp_application.extra_image2) %>
-              <% end %>
-              <%= f.file_field :extra_image1 %>
-              <%= f.file_field :extra_image2 %>
-
-              <%# Explanation - Cosplay only %>
-              <% if @comp_application.competition.is_cosplay? %>
-                  <i><%= t('competition.user_side.extra_images_cosplay_explained') %></i>
-              <% end %>
-
-              <%# Explanation - Digital Art only %>
-              <% if @comp_application.competition.subtype == 'rajz_cg' %>
-                  <i><%= t('competition.user_side.extra_images_digital_art_explained') %></i>
-              <% end %>
-
-            </div>
-        <% end %>
-
-
-        <%# Group name, members - Group Cosplay only fields %>
-        <% if @comp_application.competition.group_members? %>
-            <div class="form-group">
-              <%= f.label t('competition.group_name')  %>
-              <%= f.text_field :group_name, :maxlength => 35 %>
-            </div>
-
-            <div class="form-group">
-              <%= f.label t('competition.group_member_names')  %>
-              <%= f.text_area :group_members %>
-              <i><%= t('competition.user_side.group_list_explained') %></i>
-            </div>
-        <% end %>
-
-
-        <%# Stage requests - if allowed %>
-        <% if @comp_application.competition.perf_requests?  %>
-            <div class="form-group">
-              <%= f.label t('competition.perf_requests')  %>
-              <%= f.text_area :perf_requests %>
-              <i><%= t('competition.user_side.perf_requests_explained') %></i>
-            </div>
-        <% end %>
-
-        <%# Fields for karaoke %>
-        <% if @comp_application.competition.is_karaoke? %>
-          <div class="form-group">
-            <%= f.label t('competition.karaoke_music1')  %>
-            <%= f.text_area :karaoke1 %>
-            <i><%= t('competition.user_side.karaoke_music_explained') %></i>
-          </div>
-        <% end %>
-
-        <%# The 'karaoke_1song' type does not have a second song field %>
-        <% if @comp_application.competition.subtype == 'karaoke' %>
-          <div class="form-group">
-            <%= f.label t('competition.karaoke_music2')  %>
-            <%= f.text_area :karaoke2 %>
-            <i><%= t('competition.user_side.karaoke_music_explained') %></i>
-          </div>
-        <% end %>
-
-
-        <%# Veteran checkbox - if allowed %>
-        <% if @comp_application.competition.ask_veteran?  %>
-            <div class="form-group">
-              <%= f.label t('competition.veteran') %>
-              <%= f.check_box :veteran %>
-              <i><%= t('competition.user_side.veteran_explained') %></i>
-            </div>
-        <% end %>
+      <% end %>
 
         <%# Age checkbox - if allowed %>
         <%# Boolean version %>
@@ -166,7 +220,9 @@
         <div class="form-group">
           <%= f.label t('competition.age') %>
           <%= f.number_field :age_in_years %>
-          <i><%= t('competition.user_side.age_explained') %></i>
+          <% if @comp_application.competition.is_drawing? %>
+            <i><%= t('competition.user_side.age_explained') %></i>
+          <% end %>
         </div>
       <% end %>
 
@@ -197,9 +253,11 @@
       <%# Consent checkbox - if allowed. This field is virtual, will not be stored in DB. %>
       <% if @comp_application.competition.consent_required?  %>
           <div class="form-group">
-            <%= f.label t('competition.consent') %>
+            <%= f.label @comp_application.competition.is_cosplay? ? t('competition.cosplay_consent') : t('competition.amv_consent') %>
             <%= f.check_box :consent %>
-            <i><%= t('competition.user_side.consent_explained') %></i>
+            <% if @comp_application.competition.is_cosplay?  %>
+              <i><%= t('competition.user_side.consent_explained') %></i>
+            <% end %>
           </div>
       <% end %>
 
