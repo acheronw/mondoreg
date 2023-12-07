@@ -41,7 +41,6 @@ class UsersController < ApplicationController
 
   def export_subscriber_csv
     issue_name = params[:issue]
-    ap "The issue we are looking for is #{issue_name}"
     @users = User.joins(:postages).where(postages: { item: issue_name}).distinct
     send_data @users.to_csv, :filename => "mondo_#{issue_name}_subscribers.csv"
   end
