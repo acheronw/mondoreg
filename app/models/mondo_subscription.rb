@@ -44,5 +44,4 @@ class MondoSubscription < ApplicationRecord
   end
 
 
-
 end

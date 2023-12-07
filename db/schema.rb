@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_28_153231) do
+ActiveRecord::Schema.define(version: 2023_12_07_110930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -194,6 +194,14 @@ ActiveRecord::Schema.define(version: 2023_11_28_153231) do
     t.index ["user_id"], name: "index_mondo_subscriptions_on_user_id"
   end
 
+  create_table "postages", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "item"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_postages_on_user_id"
+  end
+
   create_table "roles", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -282,6 +290,7 @@ ActiveRecord::Schema.define(version: 2023_11_28_153231) do
   add_foreign_key "comp_applications", "users"
   add_foreign_key "competitions", "conventions"
   add_foreign_key "mondo_subscriptions", "users"
+  add_foreign_key "postages", "users"
   add_foreign_key "ticket_orders", "tickets"
   add_foreign_key "ticket_orders", "users"
   add_foreign_key "tickets", "conventions"

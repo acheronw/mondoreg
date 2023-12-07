@@ -256,6 +256,8 @@ hu:
         selected_music: "Kiválasztott zeneszám"
         stage_music: "Feltöltött zene vagy videó"
     errors:
+      messages:
+        record_invalid: "Érvénytelen record"
       models:
         user:
           attributes:

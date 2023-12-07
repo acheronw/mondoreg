@@ -12,15 +12,6 @@ Rails.application.routes.draw do
   devise_for :users
   get 'users/new'
 
-  resources :ticket_orders, only: [:create, :index, :show]
-  patch 'confirm_ticket', to: 'ticket_orders#confirm_ticket'
-  patch 'unconfirm_ticket', to: 'ticket_orders#unconfirm_ticket'
-  patch 'refund_ticket', to: 'ticket_orders#refund_ticket'
-  patch 'deliver_ticket', to: 'ticket_orders#deliver_ticket'
-  put 'reminder_email', to: 'ticket_orders#reminder_email'
-  get 'export_csv', to: 'ticket_orders#export_csv'
-  get 'lookup_ticket', to: 'ticket_orders#lookup_ticket'
-
   resources :bank_transactions, only: [:destroy] do
     # collection routes work on the whole class, not on individual instances:
     collection do
@@ -30,6 +21,7 @@ Rails.application.routes.draw do
   patch 'set_done/:id', to: 'bank_transactions#set_done', as: :set_done
   patch 'set_problematic/:id', to: 'bank_transactions#set_problematic', as: :set_problematic
 
+  resources :booths
 
   resources :comp_applications
   patch 'accept_application', to: 'comp_applications#accept_application'
@@ -39,18 +31,29 @@ Rails.application.routes.draw do
   resources :competitions, only: [:show]
   get 'export_competitors/:id', to: 'competitions#export_csv', as: :export_competitors
 
-  resources :users
-  patch 'edit_subscription', to: 'users#edit_subscription'
-  get 'export_subscriber_csv', to: 'users#export_subscriber_csv'
+  resources :mondo_sub_attribs
 
-  
   resources :mondo_subscriptions, only: [:create] do
     collection do
       post 'import'
     end
   end
 
-  resources :booths
+  resources :ticket_orders, only: [:create, :index, :show]
+  patch 'confirm_ticket', to: 'ticket_orders#confirm_ticket'
+  patch 'unconfirm_ticket', to: 'ticket_orders#unconfirm_ticket'
+  patch 'refund_ticket', to: 'ticket_orders#refund_ticket'
+  patch 'deliver_ticket', to: 'ticket_orders#deliver_ticket'
+  put 'reminder_email', to: 'ticket_orders#reminder_email'
+  get 'export_csv', to: 'ticket_orders#export_csv'
+  get 'lookup_ticket', to: 'ticket_orders#lookup_ticket'
+
+  resources :users
+  patch 'edit_subscription', to: 'users#edit_subscription'
+
+  get 'export_subscriber_csv/:issue', to: 'users#export_subscriber_csv', as: 'export_subscriber_csv'
+
+
   
 
   root 'static_pages#home'

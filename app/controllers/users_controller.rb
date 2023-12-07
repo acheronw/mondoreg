@@ -19,7 +19,6 @@ class UsersController < ApplicationController
       flash[:danger] = "Access denied! Exterminate user! Exterminate!"
       redirect_to root_path
 	end
-    print ("===================")
     if @user.update(user_params)
       flash[:success] = 'Frissítettük az előfizetői adataidat.'
       # redirect_to root_path
@@ -41,8 +40,10 @@ class UsersController < ApplicationController
   end
 
   def export_subscriber_csv
-    @users = User.active_sub.all
-    send_data @users.to_csv, :filename => 'mondo_subscribers.csv'
+    issue_name = params[:issue]
+    ap "The issue we are looking for is #{issue_name}"
+    @users = User.joins(:postages).where(postages: { item: issue_name}).distinct
+    send_data @users.to_csv, :filename => "mondo_#{issue_name}_subscribers.csv"
   end
 
 

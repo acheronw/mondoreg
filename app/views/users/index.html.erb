@@ -49,10 +49,29 @@
     <div class="col-lg-3">
       <div class="padded well">
         <p class="center">Magazin kiküldés</p>
-        <p>FONTOS! Előbb töltsük le az aktuális előfizetőket tartalmazó csv-t és csak UTÁNA vonjuk le az előzifizetőktől az aktuális lapszámot</p>
-        <%=  link_to t('subscription.download_csv') , export_subscriber_csv_path, method: :get %>
+        <p>FONTOS: az új lapszám generálásával egyben az előfizetőktől le is vonunk rögtön egy számnyi előfizetést!</p>
+
+        <div>
+          <%= form_for MondoSubAttrib.new, url: mondo_sub_attribs_path, method: :post  do | f | %>
+            <%= f.label "Az új szám neve (például: 2024 február)"  %>
+            <%= f.text_field :value %>
+            <%= f.submit "GENERÁLÁS" %>
+          <% end %>
+        </div>
+
+
+        <% MondoSubAttrib.issues.each do | issue | %>
+          <div>
+            <%= issue %>:
+            <%=  link_to t('subscription.download_csv') , export_subscriber_csv_path(issue: issue), method: :get %>
+          </div>
+        <% end %>
+
+
+
       </div>
     </div>
+
 
     <!--
     <div class="col-lg-3">
