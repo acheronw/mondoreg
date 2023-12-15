@@ -8,7 +8,7 @@
 
 <% else %>
 
-  <% if current_user.has_role? :vendor %>
+  <% if current_user.is_vendor? %>
     <div class="container">
 
       <%= image_tag("artist_alley_map.png", alt: "Artist Alley térképe")  %>
@@ -38,7 +38,12 @@
 
         <div class="row">
           <%= f.submit t('booth.submit_booking'), class: "btn btn-primary" %>
+          <%= link_to t('booth.cancel_booking'), cancel_booths_path, method: :delete,
+                        class: "btn btn-primary btn-warning" %>
         </div>
+
+
+
 
 
       <% end %>

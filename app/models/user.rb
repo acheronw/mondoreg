@@ -71,6 +71,12 @@ class User < ApplicationRecord
       self.subscription_address.present? 
   end
 
+  def is_vendor?
+    self.has_role?(:vendor) ||
+        self.has_role?(:vendor1) ||
+        self.has_role?(:vendor2) ||
+        self.has_role?(:vendor3)
+  end
 
   def self.to_csv
     attributes = ['user_id', 'előfizetett_lapszám', 'előfizető_neve',

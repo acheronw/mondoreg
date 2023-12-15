@@ -88,7 +88,10 @@ en:
     book: "BOOK"
     booked_failure: "We failed to reserve %{bad_nos} for you"
     booked_successfully: "You have successfully booked booth no %{no}"
+    cancel_booking: "Cancel bookings"
+    cancelled: "Successfully cancelled %{count} booths."
     name_input: "Name of your booth:"
+    overbooking: "You tried to book %{amount} booths, but your allowance is only %{allowance}."
     submit_booking: "Submit booking"
     not_the_time: "Artist Alley booth reservation is currently closed"
   ticketing:

@@ -67,7 +67,10 @@ hu:
     book: "Foglalok"
     booked_failure: "Nem sikerült lefoglalni a %{bad_nos} számú pult(ok)at"
     booked_successfully: "Sikeresen lefoglaltad a %{good_nos} számú pult(ok)at"
+    cancel_booking: "Foglalás visszavonása"
+    cancelled: "Visszavonva %{count} db pult foglalása."
     name_input: "A pultod neve:"
+    overbooking: "%{amount} db pultot próbáltál foglalni, de csak %{allowance} számúra vagy jogosult."
     submit_booking: "Foglalás beküldése"
     not_the_time: "Artist Alley pultfoglalás jelenleg zárva"
   ticketing:

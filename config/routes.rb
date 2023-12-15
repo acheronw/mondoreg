@@ -21,7 +21,12 @@ Rails.application.routes.draw do
   patch 'set_done/:id', to: 'bank_transactions#set_done', as: :set_done
   patch 'set_problematic/:id', to: 'bank_transactions#set_problematic', as: :set_problematic
 
-  resources :booths
+  resources :booths do
+    collection do
+      delete 'cancel', to: "booths#cancel_current"
+    end
+  end
+
 
   resources :comp_applications
   patch 'accept_application', to: 'comp_applications#accept_application'
