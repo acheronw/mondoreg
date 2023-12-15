@@ -80,15 +80,29 @@ class CompApplication < ApplicationRecord
   end
 
   def self.to_csv
-    attributes = ['number', 'name', 'nickname', 'character', 'fandom']
+    attributes = [
+        'stage_number', 'name', 'nickname', 'email',
+        'title', 'description', 'effects_included',
+        'character', 'fandom_or_anime', 'music_titles',
+        'group',
+        'veteran', 'age',
+    ]
     CSV.generate(headers: true) do | csv |
       csv << attributes
       all.each do | comp_application |
         csv << [comp_application.appearance_no,
                 comp_application.user.name.to_s,
                 comp_application.nickname,
+                comp_application.user.email.to_s,
+                comp_application.title,
+                comp_application.description,
+                comp_application.includes_effects.to_s,
                 comp_application.character_name,
-                comp_application.character_source
+                comp_application.character_source,
+                comp_application.music_description,
+                comp_application.group_name,
+                comp_application.veteran.to_s,
+                comp_application.age_in_years,
         ]
       end
     end
