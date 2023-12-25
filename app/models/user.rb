@@ -57,6 +57,7 @@ class User < ApplicationRecord
 
   def is_comp_admin?
     has_any_role?({:name => :manager, :resource => :any},
+                  {:name => :amv_admin, :resource => :any },
 				          {:name => :cosplay_admin, :resource => :any },
 				          {:name => :karaoke_admin, :resource => :any },
 				          {:name => :drawing_admin, :resource => :any })
