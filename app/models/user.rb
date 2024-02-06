@@ -82,10 +82,14 @@ class User < ApplicationRecord
   def self.to_csv
     attributes = ['user_id', 'előfizetett_lapszám', 'előfizető_neve',
                   'előfizetői_email', 'irányítószám',
-                  'város', 'cím']
+                  'város', 'cím', 'befizetések']
     CSV.generate(headers: true) do | csv |
       csv << attributes
       all.each do | user |
+        payment_details = ""
+        user.mondo_subscriptions.where(status: 'accepted').each do | payment |
+          payment_details += 'MAG' + payment.id.to_s + ' ' + payment.updated_at.strftime("%F") + " "
+        end
         csv << [user.id.to_s,
                 user.subscription_uptime,
                 user.subscription_name,
@@ -93,6 +97,7 @@ class User < ApplicationRecord
                 user.subscription_zip,
                 user.subscription_city,
                 user.subscription_address,
+                payment_details
         ]
       end
     end
