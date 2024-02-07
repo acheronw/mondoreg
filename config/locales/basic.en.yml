@@ -61,6 +61,8 @@ en:
     subscription_12: "12 issues (Two years subscription) - "
     sub_add: "Add subscription"
     admin_menu: "Mondo administration"
+    email:
+      confirmed_subject: "Received payment for your Mondo magazine subscription"
   footer:
     copyright_text: "© 2017 Szekeres András Márk, All Rights Reserved"
     contact: "Contact"

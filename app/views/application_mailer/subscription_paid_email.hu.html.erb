@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h3>Kedves <%= @user.name %>!</h3>
+<p>
+  Befizetésed megérkezett hozzánk. <%= @mondo_subscription.duration %> számra előfizettél,
+  így összesen <%= @user.subscription_uptime %> számra vagy már előfizetve.
+</p>
+
+<p>
+  Üdvözlettel,<br>
+  Mondo magazin
+</p>
+</body>
+</html>

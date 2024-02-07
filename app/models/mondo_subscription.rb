@@ -8,13 +8,12 @@ class MondoSubscription < ApplicationRecord
 
   def confirm
     self.update!(:status => 'accepted')
-
     if self.user.subscription_uptime.blank?
       self.user.update!(:subscription_uptime => self.duration)
     else
       self.user.increment!(:subscription_uptime, by = self.duration) 
     end
-
+    ApplicationMailer.subscription_paid_email(self).deliver_now
   end
 
   def self.import(file)

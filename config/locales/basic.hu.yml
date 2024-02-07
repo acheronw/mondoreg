@@ -40,6 +40,8 @@ hu:
     subscription_12: "12 szám (kétéves előfizetés) - "
     sub_add: "Előfizetés hozzáadása"
     admin_menu: "Mondo adminisztráció"
+    email:
+      confirmed_subject: "Mondo magazin előfizetésed megtörtént"
   footer:
     copyright_text: "© 2017 Szekeres András Márk, Minden jog fenntartva"
     contact: "Kapcsolat"

@@ -13,20 +13,26 @@ class ApplicationMailer < ActionMailer::Base
   # end
 
   def ticket_ordered_email(ticket_order)
-      @ticket_order = ticket_order
-      mail(to: @ticket_order.user.email, subject: t('ticketing.email.ticket_order_subject'))
+    @ticket_order = ticket_order
+    mail(to: @ticket_order.user.email, subject: t('ticketing.email.ticket_order_subject'))
   end
 
   def ticket_confirmed_email(ticket_order)
-      require 'barby'
-      require 'barby/barcode/qr_code'
-      require 'barby/outputter/png_outputter'
+    require 'barby'
+    require 'barby/barcode/qr_code'
+    require 'barby/outputter/png_outputter'
 
-      @ticket_order = ticket_order
-      ticket_url = ticket_order_url(@ticket_order)
-      barcode = Barby::QrCode.new(ticket_url, level: :q, size: 5)
-      attachments['qr_code.png'] = barcode.to_png({ xdim: 5})
-      mail(to: @ticket_order.user.email, subject: t('ticketing.email.accepted_subject'))
+    @ticket_order = ticket_order
+    ticket_url = ticket_order_url(@ticket_order)
+    barcode = Barby::QrCode.new(ticket_url, level: :q, size: 5)
+    attachments['qr_code.png'] = barcode.to_png({ xdim: 5})
+    mail(to: @ticket_order.user.email, subject: t('ticketing.email.accepted_subject'))
+  end
+
+  def subscription_paid_email(mondo_subscription)
+    @mondo_subscription = mondo_subscription
+    @user = @mondo_subscription.user
+    mail(from: 'rendeles@mondomagazin.hu', to: @user.email, subject: t('subscription.email.confirmed_subject'))
   end
 
   def comp_application_confirmed_email(comp_application)
