@@ -30,6 +30,15 @@
           </div>
       <% end %>
 
+      <%# Fanart field for drawings only %>
+      <% if @comp_application.competition.is_drawing? %>
+        <div class="form-group">
+          <%= f.label t('competition.source_of_character')  %>
+          <%= f.text_field :character_source %>
+          <i><%= t('competition.user_side.fanart_explained') %></i>
+        </div>
+      <% end %>
+
       <%# Primary Image Field
       Label varies by competition type %>
       <% if @comp_application.competition.has_image? %>

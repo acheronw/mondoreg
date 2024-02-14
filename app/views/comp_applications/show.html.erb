@@ -29,6 +29,12 @@
 
     <% end %>
 
+    <%# Fanart field for drawings only %>
+    <% if @comp_application.competition.is_drawing? %>
+      <dt><%= t('competition.source_of_character') %></dt>
+      <dl><%= @comp_application.character_source %></dl>
+    <% end %>
+
     <%# Primary Image Field
     Label varies by competition type %>
 
