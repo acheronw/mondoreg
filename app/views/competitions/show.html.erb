@@ -19,7 +19,7 @@
           <th><%= t('competition.admin.admin_msg') %></th>
         <% elsif @competition.is_karaoke? %>
             <th>DALOK</th>
-        <% elif @competition.is_drawing? %>
+        <% elsif @competition.is_drawing? %>
             <th><%= t('competition.primary_art_image') %></th>
         <% end %>
         <th><%= t('competition.status') %></th>
@@ -44,7 +44,7 @@
             <br>
             <%= comp_app.karaoke2 %>
           </td>
-        <% elif @competition.is_drawing? %>
+        <% elsif @competition.is_drawing? %>
             <td><%= image_tag (comp_app.primary_image.variant(resize: '400x400')) %></td>
         <% end %>
 
