@@ -3,7 +3,6 @@ class MondoSubAttribsController < ApplicationController
 
   def create
     issue_name = mondo_sub_attrib_params[:value]
-    ap issue_name
     no_of_subscribers = PostageService.create_issue(issue_name)
     if no_of_subscribers
       flash[:success] = "Sikeresen létrehoztuk az új számot, #{no_of_subscribers} előfizetőnek kell postázni."
