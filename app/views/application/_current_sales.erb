@@ -1,4 +1,5 @@
-<% if Ticket.on_sale.any? %>
+<% tickets_available = Ticket.order(id: :asc).on_sale.not_full %>
+<% if tickets_available.any? %>
     <div class="col-lg-6">
       <div class="padded">
 
@@ -11,7 +12,7 @@
             </div>
             <div class="form-group">
               <%= f.label t('ticketing.user_side.type_of_ticket') %>
-              <% tickets_on_sale = Ticket.on_sale.pluck(:name, :id) %>
+              <% tickets_on_sale = tickets_available.pluck(:name, :id) %>
               <%= f.select :ticket_id, tickets_on_sale, :selected => tickets_on_sale.first.second %>
             </div>
             <%= f.submit t('ticketing.user_side.order_button'), class: "btn btn-primary" %>
