@@ -10,7 +10,7 @@ class Ticket < ApplicationRecord
 
   def full?
     if self.quantity
-      self.ticket_orders.where(status: ['accepted', 'pending']).count >= self.quantity
+      self.ticket_orders.where(status: ['accepted', 'pending']).sum(:quantity) >= self.quantity
     else
       # A competition with no limit of applications can never be full
       false
