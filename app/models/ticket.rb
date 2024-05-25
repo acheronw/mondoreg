@@ -8,6 +8,7 @@ class Ticket < ApplicationRecord
 
   has_many :ticket_orders, inverse_of: :ticket, dependent: :destroy
 
+  
   def full?
     if self.quantity
       self.ticket_orders.where(status: ['accepted', 'pending']).sum(:quantity) >= self.quantity
@@ -15,6 +16,11 @@ class Ticket < ApplicationRecord
       # A competition with no limit of applications can never be full
       false
     end
+  end
+
+
+  def on_sale?
+    (self.sale_start <= DateTime.current) and (self.sale_end >= DateTime.current)
   end
 
 
