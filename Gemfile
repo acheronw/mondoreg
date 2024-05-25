@@ -52,7 +52,7 @@ gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 # ActiveStorage solution for file attachment required the following:
 # gem 'aws-sdk-s3', require: false
 gem 'aws-sdk', '~> 3', require: false
-gem 'image_processing'
+gem 'image_processing', '~> 1.12.2'
 gem 'active_storage_validations'
 # This is a dependency of AWS, but for security reasons I had to bump its version:
 gem 'jmespath', '~> 1.6.1'
